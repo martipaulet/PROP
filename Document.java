@@ -1,30 +1,79 @@
 import java.util.*;
 
 public class Document {
-    private Date data_creacio;
-    private Date data_modificacio;
-    private String contingut;
-    private HashMap<String, Integer> paraules;
+    private Autor autor_;
+    private Titol titol_;
+    private String contingut_;
+    private ArrayList<Frase> frases_ = new ArrayList<>();
 
-    private Autor autor_doc;
-    private Titol titol_doc;
-    private Vector<Frase> frases;
-    //private ConjuntDocuments DocumentsBD;
+    private Date dataCreacio_;
+    private Date dataUltimaModificacio_;
 
-    public Document (Autor a, Titol t, String c) {
-        //creadora d'un nou document
+    private HashMap<String, Integer> paraules_;
+
+
+    public Document (Autor autor, Titol titol, String contingut) {
+        autor_ = autor;
+        titol_ = titol;
+        contingut_ = contingut;
+        setFrases();
+        // dataCreacio_ = getData()?
+        dataUltimaModificacio_ = dataCreacio_;
+        setParaules();
     }
 
-    public void modificaDocument(/* paràmetres*/) {
-        //modifica els paràmetres que seleccioni i passi com paràmetre
+    public Autor getAutor() {
+        return autor_;
     }
 
-    public void getContingut() {
-        //mostra el contingut del document
+    public void setAutor(Autor autor) {
+        autor_ = autor;
     }
 
-    public void llistaDocuments() {
-        //llista documents del conjunt segons criteri ordenacio
-        //trucar al criteri d'ordenacio
+    public Titol getTitol() {
+        return titol_;
+    }
+
+    public void setTitol(Titol titol) {
+        titol_ = titol;
+    }
+
+    public String getContingut() {
+        return contingut_;
+    }
+
+    public void setContingut(String contingut) {
+        contingut_ = contingut;
+    }
+
+    public ArrayList<Frase> getFrases() {
+        return frases_;
+    }
+
+    private void setFrases() {
+        String[] frases = contingut_.split("\\.");
+        for (String frase : frases) {
+            frases_.add(new Frase(frase));
+        }
+    }
+
+    public Date getDataCreacio() {
+        return dataCreacio_;
+    }
+
+    public Date getDataUltimaModificacio() {
+        return dataUltimaModificacio_;
+    }
+
+    /*public void actualitzarDataUltimaModificacio() {
+        dataUltimaModificacio_ = getData()?;
+    }*/
+
+    public HashMap<String, Integer> getParaules() {
+        return paraules_;
+    }
+
+    private void setParaules() {
+        //omplir HashMap
     }
 }

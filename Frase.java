@@ -1,5 +1,9 @@
 import java.util.*;
 
 public class Frase {
-    private Vector<String> paraules;
+    private String[] paraules_;
+
+    public Frase(String paraules) {
+        paraules_ = paraules.split("\\W+");
+    }
 }
