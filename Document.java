@@ -17,7 +17,7 @@ public class Document {
         titol_ = titol;
         contingut_ = contingut;
         setFrases();
-        // dataCreacio_ = getData()?
+        dataCreacio_ = new Date();
         dataUltimaModificacio_ = dataCreacio_;
         setParaules();
     }
@@ -65,9 +65,9 @@ public class Document {
         return dataUltimaModificacio_;
     }
 
-    /*public void actualitzarDataUltimaModificacio() {
-        dataUltimaModificacio_ = getData()?;
-    }*/
+    public void actualitzarDataUltimaModificacio() {
+        dataUltimaModificacio_ = new Date();
+    }
 
     public HashMap<String, Integer> getParaules() {
         return paraules_;
