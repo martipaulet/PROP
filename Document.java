@@ -74,6 +74,14 @@ public class Document {
     }
 
     private void setParaules() {
-        //omplir HashMap
+        String[] paraules = contingut_.split("\\.");
+        for (String paraula : paraules) {
+            if (paraules_.containsKey(paraula)) {
+                paraules_.put(paraula, paraules_.get(paraula) + 1);
+            }
+            else {
+                paraules_.put(paraula, 1);
+            }
+        }
     }
 }

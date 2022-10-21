@@ -1,12 +1,12 @@
 import java.util.*;
 
 public class Titol {
-    private Vector<String> titol;
+    private String[] titol_;
 
     private Vector<Document> docs_titol;
 
-    public Titol(Vector<String> t) {
-        titol = t;
+    public Titol(String titol) {
+        titol_ = titol.split("\\W+");
     }
 }
 
