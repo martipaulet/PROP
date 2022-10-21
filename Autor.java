@@ -1,12 +1,12 @@
 import java.util.*;
 
 public class Autor {
-    private Vector<String> nom;
+    private String[] nom_;
 
-    private Vector<Document> docs_autor;
+    private Vector<Document> docs_autor_;
 
-    public Autor(Vector<String> n) {
-        nom = n;
+    public Autor(String nomAutor) {
+        nom_ = nomAutor.split("\\W+");
     }
 
     public void consultaTitols() {
@@ -22,5 +22,15 @@ public class Autor {
     public void obteDocument(Titol t) {
         //busca en vector de documents el Document amb titol t
         //si titol = t, mostrem document (igual fa falta funcio)
+    }
+
+    public void imprimir() {
+        for (String nom : nom_) {
+            if (!Objects.equals(nom, nom_[0])) {
+                System.out.print(" ");
+            }
+            System.out.print(nom);
+        }
+        System.out.println();
     }
 }

@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Document {
     private Autor autor_;
@@ -9,7 +10,7 @@ public class Document {
     private Date dataCreacio_;
     private Date dataUltimaModificacio_;
 
-    private HashMap<String, Integer> paraules_;
+    private HashMap<String, Integer> paraules_ = new HashMap<>();
 
 
     public Document (Autor autor, Titol titol, String contingut) {
@@ -74,14 +75,25 @@ public class Document {
     }
 
     private void setParaules() {
-        String[] paraules = contingut_.split("\\.");
+        String[] paraules = contingut_.split("(?U)\\W+");
         for (String paraula : paraules) {
+            paraula = paraula.toLowerCase();
             if (paraules_.containsKey(paraula)) {
-                paraules_.put(paraula, paraules_.get(paraula) + 1);
+                int vegades = paraules_.get(paraula);
+                paraules_.put(paraula, ++vegades);
             }
             else {
                 paraules_.put(paraula, 1);
             }
         }
+    }
+
+    public void imprimir() {
+        autor_.imprimir();
+        titol_.imprimir();
+        System.out.println(contingut_);
+        System.out.println(dataCreacio_);
+        System.out.println(dataUltimaModificacio_);
+        System.out.println(paraules_);
     }
 }

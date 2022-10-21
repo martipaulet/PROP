@@ -19,7 +19,7 @@ public class ConjuntDocuments {
         //fa trucada a modificaDocument per cada document seleccionat amb selecccionarDocument
     }
 
-    public void afegirDocument(Document& d) {
+    public void afegirDocument(Document d) {
         //afegir document al conjunt
     }
 }
