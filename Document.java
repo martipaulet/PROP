@@ -3,7 +3,7 @@ import java.util.regex.Pattern;
 
 public class Document {
     private Autor autor_;
-    private Titol titol_;
+    private String titol_;
     private String contingut_;
     private ArrayList<Frase> frases_ = new ArrayList<>();
 
@@ -13,7 +13,7 @@ public class Document {
     private HashMap<String, Integer> paraules_ = new HashMap<>();
 
 
-    public Document (Autor autor, Titol titol, String contingut) {
+    public Document (Autor autor, String titol, String contingut) {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
@@ -31,11 +31,11 @@ public class Document {
         autor_ = autor;
     }
 
-    public Titol getTitol() {
+    public String getTitol() {
         return titol_;
     }
 
-    public void setTitol(Titol titol) {
+    public void setTitol(String titol) {
         titol_ = titol;
     }
 
@@ -90,10 +90,14 @@ public class Document {
 
     public void imprimir() {
         autor_.imprimir();
-        titol_.imprimir();
+        System.out.println(autor_);
         System.out.println(contingut_);
         System.out.println(dataCreacio_);
         System.out.println(dataUltimaModificacio_);
         System.out.println(paraules_);
+    }
+
+    public void mostraDocument() {
+
     }
 }
