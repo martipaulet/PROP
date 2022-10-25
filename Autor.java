@@ -2,11 +2,16 @@ import java.util.*;
 
 public class Autor {
     private String[] nom_;
-
+    private String nomA;
     private Vector<Document> docsAutor_;
 
     public Autor(String nomAutor) {
         nom_ = nomAutor.split("\\W+");
+        nomA = nomAutor;
+    }
+
+    public String getNom() {
+        return nomA;
     }
 
     public void consultaTitols() {
