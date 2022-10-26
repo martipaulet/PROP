@@ -18,7 +18,7 @@ public class OrdreModificacio implements Ordenacio {
             DocOrdenats.add(di);
             if(DocOrdenats.size() > 1){
                 Boolean acaba = false;
-                for (int j = DocOrdenats.size()-2; DocOrdenats.size() >= 0 && acaba==false; --j){
+                for (int j = DocOrdenats.size()-2; j >= 0 && !acaba; --j){
                     Document dj = vd.elementAt(j);
                     Date data_dj = dj.getDataUltimaModificacio();
 
