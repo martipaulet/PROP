@@ -11,8 +11,12 @@ public class ConjuntDocuments {
         //exporta els documents seleccionats amb seleccionarDocument
     }
 
-    public void baixaDocuments() {
+    public void baixaDocuments(ConjuntDocuments cd) {
         //elimina els documents seleccionats amb seleccionarDocument
+    }
+
+    public void baixaDocument(Document d) {
+        //elimina un documents seleccionat amb seleccionarDocument
     }
 
     public void modificarDocuments() {

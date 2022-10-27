@@ -58,6 +58,10 @@ public class Document {
         }
     }
 
+    public static void actualitzaDocument(String nouAutor, String nouTitol, String nouContingut, Date novaData) {
+
+    }
+
     public Date getDataCreacio() {
         return dataCreacio_;
     }

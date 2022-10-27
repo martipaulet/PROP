@@ -8,6 +8,7 @@ public class Autor {
     public Autor(String nomAutor) {
         nom_ = nomAutor.split("\\W+");
         nomA = nomAutor;
+        docsAutor_ = null;
     }
 
     public String getNom() {
@@ -27,6 +28,26 @@ public class Autor {
         }
     }
 
+    public boolean conteTitol(String titol) {
+        boolean trobat = false;
+        while (!trobat) {
+            for (int i = 0; i < docsAutor_.size(); ++i) {
+                Document d = docsAutor_.elementAt(i);
+                if (d.getTitol().equals(titol)) trobat = true;
+            }
+        }
+        return trobat;
+    }
+
+    public void afegirDocument(Document d) {
+        docsAutor_.add(d);
+    }
+
+    public void eliminaDocument(Document d) {
+        docsAutor_.remove(d);
+    }
+
+
     /*public void obteContingut(Titol t) {
         //busca en el vector de documents el Document amb títol t
         //getTítol de cada document
@@ -35,7 +56,8 @@ public class Autor {
 
     /*REALMENT NO CREC QUE CALGUI JA QUE ANANT AL CONTROLADOR I FENT getDoc(Autor, Titol)
     JA OBTENIM EL DOCUMENT QUE VOLEM*/
-    public void obteDocument(String titol_doc_autor) {
+
+    public Document obteDocument(String titol_doc_autor) {
         //busca en vector de documents el Document amb titol t
         //si titol = t, mostrem document (igual fa falta funcio)
         boolean trobat = false;
@@ -49,7 +71,7 @@ public class Autor {
             }
             ++i;
         }
-        d.mostraDocument();
+        return d;
     }
 
     public void imprimir() {
