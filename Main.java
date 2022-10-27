@@ -30,7 +30,7 @@ public class Main {
         vd.add(d4);
 
         Vector<Document> vdReal = new Vector<>();
-        OrdreAlfabetic o = new OrdreAlfabetic();
+        OrdreCreacio o = new OrdreCreacio();
         vdReal = o.OrdenarDocuments(vd);
         for (int i = 0; i < vdReal.size(); ++i) {
             Document doc = vdReal.elementAt(i);

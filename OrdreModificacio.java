@@ -19,7 +19,7 @@ public class OrdreModificacio implements Ordenacio {
             if(DocOrdenats.size() > 1){
                 Boolean acaba = false;
                 for (int j = DocOrdenats.size()-2; j >= 0 && !acaba; --j){
-                    Document dj = vd.elementAt(j);
+                    Document dj = DocOrdenats.elementAt(j);
                     Date data_dj = dj.getDataUltimaModificacio();
 
                     //data va abans en vector, canvi
