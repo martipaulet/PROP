@@ -41,7 +41,7 @@ public class CtrlDomini {
                 return;
             }
         }
-        Document d = new Document(a, titol, contingut);
+        Document d = new Document(autor, titol, contingut);
         a.afegirDocument(d);
         documents.afegirDocument(d);
     }
@@ -52,9 +52,8 @@ public class CtrlDomini {
     //      Si l'autor del document eliminat nomes tenia aquest document tambe s'eimina l'autor
 
     public void baixaDocument(Document d) {
-        Autor tmp = d.getAutor();
         if (desassociaAutor(d)) {
-            autors.remove(tmp.getNom());
+            autors.remove(d.getAutor());
         }
         documents.baixaDocument(d);
     }
@@ -77,8 +76,7 @@ public class CtrlDomini {
     //      Actualitzar setFrases i setParaules al document modificat
 
     public void modificarDocument(String nouAutor, String nouTitol, String nouContingut, Document d, Date novaData) {
-        Autor tmp = d.getAutor();
-        boolean canviAutor = tmp.getNom().equals(nouAutor);
+        boolean canviAutor = d.getAutor().equals(nouAutor);
         boolean canviTitol = d.getTitol().equals(nouTitol);
 
         //Cambien els 2: comprobar que no existeix el nou document(nouAutor,nouTitol)
@@ -90,7 +88,7 @@ public class CtrlDomini {
                 //eliminar associacio anticAutor amb anticDocument
                 //si anticAutor nomes tenia anticDocument eliminar l'autor
                 if (desassociaAutor(d)) {
-                    autors.remove(tmp.getNom());
+                    autors.remove(d.getAutor());
                 }
 
             }
@@ -102,7 +100,7 @@ public class CtrlDomini {
             Autor a = autors.get(nouAutor);
 
             if (desassociaAutor(d)) {
-                autors.remove(tmp.getNom());
+                autors.remove(d.getAutor());
             }
 
             d.actualitzaDocument(nouAutor, nouTitol, nouContingut, novaData);
@@ -113,7 +111,7 @@ public class CtrlDomini {
     //      si l'autor nomes tenia aquell document retorna true. Altrament retorna false
 
     public boolean desassociaAutor(Document d) {
-        Autor tmp = d.getAutor();
+
         return true;
 
     }
