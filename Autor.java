@@ -61,17 +61,17 @@ public class Autor {
         //busca en vector de documents el Document amb titol t
         //si titol = t, mostrem document (igual fa falta funcio)
         boolean trobat = false;
-        int i = 0;
         Document d = null;
-        while (i < docsAutor_.size()) {
-            while (!trobat) {
-                d = docsAutor_.elementAt(i);
-                String titol_autor = d.getTitol();
-                if (Objects.equals(titol_autor, titol_doc_autor)) trobat = true;
-            }
-            ++i;
+        for (int i = 0; i < docsAutor_.size() && !trobat; ++i) {
+            d = docsAutor_.elementAt(i);
+            String titol_autor = d.getTitol();
+            if (Objects.equals(titol_autor, titol_doc_autor)) trobat = true;
         }
         return d;
+    }
+
+    public Boolean teDocuments() {
+        return (docsAutor_.size() != 0);
     }
 
     public void imprimir() {

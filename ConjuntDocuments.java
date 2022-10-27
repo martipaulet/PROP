@@ -17,6 +17,7 @@ public class ConjuntDocuments {
 
     public void baixaDocument(Document d) {
         //elimina un documents seleccionat amb seleccionarDocument
+        DocumentsBD.remove(d);
     }
 
     public void modificarDocuments() {
@@ -25,5 +26,6 @@ public class ConjuntDocuments {
 
     public void afegirDocument(Document d) {
         //afegir document al conjunt
+        DocumentsBD.add(d);
     }
 }

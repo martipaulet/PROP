@@ -58,8 +58,9 @@ public class Document {
         }
     }
 
-    public static void actualitzaDocument(String nouAutor, String nouTitol, String nouContingut, Date novaData) {
-
+    public void actualitzaDocument(String nouContingut, Date novaData) {
+        contingut_ = nouContingut;
+        dataUltimaModificacio_ = novaData;
     }
 
     public Date getDataCreacio() {

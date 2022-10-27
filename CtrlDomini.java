@@ -103,7 +103,7 @@ public class CtrlDomini {
                 autors.remove(d.getAutor());
             }
 
-            d.actualitzaDocument(nouAutor, nouTitol, nouContingut, novaData);
+            d.actualitzaDocument(nouAutor, novaData);
         }
 
 
