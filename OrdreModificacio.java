@@ -10,7 +10,7 @@ public class OrdreModificacio implements Ordenacio {
     //ordenar per dates de modificació (data més propera abans que data més llunyana)
     //FALTA COMPROBACIÓ
 
-    public void OrdenarDocuments(Vector<Document> vd) {
+    public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
         Vector<Document> DocOrdenats = new Vector<>();
         for (int i=0; i<vd.size(); ++i){
             Document di = vd.elementAt(i);
@@ -68,6 +68,6 @@ public class OrdreModificacio implements Ordenacio {
                 }
             }
         }
-        vd = DocOrdenats;
+        return DocOrdenats;
     }
 }
