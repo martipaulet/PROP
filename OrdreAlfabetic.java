@@ -5,7 +5,7 @@ import java.util.*;
 
      //ordenar per ordre alfabètic títol
      //FALTA COMPROBACIÓ
-    public void OrdenarDocuments(Vector<Document> vd) {
+    public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
         Vector<Document> vdReal = new Vector<>();
         Collator comparador = Collator.getInstance();
         comparador.setStrength(Collator.PRIMARY);
@@ -15,7 +15,7 @@ import java.util.*;
             vdReal.add(d);
             if (vdReal.size() > 1) {
                 Boolean posicio = false;
-                for (int j = vdReal.size() - 2; vdReal.size() >= 0; --j) {
+                for (int j = vdReal.size() - 2; j >= 0; --j) {
                     while (posicio == false) {
                         Document dcomp = vdReal.elementAt(j);
                         String tit = dcomp.getTitol();
@@ -42,7 +42,7 @@ import java.util.*;
                 }
             }
         }
-        vd = vdReal;
+        return vdReal;
     }
 
 }

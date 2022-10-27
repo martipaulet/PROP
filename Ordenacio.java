@@ -1,5 +1,5 @@
 import java.util.*;
 
 public interface Ordenacio {
-    public void OrdenarDocuments(Vector<Document> vd);
+    public Vector<Document> OrdenarDocuments(Vector<Document> vd);
 }
