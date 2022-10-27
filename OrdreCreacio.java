@@ -27,7 +27,7 @@ public class OrdreCreacio implements Ordenacio {
                     }
 
                     //data va despres en vector, no canvi
-                    if(data_di.before(data_dj)){
+                    else if(data_di.before(data_dj)){
                         acaba=true;
                     }
 
@@ -44,16 +44,14 @@ public class OrdreCreacio implements Ordenacio {
                         }
 
                         //titol_di va despres que titol_dj
-                        if (titol_di.compareTo(titol_dj) < 0){
+                        else if (titol_di.compareTo(titol_dj) < 0){
                             acaba = true;
                         }
 
                         //titols iguals, comparem autors
                         else {
-                            Autor ai = di.getAutor();
-                            String autor_i = ai.getNom();
-                            Autor aj = dj.getAutor();
-                            String autor_j = aj.getNom();
+                            String autor_i = di.getAutor();
+                            String autor_j = dj.getAutor();
 
                             //autor_i va abans que autor_j
                             if (autor_i.compareTo(autor_j) > 0) {

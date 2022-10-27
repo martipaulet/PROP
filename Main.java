@@ -11,17 +11,17 @@ public class Main {
         Autor a1 = new Autor ("Juan");
         Autor a2 = new Autor ("Pedro");
         Autor a3 = new Autor ("Mireia");
-        Autor a4 = new Autor ("Ángel");
+        Autor a4 = new Autor ("Angel");
 
         String c1 = "a";
         String c2 = "b";
         String c3 = "c";
         String c4 = "d";
 
-        Document d1 = new Document(a1, "Hola", c1);
-        Document d2 = new Document(a2, "Blau", c2);
-        Document d3 = new Document(a3, "Hola", c3);
-        Document d4 = new Document(a4, "Adeu", c4);
+        Document d1 = new Document(a1.getNom(), "Hola", c1);
+        Document d2 = new Document(a2.getNom(), "Blau", c2);
+        Document d3 = new Document(a3.getNom(), "Hola", c3);
+        Document d4 = new Document(a4.getNom(), "Adeu", c4);
 
         Vector<Document> vd = new Vector<>();
         vd.add(d1);
@@ -34,10 +34,10 @@ public class Main {
         vdReal = o.OrdenarDocuments(vd);
         for (int i = 0; i < vdReal.size(); ++i) {
             Document doc = vdReal.elementAt(i);
-            Autor aut = doc.getAutor();
-            String s = aut.getNom();
+            String s =doc.getAutor();
             System.out.println(s);
         }
+        System.out.println('\n');
 
     }
 }
