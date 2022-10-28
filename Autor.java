@@ -59,8 +59,8 @@ public class Autor {
     JA OBTENIM EL DOCUMENT QUE VOLEM*/
 
     public Document obteDocument(String titol_doc_autor) {
-        //busca en vector de documents el Document amb titol t
-        //si titol = t, mostrem document (igual fa falta funcio)
+        /*busca en vector de documents el Document amb titol t
+        si titol = t, mostrem document (igual fa falta funcio) */
         boolean trobat = false;
         Document d = null;
         for (int i = 0; i < docsAutor_.size() && !trobat; ++i) {

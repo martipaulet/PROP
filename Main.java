@@ -9,7 +9,7 @@ public class Main {
 
         String c1 = "a";
         String c2 = "b";
-        //String c3 = "c";
+        String c3 = "c";
         String c4 = "d";
 
         Document d1 = new Document(a.getNom(), "Hola", c1);
