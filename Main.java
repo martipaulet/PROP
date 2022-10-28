@@ -13,7 +13,17 @@ public class Main {
         Autor a3 = new Autor ("Mireia");
         Autor a4 = new Autor ("Angel");
 
-        String c1 = "a";
+        Boolean b1 = a1.tePrefix("Ju");
+        Boolean b2 = a2.tePrefix("");
+        Boolean b3 = a3.tePrefix("Mireja");
+        Boolean b4 = a4.tePrefix("Aj");
+
+        if (b1) System.out.println("b1 true");
+        if (b2) System.out.println("b2 true");
+        if (b3) System.out.println("b3 true");
+        if (b4) System.out.println("b4 true");
+
+        /*String c1 = "a";
         String c2 = "b";
         String c3 = "c";
         String c4 = "d";
@@ -37,7 +47,7 @@ public class Main {
             String s =doc.getAutor();
             System.out.println(s);
         }
-        System.out.println('\n');
+        System.out.println('\n'); */
 
     }
 }

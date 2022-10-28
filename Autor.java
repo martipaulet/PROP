@@ -74,6 +74,14 @@ public class Autor {
         return (docsAutor_.size() != 0);
     }
 
+    public Boolean tePrefix(String prefix) {
+        Boolean trobat = true;
+        for (int i = 0; i < prefix.length() && trobat; ++i) {
+            if (prefix.charAt(i) != nomA.charAt(i)) trobat = false;
+        }
+        return trobat;
+    }
+
     public void imprimir() {
         for (String nom : nom_) {
             if (!Objects.equals(nom, nom_[0])) {
