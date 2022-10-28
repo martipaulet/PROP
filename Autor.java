@@ -70,10 +70,6 @@ public class Autor {
         return d;
     }
 
-    public Boolean teDocuments() {
-        return (docsAutor_.size() != 0);
-    }
-
     public Boolean tePrefix(String prefix) {
         Boolean trobat = true;
         for (int i = 0; i < prefix.length() && trobat; ++i) {
@@ -81,6 +77,10 @@ public class Autor {
         }
         return trobat;
     }
+    public Boolean teDocuments() {
+        return (docsAutor_.size() != 0);
+    }
+
 
     public void imprimir() {
         for (String nom : nom_) {

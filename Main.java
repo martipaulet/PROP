@@ -23,7 +23,7 @@ public class Main {
         if (b3) System.out.println("b3 true");
         if (b4) System.out.println("b4 true");
 
-        /*String c1 = "a";
+        String c1 = "a";
         String c2 = "b";
         String c3 = "c";
         String c4 = "d";
@@ -47,7 +47,7 @@ public class Main {
             String s =doc.getAutor();
             System.out.println(s);
         }
-        System.out.println('\n'); */
+        System.out.println('\n');
 
     }
 }
