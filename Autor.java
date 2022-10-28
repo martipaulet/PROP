@@ -8,7 +8,7 @@ public class Autor {
     public Autor(String nomAutor) {
         nom_ = nomAutor.split("\\W+");
         nomA = nomAutor;
-        docsAutor_ = null;
+        docsAutor_ = new Vector<>();
     }
 
     public String getNom() {
@@ -17,12 +17,13 @@ public class Autor {
 
     public void consultaTitols() {
         //retorna tots els títols de docsAutor_ ordenats alfabèticament
-        Set<String> t = new HashSet<String>();
+        ArrayList<String> t = new ArrayList<>();
         for (int i = 0; i < docsAutor_.size(); ++i) {
             Document d = docsAutor_.elementAt(i);
             String titolAutor = d.getTitol();
             t.add(titolAutor);
         }
+        Collections.sort(t);
         for (String s : t) {
             System.out.println(s);
         }

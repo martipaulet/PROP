@@ -7,8 +7,28 @@ public class Main {
         Document d = new Document(a.getNom(), "Juego de tronos", c);
         d.imprimir();
 
+        String c1 = "a";
+        String c2 = "b";
+        //String c3 = "c";
+        String c4 = "d";
+
+        Document d1 = new Document(a.getNom(), "Hola", c1);
+        Document d2 = new Document(a.getNom(), "Blau", c2);
+        //Document d3 = new Document(a.getNom(), "Hola", c3);
+        Document d4 = new Document(a.getNom(), "Adeu", c4);
+
+        a.afegirDocument(d1);
+        a.afegirDocument(d2);
+        a.afegirDocument(d4);
+        a.afegirDocument(d);
+
+        Document res = a.obteDocument("Blau");
+        if (res == d2) System.out.println("Funciona");
+        Document res2 = a.obteDocument("Adeu");
+        if (res2 != d2) System.out.println("funciona");
+
         //DOC 1
-        Autor a1 = new Autor ("Juan");
+       /* Autor a1 = new Autor ("Juan");
         Autor a2 = new Autor ("Pedro");
         Autor a3 = new Autor ("Mireia");
         Autor a4 = new Autor ("Angel");
@@ -22,16 +42,6 @@ public class Main {
         if (b2) System.out.println("b2 true");
         if (b3) System.out.println("b3 true");
         if (b4) System.out.println("b4 true");
-
-        String c1 = "a";
-        String c2 = "b";
-        String c3 = "c";
-        String c4 = "d";
-
-        Document d1 = new Document(a1.getNom(), "Hola", c1);
-        Document d2 = new Document(a2.getNom(), "Blau", c2);
-        Document d3 = new Document(a3.getNom(), "Hola", c3);
-        Document d4 = new Document(a4.getNom(), "Adeu", c4);
 
         Vector<Document> vd = new Vector<>();
         vd.add(d1);
@@ -47,7 +57,7 @@ public class Main {
             String s =doc.getAutor();
             System.out.println(s);
         }
-        System.out.println('\n');
+        System.out.println('\n');*/
 
     }
 }
