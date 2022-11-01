@@ -74,6 +74,7 @@ public class Autor {
 
     public Boolean tePrefix(String prefix) {
         Boolean trobat = true;
+        if (prefix.length() > nomA.length()) trobat = false;
         for (int i = 0; i < prefix.length() && trobat; ++i) {
             if (prefix.charAt(i) != nomA.charAt(i)) trobat = false;
         }

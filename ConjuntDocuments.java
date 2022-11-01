@@ -33,6 +33,12 @@ public class ConjuntDocuments {
     //pre: el document (autor,titol) existeix
     //retorna el document (autor,titol)
     public Document getDocument(String autor, String titol) {
-
+        Boolean trobat = false;
+        Document d = new Document(null, null, null);
+        for (int i = 0; i < DocumentsBD.size() && !trobat; ++i) {
+            d = DocumentsBD.elementAt(i);
+            if (d.getAutor() == autor && d.getTitol() == titol) trobat = true;
+        }
+        return d;
     }
 }
