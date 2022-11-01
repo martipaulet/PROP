@@ -15,7 +15,7 @@ public class Autor {
         return nomA;
     }
 
-    public void consultaTitols() {
+    public List<String> consultaTitols() {
         //retorna tots els títols de docsAutor_ ordenats alfabèticament
         ArrayList<String> t = new ArrayList<>();
         for (int i = 0; i < docsAutor_.size(); ++i) {
@@ -27,6 +27,7 @@ public class Autor {
         for (String s : t) {
             System.out.println(s);
         }
+        return t;
     }
 
     public boolean conteTitol(String titol) {
@@ -73,7 +74,6 @@ public class Autor {
 
     public Boolean tePrefix(String prefix) {
         Boolean trobat = true;
-        if (prefix.length() > nomA.length()) trobat = false;
         for (int i = 0; i < prefix.length() && trobat; ++i) {
             if (prefix.charAt(i) != nomA.charAt(i)) trobat = false;
         }

@@ -28,4 +28,11 @@ public class ConjuntDocuments {
         //afegir document al conjunt
         DocumentsBD.add(d);
     }
+
+
+    //pre: el document (autor,titol) existeix
+    //retorna el document (autor,titol)
+    public Document getDocument(String autor, String titol) {
+
+    }
 }
