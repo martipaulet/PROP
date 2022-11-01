@@ -22,20 +22,20 @@ public class Main {
         a.afegirDocument(d4);
         a.afegirDocument(d);
 
-        Document res = a.obteDocument("Blau");
+        /*Document res = a.obteDocument("Blau");
         if (res == d2) System.out.println("Funciona");
         Document res2 = a.obteDocument("Adeu");
-        if (res2 != d2) System.out.println("funciona");
+        if (res2 != d2) System.out.println("funciona"); */
 
         //DOC 1
-       /* Autor a1 = new Autor ("Juan");
+        Autor a1 = new Autor ("Juan");
         Autor a2 = new Autor ("Pedro");
         Autor a3 = new Autor ("Mireia");
         Autor a4 = new Autor ("Angel");
 
         Boolean b1 = a1.tePrefix("Ju");
         Boolean b2 = a2.tePrefix("");
-        Boolean b3 = a3.tePrefix("Mireja");
+        Boolean b3 = a3.tePrefix("Mireiax");
         Boolean b4 = a4.tePrefix("Aj");
 
         if (b1) System.out.println("b1 true");
@@ -43,7 +43,7 @@ public class Main {
         if (b3) System.out.println("b3 true");
         if (b4) System.out.println("b4 true");
 
-        Vector<Document> vd = new Vector<>();
+       /* Vector<Document> vd = new Vector<>();
         vd.add(d1);
         vd.add(d2);
         vd.add(d3);
