@@ -1,12 +1,11 @@
+package Domini;
 import java.util.*;
 
 public class Autor {
-    private String[] nom_;
     private String nomA;
     private Vector<Document> docsAutor_;
 
     public Autor(String nomAutor) {
-        nom_ = nomAutor.split("\\W+");
         nomA = nomAutor;
         docsAutor_ = new Vector<>();
     }
@@ -14,6 +13,8 @@ public class Autor {
     public String getNom() {
         return nomA;
     }
+
+    public void setNom(String n) { nomA = n; }
 
     public List<String> consultaTitols() {
         //retorna tots els títols de docsAutor_ ordenats alfabèticament
@@ -49,16 +50,6 @@ public class Autor {
         docsAutor_.remove(d);
     }
 
-
-    /*public void obteContingut(Titol t) {
-        //busca en el vector de documents el Document amb títol t
-        //getTítol de cada document
-        //si titol = t, document.mostraContingut()
-    }*/
-
-    /*REALMENT NO CREC QUE CALGUI JA QUE ANANT AL CONTROLADOR I FENT getDoc(Autor, Titol)
-    JA OBTENIM EL DOCUMENT QUE VOLEM*/
-
     public Document obteDocument(String titol_doc_autor) {
         /*busca en vector de documents el Document amb titol t
         si titol = t, mostrem document (igual fa falta funcio) */
@@ -86,12 +77,6 @@ public class Autor {
 
 
     public void imprimir() {
-        for (String nom : nom_) {
-            if (!Objects.equals(nom, nom_[0])) {
-                System.out.print(" ");
-            }
-            System.out.print(nom);
-        }
-        System.out.println();
+        System.out.println(nomA);
     }
 }

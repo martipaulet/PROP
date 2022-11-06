@@ -1,26 +1,26 @@
+package Domini;
 import java.text.Collator;
 import java.util.*;
 
 
 //ALBERT CARDONA ZAERA
 
-public class OrdreModificacio implements Ordenacio {
+public class OrdreCreacio implements Ordenacio {
 
-
-    //ordenar per dates de modificació (data més propera abans que data més llunyana)
+    //ordenar per dates de creacio (data més propera abans que data més llunyana)
     //FALTA COMPROBACIÓ
 
     public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
         Vector<Document> DocOrdenats = new Vector<>();
         for (int i=0; i<vd.size(); ++i){
             Document di = vd.elementAt(i);
-            Date data_di = di.getDataUltimaModificacio();
+            Date data_di = di.getDataCreacio();
             DocOrdenats.add(di);
             if(DocOrdenats.size() > 1){
                 Boolean acaba = false;
                 for (int j = DocOrdenats.size()-2; j >= 0 && !acaba; --j){
                     Document dj = DocOrdenats.elementAt(j);
-                    Date data_dj = dj.getDataUltimaModificacio();
+                    Date data_dj = dj.getDataCreacio();
 
                     //data va abans en vector, canvi
                     if(data_di.after(data_dj)){

@@ -1,3 +1,4 @@
+import Domini.*;
 import java.util.*;
 
 public class Main {

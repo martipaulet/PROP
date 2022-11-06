@@ -1,3 +1,4 @@
+package Domini;
 import java.util.*;
 
 public interface Ordenacio {
