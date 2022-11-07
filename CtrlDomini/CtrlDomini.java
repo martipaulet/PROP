@@ -154,13 +154,15 @@ public class CtrlDomini {
         }
         else return false;
     }
-
+    /*
     //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
     public Vector<Document> DocumentsSemblants(Document D, Integer K) {
         HashMap<String, Integer> Idf = documents.CalculCopsParaules(D);
         HashMap<Document, Integer> TiIdf = new HashMap<>();
 
     }
+
+     */
 
 
 
