@@ -2,7 +2,8 @@ package Domini;
 import java.util.*;
 
 public class ConjuntDocuments {
-    private Vector<Document> DocumentsBD;
+    private Vector<Document> CjtD;
+    private HashMap<String, Integer> CopsParaules = new HashMap<>();
 
     public void importarDocuments () {
         //fa crides a la creadora de document
@@ -18,7 +19,7 @@ public class ConjuntDocuments {
 
     public void baixaDocument(Document d) {
         //elimina un documents seleccionat amb seleccionarDocument
-        DocumentsBD.remove(d);
+        CjtD.remove(d);
     }
 
     public void modificarDocuments() {
@@ -27,7 +28,7 @@ public class ConjuntDocuments {
 
     public void afegirDocument(Document d) {
         //afegir document al conjunt
-        DocumentsBD.add(d);
+        CjtD.add(d);
     }
 
 
@@ -36,10 +37,26 @@ public class ConjuntDocuments {
     public Document getDocument(String autor, String titol) {
         Boolean trobat = false;
         Document d = new Document(null, null, null);
-        for (int i = 0; i < DocumentsBD.size() && !trobat; ++i) {
-            d = DocumentsBD.elementAt(i);
+        for (int i = 0; i < CjtD.size() && !trobat; ++i) {
+            d = CjtD.elementAt(i);
             if (d.getAutor() == autor && d.getTitol() == titol) trobat = true;
         }
         return d;
+    }
+
+    //Implementa idf
+    public void CalculCopsParaules() {
+        for (int i=0; i < CjtD.size(); ++i){
+            Document d = CjtD.elementAt(i);
+            HashMap<String, Integer> paraules = d.getParaules();
+            for (String paraula : paraules.keySet()) {
+                if(CopsParaules.containsKey(paraula)){
+                    CopsParaules.replace(paraula,CopsParaules.get(paraula)+1);
+                }
+                else {
+                    CopsParaules.put(paraula,1);
+                }
+            }
+        }
     }
 }

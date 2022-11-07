@@ -80,6 +80,7 @@ public class Document {
         return paraules_;
     }
 
+    //Implementacio tf
     private void setParaules() {
         String[] paraules = contingut_.split("(?U)\\W+");
         for (String paraula : paraules) {
