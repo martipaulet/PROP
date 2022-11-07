@@ -30,7 +30,7 @@ public class DriverAutor {
     }
     public void testafegirDocument() {
         Scanner sc = new Scanner(System.in);
-        System.out.println
+        //System.out.println
     }
     public void testeliminaDocument() {}
     public void testobteDocument() {}

@@ -2,7 +2,7 @@ package Domini;
 import java.text.Collator;
 import java.util.*;
 
- class OrdreAlfabetic implements Ordenacio {
+ public class OrdreAlfabetic implements Ordenacio {
 
      //ordenar per ordre alfabètic títol
      //FALTA COMPROBACIÓ

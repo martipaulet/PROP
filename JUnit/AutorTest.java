@@ -1,4 +1,4 @@
-//JOEL FERNÁNDEZ
+//JOEL FERNANDEZ
 
 package JUnit;
 import Domini.Autor;
