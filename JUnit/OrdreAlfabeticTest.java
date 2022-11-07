@@ -4,12 +4,8 @@ package JUnit;
 import java.util.*;
 import Domini.OrdreAlfabetic;
 import Domini.Document;
-import Domini.OrdreCreacio;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.runner.*;
-
-import javax.print.Doc;
 
 
 public class OrdreAlfabeticTest {
@@ -56,6 +52,30 @@ public class OrdreAlfabeticTest {
     }
 
     //Tots els documents tenen el mateix titol
+    //AQUESTA LA FAIG JO DESPRÉS
+    @Test
+    public void OrdenarDocumentsTitolsIgualsTest() {
+        Document d1 = new Document("Josep", "Hola", "a");
+        Document d2 = new Document("Laura", "Hola", "a");
+        Document d3 = new Document("Antoni", "Hola", "a");
+        Document d4 = new Document ("Anna", "Hola", "a");
 
+        Vector<Document> vd = new Vector<Document>();
+        vd.add(d1);
+        vd.add(d2);
+        vd.add(d3);
+        vd.add(d4);
+        OrdreAlfabetic o = new OrdreAlfabetic();
+        Vector<Document> vfi = new Vector<Document>();
+        vfi = o.OrdenarDocuments(vd);
 
+        //CREO UN VECTOR I AFEGEIXO ELS DOCUMENTS EN L'ORDRE ALFABÈTIC PER PODER COMPARAR AMB vfi
+        Vector<Document> vfi2 = new Vector<Document>();
+        vfi2.add(d4);
+        vfi2.add(d3);
+        vfi2.add(d1);
+        vfi2.add(d2);
+
+        assertEquals(vfi, vfi2);
+    }
 }

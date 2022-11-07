@@ -2,11 +2,8 @@
 
 package JUnit;
 import Domini.Autor;
-import Domini.Document;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.junit.runner.*;
-
 
 public class AutorTest {
 
@@ -25,6 +22,18 @@ public class AutorTest {
         a.setNom("b");
         String s = a.getNom();
         assertEquals(s, "b");
+    }
+
+    //TEST CONSULTA TITOLS I AFEGIR DOCUMENT
+    @Test
+    public void consultaTitolsTest() {
+        Autor a = new Autor ("a");
+
+    }
+
+    @Test
+    public void conteTitolTest() {
+
     }
 
 

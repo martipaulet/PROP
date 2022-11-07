@@ -16,7 +16,7 @@ public class Autor {
 
     public void setNom(String n) { nomA = n; }
 
-    public List<String> consultaTitols() {
+    public ArrayList<String> consultaTitols() {
         //retorna tots els títols de docsAutor_ ordenats alfabèticament
         ArrayList<String> t = new ArrayList<>();
         for (int i = 0; i < docsAutor_.size(); ++i) {
