@@ -3,7 +3,9 @@ import java.util.*;
 
 public class ConjuntDocuments {
     private Vector<Document> CjtD;
-    private HashMap<String, Integer> CopsParaules = new HashMap<>();
+
+
+
 
     public void importarDocuments () {
         //fa crides a la creadora de document
@@ -45,18 +47,28 @@ public class ConjuntDocuments {
     }
 
     //Implementa idf
-    public void CalculCopsParaules() {
-        for (int i=0; i < CjtD.size(); ++i){
-            Document d = CjtD.elementAt(i);
-            HashMap<String, Integer> paraules = d.getParaules();
-            for (String paraula : paraules.keySet()) {
-                if(CopsParaules.containsKey(paraula)){
-                    CopsParaules.replace(paraula,CopsParaules.get(paraula)+1);
-                }
-                else {
-                    CopsParaules.put(paraula,1);
+    public HashMap<String, Integer> CalculCopsParaules(Document D) {
+        HashMap<String, Integer> paraules_D = D.getParaules();
+        HashMap<String, Integer> CopsParaules = new HashMap<>();
+        for(String paraula : paraules_D.keySet()){
+            CopsParaules.put(paraula,0);
+            for(int i=0; i < CjtD.size(); ++i){
+                Document d = CjtD.elementAt(i);
+                if(d != D){
+                    HashMap<String, Integer> paraules_d = d.getParaules();
+                    if(paraules_d.containsKey(paraula)){
+                        CopsParaules.replace(paraula,CopsParaules.get(paraula)+1);
+                    }
                 }
             }
+        }
+        return CopsParaules;
+    }
+
+    public void imprimir() {
+        for(int i=0; i< CjtD.size(); ++i){
+            CjtD.elementAt(i).imprimir();
+            System.out.println("\r\n");
         }
     }
 }
