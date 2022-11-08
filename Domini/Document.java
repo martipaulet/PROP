@@ -64,6 +64,8 @@ public class Document {
         dataUltimaModificacio_ = novaData;
     }
 
+
+
     public Date getDataCreacio() {
         return dataCreacio_;
     }
