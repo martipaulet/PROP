@@ -8,6 +8,13 @@ public class ExpressionTree {
         List<String> postfix = adapt(query);
         root = expressionTree(postfix);
     }
+
+    public void modifica(String query) {
+        List<String> postfix = adapt(query);
+        root = expressionTree(postfix);
+    }
+
+
     //Estructura arbre
     private static class Node {
         String data;
@@ -109,28 +116,27 @@ public class ExpressionTree {
     public static boolean isQuotes(char s) {
         return s == '"';
     }
-    /*
+
     int preced(String s) {
-        if(s == "!") {
-            return 1;
-        }else if(s == "&") {
+        if(Objects.equals(s, "!")) {
+            return 3;
+        }
+        else if(Objects.equals(s, "&")) {
             return 2;
         }
-
-        }else if(ch == '^') {
-            return 3;
-        }else {
-            return 0;
+        else if(Objects.equals(s, "|")) {
+            return 1;
         }
+        else return -1;
     }
-
-
-
+    /*
     public List<String> infixToPostfix(List<String>infix) {
 
     }
 
+
      */
+
 
     //Construeix l'Expression Tree
     public static Node expressionTree(List<String> ListQuery) {
