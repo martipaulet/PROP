@@ -42,12 +42,12 @@ public class OrdreModificacio implements Ordenacio {
 
                         //titol_di va abans que titol_dj
                         if (titol_di.compareTo(titol_dj) > 0){
-                            Collections.swap(DocOrdenats, j, j+1);
+                            acaba = true;
                         }
 
                         //titol_di va despres que titol_dj
                         else if (titol_di.compareTo(titol_dj) < 0){
-                            acaba = true;
+                            Collections.swap(DocOrdenats, j, j+1);
                         }
 
                         //titols iguals, comparem autors
@@ -57,11 +57,11 @@ public class OrdreModificacio implements Ordenacio {
 
                             //autor_i va abans que autor_j
                             if (autor_i.compareTo(autor_j) > 0) {
-                                Collections.swap(DocOrdenats, j, j+1);
+                                acaba = true;
                             }
 
                             //autor_i va despres que autor_j
-                            else acaba = true;
+                            else Collections.swap(DocOrdenats, j, j+1);
                         }
                     }
                 }
