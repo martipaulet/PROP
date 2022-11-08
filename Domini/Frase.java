@@ -15,7 +15,7 @@ public class Frase {
             paraula = paraula.toLowerCase();
             if (RecParaules.containsKey(paraula)) {
                 int vegades = RecParaules.get(paraula);
-                RecParaules.put(paraula, ++vegades);
+                RecParaules.replace(paraula, ++vegades);
             }
             else {
                 RecParaules.put(paraula, 1);
