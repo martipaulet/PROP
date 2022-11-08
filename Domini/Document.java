@@ -24,6 +24,16 @@ public class Document {
         setParaules();
     }
 
+    public Document (String autor, String titol, String contingut, Date data) {
+        autor_ = autor;
+        titol_ = titol;
+        contingut_ = contingut;
+        setFrases();
+        dataCreacio_ = data;
+        dataUltimaModificacio_ = dataCreacio_;
+        setParaules();
+    }
+
     public String getAutor() {
         return autor_;
     }
