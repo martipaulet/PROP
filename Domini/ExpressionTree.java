@@ -26,6 +26,19 @@ public class ExpressionTree {
             left = right = null;
         }
 
+        private Node (String s, Node left) {
+            data = s;
+            this.left = left;
+            this.right = null;
+        }
+
+        private Node(String data, Node left, Node right)
+        {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
+
         private String getData() {
             return data;
         }
@@ -91,7 +104,8 @@ public class ExpressionTree {
                 }
             }
         }
-        return result;
+        List<String> result2 = infixToPostfix(result);
+        return result2;
     }
 
     //Metodes Auxiliars
@@ -117,7 +131,7 @@ public class ExpressionTree {
         return s == '"';
     }
 
-    int preced(String s) {
+    static int preced(String s) {
         if(Objects.equals(s, "!")) {
             return 3;
         }
@@ -127,116 +141,98 @@ public class ExpressionTree {
         else if(Objects.equals(s, "|")) {
             return 1;
         }
+        if(Objects.equals(s, ")")) {
+            return 0;
+        }
         else return -1;
     }
-    /*
-    public List<String> infixToPostfix(List<String>infix) {
 
+    public static List<String> infixToPostfix(List<String>infix) {
+        Stack<String> st = new Stack<>();
+        st.push("#");
+        List<String> postfix = new ArrayList<>();
+
+        for (String s : infix) {
+            if (!isOperator(s)) {
+                postfix.add(s);
+            }
+            else if (Objects.equals(s, "(")) {
+                st.push(s);
+            }
+            else if (Objects.equals(s, ")")) {
+                while (!Objects.equals(st.peek(), "#") && !Objects.equals(st.peek(), "(")) {
+                    postfix.add(st.peek());
+                    st.pop();
+                }
+                st.pop();
+            }
+            else {
+                if (preced(s) > preced(st.peek())) st.push(s);
+                else {
+                    while (!Objects.equals(st.peek(), "#") && preced(s) <= preced(st.peek())) {
+                        postfix.add(st.peek());
+                        st.pop();
+                    }
+                    st.push(s);
+                }
+            }
+        }
+
+        while (!Objects.equals(st.peek(), "#")) {
+            postfix.add(st.peek());
+            st.pop();
+        }
+        return postfix;
     }
-
-
-     */
 
 
     //Construeix l'Expression Tree
     public static Node expressionTree(List<String> ListQuery) {
 
+        //cas base
+        if (ListQuery == null || ListQuery.size() == 0) {
+            return null;
+        }
+        //stack per guardar els nodes
         Stack<Node> st = new Stack<>();
-        Stack<String> sts = new Stack<>();
-        Node t = null;
-        Node t1 = null, t2 = null;
-
-        //donar prioritats (indexar per ascii code)
-        int[] p = new int[128];
-        p['!'] = 3;
-        p['&'] = 2;
-        p['|'] = 1;
-        p[')'] = 0;
 
         for (String s : ListQuery) {
-            if (s == "(") {
-                // Push "(" o al stack de string
-                sts.add(s);
-                System.out.println("pila "+s);
-            }
-
-            // Push strings al stack de node
-            else if (!isOperator(s)) {
-                t = new Node(s);
-                st.add(t);
-                System.out.println("node "+s);
-            }
-
-            //Si es un operator llavors es un string format per 1char
-            else if (isOperator(s) && p[s.charAt(0)] > 0) {
-                System.out.println("pila "+s);
-
-                // Si un operator de menor o igual associativitat apareix
-                while (!sts.isEmpty() && sts.peek() != "("
-                        && ((p[(sts.peek().charAt(0))] >= p[s.charAt(0)]))) {
-
-                    // Obtindre i eliminar el top del stack de string
-                    // from the character stack
-                    t = new Node(sts.peek());
-                    sts.pop();
-
-                    // Get and remove the top element
-                    // from the node stack
-                    if (t.getData() != "!") {
-                        t1 = st.peek();
-                        st.pop();
-                    }
-
-                    // Get and remove the currently top
-                    // element from the node stack
-                    t2 = st.peek();
-                    st.pop();
-
-
-                    // Actualitzar arbre
-                    t.left = t2;
-                    if (t.getData() != "!") t.right = t1;
-
-                    // Push node al stack de node
-                    st.add(t);
+            // si es operator i d'aritat 2
+            if (isOperator(s)) {
+                if (!Objects.equals(s, "!")) {
+                    // pop 2 nodes del stack
+                    Node x = st.pop();
+                    Node y = st.pop();
+                    // Construir nou bintree amb root=operador i el qual left i right apunten als nodes x,y
+                    Node node = new Node(s, y, x);
+                    // push node al stack
+                    st.add(node);
                 }
-
-                // Push s al stack de string
-                sts.push(s);
-
-            } else if (s == ")") {
-                System.out.println("pila"+s);
-                while (!sts.isEmpty() && sts.peek() != "(") {
-                    t = new Node(sts.peek());
-                    sts.pop();
-                    if (t.getData() != "!") {
-                        t1 = st.peek();
-                        st.pop();
-                    }
-
-                    t2 = st.peek();
-                    st.pop();
-                    t.left = t2;
-                    if (t.getData() != "!") t.right = t1;
-                    st.add(t);
+                else {
+                    Node x = st.pop();
+                    Node node = new Node(s,x);
+                    st.add(node);
                 }
-                sts.pop();
+            }
+            // si s es operand, crear nou bintree el qual te root=operand i sense fills
+            else {
+                st.add(new Node(s));
             }
         }
-        t = st.peek();
-        return t;
+        return st.peek();
     }
 
 
     // Imprimir arbre en postordre
-    static void postorder(Node node) {
-        if (node != null) {
-            postorder(node.left);
-            postorder(node.right);
-            System.out.println(node.data);
+    static void postorder(Node root)
+    {
+        if (root == null) {
+            return;
         }
+        postorder(root.left);
+        postorder(root.right);
+        System.out.print(root.data + " ");
     }
-
 
     // Driver code
     public static void main(String[] args) {
