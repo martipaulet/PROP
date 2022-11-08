@@ -1,7 +1,9 @@
 package CtrlDomini;
 import Domini.*;
-import javax.print.Doc;
+
 import java.util.*;
+
+import static java.util.stream.Collectors.toMap;
 
 
 public class CtrlDomini {
@@ -154,15 +156,36 @@ public class CtrlDomini {
         }
         else return false;
     }
-    /*
-    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
-    public Vector<Document> DocumentsSemblants(Document D, Integer K) {
-        HashMap<String, Integer> Idf = documents.CalculCopsParaules(D);
-        HashMap<Document, Integer> TiIdf = new HashMap<>();
 
+    //Ordena el hashmap per valor descendentment(-1)
+    private HashMap<Document, Double> sortMapByValue(HashMap<Document, Double> map)
+    {
+        HashMap<Document, Double> sortedMap =  map.entrySet().stream()
+                .sorted(Comparator.comparingDouble(e -> -1 * e.getValue() ))
+                .collect(toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> { throw new AssertionError();},
+                        LinkedHashMap::new
+                ));
+        return sortedMap;
     }
 
-     */
+    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
+    public Vector<Document> DocumentsSemblants(Document D, Integer K) {
+        HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
+        HashMap<Document, Double> aux = sortMapByValue(TfIdf);
+        Vector<Document> ret = new Vector<>(K);
+
+       //No se si el bucle agafa el mapa ordenat i no el desordena
+        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
+        while (it.hasNext() && ret.size()<K) {
+            Map.Entry<Document, Double> entry = it.next();
+            ret.add(entry.getKey());
+        }
+
+        return ret;
+    }
 
 
 

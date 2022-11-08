@@ -1,5 +1,6 @@
 package Domini;
 import java.util.*;
+import java.lang.*;
 
 public class ConjuntDocuments {
     private Vector<Document> CjtD;
@@ -54,15 +55,37 @@ public class ConjuntDocuments {
             CopsParaules.put(paraula,0);
             for(int i=0; i < CjtD.size(); ++i){
                 Document d = CjtD.elementAt(i);
-                if(d != D){
-                    HashMap<String, Integer> paraules_d = d.getParaules();
-                    if(paraules_d.containsKey(paraula)){
-                        CopsParaules.replace(paraula,CopsParaules.get(paraula)+1);
-                    }
+                HashMap<String, Integer> paraules_d = d.getParaules();
+                if(paraules_d.containsKey(paraula)){
+                    CopsParaules.replace(paraula,CopsParaules.get(paraula)+1);
                 }
             }
         }
         return CopsParaules;
+    }
+
+    public HashMap<Document, Double> CalculTfIdf(Document D) {
+        HashMap<Document,Double> ret = new HashMap<>();
+        HashMap<String, Integer> idf = CalculCopsParaules(D);
+        for (int i=0; i< CjtD.size(); ++i){
+            double sum = 0.0;
+            Document d = CjtD.elementAt(i);
+            ret.put(d, 0.0);
+            HashMap<String, Integer> tf = d.getParaules();
+            if (d != D){
+                for(String paraula : idf.keySet()){
+                    double mida = CjtD.size();
+                    double rec = idf.get(paraula);
+                    double a = Math.log(mida/(1.0+rec));
+                    if (rec <= 0) a = 0.0;
+                    double b = tf.get(paraula);
+                    double aux = b*a;
+                    sum+=aux;
+                }
+                ret.replace(d,sum);
+            }
+        }
+        return ret;
     }
 
     public void imprimir() {
