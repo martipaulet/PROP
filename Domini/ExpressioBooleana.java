@@ -10,6 +10,8 @@ public class ExpressioBooleana {
         expressio = new ExpressionTree(e);
     }
 
+
+
     public void modificaExpressioBooleana(String e) {
         query = e;
         expressio.modifica(e);
