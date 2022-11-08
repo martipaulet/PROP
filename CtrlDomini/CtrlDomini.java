@@ -134,7 +134,24 @@ public class CtrlDomini {
         }
     }
 
-    //falten consultes de documents pero falta definir tf-idf per a fer-les
+
+    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
+    public Vector<Document> DocumentsSemblants(Document D, Integer K) {
+        HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
+        HashMap<Document, Double> aux = sortMapByValue(TfIdf);
+        Vector<Document> ret = new Vector<>(K);
+
+        //No se si el bucle agafa el mapa ordenat i no el desordena
+        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
+        while (it.hasNext() && ret.size()<K) {
+            Map.Entry<Document, Double> entry = it.next();
+            ret.add(entry.getKey());
+        }
+
+        return ret;
+    }
+
+
 
 
     /*
@@ -144,12 +161,12 @@ public class CtrlDomini {
      * */
 
 
-    public boolean existeixAutor(String autor) {
+    private boolean existeixAutor(String autor) {
         return autors.containsKey(autor);
     }
 
 
-    public boolean existeixDocument(String autor, String titol) {
+    private boolean existeixDocument(String autor, String titol) {
         if (autors.containsKey(autor)) {
             Autor a = autors.get(autor);
             return a.conteTitol(titol);
@@ -170,23 +187,5 @@ public class CtrlDomini {
                 ));
         return sortedMap;
     }
-
-    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
-    public Vector<Document> DocumentsSemblants(Document D, Integer K) {
-        HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
-        HashMap<Document, Double> aux = sortMapByValue(TfIdf);
-        Vector<Document> ret = new Vector<>(K);
-
-       //No se si el bucle agafa el mapa ordenat i no el desordena
-        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
-        while (it.hasNext() && ret.size()<K) {
-            Map.Entry<Document, Double> entry = it.next();
-            ret.add(entry.getKey());
-        }
-
-        return ret;
-    }
-
-
 
 }
