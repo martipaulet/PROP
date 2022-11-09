@@ -15,10 +15,14 @@ public class ConjuntDocuments {
         for (Document d : s) {
             vd.add(d);
         }
-        return vd;
+        OrdreAlfabetic o = new OrdreAlfabetic();
+        Vector<Document> vfinal = o.OrdenarDocuments(vd);
+        return vfinal;
     }
 
-
+    public Vector<Document> getVector() {
+        return CjtD;
+    }
 
 
     public void importarDocuments () {

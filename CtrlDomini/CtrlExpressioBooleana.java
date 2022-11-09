@@ -28,6 +28,17 @@ public class CtrlExpressioBooleana {
     }
 
     /**
+     * Private Functions
+     */
+    private Set<Document> VecToSec(Vector<Document> vd) {
+        Set<Document> s = null;
+        for (int i = 0; i < vd.size(); ++i) {
+            s.add(vd.elementAt(i));
+        }
+        return s;
+    }
+
+    /**
      * Public Functions
      */
     public void altaExpressioBooleana(String query) {
@@ -55,5 +66,6 @@ public class CtrlExpressioBooleana {
         Set<Document> sd = VecToSec(cd.getVector());
         return sd;
     }
+
 
 }
