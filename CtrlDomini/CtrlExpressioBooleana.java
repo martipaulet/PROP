@@ -1,29 +1,56 @@
 package CtrlDomini;
-import Domini.ExpressioBooleana;
+import Domini.*;
 
 import java.util.*;
 
 public class CtrlExpressioBooleana {
-    private HashMap<String, ExpressioBooleana> expressions;
 
-    public void inicialitzar_ctrl() {
+
+    /**
+     * Attributes
+     */
+    private HashMap<String, ExpressionTree> expressions;
+    private static CtrlExpressioBooleana instance;
+
+    /**
+     * Constructor
+     */
+    public CtrlExpressioBooleana() {
+        inicialitzarCtrlExpressioBooleana();
+    }
+    private void inicialitzarCtrlExpressioBooleana() {
         expressions = new HashMap<>();
     }
-
-    public void altaExpressioBooleana(String e) {
-        ExpressioBooleana eb = new ExpressioBooleana(e);
-        expressions.put(e, eb);
+    public static CtrlExpressioBooleana getInstance() {
+        if (instance == null) instance = new CtrlExpressioBooleana();
+        return instance;
     }
 
-    public void baixaExpressioBooleana(String e) {
-        expressions.remove(e);
+    /**
+     * Public Functions
+     */
+    public void altaExpressioBooleana(String query) {
+        ExpressionTree e = new ExpressionTree(query);
+        expressions.put(query, e);
+    }
+
+    public void baixaExpressioBooleana(String query) {
+        expressions.remove(query);
     }
 
     public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
-        ExpressioBooleana eb = expressions.get(queryantiga);
+        ExpressionTree e = expressions.get(queryantiga);
         expressions.remove(queryantiga);
-        eb.modificaExpressioBooleana(querymodificada);
-        expressions.put(querymodificada, eb);
+        e.modifica(querymodificada);
+        expressions.put(querymodificada, e);
+    }
+
+    public Set<Document> evalua(String query, ConjuntDocuments total) {
+        if (expressions.containsKey(query)) {
+            ExpressionTree e = expressions.get(query);
+        }
+        ConjuntDocuments cd = e.calculate();
+        return cd;
     }
 
 }

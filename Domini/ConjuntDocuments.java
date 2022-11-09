@@ -5,6 +5,11 @@ import java.lang.*;
 public class ConjuntDocuments {
     private Vector<Document> CjtD;
 
+    public ConjuntDocuments(Set<Document> sd) {
+        CjtD = new Vector<Document>();
+        CjtD = SetToVec(sd);    //fer algorisme
+    }
+
 
 
 
@@ -38,11 +43,11 @@ public class ConjuntDocuments {
     //pre: el document (autor,titol) existeix
     //retorna el document (autor,titol)
     public Document getDocument(String autor, String titol) {
-        Boolean trobat = false;
+        boolean trobat = false;
         Document d = new Document(null, null, null);
         for (int i = 0; i < CjtD.size() && !trobat; ++i) {
             d = CjtD.elementAt(i);
-            if (d.getAutor() == autor && d.getTitol() == titol) trobat = true;
+            if (Objects.equals(d.getAutor(), autor) && Objects.equals(d.getTitol(), titol)) trobat = true;
         }
         return d;
     }

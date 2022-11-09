@@ -1,5 +1,7 @@
 package Domini;
 
+import CtrlDomini.CtrlDomini;
+
 import java.util.*;
 
 public class ExpressionTree {
@@ -15,18 +17,18 @@ public class ExpressionTree {
     }
 
 
-    //Estructura arbre
+    //Clase Node per implementar l'arbre
     private static class Node {
         String data;
         Node left, right;
 
         //Crear nou node
-        private Node (String s) {
+        private Node(String s) {
             data = s;
             left = right = null;
         }
 
-        private Node (String s, Node left) {
+        private Node(String s, Node left) {
             data = s;
             this.left = left;
             this.right = null;
@@ -42,19 +44,21 @@ public class ExpressionTree {
         private String getData() {
             return data;
         }
+
+        private boolean esFulla() {
+            return left == null && right == null;
+        }
     }
 
 
     //pre: la query segueix sintaxis correcta seguint l'exemple de l'enunciat: {p1 p2 p3} & ("hola adéu" | pep) & !joan
     //modifica la query introduida en un Vector suprimint espais i "" i separant paraules de signes (  (,),{,},!,|,&  ) despres pasa en notacio post-fix
-    public static List<String> adapt(String query) {
-
+    public List<String> adapt(String query) {
         List<String> result = new ArrayList<>();
         int i = 0;
         boolean curlyOpened = false;
         while (i < query.length()) {
             char ch = query.charAt(i);
-
             //(,),{,},!,|,&
             if (isOperator(ch)) {
                 boolean in = false;
@@ -110,24 +114,24 @@ public class ExpressionTree {
 
     //Metodes Auxiliars
 
-    public static boolean isOperator(String s) {
+    public boolean isOperator(String s) {
         return Objects.equals(s, "{") || Objects.equals(s, "}") || Objects.equals(s, "(") || Objects.equals(s, ")") || Objects.equals(s, "&") ||
                 Objects.equals(s, "|") || Objects.equals(s, "!");
     }
 
-    public static boolean isOperator(char s) {
+    public boolean isOperator(char s) {
         return s == '{' || s == '}' || s == '(' || s == ')' || s == '&' || s == '|' || s == '!';
     }
 
-    public static boolean isCurlyBrace(char s) {
+    public boolean isCurlyBrace(char s) {
         return s == '{' || s == '}';
     }
 
-    public static boolean isBlank(char s) {
+    public boolean isBlank(char s) {
         return s == ' ';
     }
 
-    public static boolean isQuotes(char s) {
+    public boolean isQuotes(char s) {
         return s == '"';
     }
 
@@ -147,7 +151,7 @@ public class ExpressionTree {
         else return -1;
     }
 
-    public static List<String> infixToPostfix(List<String>infix) {
+    public List<String> infixToPostfix(List<String>infix) {
         Stack<String> st = new Stack<>();
         st.push("#");
         List<String> postfix = new ArrayList<>();
@@ -187,8 +191,7 @@ public class ExpressionTree {
 
 
     //Construeix l'Expression Tree
-    public static Node expressionTree(List<String> ListQuery) {
-
+    public Node expressionTree(List<String> ListQuery) {
         //cas base
         if (ListQuery == null || ListQuery.size() == 0) {
             return null;
@@ -222,7 +225,48 @@ public class ExpressionTree {
         return st.peek();
     }
 
+    public ConjuntDocuments calculate() {
+        ConjuntDocuments cd = calculateIm(root);
+        return cd;
+    }
 
+    private ConjuntDocuments calculateIm(Node n) {
+        if (n != null) {
+            ConjuntDocuments cd;
+            if (n.esFulla()) {
+                cd = CtrlDomini.getDocumentsContenen(n.data);
+                return cd;
+            }
+            else {
+                cd = operaSets(calculateIm(n.left),calculateIm(n.right),n.data);
+            }
+        }
+        return null;
+    }
+
+    private ConjuntDocuments operaSets(ConjuntDocuments cd1, ConjuntDocuments cd2, String op) {
+        //caso ! Del set total de documents que te el CtrlDomini restar el cd1 aixi obtenim !cd1
+        if (cd2 == null && op == "!") {
+            ConjuntDocuments total = CtrlDomini.getDocuments();
+            total.removeAll(cd1);
+            return total;
+        }
+        //hacer interseccion cd1 i cd2
+        else if (op == "&") {
+            ConjuntDocuments intersection = cd1.retainAll(cd2);
+            return cd1;
+        }
+
+        //hacer union cd1 i cd2
+        else if (op == "&") {
+            ConjuntDocuments union = cd1.addAll(cd2);
+            return cd1;
+        }
+    }
+
+
+
+    /*
     // Imprimir arbre en postordre
     static void postorder(Node root)
     {
@@ -233,7 +277,7 @@ public class ExpressionTree {
         postorder(root.right);
         System.out.print(root.data + " ");
     }
-
+    
     // Driver code
     public static void main(String[] args) {
         String s = "{p1 p2 p3} & (\"hola adéu\" | pep) & !joan";
@@ -247,4 +291,5 @@ public class ExpressionTree {
         Node root = expressionTree(query);
         postorder(root);
     }
+     */
 }

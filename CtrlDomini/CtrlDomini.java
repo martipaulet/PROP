@@ -8,18 +8,30 @@ import static java.util.stream.Collectors.toMap;
 
 public class CtrlDomini {
 
-    //atributs
+
+    /**
+     * Attributes
+     */
     private Map<String, Autor> autors;    //nom autor->Autor
     private ConjuntDocuments documents;
+    private static CtrlDomini instance;
+    private CtrlExpressioBooleana CtrlExpressioBooleana;
 
-    //creadora
+
+    /**
+     * Constructor
+     */
     public CtrlDomini() {
         inicialitzarCtrlDomini();
     }
-
-    public void inicialitzarCtrlDomini() {
+    private void inicialitzarCtrlDomini() {
         autors = new HashMap<String, Autor> ();
         documents = new ConjuntDocuments();
+        CtrlExpressioBooleana = new CtrlExpressioBooleana();
+    }
+    public static CtrlDomini getInstance() {
+        if (instance == null) instance = new CtrlDomini();
+        return instance;
     }
 
 
@@ -55,7 +67,6 @@ public class CtrlDomini {
     //pre: el document d ja existeix.
     //post: S'elimina el document d i la seva relació amb l'autor.
     //      Si l'autor del document eliminat nomes tenia aquest document tambe s'eimina l'autor
-
     public void baixaDocument(String autor, String titol) {
         Document d = documents.getDocument(autor,titol);
         desassociaAutor(d);
@@ -64,8 +75,7 @@ public class CtrlDomini {
 
 
 
-    public void baixaCjtDocuments() {
-
+    public void baixaCjtDocuments(ConjuntDocuments d) {
     }
 
 
@@ -77,17 +87,6 @@ public class CtrlDomini {
             d.actualitzaDocument(nouContingut, novaData);
         }
     }
-
-
-    //post: elimina l'associacio entre el document d i el seu autor.
-    //      si l'autor nomes tenia aquell document retorna true. Altrament retorna false
-
-    public void desassociaAutor(Document d) {
-        Autor tmp = autors.get(d.getAutor());
-        tmp.eliminaDocument(d);
-        if(!tmp.teDocuments()) autors.remove(d.getAutor());
-    }
-
 
 
     /*
@@ -147,8 +146,13 @@ public class CtrlDomini {
             Map.Entry<Document, Double> entry = it.next();
             ret.add(entry.getKey());
         }
-
         return ret;
+    }
+
+    public Set<Document> ConsultaBooleana(String query) {
+        CtrlExpressioBooleana = CtrlExpressioBooleana.getInstance();
+        Set<Document> sd = CtrlExpressioBooleana.evalua(query,documents);
+        return sd;
     }
 
 
@@ -156,15 +160,22 @@ public class CtrlDomini {
 
     /*
      *   ------------
-     *   ORDENAR CONSULTES
+     *   METODES PRIVATS
      *   ------------
      * */
+
+    //post: elimina l'associacio entre el document d i el seu autor.
+    //      si l'autor nomes tenia aquell document retorna true. Altrament retorna false
+    private void desassociaAutor(Document d) {
+        Autor tmp = autors.get(d.getAutor());
+        tmp.eliminaDocument(d);
+        if(!tmp.teDocuments()) autors.remove(d.getAutor());
+    }
 
 
     private boolean existeixAutor(String autor) {
         return autors.containsKey(autor);
     }
-
 
     private boolean existeixDocument(String autor, String titol) {
         if (autors.containsKey(autor)) {
@@ -175,8 +186,7 @@ public class CtrlDomini {
     }
 
     //Ordena el hashmap per valor descendentment(-1)
-    private HashMap<Document, Double> sortMapByValue(HashMap<Document, Double> map)
-    {
+    private HashMap<Document, Double> sortMapByValue(HashMap<Document, Double> map) {
         HashMap<Document, Double> sortedMap =  map.entrySet().stream()
                 .sorted(Comparator.comparingDouble(e -> -1 * e.getValue() ))
                 .collect(toMap(
