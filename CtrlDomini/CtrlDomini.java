@@ -54,7 +54,7 @@ public class CtrlDomini {
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
-                System.out.print("Document ja existent");
+                System.out.print("Document ja existent"); // Excepcions??
                 return;
             }
         }
@@ -85,7 +85,7 @@ public class CtrlDomini {
     public void modificarDocument(String nouContingut, String autor, String titol, Date novaData) {
         Document d = documents.getDocument(autor,titol);
         if (!d.getContingut().equals(nouContingut)) {
-            d.actualitzaDocument(nouContingut, novaData);
+            d.actualitzaDocument(nouContingut);
         }
     }
 

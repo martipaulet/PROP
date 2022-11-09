@@ -24,26 +24,6 @@ public class Document {
         setParaules();
     }
 
-    public Document (String autor, String titol, String contingut, Date data) {
-        autor_ = autor;
-        titol_ = titol;
-        contingut_ = contingut;
-        setFrases();
-        dataCreacio_ = data;
-        dataUltimaModificacio_ = dataCreacio_;
-        setParaules();
-    }
-
-    public Document (String autor, String titol, Date data, String contingut) {
-        autor_ = autor;
-        titol_ = titol;
-        contingut_ = contingut;
-        setFrases();
-        dataCreacio_ = new Date();
-        dataUltimaModificacio_ = data;
-        setParaules();
-    }
-
     public String getAutor() {
         return autor_;
     }
@@ -79,9 +59,9 @@ public class Document {
         }
     }
 
-    public void actualitzaDocument(String nouContingut, Date novaData) {
+    public void actualitzaDocument(String nouContingut) {
         contingut_ = nouContingut;
-        dataUltimaModificacio_ = novaData;
+        dataUltimaModificacio_ = new Date();
     }
 
     public Boolean conteFrase(String s) {

@@ -6,8 +6,8 @@ public class Frase {
 
     private String frase;
 
-    private String[] paraules_;
-    private HashMap<String, Integer> RecParaules = new HashMap<>();
+    private final String[] paraules_;
+    private HashMap<String, Integer> recParaules = new HashMap<>();
 
     public Frase(String paraules) {
         paraules_ = paraules.split("\\W+");
@@ -16,12 +16,12 @@ public class Frase {
     private void setParaules() {
         for (String paraula : paraules_) {
             paraula = paraula.toLowerCase();
-            if (RecParaules.containsKey(paraula)) {
-                int vegades = RecParaules.get(paraula);
-                RecParaules.replace(paraula, ++vegades);
+            if (recParaules.containsKey(paraula)) {
+                int vegades = recParaules.get(paraula);
+                recParaules.replace(paraula, ++vegades);
             }
             else {
-                RecParaules.put(paraula, 1);
+                recParaules.put(paraula, 1);
             }
         }
     }
