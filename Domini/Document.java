@@ -84,6 +84,24 @@ public class Document {
         dataUltimaModificacio_ = novaData;
     }
 
+    public Boolean conteFrase(String s) {
+        Boolean conte = false;
+        for (int i = 0; i < frases_.size() && !conte; ++i) {
+            Frase f = frases_.get(i);
+            if (f.conteQuery(s)) conte = true;
+        }
+        return conte;
+    }
+
+    public Vector<Frase> getFrasesQuery(String s) {
+        Vector<Frase> vf = new Vector<>();
+        for (int i = 0; i < frases_.size(); ++i) {
+            Frase f = frases_.get(i);
+            if (f.conteQuery(s)) vf.add(f);
+        }
+        return vf;
+    }
+
 
 
     public Date getDataCreacio() {
