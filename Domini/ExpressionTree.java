@@ -234,7 +234,7 @@ public class ExpressionTree {
         if (n != null) {
             ConjuntDocuments cd;
             if (n.esFulla()) {
-                cd = total.obteContenen(n.data);
+                Map<String,Document> frase_doc = total.obteContenen(n.data);
                 return cd;
             }
             else {
