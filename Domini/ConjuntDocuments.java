@@ -10,6 +10,14 @@ public class ConjuntDocuments {
         CjtD = SetToVec(sd);    //fer algorisme
     }
 
+    private Vector<Document> SetToVec(Set<Document> s) {
+        Vector<Document> vd = new Vector<>();
+        for (Document d : s) {
+            vd.add(d);
+        }
+        return vd;
+    }
+
 
 
 
