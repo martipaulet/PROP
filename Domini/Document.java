@@ -18,9 +18,29 @@ public class Document {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
-        setFrases();
+        setFrases(autor, titol);
         dataCreacio_ = new Date();
         dataUltimaModificacio_ = dataCreacio_;
+        setParaules();
+    }
+
+    public Document (String autor, String titol, String contingut, Date data) {
+        autor_ = autor;
+        titol_ = titol;
+        contingut_ = contingut;
+        setFrases(autor, titol);
+        dataCreacio_ = data;
+        dataUltimaModificacio_ = dataCreacio_;
+        setParaules();
+    }
+
+    public Document (String autor, String titol, Date data, String contingut) {
+        autor_ = autor;
+        titol_ = titol;
+        contingut_ = contingut;
+        setFrases(autor, titol);
+        dataCreacio_ = new Date();
+        dataUltimaModificacio_ = data;
         setParaules();
     }
 
@@ -52,16 +72,16 @@ public class Document {
         return frases_;
     }
 
-    private void setFrases() {
-        String[] frases = contingut_.split("\\.");
+    private void setFrases(String titol, String autor) {
+        String[] frases = contingut_.split("\\."); //".!?"
         for (String frase : frases) {
-            frases_.add(new Frase(frase));
+            frases_.add(new Frase(frase,titol,autor));
         }
     }
 
-    public void actualitzaDocument(String nouContingut) {
+    public void actualitzaDocument(String nouContingut, Date novaData) {
         contingut_ = nouContingut;
-        dataUltimaModificacio_ = new Date();
+        dataUltimaModificacio_ = novaData;
     }
 
     public Boolean conteFrase(String s) {
@@ -113,6 +133,14 @@ public class Document {
                 paraules_.put(paraula, 1);
             }
         }
+    }
+
+    public Map<Frase,Document> makeMap() {
+        Map<Frase,Document> result = null;
+        for (Frase f: frases_) {
+            result.put(f,this);
+        }
+        return result;
     }
 
     public void imprimir() {

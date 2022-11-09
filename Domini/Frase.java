@@ -5,12 +5,15 @@ import java.util.*;
 public class Frase {
 
     private String frase;
-
+    private String titoldoc;
+    private String autordoc;
     private final String[] paraules_;
     private HashMap<String, Integer> recParaules = new HashMap<>();
 
-    public Frase(String paraules) {
+    public Frase(String paraules, String titol, String autor) {
         paraules_ = paraules.split("\\W+");
+        titoldoc = titol;
+        autordoc = autor;
     }
 
     private void setParaules() {
@@ -27,10 +30,10 @@ public class Frase {
     }
 
     public Boolean conteQuery(String query) {
-        Boolean conte = false;
+        boolean conte = false;
         //ES UNA UNICA PARAULA
         if (!query.contains(" ")) {
-            if (RecParaules.containsKey(query)) conte = true;
+            if (recParaules.containsKey(query)) conte = true;
         }
         //MÉS D'UNA PARAULA
         else {
@@ -40,5 +43,4 @@ public class Frase {
         }
         return conte;
     }
-
 }

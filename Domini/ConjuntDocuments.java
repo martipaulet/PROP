@@ -1,15 +1,26 @@
 package Domini;
+import javax.print.Doc;
 import java.util.*;
 import java.lang.*;
 
 public class ConjuntDocuments {
     private Vector<Document> CjtD;
 
+    /*
     public ConjuntDocuments(Set<Document> sd) {
         CjtD = new Vector<Document>();
         CjtD = SetToVec(sd);    //fer algorisme
     }
+    */
+    public ConjuntDocuments() {
+        CjtD = new Vector<Document>();
+    }
 
+    public ConjuntDocuments(Vector<Document> sd) {
+        CjtD = sd;
+    }
+
+    /*
     private Vector<Document> SetToVec(Set<Document> s) {
         Vector<Document> vd = new Vector<>();
         for (Document d : s) {
@@ -19,6 +30,8 @@ public class ConjuntDocuments {
         Vector<Document> vfinal = o.OrdenarDocuments(vd);
         return vfinal;
     }
+
+     */
 
     public Vector<Document> getVector() {
         return CjtD;
@@ -118,6 +131,14 @@ public class ConjuntDocuments {
             }
         }
         return m;
+    }
+
+    public Map<Frase,Document> makeMap() {
+        Map<Frase,Document> result = null;
+        for (Document d: CjtD) {
+            result.putAll(d.makeMap());
+        }
+        return result;
     }
 
     public void imprimir() {

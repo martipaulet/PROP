@@ -57,6 +57,7 @@ public class CtrlExpressioBooleana {
         expressions.put(querymodificada, e);
     }
 
+
     public Set<Document> evalua(String query, ConjuntDocuments total) {
         if (!expressions.containsKey(query)) {
             altaExpressioBooleana(query);
@@ -66,6 +67,8 @@ public class CtrlExpressioBooleana {
         Set<Document> sd = VecToSec(cd.getVector());
         return sd;
     }
+
+
 
 
 }

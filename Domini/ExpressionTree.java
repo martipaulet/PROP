@@ -2,6 +2,7 @@ package Domini;
 
 import CtrlDomini.CtrlDomini;
 
+import javax.print.Doc;
 import java.util.*;
 
 public class ExpressionTree {
@@ -145,7 +146,7 @@ public class ExpressionTree {
         else if(Objects.equals(s, "|")) {
             return 1;
         }
-        if(Objects.equals(s, ")")) {
+        else if(Objects.equals(s, ")")) {
             return 0;
         }
         else return -1;
@@ -181,7 +182,6 @@ public class ExpressionTree {
                 }
             }
         }
-
         while (!Objects.equals(st.peek(), "#")) {
             postfix.add(st.peek());
             st.pop();
@@ -226,43 +226,54 @@ public class ExpressionTree {
     }
 
     public ConjuntDocuments calculate(ConjuntDocuments total) {
-        ConjuntDocuments cd = calculateIm(root, total);
+        Map<Frase,Document> fraseDoc = calculateIm(root, total);
+        Vector<Document> vd = new Vector<>();
+        for (Frase f : fraseDoc.keySet()) {
+            Document d = fraseDoc.get(f);
+            vd.add(d);
+        }
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
         return cd;
     }
 
-    private ConjuntDocuments calculateIm(Node n, ConjuntDocuments total) {
+    private Map<Frase,Document> calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
-            ConjuntDocuments cd;
+            Map<Frase,Document> fraseDoc;
             if (n.esFulla()) {
-                Map<String,Document> frase_doc = total.obteContenen(n.data);
-                return cd;
+                fraseDoc = total.obteFrasesContenen(n.data);
+                return fraseDoc;
             }
             else {
-                cd = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data);
+                fraseDoc = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);
             }
         }
         return null;
     }
 
-    private ConjuntDocuments operaSets(ConjuntDocuments cd1, ConjuntDocuments cd2, String op) {
-        //caso ! Del set total de documents que te el CtrlDomini restar el cd1 aixi obtenim !cd1
-        if (cd2 == null && op == "!") {
-            ConjuntDocuments total = CtrlDomini.getDocuments();
-            total.removeAll(cd1);
-            return total;
-        }
-        //hacer interseccion cd1 i cd2
-        else if (op == "&") {
-            ConjuntDocuments intersection = cd1.retainAll(cd2);
-            return cd1;
-        }
+    private Map<Frase, Document> operaSets(Map<Frase,Document> m1, Map<Frase,Document> m2, String op, ConjuntDocuments total) {
 
-        //hacer union cd1 i cd2
-        else if (op == "&") {
-            ConjuntDocuments union = cd1.addAll(cd2);
-            return cd1;
+        Map<Frase,Document> result = null;
+        //hacer COMPLEMENTARIO de m1
+        if (m2 == null && Objects.equals(op, "!")) {
+            result = total.makeMap();
+            for (Frase f : m1.keySet()) {
+                result.keySet().remove(f);
+            }
         }
+        //hacer INTERSECCION m1 i m2
+        else if (Objects.equals(op, "&")) {
+            result = m1;
+            result.keySet().retainAll(m2.keySet());
+        }
+        //hacer UNION m1 i m2
+        else if (Objects.equals(op, "|")) {
+            result = m1;
+            result.putAll(m2);
+        }
+        return result;
     }
+
+
 
 
 
@@ -274,8 +285,8 @@ public class ExpressionTree {
             return;
         }
         postorder(root.left);
-        postorder(root.right);
         System.out.print(root.data + " ");
+        postorder(root.right);
     }
     
     // Driver code
@@ -291,5 +302,7 @@ public class ExpressionTree {
         Node root = expressionTree(query);
         postorder(root);
     }
+
      */
+
 }

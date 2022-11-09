@@ -85,7 +85,7 @@ public class CtrlDomini {
     public void modificarDocument(String nouContingut, String autor, String titol, Date novaData) {
         Document d = documents.getDocument(autor,titol);
         if (!d.getContingut().equals(nouContingut)) {
-            d.actualitzaDocument(nouContingut);
+            d.actualitzaDocument(nouContingut, novaData);
         }
     }
 
@@ -149,12 +149,14 @@ public class CtrlDomini {
         }
         return ret;
     }
-
+    /*
     public Set<Document> ConsultaBooleana(String query) {
         CtrlExpressioBooleana = CtrlExpressioBooleana.getInstance();
         Set<Document> sd = CtrlExpressioBooleana.evalua(query,documents);
         return sd;
     }
+
+     */
 
 
 
