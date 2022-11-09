@@ -105,7 +105,7 @@ public class ConjuntDocuments {
         return ret;
     }
 
-    public Map<Frase, Document> obteContenen(String s) {
+    public Map<Frase, Document> obteFrasesContenen(String s) {
         Map<Frase, Document> m = null;
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
