@@ -25,9 +25,6 @@ public class Autor {
             t.add(titolAutor);
         }
         Collections.sort(t);
-        for (String s : t) {
-            System.out.println(s);
-        }
         return t;
     }
 
