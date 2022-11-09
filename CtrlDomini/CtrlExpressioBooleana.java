@@ -1,6 +1,7 @@
 package CtrlDomini;
 import Domini.*;
 
+import javax.print.Doc;
 import java.util.*;
 
 public class CtrlExpressioBooleana {
@@ -46,11 +47,13 @@ public class CtrlExpressioBooleana {
     }
 
     public Set<Document> evalua(String query, ConjuntDocuments total) {
-        if (expressions.containsKey(query)) {
-            ExpressionTree e = expressions.get(query);
+        if (!expressions.containsKey(query)) {
+            altaExpressioBooleana(query);
         }
-        ConjuntDocuments cd = e.calculate();
-        return cd;
+        ExpressionTree e = expressions.get(query);
+        ConjuntDocuments cd = e.calculate(total);
+        Set<Document> sd = VecToSec(cd.getVector());
+        return sd;
     }
 
 }

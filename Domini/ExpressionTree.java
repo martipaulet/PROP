@@ -225,20 +225,20 @@ public class ExpressionTree {
         return st.peek();
     }
 
-    public ConjuntDocuments calculate() {
-        ConjuntDocuments cd = calculateIm(root);
+    public ConjuntDocuments calculate(ConjuntDocuments total) {
+        ConjuntDocuments cd = calculateIm(root, total);
         return cd;
     }
 
-    private ConjuntDocuments calculateIm(Node n) {
+    private ConjuntDocuments calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
             ConjuntDocuments cd;
             if (n.esFulla()) {
-                cd = CtrlDomini.getDocumentsContenen(n.data);
+                cd = total.obteContenen(n.data);
                 return cd;
             }
             else {
-                cd = operaSets(calculateIm(n.left),calculateIm(n.right),n.data);
+                cd = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data);
             }
         }
         return null;
