@@ -102,6 +102,14 @@ public class Document {
         return vf;
     }
 
+    public Set<Frase> getFrases() {
+        Set<Frase> s = new HashSet<>();
+        for (Frase f : frases_) {
+            s.add(f);
+        }
+        return s;
+    }
+
 
 
     public Date getDataCreacio() {

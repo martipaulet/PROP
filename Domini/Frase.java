@@ -14,6 +14,11 @@ public class Frase {
         paraules_ = paraules.split("\\W+");
         titoldoc = titol;
         autordoc = autor;
+        frase = paraules;
+    }
+
+    public String[] getParaules() {
+        return paraules_;
     }
 
     public String getTitolDoc() {
@@ -22,6 +27,10 @@ public class Frase {
 
     public String getAutorDoc() {
         return autordoc;
+    }
+
+    public String getFrase() {
+        return frase;
     }
 
     private void setParaules() {

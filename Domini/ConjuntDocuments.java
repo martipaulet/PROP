@@ -36,7 +36,9 @@ public class ConjuntDocuments {
     public Set<Frase> VecToSet() {
         Set<Frase> s = null;
         for (int i = 0; i < CjtD.size(); ++i) {
-            s.add(CjtD.elementAt(i));
+            Document d = CjtD.elementAt(i);
+            Set<Frase> sdoc = d.getFrases();
+            s.addAll(sdoc);
         }
         return s;
     }
