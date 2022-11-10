@@ -15,6 +15,7 @@ public class Frase {
         titoldoc = titol;
         autordoc = autor;
         frase = paraules;
+        this.setParaules();
     }
 
     public String[] getParaules() {
@@ -31,6 +32,10 @@ public class Frase {
 
     public String getFrase() {
         return frase;
+    }
+
+    public HashMap<String, Integer> getrecParaules() {
+        return recParaules;
     }
 
     private void setParaules() {
@@ -54,7 +59,7 @@ public class Frase {
         }
         //MÉS D'UNA PARAULA
         else {
-            if (frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
+            if ( frase.contains(query) || frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
                     || frase.contains(" " + query + "!") || frase.contains(" " + query + "?") || frase.contains(" " + query + ":")
                     || frase.contains(" " + query + ";")) conte = true;
         }
