@@ -18,7 +18,7 @@ public class Document {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
-        setFrases(autor, titol);
+        setFrases();
         dataCreacio_ = new Date();
         dataUltimaModificacio_ = dataCreacio_;
         setParaules();
@@ -28,7 +28,7 @@ public class Document {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
-        setFrases(autor, titol);
+        setFrases();
         dataCreacio_ = data;
         dataUltimaModificacio_ = dataCreacio_;
         setParaules();
@@ -38,7 +38,7 @@ public class Document {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
-        setFrases(autor, titol);
+        setFrases();
         dataCreacio_ = new Date();
         dataUltimaModificacio_ = data;
         setParaules();
@@ -68,16 +68,17 @@ public class Document {
         return frases_;
     }
 
-    private void setFrases(String titol, String autor) {
+    private void setFrases() {
         String[] frases = contingut_.split("\\."); //".!?"
         for (String frase : frases) {
-            frases_.add(new Frase(frase,titol,autor));
+            frases_.add(new Frase(frase,titol_,autor_));
         }
     }
 
     public void actualitzaDocument(String nouContingut) {
         contingut_ = nouContingut;
         dataUltimaModificacio_ = new Date();
+        setFrases();
     }
 
     public Boolean conteFrase(String s) {
@@ -96,7 +97,7 @@ public class Document {
             //si la frase conte les paraules de la seq
             if (f.conteQuerySeq(s)) {
                 //mirar si estan seguides
-                if (f.seguides(s)) conte = true;
+                // if (f.seguides(s)) conte = true;
             }
         }
         return conte;
@@ -115,17 +116,13 @@ public class Document {
         Vector<Frase> vf = new Vector<>();
         for (int i = 0; i < frases_.size(); ++i) {
             Frase f = frases_.get(i);
-            if (f.conteQuery(s)) vf.add(f);
+            // if (f.conteQuery(s)) vf.add(f);
         }
         return vf;
     }
 
     public Set<Frase> getFrasesToSet() {
-        Set<Frase> s = new HashSet<>();
-        for (Frase f : frases_) {
-            s.add(f);
-        }
-        return s;
+        return new HashSet<>(frases_);
     }
 
 

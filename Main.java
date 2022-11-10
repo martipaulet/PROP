@@ -1,27 +1,17 @@
 import Domini.*;
 import CtrlDomini.CtrlDomini;
 
-import javax.swing.*;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         boolean exit = false;
-        String demanaAutor = "Introdueix un autor:\n";
-        String demanaTitol = "Introdueix un títol:\n";
-        String demanaContingut = "Introdueix el contingut:\n";
-        String demanaQuery = "Introdueix una query:\n";
         String autor;
         String titol;
         String contingut;
         String query;
         CtrlDomini cd = CtrlDomini.getInstance();
-
-        for (int i = 0; i < 4; ++i) {
-            Autor a = new Autor("Aa"+i);
-            System.out.println(a.getNom());
-        }
-        new Autor("Ab");
         while (!exit) {
             String menu = "-- MENU --\n"+
                     "1. Alta Document\n"+
@@ -33,43 +23,70 @@ public class Main {
                     "7. Llistar documents semblants\n"+
                     "8. Llistar documents que compleixen una expressió\n"+
                     "9. Sortir\n";
-            int opcio = Integer.parseInt(JOptionPane.showInputDialog(menu));
+            System.out.print(menu);
+            int opcio = Integer.parseInt(scan.nextLine());
             switch (opcio) {
                 case 1:
-                    autor = JOptionPane.showInputDialog(demanaAutor);
-                    titol = JOptionPane.showInputDialog(demanaTitol);
-                    contingut = JOptionPane.showInputDialog(demanaContingut);
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println("Introdueix un titol:");
+                    titol = scan.nextLine();
+                    System.out.println("Introdueix un contingut:");
+                    contingut = scan.nextLine();
                     cd.altaDocument(autor, titol, contingut);
+                    cd.imprimirDocuments();
                     break;
                 case 2:
-                    autor = JOptionPane.showInputDialog(demanaAutor);
-                    titol = JOptionPane.showInputDialog(demanaTitol);
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println("Introdueix un titol:");
+                    titol = scan.nextLine();
                     cd.baixaDocument(autor, titol);
+                    cd.imprimirDocuments();
                     break;
                 case 3:
-                    autor = JOptionPane.showInputDialog(demanaAutor);
-                    titol = JOptionPane.showInputDialog(demanaTitol);
-                    contingut = JOptionPane.showInputDialog(demanaContingut);
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println("Introdueix un titol:");
+                    titol = scan.nextLine();
+                    System.out.println("Introdueix un contingut:");
+                    contingut = scan.nextLine();
                     cd.modificarDocument(contingut, autor, titol);
+                    cd.imprimirDocuments();
                     break;
                 case 4:
-                    autor = JOptionPane.showInputDialog(demanaAutor);
-                    cd.titolsAutor(autor);
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println(cd.titolsAutor(autor));
+                    cd.imprimirAutors();
                     break;
                 case 5:
-                    String prefix = JOptionPane.showInputDialog("Introdueix un prefix:\n");
+                    System.out.println("Introdueix un prefix:");
+                    String prefix = scan.nextLine();
                     ArrayList<String> autors = cd.prefixAutor(prefix);
-                    for (String a : autors) {
-                        JOptionPane.showMessageDialog(null, a);
-                    }
+                    System.out.println(autors);
                     break;
                 case 6:
-                    autor = JOptionPane.showInputDialog(demanaAutor);
-                    titol = JOptionPane.showInputDialog(demanaTitol);
-                    JOptionPane.showMessageDialog(null, cd.obteContingut(autor, titol));
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println("Introdueix un titol:");
+                    titol = scan.nextLine();
+                    System.out.println(cd.obteContingut(autor, titol));
+                case 7:
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println("Introdueix un titol:");
+                    titol = scan.nextLine();
+                    System.out.println("Introdueix el nombre de documents a retornar:");
+                    int k = scan.nextInt();
+                    System.out.println(cd.DocumentsSemblants(autor, titol, k));
+                case 8:
+                    System.out.println("Introdueix una query booleana:");
+                    query = scan.nextLine();
+                    System.out.println(cd.ConsultaBooleana(query));
+                    break;
                 case 9:
-                    query = JOptionPane.showInputDialog(demanaQuery);
-                    JOptionPane.showMessageDialog(null, cd.ConsultaBooleana(query));
+                    exit = true;
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + opcio);

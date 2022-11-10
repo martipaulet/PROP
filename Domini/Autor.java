@@ -5,6 +5,11 @@ public class Autor {
     private String nomA;
     private Vector<Document> docsAutor_;
 
+    public Autor() {
+        nomA = null;
+        docsAutor_ = new Vector<>();
+    }
+
     public Autor(String nomAutor) {
         nomA = nomAutor;
         docsAutor_ = new Vector<>();

@@ -36,9 +36,9 @@ public class CtrlDomini {
 
 
      /*
-     *   ------------
+     *   --------------------------------------------
      *   GESTIO ALTA, BAIXA, MODIFICACIO DE DOCUMENTS
-     *   ------------
+     *   --------------------------------------------
      * */
 
 
@@ -47,10 +47,11 @@ public class CtrlDomini {
     //      Si l'autor del document no existia es crea.
     //      Es crea la relació entre aquest nou document i l'autor
     public void altaDocument(String autor, String titol, String contingut) {
-        //comprovem si existeix l'autor per si cal crear-lo.
-        //si ja existia l'autor comprovem que no existeixi el titol sino el document sería un ja existent.
-        Autor a = null;
-        if (!existeixAutor(autor)) a = new Autor(autor);
+        Autor a = new Autor();
+        if (!existeixAutor(autor)) {
+            a.setNom(autor);
+            autors.put(autor, a);
+        }
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
@@ -84,7 +85,7 @@ public class CtrlDomini {
     //post: S'actualizta el contingut i la data de ultima modificació del document si es que s'ha modificat
     public void modificarDocument(String nouContingut, String autor, String titol) {
         Document d = documents.getDocument(autor,titol);
-        if (!d.getContingut().equals(nouContingut)) {
+        if (d != null && !d.getContingut().equals(nouContingut)) {
             d.actualitzaDocument(nouContingut);
         }
     }
@@ -136,7 +137,8 @@ public class CtrlDomini {
 
 
     //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
-    public Vector<Document> DocumentsSemblants(Document D, Integer K) {
+    public Vector<Document> DocumentsSemblants(String autor, String titol, Integer K) {
+        Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
         HashMap<Document, Double> aux = sortMapByValue(TfIdf);
         Vector<Document> ret = new Vector<>(K);
@@ -194,6 +196,14 @@ public class CtrlDomini {
                         LinkedHashMap::new
                 ));
         return sortedMap;
+    }
+
+    public void imprimirDocuments() {
+        documents.imprimir();
+    }
+
+    public void imprimirAutors() {
+        System.out.println(autors.keySet());
     }
 
 }
