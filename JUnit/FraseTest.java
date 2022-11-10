@@ -41,11 +41,11 @@ public class FraseTest {
     @Test
     public void setParaulesTest() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        HashMap<String, Integer> prova = new HashMap<>();
-        prova.put("un", 1);
-        prova.put("munt", 1);
-        prova.put("de", 1);
-        prova.put("paraules", 1);
+        ArrayList<String> prova = new ArrayList<>();
+        prova.add("un");
+        prova.add("munt");
+        prova.add("de");
+        prova.add("paraules");
 
         assertEquals(prova, f.getrecParaules());
 

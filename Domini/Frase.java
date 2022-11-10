@@ -9,14 +9,15 @@ public class Frase {
     private String autordoc;
 
     private final String[] paraules_;
-    private HashMap<String, Integer> recParaules = new HashMap<>();
+
+    private ArrayList<String> Paraules = new ArrayList<>();
 
     public Frase(String paraules, String titol, String autor) {
         paraules_ = paraules.split("\\W+");
         titoldoc = titol;
         autordoc = autor;
         frase = paraules;
-        this.setParaules();
+        setParaules();
     }
 
     public String[] getParaules() {
@@ -35,19 +36,15 @@ public class Frase {
         return frase;
     }
 
-    public HashMap<String, Integer> getrecParaules() {
-        return recParaules;
+    public ArrayList<String> getrecParaules() {
+        return Paraules;
     }
 
     private void setParaules() {
         for (String paraula : paraules_) {
             paraula = paraula.toLowerCase();
-            if (recParaules.containsKey(paraula)) {
-                int vegades = recParaules.get(paraula);
-                recParaules.replace(paraula, ++vegades);
-            }
-            else {
-                recParaules.put(paraula, 1);
+            if (!Paraules.contains(paraula)) {
+                Paraules.add(paraula);
             }
         }
     }
@@ -56,7 +53,7 @@ public class Frase {
         boolean conte = false;
         //ES UNA UNICA PARAULA
         if (!query.contains(" ")) {
-            if (recParaules.containsKey(query)) conte = true;
+            if (Paraules.contains(query)) conte = true;
         }
         else {
             if (frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
