@@ -30,11 +30,11 @@ public class Autor {
 
     public boolean conteTitol(String titol) {
         boolean trobat = false;
-        while (!trobat) {
-            for (int i = 0; i < docsAutor_.size(); ++i) {
-                Document d = docsAutor_.elementAt(i);
-                if (d.getTitol().equals(titol)) trobat = true;
-            }
+        int i = 0;
+        while ( i < docsAutor_.size() && !trobat) {
+            Document d = docsAutor_.elementAt(i);
+            if (d.getTitol().equals(titol)) trobat = true;
+            ++i;
         }
         return trobat;
     }

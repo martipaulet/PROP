@@ -4,7 +4,7 @@ package JUnit;
 import java.util.*;
 import Domini.Autor;
 import Domini.Document;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -12,8 +12,8 @@ public class AutorTest {
 
         private Autor a;
 
-    @BeforeClass
-    public void beforeClass(){
+    @Before
+    public  void before(){
         a = new Autor("a");
     }
 
