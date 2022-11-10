@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        boolean exit = false;
+      /*  boolean exit = false;
         String demanaAutor = "Introdueix un autor:\n";
         String demanaTitol = "Introdueix un títol:\n";
         String demanaContingut = "Introdueix el contingut:\n";
@@ -74,7 +74,7 @@ public class Main {
                 default:
                     throw new IllegalStateException("Unexpected value: " + opcio);
             }
-        }
+        } */
 
     }
 }

@@ -157,6 +157,7 @@ public class ConjuntDocuments {
         return sf;
     }
 
+
     public void imprimir() {
         for(int i=0; i< CjtD.size(); ++i){
             CjtD.elementAt(i).imprimir();

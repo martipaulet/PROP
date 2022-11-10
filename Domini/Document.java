@@ -88,7 +88,7 @@ public class Document {
         }
         return conte;
     }
-
+/*
     public Boolean conteFraseSeq(String[] s) {
         boolean conte = false;
         for (int i = 0; i < frases_.size() && !conte; ++i) {
@@ -101,7 +101,7 @@ public class Document {
         }
         return conte;
     }
-
+*/
     public Vector<Frase> getFrasesParaula(String s) {
         Vector<Frase> vf = new Vector<>();
         for (int i = 0; i < frases_.size(); ++i) {
