@@ -149,17 +149,12 @@ public class CtrlDomini {
         }
         return ret;
     }
-    /*
-    public Set<Document> ConsultaBooleana(String query) {
+
+    public ConjuntDocuments ConsultaBooleana(String query) {
         CtrlExpressioBooleana = CtrlExpressioBooleana.getInstance();
-        Set<Document> sd = CtrlExpressioBooleana.evalua(query,documents);
-        return sd;
+        ConjuntDocuments cd = CtrlExpressioBooleana.evalua(query,documents);
+        return cd;
     }
-
-     */
-
-
-
 
     /*
      *   ------------
