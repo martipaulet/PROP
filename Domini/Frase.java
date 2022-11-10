@@ -62,6 +62,7 @@ public class Frase {
             if (frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
                     || frase.contains(" " + query + "!") || frase.contains(" " + query + "?") || frase.contains(" " + query + ":")
                     || frase.contains(" " + query + ";")) conte = true;
+
             /*
             else if (frase.contains(query) && (frase.length() >= query.length())) {
                 Boolean finish1 = false;
