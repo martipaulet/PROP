@@ -56,10 +56,6 @@ public class Document {
         return titol_;
     }
 
-    public void setTitol(String titol) {
-        titol_ = titol;
-    }
-
     public String getContingut() {
         return contingut_;
     }
@@ -79,13 +75,13 @@ public class Document {
         }
     }
 
-    public void actualitzaDocument(String nouContingut, Date novaData) {
+    public void actualitzaDocument(String nouContingut) {
         contingut_ = nouContingut;
-        dataUltimaModificacio_ = novaData;
+        dataUltimaModificacio_ = new Date();
     }
 
     public Boolean conteFrase(String s) {
-        Boolean conte = false;
+        boolean conte = false;
         for (int i = 0; i < frases_.size() && !conte; ++i) {
             Frase f = frases_.get(i);
             if (f.conteQuery(s)) conte = true;

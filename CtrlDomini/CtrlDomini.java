@@ -46,7 +46,7 @@ public class CtrlDomini {
     //post: es crea un nou document en el sistema si no existia. En cas contrari es retorna una excepció
     //      Si l'autor del document no existia es crea.
     //      Es crea la relació entre aquest nou document i l'autor
-    public void nouDocument(String autor, String titol, String contingut) {
+    public void altaDocument(String autor, String titol, String contingut) {
         //comprovem si existeix l'autor per si cal crear-lo.
         //si ja existia l'autor comprovem que no existeixi el titol sino el document sería un ja existent.
         Autor a = null;
@@ -82,10 +82,10 @@ public class CtrlDomini {
 
     //pre: nomes es pot modificar el contingut d'un document
     //post: S'actualizta el contingut i la data de ultima modificació del document si es que s'ha modificat
-    public void modificarDocument(String nouContingut, String autor, String titol, Date novaData) {
+    public void modificarDocument(String nouContingut, String autor, String titol) {
         Document d = documents.getDocument(autor,titol);
         if (!d.getContingut().equals(nouContingut)) {
-            d.actualitzaDocument(nouContingut, novaData);
+            d.actualitzaDocument(nouContingut);
         }
     }
 
@@ -108,17 +108,17 @@ public class CtrlDomini {
         return ls;
     }
 
-    public List<String> prefixAutor(String prefix) {
-        List<String> ls = new ArrayList<String>();
+    public ArrayList<String> prefixAutor(String prefix) {
+        ArrayList<String> ls = new ArrayList<>();
         boolean algun = false;
-        for (String nomAutor:autors.keySet()) {
+        for (String nomAutor : autors.keySet()) {
             Autor a = autors.get(nomAutor);
             if (a.tePrefix(prefix)) {
                 if (!algun) algun = true;
                 ls.add(a.getNom());
             }
         }
-        if (!algun) System.out.println("cap autor amb el prefix" + prefix);
+        if (!algun) System.out.println("Cap autor amb el prefix" + prefix);
         return ls;
     }
 
