@@ -252,7 +252,7 @@ public class ExpressionTree {
 
     private Set<Frase> operaSets(Set<Frase> s1, Set<Frase> s2, String op, ConjuntDocuments total) {
 
-        Set<Frase> result = null;
+        Set<Frase> result = new HashSet<>();
         //hacer COMPLEMENTARIO de m1
         if (s2 == null && Objects.equals(op, "!")) {
             result = total.VecToSet();

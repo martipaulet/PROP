@@ -102,7 +102,7 @@ public class Document {
         return vf;
     }
 
-    public Set<Frase> getFrases() {
+    public Set<Frase> getFrasesToSet() {
         Set<Frase> s = new HashSet<>();
         for (Frase f : frases_) {
             s.add(f);
@@ -141,14 +141,6 @@ public class Document {
                 paraules_.put(paraula, 1);
             }
         }
-    }
-
-    public Map<Frase,Document> makeMap() {
-        Map<Frase,Document> result = null;
-        for (Frase f: frases_) {
-            result.put(f,this);
-        }
-        return result;
     }
 
     public void imprimir() {

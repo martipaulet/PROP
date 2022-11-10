@@ -1,5 +1,4 @@
 package Domini;
-import javax.print.Doc;
 import java.util.*;
 import java.lang.*;
 
@@ -34,10 +33,10 @@ public class ConjuntDocuments {
      */
 
     public Set<Frase> VecToSet() {
-        Set<Frase> s = null;
+        Set<Frase> s = new HashSet<>();
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
-            Set<Frase> sdoc = d.getFrases();
+            Set<Frase> sdoc = d.getFrasesToSet();
             s.addAll(sdoc);
         }
         return s;
