@@ -55,7 +55,7 @@ public class CtrlDomini {
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
-                System.out.print("Document ja existent"); // Excepcions??
+                System.out.print("Document ja existent"); // Excepcio
                 return;
             }
         }
@@ -119,7 +119,9 @@ public class CtrlDomini {
                 ls.add(a.getNom());
             }
         }
-        if (!algun) System.out.println("Cap autor amb el prefix" + prefix);
+        if (!algun) {
+            System.out.println("Cap autor amb el prefix" + prefix);
+        }
         return ls;
     }
 
