@@ -226,6 +226,7 @@ public class ExpressionTree {
         return st.peek();
     }
 
+
     public ConjuntDocuments calculate(ConjuntDocuments total) {
         Set<Frase> frases = calculateIm(root, total);
         Vector<Document> vd = new Vector<>();
@@ -236,6 +237,8 @@ public class ExpressionTree {
         ConjuntDocuments cd = new ConjuntDocuments(vd);
         return cd;
     }
+
+
 
     private Set<Frase> calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
@@ -256,6 +259,7 @@ public class ExpressionTree {
         }
         return null;
     }
+
 
     private Set<Frase> operaSets(Set<Frase> s1, Set<Frase> s2, String op, ConjuntDocuments total) {
 

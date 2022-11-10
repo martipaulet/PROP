@@ -53,7 +53,7 @@ public class Frase {
         boolean conte = false;
         //ES UNA UNICA PARAULA
         if (!query.contains(" ")) {
-            if (Paraules.contains(query)) conte = true;
+            if (frase.contains(query)) conte = true;
         }
         else {
             if (frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
