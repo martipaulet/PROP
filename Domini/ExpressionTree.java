@@ -226,49 +226,47 @@ public class ExpressionTree {
     }
 
     public ConjuntDocuments calculate(ConjuntDocuments total) {
-        Map<Frase,Document> fraseDoc = calculateIm(root, total);
+        Set<Frase> frases = calculateIm(root, total);
         Vector<Document> vd = new Vector<>();
-        for (Frase f : fraseDoc.keySet()) {
-            Document d = fraseDoc.get(f);
+        for (Frase f : frases) {
+            Document d = total.getDocument(f.getTitolDoc(),f.getAutorDoc());
             vd.add(d);
         }
         ConjuntDocuments cd = new ConjuntDocuments(vd);
         return cd;
     }
 
-    private Map<Frase,Document> calculateIm(Node n, ConjuntDocuments total) {
+    private Set<Frase> calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
-            Map<Frase,Document> fraseDoc;
+            Set<Frase> frases;
             if (n.esFulla()) {
-                fraseDoc = total.obteFrasesContenen(n.data);
-                return fraseDoc;
+                frases = total.obteFrasesContenen(n.data);
+                return frases;
             }
             else {
-                fraseDoc = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);
+                frases = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);
             }
         }
         return null;
     }
 
-    private Map<Frase, Document> operaSets(Map<Frase,Document> m1, Map<Frase,Document> m2, String op, ConjuntDocuments total) {
+    private Set<Frase> operaSets(Set<Frase> s1, Set<Frase> s2, String op, ConjuntDocuments total) {
 
-        Map<Frase,Document> result = null;
+        Set<Frase> result = null;
         //hacer COMPLEMENTARIO de m1
-        if (m2 == null && Objects.equals(op, "!")) {
-            result = total.makeMap();
-            for (Frase f : m1.keySet()) {
-                result.keySet().remove(f);
-            }
+        if (s2 == null && Objects.equals(op, "!")) {
+            result = total.VecToSet();
+            result.removeAll(s2);
         }
         //hacer INTERSECCION m1 i m2
         else if (Objects.equals(op, "&")) {
-            result = m1;
-            result.keySet().retainAll(m2.keySet());
+            result = s1;
+            result.retainAll(s2);
         }
         //hacer UNION m1 i m2
         else if (Objects.equals(op, "|")) {
-            result = m1;
-            result.putAll(m2);
+            result = s1;
+            result.addAll(s2);
         }
         return result;
     }
