@@ -67,20 +67,20 @@ public class FraseTest {
         assertTrue(b);
     }
 
-    //TEST de conteQuery --> CAS 3: Sí conté la query (+ 1 paraula i al mig de la frase)
+    //TEST de conteQuery --> CAS 3: Sí conté la query (+ 1 paraula)
     @Test
     public void conteQueryTest3() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("munt de");
+        Boolean b = f.conteQuery("un munt de");
         assertTrue(b);
     }
 
-    //TEST de conteQuery --> CAS 4: Sí conté la query (+1 paraula amb paraula principi o final)
+    //TEST de conteQuery --> CAS 4: Conté la query però no les paraules (FALSE)
     @Test
     public void conteQueryTest4() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un mun");
-        assertTrue(b);
+        Boolean b = f.conteQuery("un munt d");
+        assertFalse(b);
     }
 
 
