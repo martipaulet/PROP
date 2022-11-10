@@ -146,13 +146,13 @@ public class ConjuntDocuments {
         Set<Frase> sf = new HashSet<>();
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
-            if (d.conteFraseSeq(s)) {
+            /*if (d.conteFraseSeq(s)) {
                 Vector<Frase> vf = d.getFrasesSeq(s);
                 for (int j = 0; j < vf.size(); ++j) {
                     Frase f = vf.elementAt(j);
                     sf.add(f);
                 }
-            }
+            }*/
         }
         return sf;
     }
