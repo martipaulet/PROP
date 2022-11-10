@@ -91,6 +91,27 @@ public class Frase {
         return conte;
     }
 
+    public Boolean conteQuerySeq(String[] query) {
+        boolean conte = true;
+        for (int i = 0; i < query.length; ++i) {
+            String aux = query[i];
+            //mirar en String[] paraules si esta String[] query seguit
+        }
+        return conte;
+    }
+
+    //pre: la frase conte totes les paraules de String[] query
+    //post: rtetorna true si les conte seguides false altrament
+    public Boolean seguides(String[] query) {
+        boolean seguides = true;
+        boolean trobat = false;
+        for (int i = 0; i < query.length; ++i) {
+            if (r)
+        }
+        return conte;
+    }
+
+    /*
     private Boolean conteQuery3(String query) {
         Boolean ret = false;
         Frase f = new Frase (query, "", "");
@@ -124,4 +145,6 @@ public class Frase {
         }
         return finish;
     }
+
+     */
 }

@@ -54,7 +54,7 @@ public class ExpressionTree {
 
     //pre: la query segueix sintaxis correcta seguint l'exemple de l'enunciat: {p1 p2 p3} & ("hola adéu" | pep) & !joan
     //modifica la query introduida en un Vector suprimint espais i "" i separant paraules de signes (  (,),{,},!,|,&  ) despres pasa en notacio post-fix
-    public List<String> adapt(String query) {
+    public static List<String> adapt(String query) {
         List<String> result = new ArrayList<>();
         int i = 0;
         boolean curlyOpened = false;
@@ -84,6 +84,7 @@ public class ExpressionTree {
                 ++i;
                 if (i < query.length()) ch = query.charAt(i);
                 StringBuilder s = new StringBuilder();
+                s.append("\"");
                 while (!isQuotes(ch) && i < query.length()) {
                     s.append(ch);
                     ++i;
@@ -115,24 +116,24 @@ public class ExpressionTree {
 
     //Metodes Auxiliars
 
-    public boolean isOperator(String s) {
+    public static boolean isOperator(String s) {
         return Objects.equals(s, "{") || Objects.equals(s, "}") || Objects.equals(s, "(") || Objects.equals(s, ")") || Objects.equals(s, "&") ||
                 Objects.equals(s, "|") || Objects.equals(s, "!");
     }
 
-    public boolean isOperator(char s) {
+    public static boolean isOperator(char s) {
         return s == '{' || s == '}' || s == '(' || s == ')' || s == '&' || s == '|' || s == '!';
     }
 
-    public boolean isCurlyBrace(char s) {
+    public static boolean isCurlyBrace(char s) {
         return s == '{' || s == '}';
     }
 
-    public boolean isBlank(char s) {
+    public static boolean isBlank(char s) {
         return s == ' ';
     }
 
-    public boolean isQuotes(char s) {
+    public static boolean isQuotes(char s) {
         return s == '"';
     }
 
@@ -152,7 +153,7 @@ public class ExpressionTree {
         else return -1;
     }
 
-    public List<String> infixToPostfix(List<String>infix) {
+    public static List<String> infixToPostfix(List<String>infix) {
         Stack<String> st = new Stack<>();
         st.push("#");
         List<String> postfix = new ArrayList<>();
@@ -191,7 +192,7 @@ public class ExpressionTree {
 
 
     //Construeix l'Expression Tree
-    public Node expressionTree(List<String> ListQuery) {
+    public static Node expressionTree(List<String> ListQuery) {
         //cas base
         if (ListQuery == null || ListQuery.size() == 0) {
             return null;
@@ -240,7 +241,13 @@ public class ExpressionTree {
         if (n != null) {
             Set<Frase> frases;
             if (n.esFulla()) {
-                frases = total.obteFrasesContenen(n.data);
+                //es seq
+                if (n.data.charAt(0) == '"')
+                    frases = total.obteFrasesContenenSeq(n.data.split(" "));
+                //es paraula
+                else {
+                    frases = total.obteFrasesContenen(n.data);
+                }
                 return frases;
             }
             else {
@@ -256,17 +263,17 @@ public class ExpressionTree {
         //hacer COMPLEMENTARIO de m1
         if (s2 == null && Objects.equals(op, "!")) {
             result = total.VecToSet();
-            result.removeAll(s2);
+            if (s1 != null) result.removeAll(s1);
         }
         //hacer INTERSECCION m1 i m2
         else if (Objects.equals(op, "&")) {
             result = s1;
-            result.retainAll(s2);
+            if (s2 != null) result.retainAll(s2);
         }
         //hacer UNION m1 i m2
         else if (Objects.equals(op, "|")) {
             result = s1;
-            result.addAll(s2);
+            if (s2 != null) result.addAll(s2);
         }
         return result;
     }
@@ -275,7 +282,7 @@ public class ExpressionTree {
 
 
 
-    /*
+
     // Imprimir arbre en postordre
     static void postorder(Node root)
     {
@@ -283,8 +290,8 @@ public class ExpressionTree {
             return;
         }
         postorder(root.left);
-        System.out.print(root.data + " ");
         postorder(root.right);
+        System.out.print(root.data + " ");
     }
     
     // Driver code
@@ -301,6 +308,6 @@ public class ExpressionTree {
         postorder(root);
     }
 
-     */
+
 
 }

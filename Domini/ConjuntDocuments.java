@@ -74,17 +74,16 @@ public class ConjuntDocuments {
         CjtD.add(d);
     }
 
-
-    //pre: el document (autor,titol) existeix
     //retorna el document (autor,titol)
     public Document getDocument(String autor, String titol) {
         boolean trobat = false;
-        Document d = new Document(null, null, null);
+        //Document d = new Document(null, null, null);
         for (int i = 0; i < CjtD.size() && !trobat; ++i) {
-            d = CjtD.elementAt(i);
-            if (Objects.equals(d.getAutor(), autor) && Objects.equals(d.getTitol(), titol)) trobat = true;
+            Document d = CjtD.elementAt(i);
+            if (Objects.equals(d.getAutor(), autor) && Objects.equals(d.getTitol(), titol)) return d;
         }
-        return d;
+        System.out.println("Document no existeix");
+        return null;
     }
 
     //Implementa idf
@@ -129,11 +128,26 @@ public class ConjuntDocuments {
     }
 
     public Set<Frase> obteFrasesContenen(String s) {
-        Set<Frase> sf = null;
+        Set<Frase> sf = new HashSet<>();
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
             if (d.conteFrase(s)) {
-                Vector<Frase> vf = d.getFrasesQuery(s);
+                Vector<Frase> vf = d.getFrasesParaula(s);
+                for (int j = 0; j < vf.size(); ++j) {
+                    Frase f = vf.elementAt(j);
+                    sf.add(f);
+                }
+            }
+        }
+        return sf;
+    }
+
+    public Set<Frase> obteFrasesContenenSeq(String[] s) {
+        Set<Frase> sf = new HashSet<>();
+        for (int i = 0; i < CjtD.size(); ++i) {
+            Document d = CjtD.elementAt(i);
+            if (d.conteFraseSeq(s)) {
+                Vector<Frase> vf = d.getFrasesSeq(s);
                 for (int j = 0; j < vf.size(); ++j) {
                     Frase f = vf.elementAt(j);
                     sf.add(f);

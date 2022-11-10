@@ -25,7 +25,7 @@ public class CtrlDomini {
         inicialitzarCtrlDomini();
     }
     private void inicialitzarCtrlDomini() {
-        autors = new HashMap<String, Autor> ();
+        autors = new HashMap<> ();
         documents = new ConjuntDocuments();
         CtrlExpressioBooleana = new CtrlExpressioBooleana();
     }

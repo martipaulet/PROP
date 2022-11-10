@@ -89,7 +89,29 @@ public class Document {
         return conte;
     }
 
-    public Vector<Frase> getFrasesQuery(String s) {
+    public Boolean conteFraseSeq(String[] s) {
+        boolean conte = false;
+        for (int i = 0; i < frases_.size() && !conte; ++i) {
+            Frase f = frases_.get(i);
+            //si la frase conte les paraules de la seq
+            if (f.conteQuerySeq(s)) {
+                //mirar si estan seguides
+                if (f.seguides(s)) conte = true;
+            }
+        }
+        return conte;
+    }
+
+    public Vector<Frase> getFrasesParaula(String s) {
+        Vector<Frase> vf = new Vector<>();
+        for (int i = 0; i < frases_.size(); ++i) {
+            Frase f = frases_.get(i);
+            if (f.conteQuery(s)) vf.add(f);
+        }
+        return vf;
+    }
+
+    public Vector<Frase> getFrasesSeq(String[] s) {
         Vector<Frase> vf = new Vector<>();
         for (int i = 0; i < frases_.size(); ++i) {
             Frase f = frases_.get(i);

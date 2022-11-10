@@ -10,9 +10,11 @@ public class Main {
         String demanaAutor = "Introdueix un autor:\n";
         String demanaTitol = "Introdueix un títol:\n";
         String demanaContingut = "Introdueix el contingut:\n";
+        String demanaQuery = "Introdueix una query:\n";
         String autor;
         String titol;
         String contingut;
+        String query;
         CtrlDomini cd = CtrlDomini.getInstance();
 
         for (int i = 0; i < 4; ++i) {
@@ -66,7 +68,8 @@ public class Main {
                     titol = JOptionPane.showInputDialog(demanaTitol);
                     JOptionPane.showMessageDialog(null, cd.obteContingut(autor, titol));
                 case 9:
-                    exit = true;
+                    query = JOptionPane.showInputDialog(demanaQuery);
+                    JOptionPane.showMessageDialog(null, cd.ConsultaBooleana(query));
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + opcio);
