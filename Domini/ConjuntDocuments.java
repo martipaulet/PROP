@@ -118,19 +118,19 @@ public class ConjuntDocuments {
         return ret;
     }
 
-    public Map<Frase, Document> obteFrasesContenen(String s) {
-        Map<Frase, Document> m = null;
+    public Set<Frase> obteFrasesContenen(String s) {
+        Set<Frase> sf = null;
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
             if (d.conteFrase(s)) {
                 Vector<Frase> vf = d.getFrasesQuery(s);
                 for (int j = 0; j < vf.size(); ++j) {
                     Frase f = vf.elementAt(j);
-                    m.put(f, d);
+                    sf.add(f);
                 }
             }
         }
-        return m;
+        return sf;
     }
 
     public Map<Frase,Document> makeMap() {
