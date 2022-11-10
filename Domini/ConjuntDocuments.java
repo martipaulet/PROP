@@ -117,7 +117,10 @@ public class ConjuntDocuments {
                     double rec = idf.get(paraula);
                     double a = Math.log(mida/(1.0+rec));
                     if (rec <= 0) a = 0.0;
-                    double b = tf.get(paraula);
+                    double b = 0.0;
+                    if (tf.containsKey(paraula)){
+                        b = tf.get(paraula);
+                    }
                     double aux = b*a;
                     sum+=aux;
                 }
@@ -126,6 +129,29 @@ public class ConjuntDocuments {
         }
         return ret;
     }
+
+    public HashMap<Document, Double> CalculTf(Document D) {
+        HashMap<Document,Double> ret = new HashMap<>();
+        HashMap<String, Integer> par = D.getParaules();
+        for (int i=0; i< CjtD.size(); ++i){
+            double sum = 0.0;
+            Document d = CjtD.elementAt(i);
+            ret.put(d, 0.0);
+            HashMap<String, Integer> tf = d.getParaules();
+            if (d != D){
+                for(String paraula : par.keySet()){
+                    if (tf.containsKey(paraula)){
+                        double aux = tf.get(paraula);
+                        sum+=aux;
+                    }
+
+                }
+                ret.replace(d,sum);
+            }
+        }
+        return ret;
+    }
+
 
     public Set<Frase> obteFrasesContenen(String s) {
         Set<Frase> sf = new HashSet<>();
