@@ -226,31 +226,31 @@ public class ExpressionTree {
     }
 
     public ConjuntDocuments calculate(ConjuntDocuments total) {
-        Map<Frase,Document> fraseDoc = calculateIm(root, total);
+        Set<Frase> frases = calculateIm(root, total);
         Vector<Document> vd = new Vector<>();
-        for (Frase f : fraseDoc.keySet()) {
-            Document d = fraseDoc.get(f);
+        for (Frase f : frases) {
+            Document d = total.getDocument(f.getTitolDoc(),f.getAutorDoc());
             vd.add(d);
         }
         ConjuntDocuments cd = new ConjuntDocuments(vd);
         return cd;
     }
 
-    private Map<Frase,Document> calculateIm(Node n, ConjuntDocuments total) {
+    private Set<Frase> calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
-            Map<Frase,Document> fraseDoc;
+            Set<Frase> frases;
             if (n.esFulla()) {
-                fraseDoc = total.obteFrasesContenen(n.data);
-                return fraseDoc;
+                frases = total.obteFrasesContenen(n.data);
+                return frases;
             }
             else {
-                fraseDoc = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);
+                frases = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);
             }
         }
         return null;
     }
 
-    private Map<Frase, Document> operaSets(Map<Frase,Document> m1, Map<Frase,Document> m2, String op, ConjuntDocuments total) {
+    private Set<Frase> operaSets(Set<Frase> s1, Set<Frase,Document> m2, String op, ConjuntDocuments total) {
 
         Map<Frase,Document> result = null;
         //hacer COMPLEMENTARIO de m1

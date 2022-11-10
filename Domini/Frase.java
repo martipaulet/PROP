@@ -16,6 +16,14 @@ public class Frase {
         autordoc = autor;
     }
 
+    public String getTitolDoc() {
+        return titoldoc;
+    }
+
+    public String getAutorDoc() {
+        return autordoc;
+    }
+
     private void setParaules() {
         for (String paraula : paraules_) {
             paraula = paraula.toLowerCase();
