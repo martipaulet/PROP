@@ -47,15 +47,15 @@ public class Autor {
         docsAutor_.remove(d);
     }
 
-    public Document obteDocument(String titol_doc_autor) {
+    public Document obteDocument(String titol) {
         /*busca en vector de documents el Document amb titol t
         si titol = t, mostrem document (igual fa falta funcio) */
         boolean trobat = false;
         Document d = null;
         for (int i = 0; i < docsAutor_.size() && !trobat; ++i) {
             d = docsAutor_.elementAt(i);
-            String titol_autor = d.getTitol();
-            if (Objects.equals(titol_autor, titol_doc_autor)) trobat = true;
+            String titol_doc = d.getTitol();
+            if (Objects.equals(titol_doc, titol)) trobat = true;
         }
         return d;
     }
@@ -68,6 +68,7 @@ public class Autor {
         }
         return trobat;
     }
+
     public Boolean teDocuments() {
         return (docsAutor_.size() != 0);
     }
