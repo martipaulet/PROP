@@ -33,6 +33,15 @@ public class ConjuntDocuments {
 
      */
 
+    public Set<Frase> VecToSet() {
+        Set<Frase> s = null;
+        for (int i = 0; i < CjtD.size(); ++i) {
+            s.add(CjtD.elementAt(i));
+        }
+        return s;
+    }
+
+
     public Vector<Document> getVector() {
         return CjtD;
     }
@@ -131,14 +140,6 @@ public class ConjuntDocuments {
             }
         }
         return sf;
-    }
-
-    public Map<Frase,Document> makeMap() {
-        Map<Frase,Document> result = null;
-        for (Document d: CjtD) {
-            result.putAll(d.makeMap());
-        }
-        return result;
     }
 
     public void imprimir() {

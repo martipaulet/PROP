@@ -27,16 +27,6 @@ public class CtrlExpressioBooleana {
         return instance;
     }
 
-    /**
-     * Private Functions
-     */
-    private Set<Document> VecToSec(Vector<Document> vd) {
-        Set<Document> s = null;
-        for (int i = 0; i < vd.size(); ++i) {
-            s.add(vd.elementAt(i));
-        }
-        return s;
-    }
 
     /**
      * Public Functions

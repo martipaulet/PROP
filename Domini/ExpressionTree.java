@@ -250,25 +250,23 @@ public class ExpressionTree {
         return null;
     }
 
-    private Set<Frase> operaSets(Set<Frase> s1, Set<Frase,Document> m2, String op, ConjuntDocuments total) {
+    private Set<Frase> operaSets(Set<Frase> s1, Set<Frase> s2, String op, ConjuntDocuments total) {
 
-        Map<Frase,Document> result = null;
+        Set<Frase> result = null;
         //hacer COMPLEMENTARIO de m1
-        if (m2 == null && Objects.equals(op, "!")) {
-            result = total.makeMap();
-            for (Frase f : m1.keySet()) {
-                result.keySet().remove(f);
-            }
+        if (s2 == null && Objects.equals(op, "!")) {
+            result = total.VecToSet();
+            result.removeAll(s2);
         }
         //hacer INTERSECCION m1 i m2
         else if (Objects.equals(op, "&")) {
-            result = m1;
-            result.keySet().retainAll(m2.keySet());
+            result = s1;
+            result.retainAll(s2);
         }
         //hacer UNION m1 i m2
         else if (Objects.equals(op, "|")) {
-            result = m1;
-            result.putAll(m2);
+            result = s1;
+            result.addAll(s2);
         }
         return result;
     }
