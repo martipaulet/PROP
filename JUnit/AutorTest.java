@@ -1,10 +1,10 @@
-//JOEL FERNANDEZ
+//JOEL FERNANDEZ I ALBERT CARDONA
 
 package JUnit;
 import java.util.*;
 import Domini.Autor;
 import Domini.Document;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -12,8 +12,8 @@ public class AutorTest {
 
         private Autor a;
 
-    @BeforeClass
-    public void beforeClass(){
+    @Before
+    public  void before(){
         a = new Autor("a");
     }
 
@@ -81,5 +81,26 @@ public class AutorTest {
         assertFalse(b);
     }
 
+    //TEST OBTE DOCUMENT
+    @Test
+    public void  obteDocumentTest(){
+        Document d3 = new Document("a", "Adeu", "Hola Adeu");
+        a.afegirDocument(d3);
+        Document d = a.obteDocument("Adeu");
+        assertEquals(d3,d);
+    }
+
+    @Test
+    public void tePrefixTest(){
+        a = new Autor("Marti");
+        boolean b = a.tePrefix("Mar");
+        assertTrue(b);
+        b = a.tePrefix("Al");
+        assertFalse(b);
+        b = a.tePrefix("");
+        assertTrue(b);
+        b = a.tePrefix("Martiii");
+        assertFalse(b);
+    }
 
 }

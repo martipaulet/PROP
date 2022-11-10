@@ -27,16 +27,6 @@ public class CtrlExpressioBooleana {
         return instance;
     }
 
-    /**
-     * Private Functions
-     */
-    private Set<Document> VecToSec(Vector<Document> vd) {
-        Set<Document> s = null;
-        for (int i = 0; i < vd.size(); ++i) {
-            s.add(vd.elementAt(i));
-        }
-        return s;
-    }
 
     /**
      * Public Functions
@@ -58,14 +48,13 @@ public class CtrlExpressioBooleana {
     }
 
 
-    public Set<Document> evalua(String query, ConjuntDocuments total) {
+    public ConjuntDocuments evalua(String query, ConjuntDocuments total) {
         if (!expressions.containsKey(query)) {
             altaExpressioBooleana(query);
         }
         ExpressionTree e = expressions.get(query);
         ConjuntDocuments cd = e.calculate(total);
-        Set<Document> sd = VecToSec(cd.getVector());
-        return sd;
+        return cd;
     }
 
 

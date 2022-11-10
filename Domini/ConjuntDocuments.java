@@ -1,5 +1,4 @@
 package Domini;
-import javax.print.Doc;
 import java.util.*;
 import java.lang.*;
 
@@ -32,6 +31,17 @@ public class ConjuntDocuments {
     }
 
      */
+
+    public Set<Frase> VecToSet() {
+        Set<Frase> s = new HashSet<>();
+        for (int i = 0; i < CjtD.size(); ++i) {
+            Document d = CjtD.elementAt(i);
+            Set<Frase> sdoc = d.getFrasesToSet();
+            s.addAll(sdoc);
+        }
+        return s;
+    }
+
 
     public Vector<Document> getVector() {
         return CjtD;
@@ -118,27 +128,19 @@ public class ConjuntDocuments {
         return ret;
     }
 
-    public Map<Frase, Document> obteFrasesContenen(String s) {
-        Map<Frase, Document> m = null;
+    public Set<Frase> obteFrasesContenen(String s) {
+        Set<Frase> sf = null;
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
             if (d.conteFrase(s)) {
                 Vector<Frase> vf = d.getFrasesQuery(s);
                 for (int j = 0; j < vf.size(); ++j) {
                     Frase f = vf.elementAt(j);
-                    m.put(f, d);
+                    sf.add(f);
                 }
             }
         }
-        return m;
-    }
-
-    public Map<Frase,Document> makeMap() {
-        Map<Frase,Document> result = null;
-        for (Document d: CjtD) {
-            result.putAll(d.makeMap());
-        }
-        return result;
+        return sf;
     }
 
     public void imprimir() {
