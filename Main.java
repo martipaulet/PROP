@@ -20,9 +20,10 @@ public class Main {
                     "4. Llista de títols autor\n"+
                     "5. Llista d'autors per prefix\n"+
                     "6. Obtenir contingut d'un document\n"+
-                    "7. Llistar documents semblants\n"+
-                    "8. Llistar documents que compleixen una expressió\n"+
-                    "9. Sortir\n";
+                    "7. Llistar documents semblants Metode Tf-Idf\n"+
+                    "8. Llistar documents semblants Metode Tf\n"+
+                    "9. Llistar documents que compleixen una expressió\n"+
+                    "10. Sortir\n";
             System.out.print(menu);
             int opcio = Integer.parseInt(scan.nextLine());
             switch (opcio) {
@@ -79,13 +80,21 @@ public class Main {
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
                     int k = scan.nextInt();
-                    System.out.println(cd.DocumentsSemblants(autor, titol, k));
+                    System.out.println(cd.DocumentsSemblants_TfIdf(autor, titol, k));
                 case 8:
+                    System.out.println("Introdueix un autor:");
+                    autor = scan.nextLine();
+                    System.out.println("Introdueix un titol:");
+                    titol = scan.nextLine();
+                    System.out.println("Introdueix el nombre de documents a retornar:");
+                    int K = scan.nextInt();
+                    System.out.println(cd.DocumentsSemblants_Tf(autor, titol, K));
+                case 9:
                     System.out.println("Introdueix una query booleana:");
                     query = scan.nextLine();
                     System.out.println(cd.ConsultaBooleana(query));
                     break;
-                case 9:
+                case 10:
                     exit = true;
                     break;
                 default:
