@@ -150,6 +150,7 @@ public class CtrlDomini {
             ret.add(entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
+        cd.imprimir();
         return cd;
     }
 
@@ -168,6 +169,7 @@ public class CtrlDomini {
             ret.add(entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
+        cd.imprimir();
         return cd;
     }
 
