@@ -11,10 +11,10 @@ public class OrdreCreacioTest {
     //Dates de creació random
     @Test
     public void OrdenarDocumentsRandomTest() {
-        Document d1 = new Document("a1", "Hola", "a", new Date(112, 5, 3));
-        Document d2 = new Document("a2", "La llegenda de Sant Jordi", "a", new Date(112, 6, 4));
-        Document d3 = new Document("a3", "Adeu", "a", new Date(112, 2, 1));
-        Document d4 = new Document ("a4", "Final", "a", new Date(112, 9, 22));
+        Document d1 = new Document("a1", "Hola", "a", new Date(112, 5, 3), new Date());
+        Document d2 = new Document("a2", "La llegenda de Sant Jordi", "a", new Date(112, 6, 4), new Date());
+        Document d3 = new Document("a3", "Adeu", "a", new Date(112, 2, 1), new Date());
+        Document d4 = new Document ("a4", "Final", "a", new Date(112, 9, 22), new Date());
 
         Vector<Document> vd = new Vector<Document>();
         vd.add(d1);
@@ -52,10 +52,10 @@ public class OrdreCreacioTest {
     //Dates iguals, títols diferents
     @Test
     public void OrdenarDocumentsDatesIgualsTest() {
-        Document d1 = new Document("a1", "Hola", "a", new Date(112, 5, 3));
-        Document d2 = new Document("a2", "La llegenda de Sant Jordi", "a", new Date(112, 5, 3));
-        Document d3 = new Document("a3", "Adeu", "a", new Date(112, 5, 3));
-        Document d4 = new Document ("a4", "Final", "a", new Date(112, 5, 3));
+        Document d1 = new Document("a1", "Hola", "a", new Date(112, 5, 3), new Date());
+        Document d2 = new Document("a2", "La llegenda de Sant Jordi", "a", new Date(112, 5, 3), new Date());
+        Document d3 = new Document("a3", "Adeu", "a", new Date(112, 5, 3), new Date());
+        Document d4 = new Document ("a4", "Final", "a", new Date(112, 5, 3), new Date());
 
         Vector<Document> vd = new Vector<Document>();
         vd.add(d1);
@@ -79,10 +79,10 @@ public class OrdreCreacioTest {
     //Dates iguals, títols iguals i autors diferents
     @Test
     public void OrdenarDocumentsDatesiTitolsIgualsTest() {
-        Document d1 = new Document("Josep", "Hola", "a", new Date(112, 5, 3));
-        Document d2 = new Document("Laura", "Hola", "a", new Date(112, 5, 3));
-        Document d3 = new Document("Antoni", "Hola", "a", new Date(112, 5, 3));
-        Document d4 = new Document ("Anna", "Hola", "a", new Date(112, 5, 3));
+        Document d1 = new Document("Josep", "Hola", "a", new Date(112, 5, 3), new Date());
+        Document d2 = new Document("Laura", "Hola", "a", new Date(112, 5, 3), new Date());
+        Document d3 = new Document("Antoni", "Hola", "a", new Date(112, 5, 3), new Date());
+        Document d4 = new Document ("Anna", "Hola", "a", new Date(112, 5, 3), new Date());
 
         Vector<Document> vd = new Vector<Document>();
         vd.add(d1);
