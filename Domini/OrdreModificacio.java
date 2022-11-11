@@ -9,7 +9,6 @@ public class OrdreModificacio implements Ordenacio {
 
 
     //ordenar per dates de modificació (data més propera abans que data més llunyana)
-    //FALTA COMPROBACIÓ
 
     public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
         Vector<Document> DocOrdenats = new Vector<>();

@@ -59,15 +59,12 @@ public class Document {
         return contingut_;
     }
 
-    public void setContingut(String contingut) {
-        contingut_ = contingut;
-    }
-
     public ArrayList<Frase> getFrases() {
         return frases_;
     }
 
     private void setFrases() {
+        frases_ = new ArrayList<>();
         String[] frases = contingut_.split("\\."); //".!?"
         for (String frase : frases) {
             frases_.add(new Frase(frase,titol_,autor_));
@@ -78,6 +75,7 @@ public class Document {
         contingut_ = nouContingut;
         dataUltimaModificacio_ = new Date();
         setFrases();
+        setParaules();
     }
 
     public Boolean conteFrase(String s) {
@@ -108,6 +106,7 @@ public class Document {
             Frase f = frases_.get(i);
             if (f.conteQuery(s)) vf.add(f);
         }
+        if (vf.size() == 0) System.out.print("La paraula "+ s + "no apareix en cap frase del document\r\n"); //Excepcio
         return vf;
     }
 
@@ -115,8 +114,9 @@ public class Document {
         Vector<Frase> vf = new Vector<>();
         for (int i = 0; i < frases_.size(); ++i) {
             Frase f = frases_.get(i);
-            // if (f.conteQuery(s)) vf.add(f);
+            if (f.conteQuery(s)) vf.add(f);
         }
+        if (vf.size() == 0) System.out.print("La cadena de paraules "+ s + "no apareix en cap frase del document\r\n"); //Excepcio
         return vf;
     }
 
@@ -134,16 +134,13 @@ public class Document {
         return dataUltimaModificacio_;
     }
 
-    public void actualitzarDataUltimaModificacio() {
-        dataUltimaModificacio_ = new Date();
-    }
-
     public HashMap<String, Integer> getParaules() {
         return paraules_;
     }
 
     //Implementacio tf
     private void setParaules() {
+        paraules_ = new HashMap<>();
         String[] paraules = contingut_.split("(?U)\\W+");
         for (String paraula : paraules) {
             paraula = paraula.toLowerCase();

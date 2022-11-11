@@ -99,14 +99,14 @@ public class Frase {
 
     //pre: la frase conte totes les paraules de String[] query
     //post: rtetorna true si les conte seguides false altrament
-    /*public Boolean seguides(String[] query) {
+    public Boolean seguides(String[] query) {
         boolean seguides = true;
         boolean trobat = false;
         for (int i = 0; i < query.length; ++i) {
             if (r)
         }
         return conte;
-    }*/
+    }
 
     /*
     private Boolean conteQuery3(String query) {

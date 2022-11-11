@@ -102,6 +102,8 @@ public class ConjuntDocumentsTest {
         Vector<Document> vact = cdactual.getVector();
 
         assertEquals(vexp, vact);
+        //Excepcio
+        cdactual.baixaDocument(d0);
     }
 
     //TEST ALTA DOCUMENT
@@ -135,6 +137,8 @@ public class ConjuntDocumentsTest {
         Vector<Document> vact = cdactual.getVector();
 
         assertEquals(vexp, vact);
+        //Excepcio
+        cdactual.afegirDocument(d5);
     }
 
     //TEST 1 RETORNA DOCUMENT (document esta al conjunt)
@@ -156,6 +160,7 @@ public class ConjuntDocumentsTest {
         Document actual = cdactual.getDocument("a", "La llegenda de Sant Jordi");
 
         assertEquals(d2, actual);
+
     }
 
     //TEST 2 RETORNA DOCUMENT (document no esta al conjunt, retorna null)
@@ -174,6 +179,7 @@ public class ConjuntDocumentsTest {
         v.add(d4);
         ConjuntDocuments cdactual = new ConjuntDocuments(v);
 
+        //Excepcio
         Document actual = cdactual.getDocument("a", "La llegenda de Sant Joel");
 
         assertNull(actual);
