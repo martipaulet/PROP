@@ -43,11 +43,11 @@ public class ConjuntDocumentsTest {
     //TEST VECTOSET
     @Test
     public void VecToSetTest() {
-        Document d0 = new Document("a", "Final", "aaaaaaa");
-        Document d1 = new Document("a", "Hola", "aaaa");
-        Document d2 = new Document("a", "La llegenda de Sant Jordi", "aaaaa");
-        Document d3 = new Document("a", "Adeu", "aaaaa");
-        Document d4 = new Document ("a", "Final", "aaaa");
+        Document d0 = new Document("a", "Final", "Frase1. Frase2");
+        Document d1 = new Document("a", "Hola", "Frase3");
+        Document d2 = new Document("a", "La llegenda de Sant Jordi", "Frase4. Frase5");
+        Document d3 = new Document("a", "Adeu", "Frase6. Frase7. Frase8");
+        Document d4 = new Document ("a", "Final", "Frase9. Frase10");
         Vector<Document> v = new Vector<>();
         v.add(d0);
         v.add(d1);
@@ -56,22 +56,11 @@ public class ConjuntDocumentsTest {
         v.add(d4);
         ConjuntDocuments cdactual = new ConjuntDocuments(v);
         Set<Frase> setact = cdactual.VecToSet();
+        //HI HA 10 FRASES
+        Integer act = setact.size();
+        Integer exp = 10;
 
-        Frase f0 = new Frase("aaaaaaa", "Final", "a");
-        Frase f1 = new Frase("aaaa", "Hola", "a");
-        Frase f2 = new Frase("aaaaa", "La llegenda de Sant Jordi", "a");
-        Frase f3 = new Frase("aaaaa", "Adeu", "a");
-        Frase f4 = new Frase ("aaaa", "Final", "a");
-
-        Set<Frase> setexp = new HashSet<>();
-        setexp.add(f0);
-        setexp.add(f1);
-        setexp.add(f2);
-        setexp.add(f3);
-        setexp.add(f4);
-
-        assertEquals(setexp, setact);
-
+        assertEquals(exp, act);
     }
 
     //TEST BAIXA DOCUMENT
@@ -185,5 +174,57 @@ public class ConjuntDocumentsTest {
         assertNull(actual);
     }
 
+    //TEST CÀLCUL COPS PARAULES
+    @Test
+    public void CalculCopsParaulesTest() {
+        Document d0 = new Document("a", "Final", "1 vez hola");
+        Document d1 = new Document("a", "Hola", "hola. hola hola 2 veces");
+        Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
+        Document d3 = new Document("a", "Joel", "hola, la tinc, el resultat ha de ser 3");
+        Vector<Document> v = new Vector<>();
+        v.add(d0);
+        v.add(d1);
+        v.add(d2);
+        v.add(d3);
+        ConjuntDocuments cdactual = new ConjuntDocuments(v);
+        HashMap<String, Integer> actual = cdactual.CalculCopsParaules(d0);
+        Integer act = actual.get("hola");
+        Integer exp = 3;
+
+        assertEquals(exp, act);
+    }
+
+    //TEST CÀLCUL TFIDF
+    @Test
+    public void CalculTfIdfTest() {
+
+    }
+
+    //TEST CÀLCUL TF
+    @Test
+    public void CalculTfTest() {
+
+    }
+
+    //TEST OBTEFRASESCONTENEN
+    @Test
+    public void obteFrasesContenenTest() {
+        Document d0 = new Document("a", "Final", "Frase que contiene hola");
+        Document d1 = new Document("a", "Hola", "No la contiene. Si contiene hola");
+        Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
+        Document d3 = new Document("a", "Joel", "hola. la tinc. el resultat ha de ser hola");
+        Vector<Document> v = new Vector<>();
+        v.add(d0);
+        v.add(d1);
+        v.add(d2);
+        v.add(d3);
+        ConjuntDocuments cdactual = new ConjuntDocuments(v);
+        //HAY 4 frases que contienen hola
+        Set<Frase> sact = cdactual.obteFrasesContenen("hola");
+        Integer size = sact.size();
+        Integer sexp = 4;
+
+        assertEquals(sexp, size);
+    }
 
 }
