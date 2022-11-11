@@ -50,40 +50,20 @@ public class Frase {
     }
 
     public Boolean conteQuery(String query) {
-        boolean conte = false;
-        //ES UNA UNICA PARAULA
-        if (!query.contains(" ")) {
-            if (frase.contains(query)) conte = true;
-        }
-        else {
-            if (frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
-                    || frase.contains(" " + query + "!") || frase.contains(" " + query + "?") || frase.contains(" " + query + ":")
-                    || frase.contains(" " + query + ";")) conte = true;
-
-            /*
-            else if (frase.contains(query) && (frase.length() >= query.length())) {
-                Boolean finish1 = false;
-                for (int i = 0; i < query.length() && !finish1; ++i) {
-                    if (query.charAt(i) != frase.charAt(i)) finish1 = true;
-                }
-                if (!finish1) {
-                    Integer a = query.length();
-                    if (frase.charAt(a) != ' ') finish1 = true;
-                }
-                Boolean finish2 = false;
-                if (!finish1) {
-                    for (int j = query.length() - 1; j >= 0 && !finish2; --j) {
-                        if (query.charAt(j) != frase.charAt(j)) finish2 = true;
+        String [] q2 = query.split("\\W+");
+        Boolean conte = false;
+        Boolean finish = false;
+        for (int i = 0; i < paraules_.length; ++i) {
+            if (paraules_[i].equals(q2[0])) {
+                conte = true;
+                for (int j = 1; j < q2.length && !finish; ++j) {
+                    if ((i+j) == paraules_.length) {
+                        finish = true;
+                        conte = false;
                     }
-                    if (!finish2) {
-                        Integer b = query.length();
-                        Integer c = frase.length();
-                        Integer pos = b + c - 1;
-                        if (frase.charAt(pos) != ' ') finish2 = true;
-                    }
+                    else if (!paraules_[i+j].equals(q2[j])) conte = false;
                 }
-                if (!finish1 || !finish2) conte = true;
-            } */
+            }
         }
         return conte;
     }
