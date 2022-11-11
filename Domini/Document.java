@@ -23,23 +23,13 @@ public class Document {
         setParaules();
     }
 
-    public Document (String autor, String titol, String contingut, Date data) {
+    public Document (String autor, String titol, String contingut, Date dataC, Date dataM) {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
         setFrases();
-        dataCreacio_ = data;
-        dataUltimaModificacio_ = dataCreacio_;
-        setParaules();
-    }
-
-    public Document (String autor, String titol, Date data, String contingut) {
-        autor_ = autor;
-        titol_ = titol;
-        contingut_ = contingut;
-        setFrases();
-        dataCreacio_ = new Date();
-        dataUltimaModificacio_ = data;
+        dataCreacio_ = dataC;
+        dataUltimaModificacio_ = dataM;
         setParaules();
     }
 
@@ -59,8 +49,10 @@ public class Document {
         return contingut_;
     }
 
-    public void setContingut(String contingut) {
-        contingut_ = contingut;
+    public void setContingut(String nouContingut) {
+        contingut_ = nouContingut;
+        dataUltimaModificacio_ = new Date();
+        setFrases();
     }
 
     public ArrayList<Frase> getFrases() {
@@ -74,11 +66,7 @@ public class Document {
         }
     }
 
-    public void actualitzaDocument(String nouContingut) {
-        contingut_ = nouContingut;
-        dataUltimaModificacio_ = new Date();
-        setFrases();
-    }
+
 
     public Boolean conteFrase(String s) {
         boolean conte = false;
@@ -134,9 +122,6 @@ public class Document {
         return dataUltimaModificacio_;
     }
 
-    public void actualitzarDataUltimaModificacio() {
-        dataUltimaModificacio_ = new Date();
-    }
 
     public HashMap<String, Integer> getParaules() {
         return paraules_;

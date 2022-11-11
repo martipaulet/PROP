@@ -79,7 +79,7 @@ public class Main {
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
                     int k = scan.nextInt();
-                    System.out.println(cd.DocumentsSemblants(autor, titol, k));
+                    cd.DocumentsSemblants(autor, titol, k);
                 case 8:
                     System.out.println("Introdueix una query booleana:");
                     query = scan.nextLine();
