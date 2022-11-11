@@ -81,13 +81,30 @@ public class AutorTest {
         assertFalse(b);
     }
 
+    //TEST AFEGIR DOCUMENT EXCEPCIO
+    @Test
+    public void afegirDocumentTestExc() {
+        Document d3 = new Document("b", "Adeu", "aaaaa");
+        a.afegirDocument(d3);
+    }
+
+    //TEST ELIMINAR DOCUMENT EXCEPCIO
+    @Test
+    public void eliminaDocumentTestExc() {
+        Document d3 = new Document("a", "Adeu", "aaaaa");
+        a.afegirDocument(d3);
+        Document d4 = new Document ("a", "Final", "aaaa");
+        a.eliminaDocument(d4);
+    }
+
     //TEST OBTE DOCUMENT
     @Test
-    public void  obteDocumentTest(){
+    public void  obteDocumentTest_mesExc(){
         Document d3 = new Document("a", "Adeu", "Hola Adeu");
         a.afegirDocument(d3);
         Document d = a.obteDocument("Adeu");
         assertEquals(d3,d);
+        d = a.obteDocument("1234");
     }
 
     @Test

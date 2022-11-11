@@ -55,7 +55,7 @@ public class CtrlDomini {
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
-                System.out.print("Document ja existent"); // Excepcions??
+                System.out.print("Document ja existent"); // Excepcio
                 return;
             }
         }
@@ -119,7 +119,9 @@ public class CtrlDomini {
                 ls.add(a.getNom());
             }
         }
-        if (!algun) System.out.println("Cap autor amb el prefix" + prefix);
+        if (!algun) {
+            System.out.println("Cap autor amb el prefix" + prefix);
+        }
         return ls;
     }
 
@@ -135,9 +137,9 @@ public class CtrlDomini {
         }
     }
 
-
-    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament
-    public Vector<Document> DocumentsSemblants(String autor, String titol, Integer K) {
+    //CALCUL DOCUMENTS SEMBLANTS 1
+    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament (TF)
+    public ConjuntDocuments DocumentsSemblants_TfIdf(String autor, String titol, Integer K) {
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
         HashMap<Document, Double> aux = sortMapByValue(TfIdf);
@@ -149,7 +151,28 @@ public class CtrlDomini {
             Map.Entry<Document, Double> entry = it.next();
             ret.add(entry.getKey());
         }
-        return ret;
+        ConjuntDocuments cd = new ConjuntDocuments(ret);
+        cd.imprimir();
+        return cd;
+    }
+
+    //CALCUL DOCUMENTS SEMBLANTS 2
+    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament (TF)
+    public ConjuntDocuments DocumentsSemblants_Tf(String autor, String titol, Integer K) {
+        Document D = documents.getDocument(autor, titol);
+        HashMap<Document, Double> Tf = documents.CalculTf(D);
+        HashMap<Document, Double> aux = sortMapByValue(Tf);
+        Vector<Document> ret = new Vector<>(K);
+
+        //No se si el bucle agafa el mapa ordenat i no el desordena
+        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
+        while (it.hasNext() && ret.size()<K) {
+            Map.Entry<Document, Double> entry = it.next();
+            ret.add(entry.getKey());
+        }
+        ConjuntDocuments cd = new ConjuntDocuments(ret);
+        cd.imprimir();
+        return cd;
     }
 
 
