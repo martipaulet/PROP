@@ -35,7 +35,7 @@ public class Main {
                     System.out.println("Introdueix un contingut:");
                     contingut = scan.nextLine();
                     cd.altaDocument(autor, titol, contingut);
-                    cd.imprimirDocuments();
+                    //cd.imprimirDocuments();
                     break;
                 case 2:
                     System.out.println("Introdueix un autor:");
@@ -59,7 +59,7 @@ public class Main {
                     System.out.println("Introdueix un autor:");
                     autor = scan.nextLine();
                     System.out.println(cd.titolsAutor(autor));
-                    cd.imprimirAutors();
+                    //cd.imprimirAutors();
                     break;
                 case 5:
                     System.out.println("Introdueix un prefix:");
@@ -95,7 +95,8 @@ public class Main {
                 case 9:
                     System.out.println("Introdueix una query booleana:");
                     query = scan.nextLine();
-                    System.out.println(cd.ConsultaBooleana(query));
+                    ConjuntDocuments c = cd.ConsultaBooleana(query);
+                    c.imprimir();
                     break;
                 case 10:
                     exit = true;
