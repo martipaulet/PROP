@@ -20,8 +20,12 @@ public class DocumentTest {
         Date creacio = calendari.getTime();
         calendari.set(2022, Calendar.FEBRUARY, 2);
         Date modificacio = calendari.getTime();
-        document = new Document("Karl Marx", "Communist Manifesto", "ª", creacio, modificacio);
+        document = new Document("Karl Marx", "Communist Manifesto",
+                "Hola, d'aqui: 2 minuts pegaré a la Sra. Laia! Aquesta hauria de ser la 3a frase però " +
+                        "probablement serà la 4a, a veure com resol la l·l el programa. Adeu?", creacio, modificacio);
     }
+    @Test
+    public void testCreadora() {}
 
     @Test
     public void testGetAutor() {
@@ -41,7 +45,8 @@ public class DocumentTest {
 
     @Test
     public void testGetContingut() {
-        assertEquals(document.getContingut(), "ª");
+        assertEquals(document.getContingut(), "Hola, d'aqui: 2 minuts pegaré a la Sra. Laia! Aquesta hauria de " +
+                "ser la 3a frase però probablement serà la 4a, a veure com resol la l·l el programa. Adeu?");
     }
 
     @Test
@@ -62,5 +67,11 @@ public class DocumentTest {
     public void testGetDataUltimaModificacio() {
         Calendar c = new GregorianCalendar(2022, Calendar.FEBRUARY, 2);
         assertEquals(document.getDataUltimaModificacio(), c.getTime());
+    }
+
+    @Test
+    public void testSetFrases() {
+        document.imprimirFrases();
+        assertEquals(document.getFrases(), " ");
     }
 }

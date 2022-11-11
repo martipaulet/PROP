@@ -60,7 +60,7 @@ public class Document {
     }
 
     private void setFrases() {
-        String[] frases = contingut_.split("\\."); //".!?"
+        String[] frases = contingut_.split("[.!:?] "); //".!?"
         for (String frase : frases) {
             frases_.add(new Frase(frase,titol_,autor_));
         }
@@ -151,6 +151,12 @@ public class Document {
         System.out.println(dataCreacio_);
         System.out.println(dataUltimaModificacio_);
         System.out.println(paraules_);
+    }
+
+    public void imprimirFrases() {
+        for (Frase frase : frases_) {
+            frase.imprimir();
+        }
     }
 
     public void mostraDocument() {

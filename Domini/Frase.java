@@ -4,19 +4,19 @@ import java.util.*;
 
 public class Frase {
 
-    private String frase;
-    private String titoldoc;
-    private String autordoc;
+    private String frase_;
+    private String titolDoc_;
+    private String autorDoc_;
 
     private final String[] paraules_;
 
     private ArrayList<String> Paraules = new ArrayList<>();
 
-    public Frase(String paraules, String titol, String autor) {
-        paraules_ = paraules.split("\\W+");
-        titoldoc = titol;
-        autordoc = autor;
-        frase = paraules;
+    public Frase(String frase, String titolDoc, String autorDoc) {
+        paraules_ = frase.split("\\W+");
+        titolDoc_ = titolDoc;
+        autorDoc_ = autorDoc;
+        frase_ = frase;
         setParaules();
     }
 
@@ -25,15 +25,15 @@ public class Frase {
     }
 
     public String getTitolDoc() {
-        return titoldoc;
+        return titolDoc_;
     }
 
     public String getAutorDoc() {
-        return autordoc;
+        return autorDoc_;
     }
 
     public String getFrase() {
-        return frase;
+        return frase_;
     }
 
     public ArrayList<String> getrecParaules() {
@@ -53,12 +53,12 @@ public class Frase {
         boolean conte = false;
         //ES UNA UNICA PARAULA
         if (!query.contains(" ")) {
-            if (frase.contains(query)) conte = true;
+            if (frase_.contains(query)) conte = true;
         }
         else {
-            if (frase.contains(" " + query + " ") || frase.contains(" " + query + ",") || frase.contains(" " + query + ".")
-                    || frase.contains(" " + query + "!") || frase.contains(" " + query + "?") || frase.contains(" " + query + ":")
-                    || frase.contains(" " + query + ";")) conte = true;
+            if (frase_.contains(" " + query + " ") || frase_.contains(" " + query + ",") || frase_.contains(" " + query + ".")
+                    || frase_.contains(" " + query + "!") || frase_.contains(" " + query + "?") || frase_.contains(" " + query + ":")
+                    || frase_.contains(" " + query + ";")) conte = true;
 
             /*
             else if (frase.contains(query) && (frase.length() >= query.length())) {
@@ -97,6 +97,11 @@ public class Frase {
         return conte;
     }
 
+    public void imprimir() {
+        System.out.println(frase_);
+        System.out.println(Arrays.toString(paraules_));
+        System.out.println();
+    }
     //pre: la frase conte totes les paraules de String[] query
     //post: rtetorna true si les conte seguides false altrament
     /*public Boolean seguides(String[] query) {
@@ -142,6 +147,5 @@ public class Frase {
         }
         return finish;
     }
-
-     */
+    */
 }
