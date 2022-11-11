@@ -55,7 +55,7 @@ public class Document {
 
     private void setFrases() {
         frases_ = new ArrayList<>();
-        String[] frases = contingut_.split("\\."); //".!?"
+        String[] frases = contingut_.split("[.!?]"); //".!?"
         for (String frase : frases) {
             frases_.add(new Frase(frase,titol_,autor_));
         }
