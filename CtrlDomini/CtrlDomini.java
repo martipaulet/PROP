@@ -86,7 +86,7 @@ public class CtrlDomini {
     public void modificarDocument(String nouContingut, String autor, String titol) {
         Document d = documents.getDocument(autor,titol);
         if (d != null && !d.getContingut().equals(nouContingut)) {
-            d.setContingut(nouContingut);
+            d.actualitzaDocument(nouContingut);
         }
     }
 

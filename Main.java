@@ -81,7 +81,7 @@ public class Main {
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
                     int k = scan.nextInt();
-                    System.out.println(cd.DocumentsSemblants_TfIdf(autor, titol, k));
+                    cd.DocumentsSemblants_TfIdf(autor, titol, k);
                     break;
                 case 8:
                     System.out.println("Introdueix un autor:");
@@ -90,7 +90,7 @@ public class Main {
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
                     int K = scan.nextInt();
-                    System.out.println(cd.DocumentsSemblants_Tf(autor, titol, K));
+                    cd.DocumentsSemblants_Tf(autor, titol, K);
                     break;
                 case 9:
                     System.out.println("Introdueix una query booleana:");
