@@ -68,7 +68,7 @@ public class Document {
         setParaules();
     }
 
-    public Boolean conteFrase(String s) {
+    public boolean conteFrase(String s) {
         boolean conte = false;
         for (int i = 0; i < frases_.size() && !conte; ++i) {
             Frase f = frases_.get(i);
@@ -76,20 +76,7 @@ public class Document {
         }
         return conte;
     }
-/*
-    public Boolean conteFraseSeq(String[] s) {
-        boolean conte = false;
-        for (int i = 0; i < frases_.size() && !conte; ++i) {
-            Frase f = frases_.get(i);
-            //si la frase conte les paraules de la seq
-            if (f.conteQuerySeq(s)) {
-                //mirar si estan seguides
-                // if (f.seguides(s)) conte = true;
-            }
-        }
-        return conte;
-    }
-*/
+
     public Vector<Frase> getFrasesParaula(String s) {
         Vector<Frase> vf = new Vector<>();
         for (int i = 0; i < frases_.size(); ++i) {
@@ -100,21 +87,9 @@ public class Document {
         return vf;
     }
 
-    public Vector<Frase> getFrasesSeq(String[] s) {
-        Vector<Frase> vf = new Vector<>();
-        for (int i = 0; i < frases_.size(); ++i) {
-            Frase f = frases_.get(i);
-            if (f.conteQuery(s)) vf.add(f);
-        }
-        if (vf.size() == 0) System.out.print("La cadena de paraules "+ s + "no apareix en cap frase del document\r\n"); //Excepcio
-        return vf;
-    }
-
     public Set<Frase> getFrasesToSet() {
         return new HashSet<>(frases_);
     }
-
-
 
     public Date getDataCreacio() {
         return dataCreacio_;

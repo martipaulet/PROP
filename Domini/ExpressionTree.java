@@ -84,7 +84,6 @@ public class ExpressionTree {
                 ++i;
                 if (i < query.length()) ch = query.charAt(i);
                 StringBuilder s = new StringBuilder();
-                s.append("\"");
                 while (!isQuotes(ch) && i < query.length()) {
                     s.append(ch);
                     ++i;
@@ -244,14 +243,7 @@ public class ExpressionTree {
         if (n != null) {
             Set<Frase> frases;
             if (n.esFulla()) {
-                //es seq
-                if (n.data.charAt(0) == '"')
-                    frases = total.obteFrasesContenenSeq(n.data.split(" "));
-                //es paraula
-                else {
-                    frases = total.obteFrasesContenen(n.data);
-                }
-                return frases;
+                frases = total.obteFrasesContenen(n.data);
             }
             else {
                 frases = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);

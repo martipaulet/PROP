@@ -49,10 +49,10 @@ public class Frase {
         }
     }
 
-    public Boolean conteQuery(String query) {
+    public boolean conteQuery(String query) {
         String [] q2 = query.split("\\W+");
-        Boolean conte = false;
-        Boolean finish = false;
+        boolean conte = false;
+        boolean finish = false;
         for (int i = 0; i < paraules_.length; ++i) {
             if (paraules_[i].equals(q2[0])) {
                 conte = true;
@@ -68,60 +68,4 @@ public class Frase {
         return conte;
     }
 
-    public Boolean conteQuerySeq(String[] query) {
-        boolean conte = true;
-        for (int i = 0; i < query.length; ++i) {
-            String aux = query[i];
-            //mirar en String[] paraules si esta String[] query seguit
-        }
-        return conte;
-    }
-
-    //pre: la frase conte totes les paraules de String[] query
-    //post: rtetorna true si les conte seguides false altrament
-    public Boolean seguides(String[] query) {
-        boolean seguides = true;
-        boolean trobat = false;
-        for (int i = 0; i < query.length; ++i) {
-            if (r)
-        }
-        return conte;
-    }
-
-    /*
-    private Boolean conteQuery3(String query) {
-        Boolean ret = false;
-        Frase f = new Frase (query, "", "");
-        if (frase.contains(query)) {
-
-            ret = true;
-        }
-        return ret;
-    }
-
-    private Boolean conteQuery2(String query) {
-        String[] disjoint = query.split("\\W+");
-        int currentPos = 0;
-        Boolean matches = false;
-        Boolean finish = false;
-
-        for (String p : disjoint) {
-            if (p.equals(paraules_[currentPos]) && matches) {
-                ++currentPos;
-                if (currentPos == (disjoint.length -1)) finish = true;
-            }
-            else if (p.equals(paraules_[currentPos]) && !matches) {
-                matches = true;
-                ++currentPos;
-            }
-            else if (!p.equals(paraules_[currentPos])){
-                ++currentPos;
-                matches = false;
-                finish = false;
-            }
-        }
-        return finish;
-    }
-
-     */
 }

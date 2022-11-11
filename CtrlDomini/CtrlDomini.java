@@ -15,7 +15,7 @@ public class CtrlDomini {
     private Map<String, Autor> autors;    //nom autor->Autor
     private ConjuntDocuments documents;
     private static CtrlDomini instance;
-    private CtrlExpressioBooleana CtrlExpressioBooleana;
+    private static CtrlExpressioBooleana CtrlExpressioBooleana;
 
 
     /**

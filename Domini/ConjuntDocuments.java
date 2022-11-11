@@ -177,23 +177,6 @@ public class ConjuntDocuments {
         return sf;
     }
 
-    public Set<Frase> obteFrasesContenenSeq(String[] s) {
-        Set<Frase> sf = new HashSet<>();
-        for (int i = 0; i < CjtD.size(); ++i) {
-            Document d = CjtD.elementAt(i);
-            if (d.conteFraseSeq(s)) {
-                Vector<Frase> vf = d.getFrasesSeq(s);
-                for (int j = 0; j < vf.size(); ++j) {
-                    Frase f = vf.elementAt(j);
-                    sf.add(f);
-                }
-            }
-        }
-        if (sf.size() == 0)System.out.print("La cadena de paraules "+s+" no esta en cap frase del conjunt de documents\r\n"); //Excepcio
-        return sf;
-    }
-
-
     public void imprimir() {
         for(int i = 0; i < CjtD.size(); ++i){
             CjtD.elementAt(i).imprimir();
