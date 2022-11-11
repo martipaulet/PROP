@@ -61,8 +61,13 @@ public class ConjuntDocuments {
     }
 
     public void baixaDocument(Document d) {
-        //elimina un documents seleccionat amb seleccionarDocument
-        CjtD.remove(d);
+        //elimina un document seleccionat amb seleccionarDocument
+        if (pertany(d)){
+            CjtD.remove(d);
+        }
+        else {
+            System.out.print("EL document no pertany al conjunt\r\n"); //Excepcio
+        }
     }
 
     public void modificarDocuments() {
@@ -71,18 +76,21 @@ public class ConjuntDocuments {
 
     public void afegirDocument(Document d) {
         //afegir document al conjunt
-        CjtD.add(d);
+        if (!pertany(d)){
+            CjtD.add(d);
+        }
+        else {
+            System.out.print("EL document ja pertanyia al conjunt\r\n"); //Excepcio
+        }
     }
 
     //retorna el document (autor,titol)
     public Document getDocument(String autor, String titol) {
-        boolean trobat = false;
-        //Document d = new Document(null, null, null);
-        for (int i = 0; i < CjtD.size() && !trobat; ++i) {
+        for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
             if (Objects.equals(d.getAutor(), autor) && Objects.equals(d.getTitol(), titol)) return d;
         }
-        System.out.println("Document no existeix");
+        System.out.println("Document no existeix en el conjunt"); //Excepcio
         return null;
     }
 
@@ -165,29 +173,21 @@ public class ConjuntDocuments {
                 }
             }
         }
+        if (sf.size() == 0)System.out.print("La paraula "+s+" no esta en cap frase del conjunt de documents\r\n"); //Excepcio
         return sf;
     }
-
-    public Set<Frase> obteFrasesContenenSeq(String[] s) {
-        Set<Frase> sf = new HashSet<>();
-        for (int i = 0; i < CjtD.size(); ++i) {
-            Document d = CjtD.elementAt(i);
-            /*if (d.conteFraseSeq(s)) {
-                Vector<Frase> vf = d.getFrasesSeq(s);
-                for (int j = 0; j < vf.size(); ++j) {
-                    Frase f = vf.elementAt(j);
-                    sf.add(f);
-                }
-            }*/
-        }
-        return sf;
-    }
-
 
     public void imprimir() {
         for(int i = 0; i < CjtD.size(); ++i){
             CjtD.elementAt(i).imprimir();
             System.out.println("\n");
         }
+    }
+
+    private boolean pertany(Document d){
+        for (int i = 0; i < CjtD.size(); ++i) {
+            if (CjtD.elementAt(i) == d) return true;
+        }
+        return false;
     }
 }

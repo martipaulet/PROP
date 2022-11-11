@@ -15,7 +15,7 @@ public class CtrlDomini {
     private Map<String, Autor> autors;    //nom autor->Autor
     private ConjuntDocuments documents;
     private static CtrlDomini instance;
-    private CtrlExpressioBooleana CtrlExpressioBooleana;
+    private static CtrlExpressioBooleana CtrlExpressioBooleana;
 
 
     /**
@@ -47,6 +47,7 @@ public class CtrlDomini {
     //      Si l'autor del document no existia es crea.
     //      Es crea la relació entre aquest nou document i l'autor
     public void altaDocument(String autor, String titol, String contingut) {
+        if (autor == null || titol == null) System.out.println("Error en la creació de Document"); //Excepcio
         Autor a = new Autor();
         if (!existeixAutor(autor)) {
             a.setNom(autor);
@@ -65,10 +66,10 @@ public class CtrlDomini {
     }
 
 
-    //pre: el document d ja existeix.
     //post: S'elimina el document d i la seva relació amb l'autor.
     //      Si l'autor del document eliminat nomes tenia aquest document tambe s'eimina l'autor
     public void baixaDocument(String autor, String titol) {
+        if (autor == null || titol == null) System.out.println("Error en la baixa de Document"); //Excepcio
         Document d = documents.getDocument(autor,titol);
         desassociaAutor(d);
         documents.baixaDocument(d);
@@ -86,7 +87,7 @@ public class CtrlDomini {
     public void modificarDocument(String nouContingut, String autor, String titol) {
         Document d = documents.getDocument(autor,titol);
         if (d != null && !d.getContingut().equals(nouContingut)) {
-            d.setContingut(nouContingut);
+            d.actualitzaDocument(nouContingut);
         }
     }
 

@@ -47,7 +47,7 @@ public class ExpressionTree {
         }
 
         private boolean esFulla() {
-            return left == null && right == null;
+            return (left == null) && (right == null);
         }
     }
 
@@ -84,7 +84,6 @@ public class ExpressionTree {
                 ++i;
                 if (i < query.length()) ch = query.charAt(i);
                 StringBuilder s = new StringBuilder();
-                s.append("\"");
                 while (!isQuotes(ch) && i < query.length()) {
                     s.append(ch);
                     ++i;
@@ -231,7 +230,7 @@ public class ExpressionTree {
         Set<Frase> frases = calculateIm(root, total);
         Vector<Document> vd = new Vector<>();
         for (Frase f : frases) {
-            Document d = total.getDocument(f.getTitolDoc(),f.getAutorDoc());
+            Document d = total.getDocument(f.getAutorDoc(),f.getTitolDoc());
             vd.add(d);
         }
         ConjuntDocuments cd = new ConjuntDocuments(vd);
@@ -242,19 +241,14 @@ public class ExpressionTree {
 
     private Set<Frase> calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
-            Set<Frase> frases;
+            Set<Frase> frases = new HashSet<>();
             if (n.esFulla()) {
-                //es seq
-                if (n.data.charAt(0) == '"')
-                    frases = total.obteFrasesContenenSeq(n.data.split(" "));
-                //es paraula
-                else {
-                    frases = total.obteFrasesContenen(n.data);
-                }
+                frases = total.obteFrasesContenen(n.data);
                 return frases;
             }
             else {
                 frases = operaSets(calculateIm(n.left, total),calculateIm(n.right, total),n.data,total);
+                return frases;
             }
         }
         return null;

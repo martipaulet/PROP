@@ -5,7 +5,6 @@ import java.util.*;
  public class OrdreAlfabetic implements Ordenacio {
 
      //ordenar per ordre alfabètic títol
-     //FALTA COMPROBACIÓ
     public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
         Vector<Document> vdReal = new Vector<>();
         Collator comparador = Collator.getInstance();

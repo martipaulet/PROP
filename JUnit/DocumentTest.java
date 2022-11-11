@@ -51,7 +51,7 @@ public class DocumentTest {
 
     @Test
     public void testSetContingut() {
-        document.setContingut("exemple");
+        document.actualitzaDocument("exemple");
         assertEquals(document.getContingut(), "exemple");
         Calendar c = new GregorianCalendar(2022, Calendar.FEBRUARY, 2);
         assertNotEquals(document.getDataUltimaModificacio(), c.getTime());
