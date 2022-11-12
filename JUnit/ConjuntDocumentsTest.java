@@ -192,18 +192,64 @@ public class ConjuntDocumentsTest {
         Integer exp = 3;
 
         assertEquals(exp, act);
+        //test2
+
+       actual = cdactual.CalculCopsParaules(d0);
+       act = actual.get("albert");
+
+        assertNull(act);
+
     }
 
     //TEST CÀLCUL TFIDF
     @Test
     public void CalculTfIdfTest() {
+        Document d0 = new Document("a", "Final", "1 vez hola");
+        Document d1 = new Document("a", "Hola", "hola. hola hola 2 veces");
+        Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
+        Document d3 = new Document("a", "Joel", "hola, la tinc, 1 vez");
+        Vector<Document> v = new Vector<>();
+        v.add(d0);
+        v.add(d1);
+        v.add(d2);
+        v.add(d3);
+        ConjuntDocuments cdactual = new ConjuntDocuments(v);
+        HashMap<Document, Double> actual = cdactual.CalculTfIdf(d0);
+
+        //Vez no la conta ja que és una stop word
+        double v1 = 3.0 * Math.log(4.0/3.0);
+        double v0 = actual.get(d1);
+        assertEquals(v0, v1,0.0001);
+        v1 = Math.log(8.0/3.0);
+        v0 = actual.get(d3);
+        assertEquals(v0,v1,0.0001);
+        v0 = actual.get(d2);
+        assertEquals(v0,0.0,0.0001);
 
     }
 
     //TEST CÀLCUL TF
     @Test
     public void CalculTfTest() {
+        Document d0 = new Document("a", "Final", "1 vez hola");
+        Document d1 = new Document("a", "Hola", "hola. hola hola 2 veces");
+        Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
+        Document d3 = new Document("a", "Joel", "hola, la tinc, 1 vez");
+        Vector<Document> v = new Vector<>();
+        v.add(d0);
+        v.add(d1);
+        v.add(d2);
+        v.add(d3);
+        ConjuntDocuments cdactual = new ConjuntDocuments(v);
+        HashMap<Document, Double> actual = cdactual.CalculTf(d0);
 
+        //Vez no la conta ja que és una stop word
+        double v0 = actual.get(d1);
+        assertEquals(v0, 3.0 ,0.0001);
+        v0 = actual.get(d3);
+        assertEquals(v0,2.0 ,0.0001);
+        v0 = actual.get(d2);
+        assertEquals(v0,0.0,0.0001);
     }
 
     //TEST OBTEFRASESCONTENEN
@@ -223,6 +269,13 @@ public class ConjuntDocumentsTest {
         Set<Frase> sact = cdactual.obteFrasesContenen("hola");
         Integer size = sact.size();
         Integer sexp = 4;
+
+        assertEquals(sexp, size);
+
+        //test2
+        sact = cdactual.obteFrasesContenen("albert");
+        size = sact.size();
+        sexp = 0;
 
         assertEquals(sexp, size);
     }

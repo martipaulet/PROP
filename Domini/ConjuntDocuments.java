@@ -123,8 +123,10 @@ public class ConjuntDocuments {
                 for(String paraula : idf.keySet()){
                     double mida = CjtD.size();
                     double rec = idf.get(paraula);
-                    double a = Math.log(mida/(1.0+rec));
-                    if (rec <= 0) a = 0.0;
+                    double a;
+                    if(rec == 0) a = 0.0;
+                    else a = Math.log(mida/(rec));
+                    if (a < 0) a = 0.0;
                     double b = 0.0;
                     if (tf.containsKey(paraula)){
                         b = tf.get(paraula);
