@@ -36,6 +36,7 @@ public class CtrlExpressioBooleana {
             ExpressionTree e2 = new ExpressionTree(query);
             expressions.put(query, e2);
         }
+        else System.out.println("La query booleana ja existeix en el sistema");
     }
 
     public void baixaExpressioBooleana(String query) {
