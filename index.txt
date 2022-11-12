@@ -1,0 +1,14 @@
+Directoris:
+
+- /DOCS --> Es troba el document amb els casos d'us, amb el seu diagrama i especificacio,
+            el model conceptual de les dades, amb el diagrama UML i especifiacio, l'explicacio
+            d'estructura de dades i algorismes, les classes implementades per membre i la
+            relacio de llibreries externes
+
+- /FONTS --> Implementacio codi
+             CtrlDomini --> Classe de CtrlDomini i subcontrolador CtrlExpressioBooleana
+             Domini --> Classes del domini
+             Drivers --> Driver del CtrlDomini
+             JUnit --> Testos unitaris de cada classe
+
+- /EXE --> Executables per provar les classes i funcionalitats implementades

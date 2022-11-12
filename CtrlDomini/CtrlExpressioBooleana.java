@@ -49,15 +49,16 @@ public class CtrlExpressioBooleana {
     }
 
     public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
-        if (expressions.containsKey(queryantiga)) {
+        if (expressions.containsKey(queryantiga) && !expressions.containsKey(querymodificada)) {
             ExpressionTree e = expressions.get(queryantiga);
             e.modifica(querymodificada);
             expressions.remove(queryantiga);
             expressions.put(querymodificada, e);
         }
-        else {
-            System.out.println("La query:" +queryantiga+ "no existeix en el sistema per tant no es pot modificar");
+        else if (!expressions.containsKey(queryantiga)){
+            System.out.println("La query: " +queryantiga+ "no existeix en el sistema per tant no es pot modificar");
         }
+        else System.out.println("La query "+querymodificada+ "ja existeix al sistema");
     }
 
 
