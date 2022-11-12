@@ -83,7 +83,7 @@ public class Document {
             Frase f = frases_.get(i);
             if (f.conteQuery(s)) vf.add(f);
         }
-        if (vf.size() == 0) System.out.print("La paraula "+ s + "no apareix en cap frase del document\r\n"); //Excepcio
+        if (vf.size() == 0) System.out.print("La paraula "+ s + " no apareix en cap frase del document\r\n"); //Excepcio
         return vf;
     }
 
@@ -140,12 +140,12 @@ public class Document {
             "cada", "catorze", "cent", "cert", "certa", "certes", "certs", "cinc", "com", "cosa", "d", "darrer",
             "darrera", "darreres", "darrers", "davant", "de", "del", "dels", "després", "deu", "dinou", "disset",
             "divuit", "dos", "dotze", "durant", "el", "ell", "ella", "elles", "ells", "els", "en", "encara", "et",
-            "extra", "fins", "hi", "i", "jo", "l", "la", "les", "li", "llur", "lo", "los", "més", "m'", "ma", "massa",
+            "extra", "fins", "hi", "hem", "i", "jo", "l", "la", "les", "li", "llur", "lo", "los", "més", "m'", "ma", "massa",
             "mateix", "mateixa", "mateixes", "mateixos", "mes", "meu", "meva", "mig", "molt", "molta", "moltes", "molts",
             "mon", "mons", "n", "na", "ni", "no", "nosaltres", "nostra", "nostre", "nou", "ns", "o", "on", "onze",
             "pel", "per", "però", "perquè", "perque", "poc", "poca", "pocs", "poques", "primer", "primera", "primeres",
             "primers", "prop", "què", "qual", "quals", "qualsevol", "qualssevol", "quan", "quant", "quanta", "quantes",
-            "quants", "quatre", "que ", "qui", "quin", "quina", "quines", "quins", "quinze", "res", "s", "sa", "segon",
+            "quants", "quatre", "que", "qui", "quin", "quina", "quines", "quins", "quinze", "res", "s", "sa", "segon",
             "segona", "segones", "segons", "sense", "ses", "set", "setze", "seu", "seus", "seva", "seves", "sino", "sis",
             "sobre", "son", "sons", "sota", "t", "ta", "tal", "tals", "tan", "tant", "tanta", "tantes", "tants", "tes",
             "teu", "teus", "teva", "teves", "ton", "tons", "tot", "tota", "totes", "tots", "tres", "tretze", "tu", "un",
