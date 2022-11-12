@@ -97,15 +97,6 @@ public class AutorTest {
         a.eliminaDocument(d4);
     }
 
-    //TEST OBTE DOCUMENT
-    @Test
-    public void  obteDocumentTest_mesExc(){
-        Document d3 = new Document("a", "Adeu", "Hola Adeu");
-        a.afegirDocument(d3);
-        Document d = a.obteDocument("Adeu");
-        assertEquals(d3,d);
-        d = a.obteDocument("1234");
-    }
 
     @Test
     public void tePrefixTest(){

@@ -68,7 +68,8 @@ public class Document {
         setParaules();
     }
 
-    public boolean conteFrase(String s) {
+    //retona true si en el document esta l'string s
+    public boolean fraseConteString(String s) {
         boolean conte = false;
         for (int i = 0; i < frases_.size() && !conte; ++i) {
             Frase f = frases_.get(i);

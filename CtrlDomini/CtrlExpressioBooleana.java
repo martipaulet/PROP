@@ -51,6 +51,7 @@ public class CtrlExpressioBooleana {
         if (expressions.containsKey(queryantiga)) {
             ExpressionTree e = expressions.get(queryantiga);
             e.modifica(querymodificada);
+            expressions.remove(queryantiga);
             expressions.put(querymodificada, e);
         }
         else {

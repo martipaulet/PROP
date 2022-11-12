@@ -64,8 +64,8 @@ public class DocumentTest {
     @Test
     public void conteFraseTest() {
         document.actualitzaDocument("Hola hem dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
-        assertTrue(document.conteFrase("Karl"));
-        assertFalse(document.conteFrase("aaaa"));
+        assertTrue(document.fraseConteString("Karl"));
+        assertFalse(document.fraseConteString("aaaa"));
     }
 
     @Test

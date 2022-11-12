@@ -44,37 +44,18 @@ public class Autor {
         return trobat;
     }
 
+    //Pre: L'autor del document es this.nomA
     public void afegirDocument(Document d) {
-        if (d.getAutor() == nomA){
-            docsAutor_.add(d);
-        }
-        else {
-            System.out.print("L'autor a qui li vols afegir el document no és el mateix que l'autor escriptor \r\n"); // Excepcio
-        }
+        docsAutor_.add(d);
     }
 
+    //Pre: L'autor del document es this.nomA
     public void eliminaDocument(Document d) {
-        if (conteDocument(d)){
-            docsAutor_.remove(d);
-        }
-        else {
-            System.out.print("L'autor ja no tenia aquest document\r\n"); // Excepcio
-        }
+        docsAutor_.remove(d);
     }
 
-    public Document obteDocument(String titol) {
-        for (int i = 0; i < docsAutor_.size(); ++i) {
-            Document d = docsAutor_.elementAt(i);
-            String titol_doc = d.getTitol();
-            if (Objects.equals(titol_doc, titol)) return d;
-        }
-        System.out.print("L'autor no te el document amb aquest titol: "+ titol+ "\r\n"); // Excepcio
-        return null;
-    }
-
-    public Boolean tePrefix(String prefix) {
-        Boolean trobat = true;
-        if (prefix.length() > nomA.length()) trobat = false;
+    public boolean tePrefix(String prefix) {
+        boolean trobat = prefix.length() <= nomA.length();
         for (int i = 0; i < prefix.length() && trobat; ++i) {
             if (prefix.charAt(i) != nomA.charAt(i)) trobat = false;
         }
@@ -87,15 +68,6 @@ public class Autor {
 
     public void imprimir() {
         System.out.println(nomA);
-    }
-
-    //FUNCIONS PRIVADES
-
-    private boolean conteDocument(Document d){
-        for (int i = 0; i < docsAutor_.size(); ++i) {
-            if (docsAutor_.elementAt(i) == d) return true;
-        }
-        return false;
     }
 
 }

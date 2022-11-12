@@ -145,7 +145,7 @@ public class ConjuntDocuments {
         Set<Frase> sf = new HashSet<>();
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
-            if (d.conteFrase(s)) {
+            if (d.fraseConteString(s)) {
                 Vector<Frase> vf = d.getFrasesParaula(s);
                 for (int j = 0; j < vf.size(); ++j) {
                     Frase f = vf.elementAt(j);
