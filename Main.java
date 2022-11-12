@@ -72,7 +72,9 @@ public class Main {
                     autor = scan.nextLine();
                     System.out.println("Introdueix un titol:");
                     titol = scan.nextLine();
-                    System.out.println(cd.obteContingut(autor, titol));
+                    if (cd.obteContingut(autor,titol) != null) {
+                        System.out.println(cd.obteContingut(autor, titol));
+                    }
                     break;
                 case 7:
                     System.out.println("Introdueix un autor:");
