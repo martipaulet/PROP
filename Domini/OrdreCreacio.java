@@ -9,7 +9,8 @@ public class OrdreCreacio implements Ordenacio {
 
     //ordenar per dates de creacio (data més propera abans que data més llunyana)
 
-    public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
+    public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) {
+        Vector<Document> vd = cd.getVector();
         Vector<Document> DocOrdenats = new Vector<>();
         for (int i=0; i<vd.size(); ++i){
             Document di = vd.elementAt(i);
@@ -65,6 +66,7 @@ public class OrdreCreacio implements Ordenacio {
                 }
             }
         }
-        return DocOrdenats;
+        ConjuntDocuments cdordenat = new ConjuntDocuments(DocOrdenats);
+        return cdordenat;
     }
 }

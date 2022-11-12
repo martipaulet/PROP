@@ -5,7 +5,8 @@ import java.util.*;
  public class OrdreAlfabetic implements Ordenacio {
 
      //ordenar per ordre alfabètic títol
-    public Vector<Document> OrdenarDocuments(Vector<Document> vd) {
+    public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) {
+        Vector<Document> vd = cd.getVector();
         Vector<Document> vdReal = new Vector<>();
         Collator comparador = Collator.getInstance();
         comparador.setStrength(Collator.PRIMARY);
@@ -38,7 +39,8 @@ import java.util.*;
                 }
             }
         }
-        return vdReal;
+        ConjuntDocuments cdordenat = new ConjuntDocuments(vdReal);
+        return cdordenat;
     }
 
 }

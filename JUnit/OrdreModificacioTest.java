@@ -1,6 +1,7 @@
 package JUnit;
 import java.util.*;
 
+import Domini.ConjuntDocuments;
 import Domini.OrdreCreacio;
 import Domini.OrdreModificacio;
 import Domini.Document;
@@ -24,8 +25,9 @@ public class OrdreModificacioTest {
         vd.add(d3);
         vd.add(d4);
         OrdreModificacio o = new OrdreModificacio();
-        Vector<Document> vfi = new Vector<Document>();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
 
         //CREO UN VECTOR I AFEGEIXO ELS DOCUMENTS EN L'ORDRE ALFABÈTIC PER PODER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
@@ -34,21 +36,22 @@ public class OrdreModificacioTest {
         vfi2.add(d2);
         vfi2.add(d1);
 
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 
     //Vector de document buit
     @Test
     public void OrdenarDocumentsBuitTest() {
         Vector<Document> vd = new Vector<Document>();
-        Vector<Document> vfi = new Vector<Document>();
         OrdreModificacio o = new OrdreModificacio();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
 
         //CREO UN VECTOR BUIT PER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
 
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 
     //Dates i titols iguals
@@ -65,8 +68,9 @@ public class OrdreModificacioTest {
         vd.add(d3);
         vd.add(d4);
         OrdreModificacio o = new OrdreModificacio();
-        Vector<Document> vfi = new Vector<Document>();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
 
         //CREO UN VECTOR I AFEGEIXO ELS DOCUMENTS EN L'ORDRE ALFABÈTIC PER PODER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
@@ -75,7 +79,7 @@ public class OrdreModificacioTest {
         vfi2.add(d1);
         vfi2.add(d2);
 
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 
     //Dates i titols iguals, autors diferents
@@ -92,8 +96,9 @@ public class OrdreModificacioTest {
         vd.add(d3);
         vd.add(d4);
         OrdreModificacio o = new OrdreModificacio();
-        Vector<Document> vfi = new Vector<Document>();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
 
         //CREO UN VECTOR I AFEGEIXO ELS DOCUMENTS EN L'ORDRE ALFABÈTIC PER PODER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
@@ -102,6 +107,6 @@ public class OrdreModificacioTest {
         vfi2.add(d1);
         vfi2.add(d2);
 
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 }
