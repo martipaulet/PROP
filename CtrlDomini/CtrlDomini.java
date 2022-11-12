@@ -105,7 +105,7 @@ public class CtrlDomini {
             ls = a.consultaTitols();
         }
         else {
-            System.out.println("Autor no existent");
+            System.out.println("Autor no existent"); //Excepcio
         }
         return ls;
     }
@@ -121,8 +121,9 @@ public class CtrlDomini {
             }
         }
         if (!algun) {
-            System.out.println("Cap autor amb el prefix" + prefix);
+            System.out.println("Cap autor amb el prefix " + prefix); //Excepcio
         }
+        Collections.sort(ls);
         return ls;
     }
 
@@ -134,6 +135,7 @@ public class CtrlDomini {
             return d.getContingut();
         }
         else {
+            System.out.println("Document no existeix"); //Excepcio
             return null;
         }
     }
@@ -141,6 +143,11 @@ public class CtrlDomini {
     //CALCUL DOCUMENTS SEMBLANTS 1
     //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament (TF)
     public ConjuntDocuments DocumentsSemblants_TfIdf(String autor, String titol, Integer K) {
+        Vector<Document> vd = documents.getVector();
+        if (K >= vd.size()) {
+            System.out.println("El natural K és major als documents del sistema"); //Excepcio
+            return null;
+        }
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
         HashMap<Document, Double> aux = sortMapByValue(TfIdf);
@@ -160,6 +167,11 @@ public class CtrlDomini {
     //CALCUL DOCUMENTS SEMBLANTS 2
     //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament (TF)
     public ConjuntDocuments DocumentsSemblants_Tf(String autor, String titol, Integer K) {
+        Vector<Document> vd = documents.getVector();
+        if (K >= vd.size()) {
+            System.out.println("El natural K és major als documents del sistema"); //Excepcio
+            return null;
+        }
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> Tf = documents.CalculTf(D);
         HashMap<Document, Double> aux = sortMapByValue(Tf);

@@ -17,9 +17,9 @@ public class Main {
                     "1. Alta Document\n"+
                     "2. Baixa Document\n"+
                     "3. Modificar Document\n"+
-                    "4. Llista de títols autor\n"+
-                    "5. Llista d'autors per prefix\n"+
-                    "6. Obtenir contingut d'un document\n"+
+                    "4. Consulta títols autor\n"+
+                    "5. Consulta autors prefix\n"+
+                    "6. Consulta contingut\n"+
                     "7. Llistar documents semblants Metode Tf-Idf\n"+
                     "8. Llistar documents semblants Metode Tf\n"+
                     "9. Llistar documents que compleixen una expressió\n"+
@@ -81,7 +81,8 @@ public class Main {
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
                     int k = scan.nextInt();
-                    cd.DocumentsSemblants_TfIdf(autor, titol, k);
+                    ConjuntDocuments c = cd.DocumentsSemblants_TfIdf(autor, titol, k);
+                    c.imprimir();
                     break;
                 case 8:
                     System.out.println("Introdueix un autor:");
@@ -90,13 +91,14 @@ public class Main {
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
                     int K = scan.nextInt();
-                    cd.DocumentsSemblants_Tf(autor, titol, K);
+                    ConjuntDocuments c1 = cd.DocumentsSemblants_Tf(autor, titol, K);
+                    c1.imprimir();
                     break;
                 case 9:
                     System.out.println("Introdueix una query booleana:");
                     query = scan.nextLine();
-                    ConjuntDocuments c = cd.ConsultaBooleana(query);
-                    c.imprimir();
+                    ConjuntDocuments c2 = cd.ConsultaBooleana(query);
+                    c2.imprimir();
                     break;
                 case 10:
                     exit = true;
