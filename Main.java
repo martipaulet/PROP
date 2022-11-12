@@ -11,6 +11,7 @@ public class Main {
         String titol;
         String contingut;
         String query;
+        String queryaux;
         CtrlDomini cd = CtrlDomini.getInstance();
         while (!exit) {
             String menu = "-- MENU --\n"+
@@ -23,7 +24,10 @@ public class Main {
                     "7. Llistar documents semblants Metode Tf-Idf\n"+
                     "8. Llistar documents semblants Metode Tf\n"+
                     "9. Llistar documents que compleixen una expressió\n"+
-                    "10. Sortir\n";
+                    "10. Alta Expressio Booleana\n"+
+                    "11. Baixa Expressio Booleana\n"+
+                    "12. Modificar Expressio Booleana\n"+
+                    "13. Sortir\n";
             System.out.print(menu);
             int opcio = Integer.parseInt(scan.nextLine());
             switch (opcio) {
@@ -35,7 +39,6 @@ public class Main {
                     System.out.println("Introdueix un contingut:");
                     contingut = scan.nextLine();
                     cd.altaDocument(autor, titol, contingut);
-                    //cd.imprimirDocuments();
                     break;
                 case 2:
                     System.out.println("Introdueix un autor:");
@@ -43,7 +46,6 @@ public class Main {
                     System.out.println("Introdueix un titol:");
                     titol = scan.nextLine();
                     cd.baixaDocument(autor, titol);
-                    cd.imprimirDocuments();
                     break;
                 case 3:
                     System.out.println("Introdueix un autor:");
@@ -53,13 +55,11 @@ public class Main {
                     System.out.println("Introdueix un contingut:");
                     contingut = scan.nextLine();
                     cd.modificarDocument(contingut, autor, titol);
-                    cd.imprimirDocuments();
                     break;
                 case 4:
                     System.out.println("Introdueix un autor:");
                     autor = scan.nextLine();
                     System.out.println(cd.titolsAutor(autor));
-                    //cd.imprimirAutors();
                     break;
                 case 5:
                     System.out.println("Introdueix un prefix:");
@@ -101,6 +101,23 @@ public class Main {
                     c2.imprimir();
                     break;
                 case 10:
+                    System.out.println("Introdueix una query booleana:");
+                    query = scan.nextLine();
+                    cd.altaExpressioBooleana(query);
+                    break;
+                case 11:
+                    System.out.println("Introdueix una query booleana:");
+                    query = scan.nextLine();
+                    cd.baixaExpressioBooleana(query);
+                    break;
+                case 12:
+                    System.out.println("Introdueix la query booleana a modificar:");
+                    queryaux = scan.nextLine();
+                    System.out.println("Introdueix la query booleana nova:");
+                    query = scan.nextLine();
+                    cd.modificaExpressioBooleana(queryaux,query);
+                    break;
+                case 13:
                     exit = true;
                     break;
                 default:

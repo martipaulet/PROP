@@ -29,11 +29,11 @@ public class CtrlDomini {
         documents = new ConjuntDocuments();
         CtrlExpressioBooleana = new CtrlExpressioBooleana();
     }
+
     public static CtrlDomini getInstance() {
         if (instance == null) instance = new CtrlDomini();
         return instance;
     }
-
 
      /*
      *   --------------------------------------------
@@ -70,14 +70,14 @@ public class CtrlDomini {
     //      Si l'autor del document eliminat nomes tenia aquest document tambe s'eimina l'autor
     public void baixaDocument(String autor, String titol) {
         if (autor == null || titol == null) System.out.println("Error en la baixa de Document"); //Excepcio
-        Document d = documents.getDocument(autor,titol);
-        desassociaAutor(d);
-        documents.baixaDocument(d);
-    }
-
-
-
-    public void baixaCjtDocuments(ConjuntDocuments d) {
+        else if (documents.getDocument(autor,titol) != null) {
+            Document d = documents.getDocument(autor,titol);
+            desassociaAutor(d);
+            documents.baixaDocument(d);
+        }
+        else {
+            System.out.println("Document no existeix en el sistema"); //Excepcio
+        }
 
     }
 
@@ -85,10 +85,33 @@ public class CtrlDomini {
     //pre: nomes es pot modificar el contingut d'un document
     //post: S'actualizta el contingut i la data de ultima modificació del document si es que s'ha modificat
     public void modificarDocument(String nouContingut, String autor, String titol) {
-        Document d = documents.getDocument(autor,titol);
-        if (d != null && !d.getContingut().equals(nouContingut)) {
-            d.actualitzaDocument(nouContingut);
+        if (autor == null || titol == null) System.out.println("Error en la baixa de Document"); //Excepcio
+        else if (documents.getDocument(autor,titol) != null) {
+            Document d = documents.getDocument(autor,titol);
+            if (!d.getContingut().equals(nouContingut)) d.actualitzaDocument(nouContingut);
         }
+        else {
+            System.out.println("Document no existeix en el sistema"); //Excepcio
+        }
+    }
+
+
+    /*
+     *   -----------------------------------------------------
+     *   GESTIO ALTA, BAIXA, MODIFICACIO DE EXPRESIONS BOOLEANAS
+     *   ------------------------------------------------------
+     * */
+
+    public void altaExpressioBooleana(String query) {
+        CtrlExpressioBooleana.altaExpressioBooleana(query);
+    }
+
+    public void baixaExpressioBooleana(String query) {
+        CtrlExpressioBooleana.baixaExpressioBooleana(query);
+    }
+
+    public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
+        modificaExpressioBooleana(queryantiga,querymodificada);
     }
 
 

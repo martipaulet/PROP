@@ -5,12 +5,6 @@ import java.lang.*;
 public class ConjuntDocuments {
     private Vector<Document> CjtD;
 
-    /*
-    public ConjuntDocuments(Set<Document> sd) {
-        CjtD = new Vector<Document>();
-        CjtD = SetToVec(sd);    //fer algorisme
-    }
-    */
     public ConjuntDocuments() {
         CjtD = new Vector<Document>();
     }
@@ -18,19 +12,6 @@ public class ConjuntDocuments {
     public ConjuntDocuments(Vector<Document> sd) {
         CjtD = sd;
     }
-
-    /*
-    private Vector<Document> SetToVec(Set<Document> s) {
-        Vector<Document> vd = new Vector<>();
-        for (Document d : s) {
-            vd.add(d);
-        }
-        OrdreAlfabetic o = new OrdreAlfabetic();
-        Vector<Document> vfinal = o.OrdenarDocuments(vd);
-        return vfinal;
-    }
-
-     */
 
     public Set<Frase> VecToSet() {
         Set<Frase> s = new HashSet<>();
@@ -42,11 +23,9 @@ public class ConjuntDocuments {
         return s;
     }
 
-
     public Vector<Document> getVector() {
         return CjtD;
     }
-
 
     public void importarDocuments () {
         //fa crides a la creadora de document
@@ -90,7 +69,6 @@ public class ConjuntDocuments {
             Document d = CjtD.elementAt(i);
             if (Objects.equals(d.getAutor(), autor) && Objects.equals(d.getTitol(), titol)) return d;
         }
-        System.out.println("Document no existeix en el conjunt"); //Excepcio
         return null;
     }
 

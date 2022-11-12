@@ -277,10 +277,7 @@ public class ExpressionTree {
     }
 
 
-
-
-
-
+    /*
     // Imprimir arbre en postordre
     static void postorder(Node root)
     {
@@ -305,7 +302,5 @@ public class ExpressionTree {
         Node root = expressionTree(query);
         postorder(root);
     }
-
-
-
+     */
 }

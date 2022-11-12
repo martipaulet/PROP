@@ -32,19 +32,30 @@ public class CtrlExpressioBooleana {
      * Public Functions
      */
     public void altaExpressioBooleana(String query) {
-        ExpressionTree e = new ExpressionTree(query);
-        expressions.put(query, e);
+        if (!expressions.containsKey(query)) {
+            ExpressionTree e2 = new ExpressionTree(query);
+            expressions.put(query, e2);
+        }
     }
 
     public void baixaExpressioBooleana(String query) {
-        expressions.remove(query);
+        if (expressions.containsKey(query)) {
+            expressions.remove(query);
+        }
+        else {
+            System.out.println("La query:" +query+ "no existeix en el sistema per tant no es pot donar de baixa");
+        }
     }
 
     public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
-        ExpressionTree e = expressions.get(queryantiga);
-        expressions.remove(queryantiga);
-        e.modifica(querymodificada);
-        expressions.put(querymodificada, e);
+        if (expressions.containsKey(queryantiga)) {
+            ExpressionTree e = expressions.get(queryantiga);
+            e.modifica(querymodificada);
+            expressions.put(querymodificada, e);
+        }
+        else {
+            System.out.println("La query:" +queryantiga+ "no existeix en el sistema per tant no es pot modificar");
+        }
     }
 
 
@@ -56,8 +67,5 @@ public class CtrlExpressioBooleana {
         ConjuntDocuments cd = e.calculate(total);
         return cd;
     }
-
-
-
 
 }
