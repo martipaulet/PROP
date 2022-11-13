@@ -1,9 +1,11 @@
 package JUnit;
 import Domini.Autor;
 import Domini.Document;
+import Domini.Frase;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -51,7 +53,7 @@ public class DocumentTest {
 
     @Test
     public void testSetContingut() {
-        document.actualitzaDocument("exemple");
+        document.setContingut("exemple");
         assertEquals(document.getContingut(), "exemple");
         Calendar c = new GregorianCalendar(2022, Calendar.FEBRUARY, 2);
         assertNotEquals(document.getDataUltimaModificacio(), c.getTime());
@@ -70,8 +72,19 @@ public class DocumentTest {
     }
 
     @Test
-    public void testSetFrases() {
+    public void testSetIGetFrases() {
         document.imprimirFrases();
-        assertEquals(document.getFrases(), " ");
+        Frase f1 = new Frase("Hola, d'aqui: 2 minuts pegaré a la Sra", "Karl Marx",
+                "Communist Manifesto");
+        Frase f2 = new Frase("Laia", "Karl Marx","Communist Manifesto");
+        Frase f3 = new Frase("Aquesta hauria de ser la 3a frase però probablement serà la 4a, a veure com resol " +
+                "la l·l el programa", "Karl Marx", "Communist Manifesto");
+        Frase f4 = new Frase("Adeu", "Karl Marx","Communist Manifesto");
+        ArrayList<Frase> frases = new ArrayList<>();
+        frases.add(f1);
+        frases.add(f2);
+        frases.add(f3);
+        frases.add(f4);
+        assertEquals(document.getFrases(), frases);
     }
 }

@@ -1,16 +1,17 @@
 package Domini;
+import java.text.Normalizer;
 import java.util.*;
 
 public class Document {
     private String autor_;
-    private String titol_;
+    private final String titol_;
     private String contingut_;
     private ArrayList<Frase> frases_ = new ArrayList<>();
 
-    private Date dataCreacio_;
+    private final Date dataCreacio_;
     private Date dataUltimaModificacio_;
 
-    private HashMap<String, Integer> paraules_ = new HashMap<>();
+    private final HashMap<String, Integer> paraules_ = new HashMap<>();
 
 
     public Document (String autor, String titol, String contingut) {
@@ -61,7 +62,13 @@ public class Document {
 
     private void setFrases() {
         frases_ = new ArrayList<>();
-        String[] frases = contingut_.split("[.!?]"); //".!?"
+        String formattedContingut = "";
+        if (!Normalizer.isNormalized(contingut_, Normalizer.Form.NFKD)) {
+            formattedContingut = Normalizer.normalize(contingut_, Normalizer.Form.NFKD);
+            Normalizer.normalize(formattedContingut, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
+        }
+
+        String[] frases = formattedContingut.split("[.!?] "); //".!?"
         for (String frase : frases) {
             frases_.add(new Frase(frase,titol_,autor_));
         }
@@ -154,11 +161,13 @@ public class Document {
         System.out.println(paraules_);
     }
 
-    public void mostraDocument() {
-
+    public void imprimirFrases() {
+        for (Frase frase : frases_) {
+            frase.imprimir();
+        }
     }
 
-    private ArrayList<String> StopWords = new ArrayList<>(Arrays.asList("últim", "última", "últimes", "últims", "a", "abans", "això", "al",
+    private final ArrayList<String> StopWords = new ArrayList<>(Arrays.asList("últim", "última", "últimes", "últims", "a", "abans", "això", "al",
             "algun", "alguna", "algunes", "alguns", "allà", "allí", "allò", "als", "altra", "altre", "altres", "amb",
             "aprop", "aquí", "aquell", "aquella", "aquelles", "aquells", "aquest", "aquesta", "aquestes", "aquests",
             "cada", "catorze", "cent", "cert", "certa", "certes", "certs", "cinc", "com", "cosa", "d", "darrer",
