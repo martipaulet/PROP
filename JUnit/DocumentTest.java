@@ -23,7 +23,7 @@ public class DocumentTest {
         calendari.set(2022, Calendar.FEBRUARY, 2);
         Date modificacio = calendari.getTime();
         document = new Document("Karl Marx", "Communist Manifesto",
-                "Hola, d'aqui: 2 minuts pegaré a la Sra. Laia! Aquesta hauria de ser la 3a frase però " +
+                "Hola, aquesta es una frase. Holaa. Aquesta hauria de ser la 3a frase però " +
                         "probablement serà la 4a, a veure com resol la l·l el programa. Adeu?", creacio, modificacio);
     }
     @Test
@@ -41,8 +41,8 @@ public class DocumentTest {
 
     @Test
     public void testGetContingut() {
-        assertEquals(document.getContingut(), "Hola, d'aqui: 2 minuts pegaré a la Sra. Laia! Aquesta hauria de " +
-                "ser la 3a frase però probablement serà la 4a, a veure com resol la l·l el programa. Adeu?");
+        assertEquals(document.getContingut(), "Hola, aquesta es una frase. Holaa. Aquesta hauria de ser la 3a frase però " +
+                "probablement serà la 4a, a veure com resol la l·l el programa. Adeu?");
     }
 
     @Test
@@ -99,17 +99,21 @@ public class DocumentTest {
 
     @Test
     public void testSetIGetFrases() {
-        Frase f1 = new Frase("Hola, d'aqui: 2 minuts pegaré a la Sra", "Karl Marx",
+        Frase f1 = new Frase("Hola, aquesta es una frase", "Karl Marx",
                 "Communist Manifesto");
-        Frase f2 = new Frase("Laia", "Karl Marx","Communist Manifesto");
-        Frase f3 = new Frase("Aquesta hauria de ser la 3a frase però probablement serà la 4a, a veure com resol " +
+        Frase f2 = new Frase("Holaa", "Karl Marx","Communist Manifesto");
+        Frase f3 = new Frase("Aquesta hauria de ser la 3a frase pero probablement sera la 4a, a veure com resol " +
                 "la l·l el programa", "Karl Marx", "Communist Manifesto");
-        Frase f4 = new Frase("Adeu", "Karl Marx","Communist Manifesto");
+        Frase f4 = new Frase("Adeu?", "Karl Marx","Communist Manifesto");
         ArrayList<Frase> frases = new ArrayList<>();
         frases.add(f1);
         frases.add(f2);
         frases.add(f3);
         frases.add(f4);
-        assertEquals(document.getFrases(), frases);
+        ArrayList<Frase> frasesDoc = document.getFrases();
+        for (int i = 0; i < frases.size(); i++) {
+            assertEquals(frases.get(i).getFrase(), frasesDoc.get(i).getFrase());
+        }
+
     }
 }

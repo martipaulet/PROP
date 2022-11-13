@@ -11,7 +11,6 @@ public class Frase { //classe que representa la frase pertanyent a un document e
     private String titolDoc_; //titol del document al que pertany la frase.
     private String autorDoc_; //autor del document al que pertany la frase.
     private final String[] paraules_; //frase separada per paraules.
-    private ArrayList<String> Paraules = new ArrayList<>(); //frase separada per paraules en una llista sense repeticions.
 
 
     //---CONSTRUCTORA---

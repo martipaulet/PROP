@@ -1,4 +1,5 @@
 package Domini;
+import java.text.Normalizer;
 import java.util.*;
 
 public class Document {
@@ -148,7 +149,9 @@ public class Document {
     //Post: Compta quants cops apareix cada paraula en el document.
     private void setParaules() {
         paraules_ = new HashMap<>();
-        String[] paraules = contingut_.split("(?U)\\W+");
+        String contingutSenseAccents = Normalizer.normalize(contingut_, Normalizer.Form.NFKD);
+        contingutSenseAccents = Normalizer.normalize(contingutSenseAccents, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
+        String[] paraules = contingutSenseAccents.split("(?U)\\W+");
         for (String paraula : paraules) {
             paraula = paraula.toLowerCase();
             if(!StopWords.contains(paraula)){
@@ -166,14 +169,16 @@ public class Document {
     //Post: separa el contingut del document per frases. Separa les frases per [. ? !].
     private void setFrases() {
         frases_ = new ArrayList<>();
-        String[] frases = contingut_.split("[.!?]"); //".!?"
+        String contingutSenseAccents = Normalizer.normalize(contingut_, Normalizer.Form.NFKD);
+        contingutSenseAccents = Normalizer.normalize(contingutSenseAccents, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
+        String[] frases = contingutSenseAccents.split("(?U)[.!?] "); //".!?"
         for (String frase : frases) {
             frases_.add(new Frase(frase,titol_,autor_));
         }
     }
 
     //Post: retorna la llista d'StopWords.
-    private ArrayList<String> StopWords = new ArrayList<>(Arrays.asList("últim", "última", "últimes", "últims", "a", "abans", "això", "al",
+    private final ArrayList<String> StopWords = new ArrayList<>(Arrays.asList("últim", "última", "últimes", "últims", "a", "abans", "això", "al",
             "algun", "alguna", "algunes", "alguns", "allà", "allí", "allò", "als", "altra", "altre", "altres", "amb",
             "aprop", "aquí", "aquell", "aquella", "aquelles", "aquells", "aquest", "aquesta", "aquestes", "aquests",
             "cada", "catorze", "cent", "cert", "certa", "certes", "certs", "cinc", "com", "cosa", "d", "darrer",
