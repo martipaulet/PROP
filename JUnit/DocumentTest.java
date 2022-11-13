@@ -81,7 +81,7 @@ public class DocumentTest {
             assertEquals(document.getFrasesParaula("adeu").size(),0);
         }
         catch (Exception e) {
-            System.out.println(e.toString());
+            System.out.println(e);
         }
     }
 
@@ -99,7 +99,6 @@ public class DocumentTest {
 
     @Test
     public void testSetIGetFrases() {
-        document.imprimirFrases();
         Frase f1 = new Frase("Hola, d'aqui: 2 minuts pegaré a la Sra", "Karl Marx",
                 "Communist Manifesto");
         Frase f2 = new Frase("Laia", "Karl Marx","Communist Manifesto");

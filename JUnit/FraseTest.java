@@ -26,19 +26,6 @@ public class FraseTest {
         assertEquals(expected, actuals);
     }
 
-    //TEST setParaules i getrecParaules
-    @Test
-    public void setParaulesTest() {
-        Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        ArrayList<String> prova = new ArrayList<>();
-        prova.add("un");
-        prova.add("munt");
-        prova.add("de");
-        prova.add("paraules");
-
-        assertEquals(prova, f.getrecParaules());
-    }
-
     //TEST de conteQuery --> CAS 1: No conté la query
     @Test
     public void conteQueryTest1() {

@@ -25,7 +25,6 @@ public class Frase { //classe que representa la frase pertanyent a un document e
         titolDoc_ = titol;
         autorDoc_ = autor;
         frase_ = frase;
-        setParaules();
     }
 
 
@@ -46,12 +45,6 @@ public class Frase { //classe que representa la frase pertanyent a un document e
     public String getFrase() {
         return frase_;
     }
-
-    //Post: retorna les paraules que conte la frase.
-    public ArrayList<String> getrecParaules() {
-        return Paraules;
-    }
-
 
     //---CONSULTORA---
 
@@ -76,19 +69,4 @@ public class Frase { //classe que representa la frase pertanyent a un document e
         }
         return conte;
     }
-
-
-    //---METODES PRIVATS---
-
-
-    //Post: guarda les paraules que conte la frase (sense repeticions).
-    private void setParaules() {
-        for (String paraula : paraules_) {
-            paraula = paraula.toLowerCase();
-            if (!Paraules.contains(paraula)) {
-                Paraules.add(paraula);
-            }
-        }
-    }
-
 }

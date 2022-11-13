@@ -140,6 +140,8 @@ public class Document {
     }
 
 
+
+
     //---METODES PRIVATS---
 
 
