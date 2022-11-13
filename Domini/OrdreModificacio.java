@@ -8,8 +8,8 @@ import java.util.*;
 public class OrdreModificacio implements Ordenacio {
 
 
-    //ordenar per dates de modificació (data més propera abans que data més llunyana)
 
+    //Post: retorna un conjunt de documents ordenat per ordre de data de modificacio (data més propera abans que data més llunyana).
     public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) {
         Vector<Document> vd = cd.getVector();
         Vector<Document> DocOrdenats = new Vector<>();
