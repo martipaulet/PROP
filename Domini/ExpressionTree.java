@@ -1,8 +1,5 @@
 package Domini;
 
-import CtrlDomini.CtrlDomini;
-
-import javax.print.Doc;
 import java.util.*;
 
 public class ExpressionTree {

@@ -1,6 +1,5 @@
 package Domini;
 import java.util.*;
-import java.lang.*;
 
 public class ConjuntDocuments {
     private Vector<Document> CjtD;
