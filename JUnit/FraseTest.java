@@ -43,7 +43,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest1() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un munt de coses");
+        boolean b = f.conteQuery("un munt de coses");
         assertFalse(b);
     }
 
@@ -51,7 +51,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest2() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("munt");
+        boolean b = f.conteQuery("munt");
         assertTrue(b);
     }
 
@@ -59,7 +59,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest3() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un munt de");
+        boolean b = f.conteQuery("un munt de");
         assertTrue(b);
     }
 
@@ -67,7 +67,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest4() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un munt d");
+        boolean b = f.conteQuery("un munt d");
         assertFalse(b);
     }
 
