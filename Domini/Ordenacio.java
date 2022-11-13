@@ -2,5 +2,5 @@ package Domini;
 import java.util.*;
 
 public interface Ordenacio {
-    public Vector<Document> OrdenarDocuments(Vector<Document> vd);
+    public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd);
 }

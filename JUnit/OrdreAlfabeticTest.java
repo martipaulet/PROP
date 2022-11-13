@@ -4,6 +4,7 @@ package JUnit;
 import java.util.*;
 import Domini.OrdreAlfabetic;
 import Domini.Document;
+import Domini.ConjuntDocuments;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -24,8 +25,10 @@ public class OrdreAlfabeticTest {
         vd.add(d3);
         vd.add(d4);
         OrdreAlfabetic o = new OrdreAlfabetic();
-        Vector<Document> vfi = new Vector<Document>();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
+
 
         //CREO UN VECTOR I AFEGEIXO ELS DOCUMENTS EN L'ORDRE ALFABÈTIC PER PODER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
@@ -33,22 +36,22 @@ public class OrdreAlfabeticTest {
         vfi2.add(d4);
         vfi2.add(d1);
         vfi2.add(d2);
-
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 
     //Vector de documents buit
     @Test
     public void OrdenarDocumentsBuitTest() {
-        Vector<Document> vd = new Vector<Document>();
         Vector<Document> vfi = new Vector<Document>();
         OrdreAlfabetic o = new OrdreAlfabetic();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vfi);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
 
         //CREO UN VECTOR BUIT PER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
 
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 
     //Tots els documents tenen el mateix titol
@@ -66,8 +69,9 @@ public class OrdreAlfabeticTest {
         vd.add(d3);
         vd.add(d4);
         OrdreAlfabetic o = new OrdreAlfabetic();
-        Vector<Document> vfi = new Vector<Document>();
-        vfi = o.OrdenarDocuments(vd);
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+        Vector<Document> vfinal = cdfi.getVector();
 
         //CREO UN VECTOR I AFEGEIXO ELS DOCUMENTS EN L'ORDRE ALFABÈTIC PER PODER COMPARAR AMB vfi
         Vector<Document> vfi2 = new Vector<Document>();
@@ -76,6 +80,6 @@ public class OrdreAlfabeticTest {
         vfi2.add(d1);
         vfi2.add(d2);
 
-        assertEquals(vfi, vfi2);
+        assertEquals(vfinal, vfi2);
     }
 }

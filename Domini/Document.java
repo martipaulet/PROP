@@ -1,19 +1,27 @@
 package Domini;
-import java.text.Normalizer;
 import java.util.*;
 
 public class Document {
-    private String autor_;
-    private final String titol_;
-    private String contingut_;
-    private ArrayList<Frase> frases_ = new ArrayList<>();
-
-    private final Date dataCreacio_;
-    private Date dataUltimaModificacio_;
-
-    private final HashMap<String, Integer> paraules_ = new HashMap<>();
 
 
+    //---ATRIBUTS---
+
+
+    private String autor_; //nom de l'autor del document.
+    private String titol_; //nom del titol del document.
+    private String contingut_; //contingut del document.
+    private ArrayList<Frase> frases_ = new ArrayList<>(); //conjunt de frases del document.
+    private Date dataCreacio_; //data de creacio del document.
+    private Date dataUltimaModificacio_; //data d'ultima modificacio del document
+    private HashMap<String, Integer> paraules_ = new HashMap<>(); //mapa amb les paraules -> nom de cops que apareix la paraula en el document.
+
+
+    //---CONSTRUCTORES---
+
+
+    //Post: es crea una instancia de Document amb autor_ = autor, titol_ = titol i contingut_ = contingut.
+    //      se li assigna al document la dataCreacio = dataUltimaModificacio.
+    //      es separa el contingut del document per frases i es compta quants cops apareix cada paraula en el document.
     public Document (String autor, String titol, String contingut) {
         autor_ = autor;
         titol_ = titol;
@@ -24,6 +32,9 @@ public class Document {
         setParaules();
     }
 
+    //Post: es crea una instancia de Document amb autor_ = autor, titol_ = titol i contingut_ = contingut.
+    //      se li assigna al document la datCreacio = dataC i dataUltimaModificacio = dataM.
+    //      es separa el contingut del document per frases i es compta quants cops apareix cada paraula en el document.
     public Document (String autor, String titol, String contingut, Date dataC, Date dataM) {
         autor_ = autor;
         titol_ = titol;
@@ -34,49 +45,78 @@ public class Document {
         setParaules();
     }
 
+
+    //---GETTERS/SETTERS---
+
+
+    //Post: retorna l'autor_ del document.
     public String getAutor() {
         return autor_;
     }
 
-    public void setAutor(String autor) {
-        autor_ = autor;
-    }
-
+    //Post: retorna el titol_ del document.
     public String getTitol() {
         return titol_;
     }
 
+    //Post: retorna el contingut del document.
     public String getContingut() {
         return contingut_;
     }
 
-    public void setContingut(String nouContingut) {
-        contingut_ = nouContingut;
-        dataUltimaModificacio_ = new Date();
-        setFrases();
+    //Post: retorna la dataCreacio_ del document.
+    public Date getDataCreacio() {
+        return dataCreacio_;
     }
 
+    //Post: retorna la dataUltimaModificacio_ del document.
+    public Date getDataUltimaModificacio() {
+        return dataUltimaModificacio_;
+    }
+
+    //Post: retorna el conjunt de frases del document en una llista.
     public ArrayList<Frase> getFrases() {
         return frases_;
     }
 
-    private void setFrases() {
-        frases_ = new ArrayList<>();
-        String formattedContingut = "";
-        if (!Normalizer.isNormalized(contingut_, Normalizer.Form.NFKD)) {
-            formattedContingut = Normalizer.normalize(contingut_, Normalizer.Form.NFKD);
-            Normalizer.normalize(formattedContingut, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
-        }
+    //Post: retorna el mapa amb paraules del document -> nombre de cops que apareixen en el document.
+    public HashMap<String, Integer> getParaules() {
+        return paraules_;
+    }
 
-        String[] frases = formattedContingut.split("[.!?] "); //".!?"
-        for (String frase : frases) {
-            frases_.add(new Frase(frase,titol_,autor_));
-        }
+    //Post: actualitza el contingut_ = nouContingut i actualitza la dataUltimaModificacio.
+    //      actualitza tambe el contingut del document per frases i es compta quants cops apareix cada paraula en el document.
+    public void actualitzaDocument(String nouContingut) {
+        contingut_ = nouContingut;
+        dataUltimaModificacio_ = new Date();
+        setFrases();
+        setParaules();
+    }
+
+    //Post: retorna el conjunt de frases del document en un Set.
+    public Set<Frase> getFrasesToSet() {
+        return new HashSet<>(frases_);
     }
 
 
+    //---CONSULTORES---
 
-    public Boolean conteFrase(String s) {
+
+    //Post: retorna el conjunt de frases que contenen l'string s del document.
+    public Vector<Frase> getFrasesParaula(String s) {
+        Vector<Frase> vf = new Vector<>();
+        for (int i = 0; i < frases_.size(); ++i) {
+            Frase f = frases_.get(i);
+            if (f.conteQuery(s)) vf.add(f);
+        }
+        if (vf.size() == 0) System.out.print("La paraula "+ s + " no apareix en cap frase del document\r\n");
+        return vf;
+    }
+
+
+    //Pre: l'string s es una paraula o una sequencia de paraules.
+    //Post: retona true si en el document esta l'string s en qualsevol de les seves frases. False altrament.
+    public boolean fraseConteString(String s) {
         boolean conte = false;
         for (int i = 0; i < frases_.size() && !conte; ++i) {
             Frase f = frases_.get(i);
@@ -84,59 +124,28 @@ public class Document {
         }
         return conte;
     }
-/*
-    public Boolean conteFraseSeq(String[] s) {
-        boolean conte = false;
-        for (int i = 0; i < frases_.size() && !conte; ++i) {
-            Frase f = frases_.get(i);
-            //si la frase conte les paraules de la seq
-            if (f.conteQuerySeq(s)) {
-                //mirar si estan seguides
-                // if (f.seguides(s)) conte = true;
-            }
-        }
-        return conte;
-    }
-*/
-    public Vector<Frase> getFrasesParaula(String s) {
-        Vector<Frase> vf = new Vector<>();
-        for (int i = 0; i < frases_.size(); ++i) {
-            Frase f = frases_.get(i);
-            if (f.conteQuery(s)) vf.add(f);
-        }
-        return vf;
-    }
 
-    public Vector<Frase> getFrasesSeq(String[] s) {
-        Vector<Frase> vf = new Vector<>();
-        for (int i = 0; i < frases_.size(); ++i) {
-            Frase f = frases_.get(i);
-            // if (f.conteQuery(s)) vf.add(f);
-        }
-        return vf;
-    }
 
-    public Set<Frase> getFrasesToSet() {
-        return new HashSet<>(frases_);
+    //---ESCRIPTURA---
+
+
+    //Post: mostra per pantalla els atributs del document.
+    public void imprimir() {
+        System.out.println(autor_);
+        System.out.println(titol_);
+        System.out.println(contingut_);
+        System.out.println(dataCreacio_);
+        System.out.println(dataUltimaModificacio_);
+        System.out.println(paraules_);
     }
 
 
-
-    public Date getDataCreacio() {
-        return dataCreacio_;
-    }
-
-    public Date getDataUltimaModificacio() {
-        return dataUltimaModificacio_;
-    }
+    //---METODES PRIVATS---
 
 
-    public HashMap<String, Integer> getParaules() {
-        return paraules_;
-    }
-
-    //Implementacio tf
+    //Post: Compta quants cops apareix cada paraula en el document.
     private void setParaules() {
+        paraules_ = new HashMap<>();
         String[] paraules = contingut_.split("(?U)\\W+");
         for (String paraula : paraules) {
             paraula = paraula.toLowerCase();
@@ -152,33 +161,28 @@ public class Document {
         }
     }
 
-    public void imprimir() {
-        System.out.println(autor_);
-        System.out.println(titol_);
-        System.out.println(contingut_);
-        System.out.println(dataCreacio_);
-        System.out.println(dataUltimaModificacio_);
-        System.out.println(paraules_);
-    }
-
-    public void imprimirFrases() {
-        for (Frase frase : frases_) {
-            frase.imprimir();
+    //Post: separa el contingut del document per frases. Separa les frases per [. ? !].
+    private void setFrases() {
+        frases_ = new ArrayList<>();
+        String[] frases = contingut_.split("[.!?]"); //".!?"
+        for (String frase : frases) {
+            frases_.add(new Frase(frase,titol_,autor_));
         }
     }
 
-    private final ArrayList<String> StopWords = new ArrayList<>(Arrays.asList("últim", "última", "últimes", "últims", "a", "abans", "això", "al",
+    //Post: retorna la llista d'StopWords.
+    private ArrayList<String> StopWords = new ArrayList<>(Arrays.asList("últim", "última", "últimes", "últims", "a", "abans", "això", "al",
             "algun", "alguna", "algunes", "alguns", "allà", "allí", "allò", "als", "altra", "altre", "altres", "amb",
             "aprop", "aquí", "aquell", "aquella", "aquelles", "aquells", "aquest", "aquesta", "aquestes", "aquests",
             "cada", "catorze", "cent", "cert", "certa", "certes", "certs", "cinc", "com", "cosa", "d", "darrer",
             "darrera", "darreres", "darrers", "davant", "de", "del", "dels", "després", "deu", "dinou", "disset",
             "divuit", "dos", "dotze", "durant", "el", "ell", "ella", "elles", "ells", "els", "en", "encara", "et",
-            "extra", "fins", "hi", "i", "jo", "l", "la", "les", "li", "llur", "lo", "los", "més", "m'", "ma", "massa",
+            "extra", "fins", "hi", "hem", "i", "jo", "l", "la", "les", "li", "llur", "lo", "los", "més", "m'", "ma", "massa",
             "mateix", "mateixa", "mateixes", "mateixos", "mes", "meu", "meva", "mig", "molt", "molta", "moltes", "molts",
             "mon", "mons", "n", "na", "ni", "no", "nosaltres", "nostra", "nostre", "nou", "ns", "o", "on", "onze",
             "pel", "per", "però", "perquè", "perque", "poc", "poca", "pocs", "poques", "primer", "primera", "primeres",
             "primers", "prop", "què", "qual", "quals", "qualsevol", "qualssevol", "quan", "quant", "quanta", "quantes",
-            "quants", "quatre", "que ", "qui", "quin", "quina", "quines", "quins", "quinze", "res", "s", "sa", "segon",
+            "quants", "quatre", "que", "qui", "quin", "quina", "quines", "quins", "quinze", "res", "s", "sa", "segon",
             "segona", "segones", "segons", "sense", "ses", "set", "setze", "seu", "seus", "seva", "seves", "sino", "sis",
             "sobre", "son", "sons", "sota", "t", "ta", "tal", "tals", "tan", "tant", "tanta", "tantes", "tants", "tes",
             "teu", "teus", "teva", "teves", "ton", "tons", "tot", "tota", "totes", "tots", "tres", "tretze", "tu", "un",
@@ -267,7 +271,5 @@ public class Document {
             "wish", "with", "within", "without", "won't", "wonder", "would", "would", "wouldn't", "x", "y", "yes", "yet",
             "you", "you'd", "you'll", "you're", "you've", "your", "yours", "yourself", "yourselves", "z", "zero"
     ));
-
-
 
 }

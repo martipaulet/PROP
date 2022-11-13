@@ -2,27 +2,50 @@ package Domini;
 import java.util.*;
 
 public class Autor {
-    private String nomA;
-    private Vector<Document> docsAutor_;
 
+
+    //---ATRIBUTS---
+
+
+    private String nomA; //nom de l'autor.
+    private Vector<Document> docsAutor_; //Conjunt de documents de l'autor.
+
+
+    //---CONSTRUCTORES---
+
+
+    //Post: es crea una instancia d'Autor buida.
     public Autor() {
         nomA = null;
         docsAutor_ = new Vector<>();
     }
 
+    //Post: es crea una instancia d'Autor amb nomA = nomAutor.
     public Autor(String nomAutor) {
         nomA = nomAutor;
         docsAutor_ = new Vector<>();
     }
 
+
+    //---GETTER/SETTER---
+
+
+    //Post: retorna el nom de l'autor.
     public String getNom() {
         return nomA;
     }
 
-    public void setNom(String n) { nomA = n; }
+    //Post: s'assigna al autor el nomA = nomAutor.
+    public void setNom(String nomAutor) {
+        nomA = nomAutor;
+    }
 
+
+    //---CONSULTORES---
+
+
+    //Post: es retorna una llista dels titols de l'autor ordenats alfabèticament.
     public ArrayList<String> consultaTitols() {
-        //retorna tots els títols de docsAutor_ ordenats alfabèticament
         ArrayList<String> t = new ArrayList<>();
         for (int i = 0; i < docsAutor_.size(); ++i) {
             Document d = docsAutor_.elementAt(i);
@@ -33,6 +56,7 @@ public class Autor {
         return t;
     }
 
+    //Post: retorna true si l'autor te un document amb nomTitol = titol. False altrament.
     public boolean conteTitol(String titol) {
         boolean trobat = false;
         int i = 0;
@@ -44,58 +68,30 @@ public class Autor {
         return trobat;
     }
 
+    //Pre: L'autor del document es this.nomA.
+    //Post: S'afegeix al conjunt de documents de l'autor el document d.
     public void afegirDocument(Document d) {
-        if (d.getAutor() == nomA){
-            docsAutor_.add(d);
-        }
-        else {
-            System.out.print("L'autor a qui li vols afegir el document no és el mateix que l'autor escriptor \r\n"); // Excepcio
-        }
+        docsAutor_.add(d);
     }
 
+    //Pre: L'autor del document es this.nomA.
+    //Post: S'elimina del conjunt de documents de l'autor el document d.
     public void eliminaDocument(Document d) {
-        if (conteDocument(d)){
-            docsAutor_.remove(d);
-        }
-        else {
-            System.out.print("L'autor ja no tenia aquest document\r\n"); // Excepcio
-        }
+        docsAutor_.remove(d);
     }
 
-    public Document obteDocument(String titol) {
-        for (int i = 0; i < docsAutor_.size(); ++i) {
-            Document d = docsAutor_.elementAt(i);
-            String titol_doc = d.getTitol();
-            if (Objects.equals(titol_doc, titol)) return d;
-        }
-        System.out.print("L'autor no te el document amb aquest titol: "+ titol+ "\r\n"); // Excepcio
-        return null;
-    }
-
-    public Boolean tePrefix(String prefix) {
-        Boolean trobat = true;
-        if (prefix.length() > nomA.length()) trobat = false;
+    //Post: retorna true si el nom de l'autor comença pel prefix indicat. False altrament.
+    public boolean tePrefix(String prefix) {
+        boolean trobat = prefix.length() <= nomA.length();
         for (int i = 0; i < prefix.length() && trobat; ++i) {
             if (prefix.charAt(i) != nomA.charAt(i)) trobat = false;
         }
         return trobat;
     }
 
-    public Boolean teDocuments() {
+    //Post: retorna true si l'autor te documents. False altrament.
+    public boolean teDocuments() {
         return (docsAutor_.size() != 0);
-    }
-
-    public void imprimir() {
-        System.out.println(nomA);
-    }
-
-    //FUNCIONS PRIVADES
-
-    private boolean conteDocument(Document d){
-        for (int i = 0; i < docsAutor_.size(); ++i) {
-            if (docsAutor_.elementAt(i) == d) return true;
-        }
-        return false;
     }
 
 }

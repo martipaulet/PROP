@@ -26,17 +26,6 @@ public class FraseTest {
         assertEquals(expected, actuals);
     }
 
-    //TEST getParaules
-    @Test
-    public void getParaulesTest() {
-        Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        String[] s = f.getParaules();
-        String prova = "un munt de paraules";
-        String[] p = prova.split("\\W+");
-
-        assertEquals(s, p);
-    }
-
     //TEST setParaules i getrecParaules
     @Test
     public void setParaulesTest() {
@@ -48,14 +37,13 @@ public class FraseTest {
         prova.add("paraules");
 
         assertEquals(prova, f.getrecParaules());
-
     }
 
     //TEST de conteQuery --> CAS 1: No conté la query
     @Test
     public void conteQueryTest1() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un munt de coses");
+        boolean b = f.conteQuery("un munt de coses");
         assertFalse(b);
     }
 
@@ -63,7 +51,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest2() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("munt");
+        boolean b = f.conteQuery("munt");
         assertTrue(b);
     }
 
@@ -71,7 +59,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest3() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un munt de");
+        boolean b = f.conteQuery("un munt de");
         assertTrue(b);
     }
 
@@ -79,7 +67,7 @@ public class FraseTest {
     @Test
     public void conteQueryTest4() {
         Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        Boolean b = f.conteQuery("un munt d");
+        boolean b = f.conteQuery("un munt d");
         assertFalse(b);
     }
 

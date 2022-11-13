@@ -1,11 +1,14 @@
 //JOEL FERNANDEZ I ALBERT CARDONA
 
 package JUnit;
-import java.util.*;
+
 import Domini.Autor;
 import Domini.Document;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class AutorTest {
@@ -97,15 +100,6 @@ public class AutorTest {
         a.eliminaDocument(d4);
     }
 
-    //TEST OBTE DOCUMENT
-    @Test
-    public void  obteDocumentTest_mesExc(){
-        Document d3 = new Document("a", "Adeu", "Hola Adeu");
-        a.afegirDocument(d3);
-        Document d = a.obteDocument("Adeu");
-        assertEquals(d3,d);
-        d = a.obteDocument("1234");
-    }
 
     @Test
     public void tePrefixTest(){

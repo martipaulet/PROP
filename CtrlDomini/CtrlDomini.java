@@ -9,45 +9,46 @@ import static java.util.stream.Collectors.toMap;
 public class CtrlDomini {
 
 
-    /**
-     * Attributes
-     */
-    private Map<String, Autor> autors;    //nom autor->Autor
-    private ConjuntDocuments documents;
+    //---ATRIBUTS---
+
+
+    private Map<String, Autor> autors; //Conjunt autors.
+    private ConjuntDocuments documents; //Conjunt de documents.
     private static CtrlDomini instance;
-    private static CtrlExpressioBooleana CtrlExpressioBooleana;
+    private CtrlExpressioBooleana ctrlExpressioBooleana; //Sub-controlador de les expressions booleanes.
 
 
-    /**
-     * Constructor
-     */
+    //---CONSTRUCTORA---
+
+
+    //Post: es crea una instancia de CtrlDomini.
     public CtrlDomini() {
         inicialitzarCtrlDomini();
     }
+
+    //Post: S'inicialitzen les variables del CtrlDomini.
     private void inicialitzarCtrlDomini() {
         autors = new HashMap<> ();
         documents = new ConjuntDocuments();
-        CtrlExpressioBooleana = new CtrlExpressioBooleana();
+        ctrlExpressioBooleana = CtrlExpressioBooleana.getInstance();
     }
+
+    //Post: Retorna la instancia de CtrlDomini. Si no existeix cap instancia de CtrlDomini, es crea.
     public static CtrlDomini getInstance() {
         if (instance == null) instance = new CtrlDomini();
         return instance;
     }
 
 
-     /*
-     *   --------------------------------------------
-     *   GESTIO ALTA, BAIXA, MODIFICACIO DE DOCUMENTS
-     *   --------------------------------------------
-     * */
+    //---GESTIO DOCUMENTS---
 
 
-    //pre: ---
-    //post: es crea un nou document en el sistema si no existia. En cas contrari es retorna una excepció
-    //      Si l'autor del document no existia es crea.
-    //      Es crea la relació entre aquest nou document i l'autor
-    public void altaDocument(String autor, String titol, String contingut) {
-        if (autor == null || titol == null) System.out.println("Error en la creació de Document"); //Excepcio
+    //Post: es crea un nou document en el sistema si aquest no existia previament.
+    //      Si l'autor del document no existia es crea l'autor.
+    //      Es crea la relacio entre aquest nou document i l'autor.
+    public void altaDocument(String autor, String titol, String contingut) throws Exception{
+        if (Objects.equals(autor, "") || Objects.equals(titol, ""))  throw new Exception("Ni autor ni titol no poden ser null");//System.out.println("Ni autor ni titol no poden ser null");
+
         Autor a = new Autor();
         if (!existeixAutor(autor)) {
             a.setNom(autor);
@@ -56,7 +57,7 @@ public class CtrlDomini {
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
-                System.out.print("Document ja existent"); // Excepcio
+                System.out.println("Document ja existeix");
                 return;
             }
         }
@@ -65,39 +66,56 @@ public class CtrlDomini {
         documents.afegirDocument(d);
     }
 
-
-    //post: S'elimina el document d i la seva relació amb l'autor.
-    //      Si l'autor del document eliminat nomes tenia aquest document tambe s'eimina l'autor
+    //Post: S'elimina el document d i la seva relacio amb l'autor.
+    //      Si l'autor del document eliminat nomes tenia aquest document s'elimina l'autor.
     public void baixaDocument(String autor, String titol) {
-        if (autor == null || titol == null) System.out.println("Error en la baixa de Document"); //Excepcio
-        Document d = documents.getDocument(autor,titol);
-        desassociaAutor(d);
-        documents.baixaDocument(d);
+        if (autor == null || titol == null) System.out.println("Introdueix un autor i títol vàlid");
+        else if (documents.getDocument(autor,titol) != null) {
+            Document d = documents.getDocument(autor,titol);
+            desassociaAutor(d);
+            documents.baixaDocument(d);
+        }
+        else {
+            System.out.println("Document no existeix en el sistema");
+        }
+
     }
 
-
-
-    public void baixaCjtDocuments(ConjuntDocuments d) {
-
-    }
-
-
-    //pre: nomes es pot modificar el contingut d'un document
-    //post: S'actualizta el contingut i la data de ultima modificació del document si es que s'ha modificat
+    //Post: S'actualitza el contingut i la data d'ultima modificació del document si es que s'ha modificat el contingut.
     public void modificarDocument(String nouContingut, String autor, String titol) {
-        Document d = documents.getDocument(autor,titol);
-        if (d != null && !d.getContingut().equals(nouContingut)) {
-            d.setContingut(nouContingut);
+        if (autor == null || titol == null) System.out.println("Introdueix un autor i títol vàlid");
+        else if (documents.getDocument(autor,titol) != null) {
+            Document d = documents.getDocument(autor,titol);
+            if (!d.getContingut().equals(nouContingut)) d.actualitzaDocument(nouContingut);
+        }
+        else {
+            System.out.println("Document no existeix en el sistema");
         }
     }
 
 
-    /*
-     *   ------------
-     *   CONSULTES
-     *   ------------
-     * */
+    //---GESTIO EXPRESSIONS BOOLEANES---
 
+
+    //Post: Es crea una nova expressio booleana si aquesta no existia.
+    public void altaExpressioBooleana(String query) {
+        ctrlExpressioBooleana.altaExpressioBooleana(query);
+    }
+
+    //Post: S'elimina l'expressió booleana si aquesta existia.
+    public void baixaExpressioBooleana(String query) {
+        ctrlExpressioBooleana.baixaExpressioBooleana(query);
+    }
+
+    //Post:Es modifica l'expressio booleana indicada en queryantiga si aquesta existia per querymodificada.
+    public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
+        ctrlExpressioBooleana.modificaExpressioBooleana(queryantiga,querymodificada);
+    }
+
+
+    //---CONSULTES---
+
+    //Post: es retorna una llista amb el conjunt de titols de l'autor indicat.
     public List<String> titolsAutor(String autor) {
         List<String> ls = new ArrayList<String>();
         if (existeixAutor(autor)) {
@@ -110,6 +128,7 @@ public class CtrlDomini {
         return ls;
     }
 
+    //Post: es retorna una llista amb el conjunt d'autors que començen pel prefix indicat.
     public ArrayList<String> prefixAutor(String prefix) {
         ArrayList<String> ls = new ArrayList<>();
         boolean algun = false;
@@ -121,89 +140,103 @@ public class CtrlDomini {
             }
         }
         if (!algun) {
-            System.out.println("Cap autor amb el prefix" + prefix);
+            System.out.println("Cap autor amb el prefix " + prefix);
         }
+        Collections.sort(ls);
         return ls;
     }
 
-    //si existeix el document retorna el seu contingut
-    //en cas contrari retorna null
+   //Post: Es retorna el contingut del document referenciat per autor i titol si aquest existeix.
     public String obteContingut(String autor, String titol) {
         if (existeixDocument(autor,titol)) {
             Document d = documents.getDocument(autor,titol);
             return d.getContingut();
         }
         else {
+            System.out.println("El document no existeix");
             return null;
         }
     }
 
-    //CALCUL DOCUMENTS SEMBLANTS 1
-    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament (TF)
-    public ConjuntDocuments DocumentsSemblants_TfIdf(String autor, String titol, Integer K) {
-        Document D = documents.getDocument(autor, titol);
-        HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
-        HashMap<Document, Double> aux = sortMapByValue(TfIdf);
-        Vector<Document> ret = new Vector<>(K);
-
-        //No se si el bucle agafa el mapa ordenat i no el desordena
-        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
-        while (it.hasNext() && ret.size()<K) {
-            Map.Entry<Document, Double> entry = it.next();
-            ret.add(entry.getKey());
+    //Post: Es retorna el conjunt de K documents mes semblants al document referenciat per titol autor si existeix.
+    //      Si K >= al nombre de documents del sistema retorna null.
+    //      L'algorisme per detectar semblançes sera Tf_idf si mode == 0 o Tf si mode == 1.
+    public ConjuntDocuments DocumentsSemblants(String autor, String titol, Integer K, Integer mode) {
+        Vector<Document> vd = documents.getVector();
+        if (K >= vd.size()) {
+            System.out.println("El natural K és major als documents del sistema");
+            System.out.println("K ha de ser menor a" + vd.size() + ".");
+            return null;
         }
-        ConjuntDocuments cd = new ConjuntDocuments(ret);
-        cd.imprimir();
-        return cd;
+        if (mode != 0 && mode != 1) {
+            System.out.println("Mode ha de ser 0 o 1");
+            return null;
+        }
+        if (existeixDocument(autor,titol)) {
+            ConjuntDocuments cd;
+            if (mode == 0) cd = DocumentsSemblants_TfIdf(autor,titol,K);
+            else cd = DocumentsSemblants_Tf(autor,titol,K);
+            return cd;
+        }
+        else {
+            System.out.println("El document no existeix");
+            return null;
+        }
     }
 
-    //CALCUL DOCUMENTS SEMBLANTS 2
-    //PRE: El numero de cops que la paraula apareix a cada document ja està calculat previament (TF)
-    public ConjuntDocuments DocumentsSemblants_Tf(String autor, String titol, Integer K) {
-        Document D = documents.getDocument(autor, titol);
-        HashMap<Document, Double> Tf = documents.CalculTf(D);
-        HashMap<Document, Double> aux = sortMapByValue(Tf);
-        Vector<Document> ret = new Vector<>(K);
-
-        //No se si el bucle agafa el mapa ordenat i no el desordena
-        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
-        while (it.hasNext() && ret.size()<K) {
-            Map.Entry<Document, Double> entry = it.next();
-            ret.add(entry.getKey());
-        }
-        ConjuntDocuments cd = new ConjuntDocuments(ret);
-        cd.imprimir();
-        return cd;
-    }
-
-
+    //Post: es retorna el conjunt de documents format per documents que contenen almenys una frase que compleix la query booleana.
     public ConjuntDocuments ConsultaBooleana(String query) {
-        CtrlExpressioBooleana = CtrlExpressioBooleana.getInstance();
-        ConjuntDocuments cd = CtrlExpressioBooleana.evalua(query,documents);
+        ConjuntDocuments cd = ctrlExpressioBooleana.evalua(query,documents);
         return cd;
     }
 
 
+    //---METODES ORDENACIO---
 
-    /*
-     *   ------------
-     *   METODES PRIVATS
-     *   ------------
-     * */
 
-    //post: elimina l'associacio entre el document d i el seu autor.
-    //      si l'autor nomes tenia aquell document retorna true. Altrament retorna false
+    //Post: es retorna un Conjunt de Documents ordenat segons el criteri escollit.
+    //      El criteri d'ordenacio es per ordre alfabetic de titol i despres per autor si ordre == 0,
+    //      per data de creacio del document si ordre == 1 o per ultima data de modificacio si ordre == 2.
+    public ConjuntDocuments ordenaDocuments(ConjuntDocuments cd, int ordre) {
+        if (ordre != 0 && ordre != 1 && ordre != 2) {
+            System.out.println("El nombre a introduir per escollir ordenació ha de ser 0, 1 o 2");
+            return null;
+        }
+        else if (ordre == 0) {
+            OrdreAlfabetic o = new OrdreAlfabetic();
+            ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+            return cdfi;
+        }
+        else if (ordre == 1) {
+            OrdreCreacio o = new OrdreCreacio();
+            ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+            return cdfi;
+        }
+        else {
+            OrdreModificacio o = new OrdreModificacio();
+            ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+            return cdfi;
+        }
+    }
+
+
+    //---METODES PRIVATS---
+
+
+    //Post: s'elimina l'associacio entre el document d i el seu autor.
+    //      si l'autor nomes tenia aquell document s'elimina l'autor.
     private void desassociaAutor(Document d) {
         Autor tmp = autors.get(d.getAutor());
         tmp.eliminaDocument(d);
         if(!tmp.teDocuments()) autors.remove(d.getAutor());
     }
 
-
+    //Post: retorna true si l'autor existeix. False altrament.
     private boolean existeixAutor(String autor) {
         return autors.containsKey(autor);
     }
 
+    //Post: retorna true si el document existeix. False altrament.
     private boolean existeixDocument(String autor, String titol) {
         if (autors.containsKey(autor)) {
             Autor a = autors.get(autor);
@@ -212,7 +245,43 @@ public class CtrlDomini {
         else return false;
     }
 
-    //Ordena el hashmap per valor descendentment(-1)
+    //Pre: K < nombre de documents del sistema.
+    //Post: Es retorna el conjunt de K documents mes semblants al document referenciat per titol autor si existeix.
+    //      Utilitza algorisme Tf_idf.
+    private ConjuntDocuments DocumentsSemblants_TfIdf(String autor, String titol, Integer K) {
+        Document D = documents.getDocument(autor, titol);
+        HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
+        HashMap<Document, Double> aux = sortMapByValue(TfIdf);
+        Vector<Document> ret = new Vector<>(K);
+
+        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
+        while (it.hasNext() && ret.size()<K) {
+            Map.Entry<Document, Double> entry = it.next();
+            ret.add(entry.getKey());
+        }
+        ConjuntDocuments cd = new ConjuntDocuments(ret);
+        return cd;
+    }
+
+    //Pre: K < nombre de documents del sistema.
+    //Post: Es retorna el conjunt de K documents mes semblants al document referenciat per titol autor si existeix.
+    //      Utilitza algorisme Tf.
+    private ConjuntDocuments DocumentsSemblants_Tf(String autor, String titol, Integer K) {
+        Document D = documents.getDocument(autor, titol);
+        HashMap<Document, Double> Tf = documents.CalculTf(D);
+        HashMap<Document, Double> aux = sortMapByValue(Tf);
+        Vector<Document> ret = new Vector<>(K);
+
+        Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
+        while (it.hasNext() && ret.size()<K) {
+            Map.Entry<Document, Double> entry = it.next();
+            ret.add(entry.getKey());
+        }
+        ConjuntDocuments cd = new ConjuntDocuments(ret);
+        return cd;
+    }
+
+    //Post: Retorna el HashMap de Document i valor idf ordenat descendentment.
     private HashMap<Document, Double> sortMapByValue(HashMap<Document, Double> map) {
         HashMap<Document, Double> sortedMap =  map.entrySet().stream()
                 .sorted(Comparator.comparingDouble(e -> -1 * e.getValue() ))
@@ -224,13 +293,4 @@ public class CtrlDomini {
                 ));
         return sortedMap;
     }
-
-    public void imprimirDocuments() {
-        documents.imprimir();
-    }
-
-    public void imprimirAutors() {
-        System.out.println(autors.keySet());
-    }
-
 }

@@ -1,10 +1,13 @@
-import Domini.*;
+package Drivers;
+
 import CtrlDomini.CtrlDomini;
+import Domini.ConjuntDocuments;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Main {
-    public static void main(String[] args) {
+public class DriverCtrlDomini {
+    public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         boolean exit = false;
         String autor;
@@ -38,11 +41,10 @@ public class Main {
                         System.out.println("Introdueix un contingut:");
                         contingut = scan.nextLine();
                         cd.altaDocument(autor, titol, contingut);
-                        break;
+                    } catch (Exception e) {
+                        System.out.println(e.toString());
                     }
-                    catch(Exception e) {
-                        e.toString();
-                    }
+                    break;
                 case 2:
                     System.out.println("Introdueix un autor:");
                     autor = scan.nextLine();
@@ -85,19 +87,31 @@ public class Main {
                     System.out.println("Introdueix un titol:");
                     titol = scan.nextLine();
                     System.out.println("Introdueix el nombre de documents a retornar:");
-                    int k = scan.nextInt();
+                    int k = Integer.parseInt(scan.nextLine());
                     System.out.println("Introdueix el mode per fer la cerca:");
                     System.out.println("0 per utilitzar Tf_idf");
                     System.out.println("1 per utilitzar Tf");
-                    int mode = scan.nextInt();
+                    int mode = Integer.parseInt(scan.nextLine());
                     ConjuntDocuments c = cd.DocumentsSemblants(autor, titol, k, mode);
-                    if (c != null) c.imprimir();
+                    System.out.println("Introduex un nombre per escollir el tipus d'ordenació:");
+                    System.out.println("0 per ordenació alfabètica per títol");
+                    System.out.println("1 per ordenació segons data de creació més propera");
+                    System.out.println("2 per ordenació segons data de modificació més propera");
+                    int ordre = Integer.parseInt(scan.nextLine());
+                    ConjuntDocuments cdfi = cd.ordenaDocuments(c, ordre);
+                    if (cdfi != null) cdfi.imprimir();
                     break;
                 case 8:
                     System.out.println("Introdueix una query booleana:");
                     query = scan.nextLine();
                     ConjuntDocuments c2 = cd.ConsultaBooleana(query);
-                    c2.imprimir();
+                    System.out.println("Introduex un nombre per escollir el tipus d'ordenació:");
+                    System.out.println("0 per ordenació alfabètica per títol");
+                    System.out.println("1 per ordenació segons data de creació més propera");
+                    System.out.println("2 per ordenació segons data de modificació més propera");
+                    int ordre2 = Integer.parseInt(scan.nextLine());
+                    ConjuntDocuments cdfi2 = cd.ordenaDocuments(c2, ordre2);
+                    cdfi2.imprimir();
                     break;
                 case 9:
                     System.out.println("Introdueix una query booleana:");

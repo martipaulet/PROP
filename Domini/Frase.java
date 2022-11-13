@@ -2,53 +2,62 @@
 package Domini;
 import java.util.*;
 
-public class Frase {
+public class Frase { //classe que representa la frase pertanyent a un document en concret.
 
-    private String frase_;
-    private String titolDoc_;
-    private String autorDoc_;
 
-    private final String[] paraules_;
+    //---ATRIBUTS---
 
-    private ArrayList<String> Paraules = new ArrayList<>();
+    private String frase; //string que conte la frase.
+    private String titoldoc; //titol del document al que pertany la frase.
+    private String autordoc; //autor del document al que pertany la frase.
+    private final String[] paraules_; //frase separada per paraules.
+    private ArrayList<String> Paraules = new ArrayList<>(); //frase separada per paraules en una llista sense repeticions.
 
-    public Frase(String frase, String titolDoc, String autorDoc) {
+
+    //---CONSTRUCTORA---
+
+
+    //Pre: el document referenciat per titol i autor existeix en el sistema.
+    //Post: es crea una instancia de frase amb titoldoc = titol, autordoc = autor, this.frase = frase
+    //      es guarda el contingut de la frase separat per paraules.
+    public Frase(String frase, String titol, String autor) {
         paraules_ = frase.split("\\W+");
-        titolDoc_ = titolDoc;
-        autorDoc_ = autorDoc;
-        frase_ = frase;
+        titoldoc = titol;
+        autordoc = autor;
+        this.frase = frase;
         setParaules();
     }
 
-    public String[] getParaules() {
-        return paraules_;
-    }
 
+    //---GETTERS/SETTERS---
+
+
+    //Post: retorna el titol del document a la que pertany la frase.
     public String getTitolDoc() {
-        return titolDoc_;
+        return titoldoc;
     }
 
+    //Post: retorna l'autor del document a la que pertany la frase.
     public String getAutorDoc() {
-        return autorDoc_;
+        return autordoc;
     }
 
+    //Post: retorna el contingut de la frase.
     public String getFrase() {
-        return frase_;
+        return frase;
     }
 
+    //Post: retorna les paraules que conte la frase.
     public ArrayList<String> getrecParaules() {
         return Paraules;
     }
 
-    private void setParaules() {
-        for (String paraula : paraules_) {
-            paraula = paraula.toLowerCase();
-            if (!Paraules.contains(paraula)) {
-                Paraules.add(paraula);
-            }
-        }
-    }
 
+    //---CONSULTORA---
+
+
+    //Pre: l'string query es una paraula simple o una sequencia de paraules.
+    //Post: retorna true si la frase conte la query exactament com a paraules. False altrament.
     public boolean conteQuery(String query) {
         String [] q2 = query.split("\\W+");
         boolean conte = false;
@@ -68,55 +77,18 @@ public class Frase {
         return conte;
     }
 
-    public void imprimir() {
-        System.out.println(frase_);
-        System.out.println(Arrays.toString(paraules_));
-        System.out.println();
-    }
-    //pre: la frase conte totes les paraules de String[] query
-    //post: rtetorna true si les conte seguides false altrament
-    /*public Boolean seguides(String[] query) {
-        boolean seguides = true;
-        boolean trobat = false;
-        for (int i = 0; i < query.length; ++i) {
-            if (r)
-        }
-        return conte;
-    }*/
 
-    /*
-    private Boolean conteQuery3(String query) {
-        Boolean ret = false;
-        Frase f = new Frase (query, "", "");
-        if (frase.contains(query)) {
+    //---METODES PRIVATS---
 
-            ret = true;
-        }
-        return ret;
-    }
 
-    private Boolean conteQuery2(String query) {
-        String[] disjoint = query.split("\\W+");
-        int currentPos = 0;
-        Boolean matches = false;
-        Boolean finish = false;
-
-        for (String p : disjoint) {
-            if (p.equals(paraules_[currentPos]) && matches) {
-                ++currentPos;
-                if (currentPos == (disjoint.length -1)) finish = true;
-            }
-            else if (p.equals(paraules_[currentPos]) && !matches) {
-                matches = true;
-                ++currentPos;
-            }
-            else if (!p.equals(paraules_[currentPos])){
-                ++currentPos;
-                matches = false;
-                finish = false;
+    //Post: guarda les paraules que conte la frase (sense repeticions).
+    private void setParaules() {
+        for (String paraula : paraules_) {
+            paraula = paraula.toLowerCase();
+            if (!Paraules.contains(paraula)) {
+                Paraules.add(paraula);
             }
         }
-        return finish;
     }
-    */
+
 }

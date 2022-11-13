@@ -1,40 +1,52 @@
 package Domini;
 
-import CtrlDomini.CtrlDomini;
-
-import javax.print.Doc;
 import java.util.*;
 
+
 public class ExpressionTree {
-    Node root;
+
+
+    //---ATRIBUTS---
+
+
+    private Node root;  //Node arrel de l'arbre.
+
+
+    //---CONSTRUCTORA---
+
+
+    //Post: es crea una instancia d'expressionTree a partir una query donada.
     public ExpressionTree(String query) {
         List<String> postfix = adapt(query);
         root = expressionTree(postfix);
     }
 
-    public void modifica(String query) {
-        List<String> postfix = adapt(query);
-        root = expressionTree(postfix);
-    }
+
+    //---CLASSE PRIVADA NODE---
 
 
     //Clase Node per implementar l'arbre
     private static class Node {
-        String data;
-        Node left, right;
+        public String data;  //valor del node, pot ser una paraula, una sequencia de paraules o un operador[!,&,|].
+        public Node left, right; //subnode esquerra i subnode dret.
 
-        //Crear nou node
+        //Constructora del node
+        //Post: crea una instancia de node posant data = s i amb subnodes buits.
         private Node(String s) {
             data = s;
             left = right = null;
         }
 
+        //Constructora del node
+        //Post: crea una instancia de node posant data = s, subnode esquerra = left i subnode dreta buit.
         private Node(String s, Node left) {
             data = s;
             this.left = left;
             this.right = null;
         }
 
+        //Constructora del node
+        //Post: crea una instancia de node posant data = s, subnode esquerra = left i subnode dreta = right.
         private Node(String data, Node left, Node right)
         {
             this.data = data;
@@ -42,28 +54,58 @@ public class ExpressionTree {
             this.right = right;
         }
 
-        private String getData() {
-            return data;
-        }
-
+        //Consultora de node
+        //Post: retorna true si el node es fulla, per tant si te subnode esq i subnode dreta buits. False altrament.
         private boolean esFulla() {
             return (left == null) && (right == null);
         }
     }
+    //FI CLASSE NODE.
 
 
-    //pre: la query segueix sintaxis correcta seguint l'exemple de l'enunciat: {p1 p2 p3} & ("hola adéu" | pep) & !joan
-    //modifica la query introduida en un Vector suprimint espais i "" i separant paraules de signes (  (,),{,},!,|,&  ) despres pasa en notacio post-fix
-    public static List<String> adapt(String query) {
+    //---MODIFICADORA---
+
+
+    //Pre: la query indicada no existeix en el sistema.
+    //Post: es modifica l'expressionTree del p.i a partir de la query donada.
+    public void modifica(String query) {
+        List<String> postfix = adapt(query);
+        root = expressionTree(postfix);
+    }
+
+
+    //---CALCUL---
+
+
+    //Pre: se li passa com a parametre el conjunt de documents total del sistema.
+    //Post: retorna un conjunt de documents format pels documents que tenen almenys una frase que compleix la query representada en l'expressionTree.
+    public ConjuntDocuments calculate(ConjuntDocuments total) {
+        Set<Frase> frases = calculateIm(root, total);
+        Vector<Document> vd = new Vector<>();
+        for (Frase f : frases) {
+            Document d = total.getDocument(f.getAutorDoc(),f.getTitolDoc());
+            vd.add(d);
+        }
+        ConjuntDocuments cd = new ConjuntDocuments(vd);
+        return cd;
+    }
+
+
+    //---METODES PRIVATS---
+
+
+    //Pre: la query segueix sintaxis correcta seguint l'exemple de l'enunciat: {p1 p2 p3} & ("hola adéu" | pep) & !joan
+    //Post: modifica la query introduida en una Llista de string suprimint espais i "" i separant paraules de signes [(,),{,},!,|,&] despres la pasa en notacio post-fix.
+    private List<String> adapt(String query) {
         List<String> result = new ArrayList<>();
         int i = 0;
         boolean curlyOpened = false;
         while (i < query.length()) {
+            //avaluar query char per char.
             char ch = query.charAt(i);
-            //(,),{,},!,|,&
+            //si es operador afegir a la llista. Si a mes a mes es { o } substituir per ( o ) respectivament.
             if (isOperator(ch)) {
                 boolean in = false;
-                // { }
                 if (isCurlyBrace(ch)) {
                     in = true;
                     curlyOpened = !curlyOpened;
@@ -72,15 +114,10 @@ public class ExpressionTree {
                 }
                 //transforma ch en string
                 if (!in) result.add(""+ch);
-
                 ++i;
             }
-            // ' '
-            else if (isBlank(ch)) {
-                ++i;
-            }
-            // "
-            else if (isQuotes(ch)) {
+            else if (isBlank(ch)) ++i;  //si es un espai no fer res.
+            else if (isQuotes(ch)) {    //si son " suprimir i afegir la sequencia de paraules com a un string simple a la llista.
                 ++i;
                 if (i < query.length()) ch = query.charAt(i);
                 StringBuilder s = new StringBuilder();
@@ -92,7 +129,8 @@ public class ExpressionTree {
                 ++i;
                 result.add(String.valueOf(s));
             }
-            //primera lletra de paraula que no començi amb "
+            //si es una paraula simple (no es sequencia de paraules) afegir a la llista.
+            //si a mes a mes la paraula estava entre {} posar operador & a la llista just despres. (ja que {p1 p2 p3} = p1 & p2 & p3 ).
             else {
                 StringBuilder s = new StringBuilder();
                 s.append(ch);
@@ -109,50 +147,13 @@ public class ExpressionTree {
                 }
             }
         }
+        //pasar la llista un cop acabat el bucle a notacio postfix per fer mes simple l'arbre despres.
         List<String> result2 = infixToPostfix(result);
         return result2;
     }
 
-    //Metodes Auxiliars
-
-    public static boolean isOperator(String s) {
-        return Objects.equals(s, "{") || Objects.equals(s, "}") || Objects.equals(s, "(") || Objects.equals(s, ")") || Objects.equals(s, "&") ||
-                Objects.equals(s, "|") || Objects.equals(s, "!");
-    }
-
-    public static boolean isOperator(char s) {
-        return s == '{' || s == '}' || s == '(' || s == ')' || s == '&' || s == '|' || s == '!';
-    }
-
-    public static boolean isCurlyBrace(char s) {
-        return s == '{' || s == '}';
-    }
-
-    public static boolean isBlank(char s) {
-        return s == ' ';
-    }
-
-    public static boolean isQuotes(char s) {
-        return s == '"';
-    }
-
-    static int preced(String s) {
-        if(Objects.equals(s, "!")) {
-            return 3;
-        }
-        else if(Objects.equals(s, "&")) {
-            return 2;
-        }
-        else if(Objects.equals(s, "|")) {
-            return 1;
-        }
-        else if(Objects.equals(s, ")")) {
-            return 0;
-        }
-        else return -1;
-    }
-
-    public static List<String> infixToPostfix(List<String>infix) {
+    //Post: retorna la llista introduida en notacio infix a notacio postfix.
+    private List<String> infixToPostfix(List<String>infix) {
         Stack<String> st = new Stack<>();
         st.push("#");
         List<String> postfix = new ArrayList<>();
@@ -189,9 +190,52 @@ public class ExpressionTree {
         return postfix;
     }
 
+    //Post: retorna true si String s es [{,},(,),&,!,|]. False altrament.
+    private boolean isOperator(String s) {
+        return Objects.equals(s, "{") || Objects.equals(s, "}") || Objects.equals(s, "(") || Objects.equals(s, ")") || Objects.equals(s, "&") ||
+                Objects.equals(s, "|") || Objects.equals(s, "!");
+    }
 
-    //Construeix l'Expression Tree
-    public static Node expressionTree(List<String> ListQuery) {
+    //Post: retorna true si char s es [{,},(,),&,!,|]. False altrament.
+    private boolean isOperator(char s) {
+        return s == '{' || s == '}' || s == '(' || s == ')' || s == '&' || s == '|' || s == '!';
+    }
+
+    //Post: retorna true si char s es [{,}]. False altrament.
+    private boolean isCurlyBrace(char s) {
+        return s == '{' || s == '}';
+    }
+
+    //Post: retorna true si char s es un espai ' '. False altrament.
+    private boolean isBlank(char s) {
+        return s == ' ';
+    }
+
+    //Post: retorna true si char s es ["]. False altrament.
+    private boolean isQuotes(char s) {
+        return s == '"';
+    }
+
+    //Post: retorna el valor de precedencia dels operadors. Quant mes gran es el valor abans va.
+    private int preced(String s) {
+        if(Objects.equals(s, "!")) {
+            return 3;
+        }
+        else if(Objects.equals(s, "&")) {
+            return 2;
+        }
+        else if(Objects.equals(s, "|")) {
+            return 1;
+        }
+        else if(Objects.equals(s, ")")) {
+            return 0;
+        }
+        else return -1;
+    }
+
+    //Pre: la llista que conte la query esta en notacio postfix.
+    //Post: Construeix l'ExpressionTree a partir de la llista en notacio postfix. Retorna el node arrel de l'arbre resultant.
+    private Node expressionTree(List<String> ListQuery) {
         //cas base
         if (ListQuery == null || ListQuery.size() == 0) {
             return null;
@@ -225,20 +269,8 @@ public class ExpressionTree {
         return st.peek();
     }
 
-
-    public ConjuntDocuments calculate(ConjuntDocuments total) {
-        Set<Frase> frases = calculateIm(root, total);
-        Vector<Document> vd = new Vector<>();
-        for (Frase f : frases) {
-            Document d = total.getDocument(f.getAutorDoc(),f.getTitolDoc());
-            vd.add(d);
-        }
-        ConjuntDocuments cd = new ConjuntDocuments(vd);
-        return cd;
-    }
-
-
-
+    //Pre: Conjunt documents total es el conjunt de documents del sistema.
+    //Post: retorna un set de frases que compleixen la query representada en l'expresionTree.
     private Set<Frase> calculateIm(Node n, ConjuntDocuments total) {
         if (n != null) {
             Set<Frase> frases = new HashSet<>();
@@ -254,58 +286,27 @@ public class ExpressionTree {
         return null;
     }
 
-
+    //Pre: op pot ser [|,&,!] i Conjunt documents total es el conjunt de documents del sistema.
+    //Post: retorna l'operacio del conjunt de frases en funcio de l'operador.
     private Set<Frase> operaSets(Set<Frase> s1, Set<Frase> s2, String op, ConjuntDocuments total) {
 
         Set<Frase> result = new HashSet<>();
-        //hacer COMPLEMENTARIO de m1
+        //fer complementari de s1
         if (s2 == null && Objects.equals(op, "!")) {
             result = total.VecToSet();
             if (s1 != null) result.removeAll(s1);
         }
-        //hacer INTERSECCION m1 i m2
+        //fer interseccio de s1 i s2
         else if (Objects.equals(op, "&")) {
             result = s1;
             if (s2 != null) result.retainAll(s2);
         }
-        //hacer UNION m1 i m2
+        //fer unio de s1 i s2
         else if (Objects.equals(op, "|")) {
             result = s1;
             if (s2 != null) result.addAll(s2);
         }
         return result;
     }
-
-
-
-
-
-
-    // Imprimir arbre en postordre
-    static void postorder(Node root)
-    {
-        if (root == null) {
-            return;
-        }
-        postorder(root.left);
-        postorder(root.right);
-        System.out.print(root.data + " ");
-    }
-    
-    // Driver code
-    public static void main(String[] args) {
-        String s = "{p1 p2 p3} & (\"hola adéu\" | pep) & !joan";
-        List<String> query = adapt(s);
-        System.out.println("Query Modificada: ");
-        for (String value : query) {
-            System.out.print(value + ",");
-        }
-        System.out.println("");
-        System.out.println("Arbre (en postordre): ");
-        Node root = expressionTree(query);
-        postorder(root);
-    }
-
-
 
 }
