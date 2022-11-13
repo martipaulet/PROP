@@ -30,14 +30,19 @@ public class Main {
             int opcio = Integer.parseInt(scan.nextLine());
             switch (opcio) {
                 case 1:
-                    System.out.println("Introdueix un autor:");
-                    autor = scan.nextLine();
-                    System.out.println("Introdueix un titol:");
-                    titol = scan.nextLine();
-                    System.out.println("Introdueix un contingut:");
-                    contingut = scan.nextLine();
-                    cd.altaDocument(autor, titol, contingut);
-                    break;
+                    try {
+                        System.out.println("Introdueix un autor:");
+                        autor = scan.nextLine();
+                        System.out.println("Introdueix un titol:");
+                        titol = scan.nextLine();
+                        System.out.println("Introdueix un contingut:");
+                        contingut = scan.nextLine();
+                        cd.altaDocument(autor, titol, contingut);
+                        break;
+                    }
+                    catch(Exception e) {
+                        e.toString();
+                    }
                 case 2:
                     System.out.println("Introdueix un autor:");
                     autor = scan.nextLine();

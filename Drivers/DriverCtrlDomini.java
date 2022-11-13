@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverCtrlDomini {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Scanner scan = new Scanner(System.in);
         boolean exit = false;
         String autor;
@@ -33,13 +33,17 @@ public class DriverCtrlDomini {
             int opcio = Integer.parseInt(scan.nextLine());
             switch (opcio) {
                 case 1:
-                    System.out.println("Introdueix un autor:");
-                    autor = scan.nextLine();
-                    System.out.println("Introdueix un titol:");
-                    titol = scan.nextLine();
-                    System.out.println("Introdueix un contingut:");
-                    contingut = scan.nextLine();
-                    cd.altaDocument(autor, titol, contingut);
+                    try {
+                        System.out.println("Introdueix un autor:");
+                        autor = scan.nextLine();
+                        System.out.println("Introdueix un titol:");
+                        titol = scan.nextLine();
+                        System.out.println("Introdueix un contingut:");
+                        contingut = scan.nextLine();
+                        cd.altaDocument(autor, titol, contingut);
+                    } catch (Exception e) {
+                        System.out.println(e.toString());
+                    }
                     break;
                 case 2:
                     System.out.println("Introdueix un autor:");

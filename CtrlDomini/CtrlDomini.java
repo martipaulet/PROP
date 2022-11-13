@@ -46,8 +46,9 @@ public class CtrlDomini {
     //Post: es crea un nou document en el sistema si aquest no existia previament.
     //      Si l'autor del document no existia es crea l'autor.
     //      Es crea la relacio entre aquest nou document i l'autor.
-    public void altaDocument(String autor, String titol, String contingut) {
-        if (autor == null || titol == null) System.out.println("Error en la creació de Document");
+    public void altaDocument(String autor, String titol, String contingut) throws Exception{
+        if (Objects.equals(autor, "") || Objects.equals(titol, ""))  throw new Exception("Ni autor ni titol no poden ser null");//System.out.println("Ni autor ni titol no poden ser null");
+
         Autor a = new Autor();
         if (!existeixAutor(autor)) {
             a.setNom(autor);
@@ -56,7 +57,7 @@ public class CtrlDomini {
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
-                System.out.print("Document ja existent");
+                System.out.println("Document ja existeix");
                 return;
             }
         }
