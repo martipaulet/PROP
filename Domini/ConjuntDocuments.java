@@ -28,22 +28,22 @@ public class ConjuntDocuments {
 
 
     //Post: S'afegeix el document d al conjunt de documents si aquest no estava.
-    public void afegirDocument(Document d) {
+    public void afegirDocument(Document d) throws Exception{
         if (!pertany(d)){
             CjtD.add(d);
         }
         else {
-            System.out.print("EL document ja pertanyia al conjunt\r\n");
+            throw new Exception("El document ja pertanyia al conjunt\r\n");
         }
     }
 
     //Post: S'elimina el document d del conjunt de documents si aquest estava.
-    public void baixaDocument(Document d) {
+    public void baixaDocument(Document d) throws Exception{
         if (pertany(d)){
             CjtD.remove(d);
         }
         else {
-            System.out.print("EL document no pertany al conjunt\r\n");
+            throw new Exception("El document no pertany al conjunt\r\n");
         }
     }
 
@@ -163,7 +163,7 @@ public class ConjuntDocuments {
     }
 
     //Post: retorna un set de frases dels documents del conjunt que contenen l'string s en la frase.
-    public Set<Frase> obteFrasesContenen(String s) {
+    public Set<Frase> obteFrasesContenen(String s) throws Exception{
         Set<Frase> sf = new HashSet<>();
         for (int i = 0; i < CjtD.size(); ++i) {
             Document d = CjtD.elementAt(i);
@@ -175,7 +175,7 @@ public class ConjuntDocuments {
                 }
             }
         }
-        if (sf.size() == 0) System.out.print("La paraula "+s+" no esta en cap frase del conjunt de documents\r\n");
+        if (sf.size() == 0) throw new Exception("La paraula "+s+" no esta en cap frase del conjunt de documents\r\n");
         return sf;
     }
 

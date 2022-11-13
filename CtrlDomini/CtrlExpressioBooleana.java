@@ -38,26 +38,26 @@ public class CtrlExpressioBooleana {
 
 
     //Post: Es crea una nova expressio booleana si aquesta no existia.
-    public void altaExpressioBooleana(String query) {
+    public void altaExpressioBooleana(String query) throws Exception{
         if (!expressions.containsKey(query)) {
             ExpressionTree e2 = new ExpressionTree(query);
             expressions.put(query, e2);
         }
-        else System.out.println("La query booleana ja existeix en el sistema");
+        else throw new Exception("La query booleana ja existeix en el sistema");
     }
 
     //Post: S'elimina l'expressió booleana si aquesta existia.
-    public void baixaExpressioBooleana(String query) {
+    public void baixaExpressioBooleana(String query) throws Exception{
         if (expressions.containsKey(query)) {
             expressions.remove(query);
         }
         else {
-            System.out.println("La query:" +query+ "no existeix en el sistema per tant no es pot donar de baixa");
+            throw new Exception("La query:" +query+ "no existeix en el sistema per tant no es pot donar de baixa");
         }
     }
 
     //Post: Es modifica l'expressio booleana indicada en queryantiga (si aquesta existia) per querymodificada (si aquesta no existia).
-    public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
+    public void modificaExpressioBooleana(String queryantiga, String querymodificada) throws Exception{
         if (expressions.containsKey(queryantiga) && !expressions.containsKey(querymodificada)) {
             ExpressionTree e = expressions.get(queryantiga);
             e.modifica(querymodificada);
@@ -65,9 +65,9 @@ public class CtrlExpressioBooleana {
             expressions.put(querymodificada, e);
         }
         else if (!expressions.containsKey(queryantiga)){
-            System.out.println("La query: " +queryantiga+ "no existeix en el sistema per tant no es pot modificar");
+            throw new Exception("La query: " +queryantiga+ "no existeix en el sistema per tant no es pot modificar");
         }
-        else System.out.println("La query "+querymodificada+ "ja existeix al sistema");
+        else throw new Exception("La query "+querymodificada+ "ja existeix al sistema");
     }
 
 
@@ -75,7 +75,7 @@ public class CtrlExpressioBooleana {
 
 
     //Post: es retorna el conjunt de documents format per documents que contenen almenys una frase que compleix la query booleana.
-    public ConjuntDocuments evalua(String query, ConjuntDocuments total) {
+    public ConjuntDocuments evalua(String query, ConjuntDocuments total) throws Exception{
         if (!expressions.containsKey(query)) {
             altaExpressioBooleana(query);
         }

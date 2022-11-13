@@ -79,7 +79,7 @@ public class ExpressionTree {
 
     //Pre: se li passa com a parametre el conjunt de documents total del sistema.
     //Post: retorna un conjunt de documents format pels documents que tenen almenys una frase que compleix la query representada en l'expressionTree.
-    public ConjuntDocuments calculate(ConjuntDocuments total) {
+    public ConjuntDocuments calculate(ConjuntDocuments total) throws Exception{
         Set<Frase> frases = calculateIm(root, total);
         Vector<Document> vd = new Vector<>();
         for (Frase f : frases) {
@@ -271,7 +271,7 @@ public class ExpressionTree {
 
     //Pre: Conjunt documents total es el conjunt de documents del sistema.
     //Post: retorna un set de frases que compleixen la query representada en l'expresionTree.
-    private Set<Frase> calculateIm(Node n, ConjuntDocuments total) {
+    private Set<Frase> calculateIm(Node n, ConjuntDocuments total) throws Exception{
         if (n != null) {
             Set<Frase> frases = new HashSet<>();
             if (n.esFulla()) {
