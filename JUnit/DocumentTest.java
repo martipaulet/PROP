@@ -73,11 +73,16 @@ public class DocumentTest {
 
     @Test
     public void getFrasesParaulaTest() {
-        document.actualitzaDocument("Hola hem dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
-        assertEquals(document.getFrasesParaula("Marx").size(),2);
-        assertEquals(document.getFrasesParaula("Hola").size(),1);
-        //Excepcio
-        assertEquals(document.getFrasesParaula("adeu").size(),0);
+        try {
+            document.actualitzaDocument("Hola hem dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
+            assertEquals(document.getFrasesParaula("Marx").size(),2);
+            assertEquals(document.getFrasesParaula("Hola").size(),1);
+            //Excepcio
+            assertEquals(document.getFrasesParaula("adeu").size(),0);
+        }
+        catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     @Test

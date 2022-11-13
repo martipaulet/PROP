@@ -57,8 +57,7 @@ public class CtrlDomini {
         else {
             a = autors.get(autor);
             if (a.conteTitol(titol)) {
-                System.out.println("Document ja existeix");
-                return;
+                throw new Exception("Document ja existeix");
             }
         }
         Document d = new Document(autor, titol, contingut);
@@ -68,28 +67,28 @@ public class CtrlDomini {
 
     //Post: S'elimina el document d i la seva relacio amb l'autor.
     //      Si l'autor del document eliminat nomes tenia aquest document s'elimina l'autor.
-    public void baixaDocument(String autor, String titol) {
-        if (autor == null || titol == null) System.out.println("Introdueix un autor i títol vàlid");
+    public void baixaDocument(String autor, String titol) throws Exception{
+        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Introdueix un autor i títol vàlid");
         else if (documents.getDocument(autor,titol) != null) {
             Document d = documents.getDocument(autor,titol);
             desassociaAutor(d);
             documents.baixaDocument(d);
         }
         else {
-            System.out.println("Document no existeix en el sistema");
+            throw new Exception("Document no existeix en el sistema");
         }
 
     }
 
     //Post: S'actualitza el contingut i la data d'ultima modificació del document si es que s'ha modificat el contingut.
-    public void modificarDocument(String nouContingut, String autor, String titol) {
-        if (autor == null || titol == null) System.out.println("Introdueix un autor i títol vàlid");
+    public void modificarDocument(String nouContingut, String autor, String titol) throws Exception{
+        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Introdueix un autor i títol vàlid");
         else if (documents.getDocument(autor,titol) != null) {
             Document d = documents.getDocument(autor,titol);
             if (!d.getContingut().equals(nouContingut)) d.actualitzaDocument(nouContingut);
         }
         else {
-            System.out.println("Document no existeix en el sistema");
+            throw new Exception("Document no existeix en el sistema");
         }
     }
 
@@ -98,17 +97,17 @@ public class CtrlDomini {
 
 
     //Post: Es crea una nova expressio booleana si aquesta no existia.
-    public void altaExpressioBooleana(String query) {
+    public void altaExpressioBooleana(String query) throws Exception{
         ctrlExpressioBooleana.altaExpressioBooleana(query);
     }
 
     //Post: S'elimina l'expressió booleana si aquesta existia.
-    public void baixaExpressioBooleana(String query) {
+    public void baixaExpressioBooleana(String query) throws Exception {
         ctrlExpressioBooleana.baixaExpressioBooleana(query);
     }
 
     //Post:Es modifica l'expressio booleana indicada en queryantiga si aquesta existia per querymodificada.
-    public void modificaExpressioBooleana(String queryantiga, String querymodificada) {
+    public void modificaExpressioBooleana(String queryantiga, String querymodificada) throws Exception{
         ctrlExpressioBooleana.modificaExpressioBooleana(queryantiga,querymodificada);
     }
 
@@ -116,20 +115,20 @@ public class CtrlDomini {
     //---CONSULTES---
 
     //Post: es retorna una llista amb el conjunt de titols de l'autor indicat.
-    public List<String> titolsAutor(String autor) {
+    public List<String> titolsAutor(String autor) throws Exception{
         List<String> ls = new ArrayList<String>();
         if (existeixAutor(autor)) {
             Autor a = autors.get(autor);
             ls = a.consultaTitols();
         }
         else {
-            System.out.println("Autor no existent");
+            throw new Exception("Autor no existent");
         }
         return ls;
     }
 
     //Post: es retorna una llista amb el conjunt d'autors que començen pel prefix indicat.
-    public ArrayList<String> prefixAutor(String prefix) {
+    public ArrayList<String> prefixAutor(String prefix) throws Exception{
         ArrayList<String> ls = new ArrayList<>();
         boolean algun = false;
         for (String nomAutor : autors.keySet()) {
@@ -140,37 +139,33 @@ public class CtrlDomini {
             }
         }
         if (!algun) {
-            System.out.println("Cap autor amb el prefix " + prefix);
+            throw new Exception("Cap autor amb el prefix " + prefix);
         }
         Collections.sort(ls);
         return ls;
     }
 
    //Post: Es retorna el contingut del document referenciat per autor i titol si aquest existeix.
-    public String obteContingut(String autor, String titol) {
+    public String obteContingut(String autor, String titol) throws Exception{
         if (existeixDocument(autor,titol)) {
             Document d = documents.getDocument(autor,titol);
             return d.getContingut();
         }
         else {
-            System.out.println("El document no existeix");
-            return null;
+            throw new Exception("El document no existeix");
         }
     }
 
     //Post: Es retorna el conjunt de K documents mes semblants al document referenciat per titol autor si existeix.
     //      Si K >= al nombre de documents del sistema retorna null.
     //      L'algorisme per detectar semblançes sera Tf_idf si mode == 0 o Tf si mode == 1.
-    public ConjuntDocuments DocumentsSemblants(String autor, String titol, Integer K, Integer mode) {
+    public ConjuntDocuments DocumentsSemblants(String autor, String titol, Integer K, Integer mode) throws Exception{
         Vector<Document> vd = documents.getVector();
         if (K >= vd.size()) {
-            System.out.println("El natural K és major als documents del sistema");
-            System.out.println("K ha de ser menor a" + vd.size() + ".");
-            return null;
+            throw new Exception("El natural K és major als documents del sistema. K ha de ser menor a" + vd.size() + ".");
         }
         if (mode != 0 && mode != 1) {
-            System.out.println("Mode ha de ser 0 o 1");
-            return null;
+            throw new Exception("Mode ha de ser 0 o 1");
         }
         if (existeixDocument(autor,titol)) {
             ConjuntDocuments cd;
@@ -179,13 +174,12 @@ public class CtrlDomini {
             return cd;
         }
         else {
-            System.out.println("El document no existeix");
-            return null;
+            throw new Exception("El document no existeix");
         }
     }
 
     //Post: es retorna el conjunt de documents format per documents que contenen almenys una frase que compleix la query booleana.
-    public ConjuntDocuments ConsultaBooleana(String query) {
+    public ConjuntDocuments ConsultaBooleana(String query) throws Exception{
         ConjuntDocuments cd = ctrlExpressioBooleana.evalua(query,documents);
         return cd;
     }
@@ -197,10 +191,9 @@ public class CtrlDomini {
     //Post: es retorna un Conjunt de Documents ordenat segons el criteri escollit.
     //      El criteri d'ordenacio es per ordre alfabetic de titol i despres per autor si ordre == 0,
     //      per data de creacio del document si ordre == 1 o per ultima data de modificacio si ordre == 2.
-    public ConjuntDocuments ordenaDocuments(ConjuntDocuments cd, int ordre) {
+    public ConjuntDocuments ordenaDocuments(ConjuntDocuments cd, int ordre) throws Exception{
         if (ordre != 0 && ordre != 1 && ordre != 2) {
-            System.out.println("El nombre a introduir per escollir ordenació ha de ser 0, 1 o 2");
-            return null;
+            throw new Exception("El nombre a introduir per escollir ordenació ha de ser 0, 1 o 2");
         }
         else if (ordre == 0) {
             OrdreAlfabetic o = new OrdreAlfabetic();

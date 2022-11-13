@@ -103,13 +103,13 @@ public class Document {
 
 
     //Post: retorna el conjunt de frases que contenen l'string s del document.
-    public Vector<Frase> getFrasesParaula(String s) {
+    public Vector<Frase> getFrasesParaula(String s) throws Exception{
         Vector<Frase> vf = new Vector<>();
         for (int i = 0; i < frases_.size(); ++i) {
             Frase f = frases_.get(i);
             if (f.conteQuery(s)) vf.add(f);
         }
-        if (vf.size() == 0) System.out.print("La paraula "+ s + " no apareix en cap frase del document\r\n");
+        if (vf.size() == 0) throw new Exception("La paraula "+ s + " no apareix en cap frase del document\r\n");
         return vf;
     }
 
