@@ -17,7 +17,7 @@ public class DocumentTest {
     private Document document;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         Calendar calendari = new GregorianCalendar(2022, Calendar.JANUARY, 1);
         Date creacio = calendari.getTime();
         calendari.set(2022, Calendar.FEBRUARY, 2);
