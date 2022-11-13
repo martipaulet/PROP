@@ -138,7 +138,6 @@ public class ConjuntDocumentsTest {
         catch (Exception e) {
             System.out.println(e.toString());
         }
-
     }
 
     //TEST 1 RETORNA DOCUMENT (document esta al conjunt)
