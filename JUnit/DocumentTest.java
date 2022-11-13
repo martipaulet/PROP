@@ -27,12 +27,6 @@ public class DocumentTest {
     }
 
     @Test
-    public void testSetAutor() {
-        document.setAutor("Jordi Colomé");
-        assertEquals(document.getAutor(), "Jordi Colomé");
-    }
-
-    @Test
     public void testGetTitol() {
         assertEquals(document.getTitol(), "Communist Manifesto");
     }

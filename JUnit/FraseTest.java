@@ -26,17 +26,6 @@ public class FraseTest {
         assertEquals(expected, actuals);
     }
 
-    //TEST getParaules
-    @Test
-    public void getParaulesTest() {
-        Frase f = new Frase("un munt de paraules", "Un munt", "Joan");
-        String[] s = f.getParaules();
-        String prova = "un munt de paraules";
-        String[] p = prova.split("\\W+");
-
-        assertEquals(s, p);
-    }
-
     //TEST setParaules i getrecParaules
     @Test
     public void setParaulesTest() {
@@ -48,7 +37,6 @@ public class FraseTest {
         prova.add("paraules");
 
         assertEquals(prova, f.getrecParaules());
-
     }
 
     //TEST de conteQuery --> CAS 1: No conté la query
