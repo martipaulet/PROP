@@ -7,9 +7,9 @@ public class Frase { //classe que representa la frase pertanyent a un document e
 
     //---ATRIBUTS---
 
-    private String frase; //string que conte la frase.
-    private String titoldoc; //titol del document al que pertany la frase.
-    private String autordoc; //autor del document al que pertany la frase.
+    private String frase_; //string que conte la frase.
+    private String titolDoc_; //titol del document al que pertany la frase.
+    private String autorDoc_; //autor del document al que pertany la frase.
     private final String[] paraules_; //frase separada per paraules.
     private ArrayList<String> Paraules = new ArrayList<>(); //frase separada per paraules en una llista sense repeticions.
 
@@ -22,9 +22,9 @@ public class Frase { //classe que representa la frase pertanyent a un document e
     //      es guarda el contingut de la frase separat per paraules.
     public Frase(String frase, String titol, String autor) {
         paraules_ = frase.split("\\W+");
-        titoldoc = titol;
-        autordoc = autor;
-        this.frase = frase;
+        titolDoc_ = titol;
+        autorDoc_ = autor;
+        frase_ = frase;
         setParaules();
     }
 
@@ -34,17 +34,17 @@ public class Frase { //classe que representa la frase pertanyent a un document e
 
     //Post: retorna el titol del document a la que pertany la frase.
     public String getTitolDoc() {
-        return titoldoc;
+        return titolDoc_;
     }
 
     //Post: retorna l'autor del document a la que pertany la frase.
     public String getAutorDoc() {
-        return autordoc;
+        return autorDoc_;
     }
 
     //Post: retorna el contingut de la frase.
     public String getFrase() {
-        return frase;
+        return frase_;
     }
 
     //Post: retorna les paraules que conte la frase.
