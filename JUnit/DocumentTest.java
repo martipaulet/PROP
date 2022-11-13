@@ -22,7 +22,7 @@ public class DocumentTest {
         Date creacio = calendari.getTime();
         calendari.set(2022, Calendar.FEBRUARY, 2);
         Date modificacio = calendari.getTime();
-        document = new Document("Karl Marx", "Communist Manifesto",
+        document = new Document("Autor", "Titol",
                 "Hola, aquesta es una frase. Holaa. Aquesta hauria de ser la 3a frase però " +
                         "probablement serà la 4a, a veure com resol la l·l el programa. Adeu?", creacio, modificacio);
     }
@@ -31,12 +31,12 @@ public class DocumentTest {
 
     @Test
     public void testGetAutor() {
-        assertEquals(document.getAutor(), "Karl Marx");
+        assertEquals(document.getAutor(), "Autor");
     }
 
     @Test
     public void testGetTitol() {
-        assertEquals(document.getTitol(), "Communist Manifesto");
+        assertEquals(document.getTitol(), "Titol");
     }
 
     @Test
@@ -47,8 +47,8 @@ public class DocumentTest {
 
     @Test
     public void testActualitzaDocument() {
-        document.actualitzaDocument("Hola hem dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
-        assertEquals(document.getContingut(), "Hola hem dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
+        document.actualitzaDocument("Hola em dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
+        assertEquals(document.getContingut(), "Hola em dic Karl Marx. Soc filòsof, economista polític, sociòleg i revolucionari alemany! Entre altres moltes coses que fem els Marx");
         Calendar c = new GregorianCalendar(2022, Calendar.FEBRUARY, 2);
         assertNotEquals(document.getDataUltimaModificacio(), c.getTime());
 
@@ -57,7 +57,7 @@ public class DocumentTest {
 
         //Test Canvi paraules. Alerta a les stop words!!
         HashMap<String, Integer> a = document.getParaules();
-        assertEquals(a.size(),13);
+        assertEquals(a.size(),14);
         Integer b = 2;
         assertEquals(a.get("marx"),b);
         b = 1;
@@ -99,12 +99,12 @@ public class DocumentTest {
 
     @Test
     public void testSetIGetFrases() {
-        Frase f1 = new Frase("Hola, aquesta es una frase", "Karl Marx",
-                "Communist Manifesto");
-        Frase f2 = new Frase("Holaa", "Karl Marx","Communist Manifesto");
+        Frase f1 = new Frase("Hola, aquesta es una frase", "Titol",
+                "Autor");
+        Frase f2 = new Frase("Holaa", "Titol","Autor");
         Frase f3 = new Frase("Aquesta hauria de ser la 3a frase pero probablement sera la 4a, a veure com resol " +
-                "la l·l el programa", "Karl Marx", "Communist Manifesto");
-        Frase f4 = new Frase("Adeu?", "Karl Marx","Communist Manifesto");
+                "la l·l el programa", "Titol", "Autor");
+        Frase f4 = new Frase("Adeu?", "Titol","Autor");
         ArrayList<Frase> frases = new ArrayList<>();
         frases.add(f1);
         frases.add(f2);
