@@ -176,6 +176,28 @@ public class CtrlDomini {
         return cd;
     }
 
+    public ConjuntDocuments ordenaDocuments(ConjuntDocuments cd, int ordre) {
+        if (ordre != 0 && ordre != 1 && ordre != 2) {
+            System.out.println("El nombre a introduir per escollir ordenació ha de ser 0, 1 o 2");
+            return null;
+        }
+        else if (ordre == 0) {
+            OrdreAlfabetic o = new OrdreAlfabetic();
+            ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+            return cdfi;
+        }
+        else if (ordre == 1) {
+            OrdreCreacio o = new OrdreCreacio();
+            ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+            return cdfi;
+        }
+        else {
+            OrdreModificacio o = new OrdreModificacio();
+            ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
+            return cdfi;
+        }
+    }
+
 
     //---METODES PRIVATS---
 
@@ -221,7 +243,6 @@ public class CtrlDomini {
             ret.add(entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
-        cd.imprimir();
         return cd;
     }
 
@@ -244,7 +265,6 @@ public class CtrlDomini {
             ret.add(entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
-        cd.imprimir();
         return cd;
     }
 

@@ -159,8 +159,8 @@ public class ConjuntDocuments {
 
     public void imprimir() {
         for(int i = 0; i < CjtD.size(); ++i){
+            if (i != 0) System.out.println("\n");
             CjtD.elementAt(i).imprimir();
-            System.out.println("\n");
         }
     }
 
