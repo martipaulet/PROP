@@ -164,3 +164,4 @@ Els casos d’ús de SeleccionarDocuments, LlistarDocuments, ConsultaDocuments i
 En quant als algorismes, s'ha seguit el enunciat publicat a la pagina de l'assignatura i si hi havia coses que el enunciat no especificava com s'havia de fer o quin
 criteri s'havia de utilitzar hem acabat usant criteri propi i sentit comu.
 
+
