@@ -4,35 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6adadcb5-851b-413e-bf8d-5ad731bbee0b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/DriverCtrlDomini.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="6adadcb5-851b-413e-bf8d-5ad731bbee0b" name="Changes" comment="FUNCIONA">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlExpressioBooleana.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlExpressioBooleana.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Autor.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Autor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/ConjuntDocuments.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/ConjuntDocuments.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Document.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/ExpressionTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/ExpressionTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Frase.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Frase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Ordenacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Ordenacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/OrdreAlfabetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/OrdreAlfabetic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/OrdreCreacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/OrdreCreacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Domini/OrdreModificacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/OrdreModificacio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/Drivers/DriverCtrlDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Drivers/DriverCtrlDomini.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/AutorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/AutorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/ConjuntDocumentsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/ConjuntDocumentsTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/DocumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/DocumentTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/ExpressionTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/ExpressionTreeTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/FraseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/FraseTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreAlfabeticTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreAlfabeticTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreCreacioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreCreacioTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreModificacioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreModificacioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FONTS/make.bat" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/make.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/subgrup-prop33.3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/subgrup-prop33.3.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +40,14 @@
       <option name="presentableId" value="Default" />
       <updated>1668461993235</updated>
     </task>
+    <task id="LOCAL-00001" summary="FUNCIONA">
+      <created>1668464537262</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668464537262</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -78,5 +60,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="FUNCIONA" />
+    <option name="LAST_COMMIT_MESSAGE" value="FUNCIONA" />
   </component>
 </project>
