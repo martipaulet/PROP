@@ -7,5 +7,6 @@ move Domini\*.class ..\EXE\CLASS\
 move Controladors\*class ..\EXE\CLASS\
 move Drivers\*.class ..\EXE\CLASS\
 move JUnit\*.class ..\EXE\CLASS\
+timeout 5
 move DriverCtrlDomini.jar ..\EXE\
-pause
+
