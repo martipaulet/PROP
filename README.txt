@@ -2,22 +2,22 @@
 
 ---COM COMPILAR I EXECUTAR---
 
-Trobaras dins de la carpeta FONTS d'aquest directori un archiu anomenat make.bat
-A la terminal s'ha de executar, dins del directori FONTS ./make.bat i aixo generarà tots els .class per les classes del programa,
+Trobaras dins de la carpeta FONTS d'aquest directori un arxiu anomenat make.bat
+A la terminal s'ha de executar, dins del directori FONTS ./make.bat i això generarà tots els .class per les classes del programa,
 els drivers i els test amb JUnit.
 
-Els fichers creats pel make es guardaran automaticament a la carpeta EXE d'aquest directori.
+Els fitxers creats pel make es guardaran automàticament a la carpeta EXE d'aquest directori.
 
 EXE conte la carpeta CLASS, on els .class aniran a parar.
 
-No hi ha un driver per classe ja que el tutor ens va comentar que un sol driver general que llegis comandes seria correcte. Aquest driver
-es pot provar executant ExeDriver.bat, situat a EXE.
+No hi ha un driver per classe ja que el tutor ens va comentar que un sol driver general que llegís comandes seria correcte. Aquest driver
+es pot provar executant run.bat, situat a EXE.
 
-Per exectuar el fitxer .bat nomes cal que et coloquis desde la terminal a la carpeta on es troba el fitxer i entris:
-./NomFitxer.bat.
+Per executar el fitxer .bat nomes cal que et coloquis desde la terminal a la carpeta on es troba el fitxer i entris:
+./run.bat.
 
-Quan executis al ExeDriver.bat et sortira un menú que al següent apartat d'aquest document explicarem com funciona. Però en la carpeta de EXE,
-trobaras un document anomenat JocDeProvaAltesDocumentsDriver.txt que si copies el contingut amb ctrl^C i l'enganxes a la terminal amb ctrl^V o boto dret, i per ultim pitjes Enter,
+Quan executis al run.bat et sortira un menú que al següent apartat d'aquest document explicarem com funciona. Però en la carpeta de EXE,
+trobaràs un document anomenat JocDeProvaAltesDocumentsDriver.txt que si copies el contingut amb ctrl^C i l'enganxes a la terminal amb ctrl^V o boto dret, i no pitjes Enter,
 el sistema donarà d'alta una serie de documents que amb ells podràs fer totes les consultes i jocs de prova que vulguis.
 
 
