@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="017b89c4-12eb-4f89-86b5-dbec15193f51" name="Changes" comment="stop words com a funcio">
+    <list default="true" id="6adadcb5-851b-413e-bf8d-5ad731bbee0b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/DriverCtrlDomini.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlExpressioBooleana.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlExpressioBooleana.java" afterDir="false" />
@@ -24,6 +32,7 @@
       <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreCreacioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreCreacioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreModificacioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreModificacioTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FONTS/make.bat" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/make.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subgrup-prop33.3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/subgrup-prop33.3.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,200 +45,27 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2HMz855rQpDoOIhhslyzxEIPUYP" />
+  <component name="ProjectId" id="2HYVQnYUFvw9O4KdaGpNrLuW43Y" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jdk.selected.JAVA_MODULE": "11",
-    "last_opened_file_path": "C:/Users/albert/subgrup-prop33.3/FONTS/lib",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
-  },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "EditorConfig"
-    ]
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
 }]]></component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\albert\subgrup-prop33.3\FONTS\lib" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="017b89c4-12eb-4f89-86b5-dbec15193f51" name="Changes" comment="" />
-      <created>1668109577794</created>
+      <changelist id="6adadcb5-851b-413e-bf8d-5ad731bbee0b" name="Changes" comment="" />
+      <created>1668461993235</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1668109577794</updated>
+      <updated>1668461993235</updated>
     </task>
-    <task id="LOCAL-00001" summary="Implementació calcul de dociments semblants 2 ACABAT">
-      <created>1668111888568</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1668111888568</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Canvis al main per fer testos dels dos metodes per calcular documents semblants i proves simples funcionen correcte">
-      <created>1668113171395</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1668113171395</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Excepcions i proves de testos a Autor, FETES!!">
-      <created>1668120016323</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1668120016323</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Excepcions i proves de testos a CjtDocuments, Document, Ordres,i Frase. FETES!! Falta Exc Expresio booleana">
-      <created>1668161639405</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1668161639406</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Excepcions i proves de testos a CjtDocuments, Document, Ordres,i Frase. FETES!! Falta Exc Expresio booleana">
-      <created>1668162393116</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1668162393116</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Testos a Conjunt de documents per el calcul tf i calcul tfidf, Funcionen!!">
-      <created>1668254611534</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1668254611534</updated>
-    </task>
-    <task id="LOCAL-00007" summary="Testos de document acabats, Funcionen!!">
-      <created>1668258663331</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1668258663331</updated>
-    </task>
-    <task id="LOCAL-00008" summary="descripcio equip">
-      <created>1668275794894</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1668275794894</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Llibreria mockito">
-      <created>1668360656836</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1668360656836</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Llibreria mockito">
-      <created>1668360816168</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1668360816168</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Llibreria mockito">
-      <created>1668367414713</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1668367414713</updated>
-    </task>
-    <task id="LOCAL-00012" summary="Llibreria mockito">
-      <created>1668367499376</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1668367499376</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Llibreria mockito">
-      <created>1668367610949</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1668367610950</updated>
-    </task>
-    <task id="LOCAL-00014" summary="Llibreria mockito treta">
-      <created>1668368466001</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1668368466001</updated>
-    </task>
-    <task id="LOCAL-00015" summary="Llibreria mockito treta">
-      <created>1668368586206</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1668368586206</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Inici del joc de proves d'altes de documents">
-      <created>1668379112123</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1668379112123</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Joc de proves d'altes de documents, Acabat!!">
-      <created>1668441864883</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1668441864883</updated>
-    </task>
-    <task id="LOCAL-00018" summary="README">
-      <created>1668448423731</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1668448423731</updated>
-    </task>
-    <task id="LOCAL-00019" summary="README">
-      <created>1668448496892</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1668448496892</updated>
-    </task>
-    <task id="LOCAL-00020" summary="README">
-      <created>1668448623399</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1668448623400</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Reorganitzant">
-      <created>1668451899739</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1668451899739</updated>
-    </task>
-    <task id="LOCAL-00022" summary="Reorganitzant">
-      <created>1668452071216</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1668452071216</updated>
-    </task>
-    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,21 +78,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementació calcul de dociments semblants 2 ACABAT" />
-    <MESSAGE value="Canvis al main per fer testos dels dos metodes per calcular documents semblants i proves simples funcionen correcte" />
-    <MESSAGE value="Excepcions i proves de testos a Autor, FETES!!" />
-    <MESSAGE value="Excepcions i proves de testos a CjtDocuments, Document, Ordres,i Frase. FETES!! Falta Exc Expresio booleana" />
-    <MESSAGE value="Testos a Conjunt de documents per el calcul tf i calcul tfidf, Funcionen!!" />
-    <MESSAGE value="Testos de document acabats, Funcionen!!" />
-    <MESSAGE value="descripcio equip" />
-    <MESSAGE value="Llibreria mockito" />
-    <MESSAGE value="Llibreria mockito treta" />
-    <MESSAGE value="Inici del joc de proves d'altes de documents" />
-    <MESSAGE value="Joc de proves d'altes de documents, Acabat!!" />
-    <MESSAGE value="README" />
-    <MESSAGE value="Reorganitzant" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reorganitzant" />
   </component>
 </project>

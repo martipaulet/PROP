@@ -1,10 +1,10 @@
-package FONTS.JUnit;
+package JUnit;
 import java.util.*;
 
-import FONTS.Domini.ConjuntDocuments;
-import FONTS.Domini.OrdreCreacio;
-import FONTS.Domini.OrdreModificacio;
-import FONTS.Domini.Document;
+import Domini.ConjuntDocuments;
+import Domini.OrdreCreacio;
+import Domini.OrdreModificacio;
+import Domini.Document;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

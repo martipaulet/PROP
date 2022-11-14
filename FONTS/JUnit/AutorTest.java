@@ -1,9 +1,9 @@
 //JOEL FERNANDEZ I ALBERT CARDONA
 
-package FONTS.JUnit;
+package JUnit;
 
-import FONTS.Domini.Autor;
-import FONTS.Domini.Document;
+import Domini.Autor;
+import Domini.Document;
 import org.junit.Before;
 import org.junit.Test;
 

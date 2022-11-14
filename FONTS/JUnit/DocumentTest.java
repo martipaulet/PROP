@@ -1,7 +1,7 @@
-package FONTS.JUnit;
-import FONTS.Domini.Autor;
-import FONTS.Domini.Document;
-import FONTS.Domini.Frase;
+package JUnit;
+import Domini.Autor;
+import Domini.Document;
+import Domini.Frase;
 import org.junit.Before;
 import org.junit.Test;
 

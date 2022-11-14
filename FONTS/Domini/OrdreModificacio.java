@@ -1,4 +1,4 @@
-package FONTS.Domini;
+package Domini;
 import java.text.Collator;
 import java.util.*;
 

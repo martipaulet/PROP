@@ -1,5 +1,5 @@
-package FONTS.Controladors;
-import FONTS.Domini.*;
+package Controladors;
+import Domini.*;
 
 import javax.print.Doc;
 import java.util.*;

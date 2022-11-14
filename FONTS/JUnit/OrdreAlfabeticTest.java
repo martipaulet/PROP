@@ -1,10 +1,10 @@
 //JOEL FERNANDEZ
 
-package FONTS.JUnit;
+package JUnit;
 import java.util.*;
-import FONTS.Domini.OrdreAlfabetic;
-import FONTS.Domini.Document;
-import FONTS.Domini.ConjuntDocuments;
+import Domini.OrdreAlfabetic;
+import Domini.Document;
+import Domini.ConjuntDocuments;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

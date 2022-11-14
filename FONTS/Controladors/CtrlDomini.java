@@ -1,8 +1,8 @@
-package FONTS.Controladors;
-import FONTS.Domini.*;
+package Controladors;
+import Domini.*;
 
-import java.text.Normalizer;
 import java.util.*;
+import java.text.Normalizer;
 
 import static java.util.stream.Collectors.toMap;
 
