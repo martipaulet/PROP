@@ -1,4 +1,4 @@
-package Domini;
+package FONTS.Domini;
 import java.util.*;
 
 public interface Ordenacio {

@@ -1,7 +1,7 @@
-javac --release 11 Controladors/*.java
-javac --release 11 Domini/*.java
-javac --release 11 Drivers/*.java
-javac --release 11 JUnit/*.java
+javac Controladors/*.java
+javac Domini/*.java
+javac Controladors/*.java Drivers/*.java
+javac -cp .;C:\junit-4.5.jar JUnit/*.java
 move Controladors/*.class ..\EXE\CLASS\Controladors
 move Domini/*.class ..\EXE\CLASS\Domini
 move Drivers/*.class ..\EXE\CLASS\Drivers

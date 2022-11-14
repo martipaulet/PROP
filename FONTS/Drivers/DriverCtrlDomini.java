@@ -1,7 +1,7 @@
-package Drivers;
+package FONTS.Drivers;
 
-import CtrlDomini.CtrlDomini;
-import Domini.*;
+import FONTS.Controladors.CtrlDomini;
+import FONTS.Domini.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;

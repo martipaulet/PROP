@@ -1,5 +1,5 @@
 //import org.jetbrains.annotations.NotNull;
-package Domini;
+package FONTS.Domini;
 import java.util.*;
 
 public class Frase { //classe que representa la frase pertanyent a un document en concret.

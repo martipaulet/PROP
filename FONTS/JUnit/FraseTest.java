@@ -1,6 +1,6 @@
-package JUnit;
+package FONTS.JUnit;
 import java.util.*;
-import Domini.Frase;
+import FONTS.Domini.Frase;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

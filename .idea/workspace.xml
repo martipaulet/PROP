@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="017b89c4-12eb-4f89-86b5-dbec15193f51" name="Changes" comment="Reorganitzant">
-      <change afterPath="$PROJECT_DIR$/FONTS/make.bat" afterDir="false" />
+    <list default="true" id="017b89c4-12eb-4f89-86b5-dbec15193f51" name="Changes" comment="stop words com a funcio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlExpressioBooleana.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlExpressioBooleana.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Autor.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Autor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/ConjuntDocuments.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/ConjuntDocuments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Document.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Document.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/ExpressionTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/ExpressionTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Frase.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Frase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/Ordenacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/Ordenacio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/OrdreAlfabetic.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/OrdreAlfabetic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/OrdreCreacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/OrdreCreacio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/OrdreModificacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/OrdreModificacio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Drivers/DriverCtrlDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Drivers/DriverCtrlDomini.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/AutorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/AutorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/ConjuntDocumentsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/ConjuntDocumentsTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/DocumentTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/DocumentTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/ExpressionTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/ExpressionTreeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/FraseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/FraseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreAlfabeticTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreAlfabeticTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreCreacioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreCreacioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/OrdreModificacioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/OrdreModificacioTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/make.bat" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/make.bat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,46 +41,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/albert/subgrup-prop33.3/FONTS/lib&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "jdk.selected.JAVA_MODULE": "11",
+    "last_opened_file_path": "C:/Users/albert/subgrup-prop33.3/FONTS/lib",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;EditorConfig&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "EditorConfig"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\albert\subgrup-prop33.3\FONTS\lib" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="subgrup-prop33.3" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="subgrup-prop33.3" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

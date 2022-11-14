@@ -1,5 +1,5 @@
-package CtrlDomini;
-import Domini.*;
+package FONTS.Controladors;
+import FONTS.Domini.*;
 
 import javax.print.Doc;
 import java.util.*;

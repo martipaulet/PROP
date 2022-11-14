@@ -1,8 +1,8 @@
-package JUnit;
+package FONTS.JUnit;
 import java.util.*;
-import Domini.ConjuntDocuments;
-import Domini.Document;
-import Domini.Frase;
+import FONTS.Domini.ConjuntDocuments;
+import FONTS.Domini.Document;
+import FONTS.Domini.Frase;
 import org.junit.Test;
 
 import javax.print.Doc;
