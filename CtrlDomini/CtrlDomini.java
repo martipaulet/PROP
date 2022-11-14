@@ -1,6 +1,7 @@
 package CtrlDomini;
 import Domini.*;
 
+import java.text.Normalizer;
 import java.util.*;
 
 import static java.util.stream.Collectors.toMap;
@@ -185,7 +186,9 @@ public class CtrlDomini {
     }
 
     //Post: es retorna el conjunt de documents format per documents que contenen almenys una frase que compleix la query booleana.
-    public ConjuntDocuments ConsultaBooleana(String query) throws Exception{
+    public ConjuntDocuments ConsultaBooleana(String query_) throws Exception{
+        String query = Normalizer.normalize(query_, Normalizer.Form.NFKD);
+        query = Normalizer.normalize(query, Normalizer.Form.NFKD).replaceAll("\\p{M}", "");
         if (Objects.equals(query, "")) throw new Exception("Query no pot ser null");
         ConjuntDocuments cd = ctrlExpressioBooleana.evalua(query,documents);
         return cd;
