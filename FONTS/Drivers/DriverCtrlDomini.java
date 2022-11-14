@@ -20,11 +20,11 @@ public class DriverCtrlDomini {
                     "1. Alta Document\n"+
                     "2. Baixa Document\n"+
                     "3. Modificar Document\n"+
-                    "4. Consulta títols autor\n"+
+                    "4. Consulta titols autor\n"+
                     "5. Consulta autors prefix\n"+
                     "6. Consulta contingut\n"+
                     "7. Llistar documents semblants\n"+
-                    "8. Llistar documents que compleixen una expressió\n"+
+                    "8. Llistar documents que compleixen una expressio\n"+
                     "9. Alta Expressio Booleana\n"+
                     "10. Baixa Expressio Booleana\n"+
                     "11. Modificar Expressio Booleana\n"+
@@ -112,10 +112,10 @@ public class DriverCtrlDomini {
                         System.out.println("1 per utilitzar Tf");
                         int mode = Integer.parseInt(scan.nextLine());
                         ConjuntDocuments c = cd.DocumentsSemblants(autor, titol, k, mode);
-                        System.out.println("Introduex un nombre per escollir el tipus d'ordenació:");
-                        System.out.println("0 per ordenació alfabètica per títol");
-                        System.out.println("1 per ordenació segons data de creació més propera");
-                        System.out.println("2 per ordenació segons data de modificació més propera");
+                        System.out.println("Introdueix un nombre per escollir el tipus d'ordenacio:");
+                        System.out.println("0 per ordenacio alfabetica per titol");
+                        System.out.println("1 per ordenacio segons data de creacio mes propera");
+                        System.out.println("2 per ordenacio segons data de modificacio mes propera");
                         int ordre = Integer.parseInt(scan.nextLine());
                         ConjuntDocuments cdfi = cd.ordenaDocuments(c, ordre);
                         if (cdfi != null) cdfi.imprimir();
@@ -128,10 +128,10 @@ public class DriverCtrlDomini {
                         System.out.println("Introdueix una query booleana:");
                         query = scan.nextLine();
                         ConjuntDocuments c2 = cd.ConsultaBooleana(query);
-                        System.out.println("Introduex un nombre per escollir el tipus d'ordenació:");
-                        System.out.println("0 per ordenació alfabètica per títol");
-                        System.out.println("1 per ordenació segons data de creació més propera");
-                        System.out.println("2 per ordenació segons data de modificació més propera");
+                        System.out.println("Introduex un nombre per escollir el tipus d'ordenacio:");
+                        System.out.println("0 per ordenacio alfabetica per títol");
+                        System.out.println("1 per ordenacio segons data de creacio més propera");
+                        System.out.println("2 per ordenacio segons data de modificacio més propera");
                         int ordre2 = Integer.parseInt(scan.nextLine());
                         ConjuntDocuments cdfi2 = cd.ordenaDocuments(c2, ordre2);
                         cdfi2.imprimir();
