@@ -42,7 +42,7 @@ public class DriverCtrlDomini {
                         contingut = scan.nextLine();
                         cd.altaDocument(autor, titol, contingut);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 2:
@@ -53,7 +53,7 @@ public class DriverCtrlDomini {
                         titol = scan.nextLine();
                         cd.baixaDocument(autor, titol);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 3:
@@ -66,7 +66,7 @@ public class DriverCtrlDomini {
                         contingut = scan.nextLine();
                         cd.modificarDocument(contingut, autor, titol);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 4:
@@ -75,7 +75,7 @@ public class DriverCtrlDomini {
                         autor = scan.nextLine();
                         System.out.println(cd.titolsAutor(autor));
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 5:
@@ -85,7 +85,7 @@ public class DriverCtrlDomini {
                         ArrayList<String> autors = cd.prefixAutor(prefix);
                         System.out.println(autors);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 6:
@@ -96,7 +96,7 @@ public class DriverCtrlDomini {
                         titol = scan.nextLine();
                         System.out.println(cd.obteContingut(autor, titol));
                     } catch (Exception e){
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 7:
@@ -105,7 +105,7 @@ public class DriverCtrlDomini {
                         autor = scan.nextLine();
                         System.out.println("Introdueix un titol:");
                         titol = scan.nextLine();
-                        System.out.println("Introdueix el nombre de documents a retornar:");
+                        System.out.println("Introdueix el nombre de documents (enter positiu) a retornar:");
                         int k = Integer.parseInt(scan.nextLine());
                         System.out.println("Introdueix el mode per fer la cerca:");
                         System.out.println("0 per utilitzar Tf_idf");
@@ -120,7 +120,7 @@ public class DriverCtrlDomini {
                         ConjuntDocuments cdfi = cd.ordenaDocuments(c, ordre);
                         if (cdfi != null) cdfi.imprimir();
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 8:
@@ -136,7 +136,7 @@ public class DriverCtrlDomini {
                         ConjuntDocuments cdfi2 = cd.ordenaDocuments(c2, ordre2);
                         cdfi2.imprimir();
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 9:
@@ -145,7 +145,7 @@ public class DriverCtrlDomini {
                         query = scan.nextLine();
                         cd.altaExpressioBooleana(query);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 10:
@@ -154,7 +154,7 @@ public class DriverCtrlDomini {
                         query = scan.nextLine();
                         cd.baixaExpressioBooleana(query);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 11:
@@ -165,7 +165,7 @@ public class DriverCtrlDomini {
                         query = scan.nextLine();
                         cd.modificaExpressioBooleana(queryaux,query);
                     } catch (Exception e) {
-                        System.out.println(e.toString());
+                        System.err.println(e.toString());
                     }
                     break;
                 case 12:
