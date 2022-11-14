@@ -52,7 +52,7 @@ public class CtrlExpressioBooleana {
             expressions.remove(query);
         }
         else {
-            throw new Exception("La query:" +query+ "no existeix en el sistema per tant no es pot donar de baixa");
+            throw new Exception("La query: " +query+ " no existeix en el sistema per tant no es pot donar de baixa");
         }
     }
 
@@ -65,9 +65,9 @@ public class CtrlExpressioBooleana {
             expressions.put(querymodificada, e);
         }
         else if (!expressions.containsKey(queryantiga)){
-            throw new Exception("La query: " +queryantiga+ "no existeix en el sistema per tant no es pot modificar");
+            throw new Exception("La query: " +queryantiga+ " no existeix en el sistema per tant no es pot modificar");
         }
-        else throw new Exception("La query "+querymodificada+ "ja existeix al sistema");
+        else throw new Exception("La query "+querymodificada+ " ja existeix al sistema");
     }
 
 
