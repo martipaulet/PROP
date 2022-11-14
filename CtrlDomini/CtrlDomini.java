@@ -68,7 +68,7 @@ public class CtrlDomini {
     //Post: S'elimina el document d i la seva relacio amb l'autor.
     //      Si l'autor del document eliminat nomes tenia aquest document s'elimina l'autor.
     public void baixaDocument(String autor, String titol) throws Exception{
-        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Introdueix un autor i títol vàlid");
+        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Ni autor ni titol no poden ser null");
         else if (documents.getDocument(autor,titol) != null) {
             Document d = documents.getDocument(autor,titol);
             desassociaAutor(d);
@@ -82,7 +82,7 @@ public class CtrlDomini {
 
     //Post: S'actualitza el contingut i la data d'ultima modificació del document si es que s'ha modificat el contingut.
     public void modificarDocument(String nouContingut, String autor, String titol) throws Exception{
-        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Introdueix un autor i títol vàlid");
+        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Ni autor ni titol no poden ser null");
         else if (documents.getDocument(autor,titol) != null) {
             Document d = documents.getDocument(autor,titol);
             if (!d.getContingut().equals(nouContingut)) d.actualitzaDocument(nouContingut);
@@ -98,16 +98,19 @@ public class CtrlDomini {
 
     //Post: Es crea una nova expressio booleana si aquesta no existia.
     public void altaExpressioBooleana(String query) throws Exception{
+        if (Objects.equals(query, ""))  throw new Exception("La query no pot ser null");
         ctrlExpressioBooleana.altaExpressioBooleana(query);
     }
 
     //Post: S'elimina l'expressió booleana si aquesta existia.
     public void baixaExpressioBooleana(String query) throws Exception {
+        if (Objects.equals(query, ""))  throw new Exception("La query no pot ser null");
         ctrlExpressioBooleana.baixaExpressioBooleana(query);
     }
 
     //Post:Es modifica l'expressio booleana indicada en queryantiga si aquesta existia per querymodificada.
     public void modificaExpressioBooleana(String queryantiga, String querymodificada) throws Exception{
+        if (Objects.equals(queryantiga, "") || Objects.equals(querymodificada, ""))  throw new Exception("La query no pot ser null");
         ctrlExpressioBooleana.modificaExpressioBooleana(queryantiga,querymodificada);
     }
 
@@ -116,6 +119,7 @@ public class CtrlDomini {
 
     //Post: es retorna una llista amb el conjunt de titols de l'autor indicat.
     public List<String> titolsAutor(String autor) throws Exception{
+        if (Objects.equals(autor, "")) throw new Exception("Autor no pot ser null");
         List<String> ls = new ArrayList<String>();
         if (existeixAutor(autor)) {
             Autor a = autors.get(autor);
@@ -147,6 +151,7 @@ public class CtrlDomini {
 
    //Post: Es retorna el contingut del document referenciat per autor i titol si aquest existeix.
     public String obteContingut(String autor, String titol) throws Exception{
+        if (Objects.equals(autor, "") || Objects.equals(titol, ""))  throw new Exception("Ni autor ni titol no poden ser null");
         if (existeixDocument(autor,titol)) {
             Document d = documents.getDocument(autor,titol);
             return d.getContingut();
@@ -160,9 +165,10 @@ public class CtrlDomini {
     //      Si K >= al nombre de documents del sistema retorna null.
     //      L'algorisme per detectar semblançes sera Tf_idf si mode == 0 o Tf si mode == 1.
     public ConjuntDocuments DocumentsSemblants(String autor, String titol, Integer K, Integer mode) throws Exception{
+        if (Objects.equals(autor, "") || Objects.equals(titol, ""))  throw new Exception("Ni autor ni titol no poden ser null");
         Vector<Document> vd = documents.getVector();
         if (K >= vd.size()) {
-            throw new Exception("El natural K és major als documents del sistema. K ha de ser menor a" + vd.size() + ".");
+            throw new Exception("El natural K és major als documents del sistema. K ha de ser menor a " + vd.size() + ".");
         }
         if (mode != 0 && mode != 1) {
             throw new Exception("Mode ha de ser 0 o 1");
@@ -180,6 +186,7 @@ public class CtrlDomini {
 
     //Post: es retorna el conjunt de documents format per documents que contenen almenys una frase que compleix la query booleana.
     public ConjuntDocuments ConsultaBooleana(String query) throws Exception{
+        if (Objects.equals(query, "")) throw new Exception("Query no pot ser null");
         ConjuntDocuments cd = ctrlExpressioBooleana.evalua(query,documents);
         return cd;
     }

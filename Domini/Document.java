@@ -134,10 +134,8 @@ public class Document {
     public void imprimir() {
         System.out.println(autor_);
         System.out.println(titol_);
-        System.out.println(contingut_);
         System.out.println(dataCreacio_);
         System.out.println(dataUltimaModificacio_);
-        System.out.println(paraules_);
     }
 
 
