@@ -6,13 +6,13 @@ import java.util.*;
 
 
      //Post: retorna un conjunt de documents ordenat alfabeticament per titol i despres per autor.
-     public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) {
-         Vector<Document> vd = cd.getVector();
+     public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) throws Exception {
+         HashMap<Pair,Document> vd = cd.getMap();
          Vector<Document> vdReal = new Vector<>();
          Collator comparador = Collator.getInstance();
          comparador.setStrength(Collator.PRIMARY);
-         for (int i = 0; i < vd.size(); ++i) {
-             Document d = vd.elementAt(i);
+         for (Pair key: vd.keySet()) {
+             Document d = vd.get(key);
              String tit_doc = d.getTitol();
              vdReal.add(d);
              if (vdReal.size() > 1) {
@@ -40,7 +40,11 @@ import java.util.*;
                  }
              }
          }
-         ConjuntDocuments cdordenat = new ConjuntDocuments(vdReal);
+         ConjuntDocuments cdordenat = new ConjuntDocuments();
+         for (int i = 0; i<vdReal.size(); ++i){
+             cdordenat.afegirDocument(vdReal.elementAt(i));
+         }
+
          return cdordenat;
      }
 }

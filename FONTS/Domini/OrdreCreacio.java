@@ -9,11 +9,11 @@ public class OrdreCreacio implements Ordenacio {
 
 
     //Post: retorna un conjunt de documents ordenat per ordre de data de creacio (data més propera abans que data més llunyana).
-    public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) {
-        Vector<Document> vd = cd.getVector();
+    public ConjuntDocuments OrdenarDocuments(ConjuntDocuments cd) throws Exception {
+        HashMap<Pair,Document> vd = cd.getMap();
         Vector<Document> DocOrdenats = new Vector<>();
-        for (int i=0; i<vd.size(); ++i){
-            Document di = vd.elementAt(i);
+        for (Pair key: vd.keySet()){
+            Document di = vd.get(key);
             Date data_di = di.getDataCreacio();
             DocOrdenats.add(di);
             if(DocOrdenats.size() > 1){
@@ -66,7 +66,10 @@ public class OrdreCreacio implements Ordenacio {
                 }
             }
         }
-        ConjuntDocuments cdordenat = new ConjuntDocuments(DocOrdenats);
+        ConjuntDocuments cdordenat = new ConjuntDocuments();
+        for (int i = 0; i<DocOrdenats.size(); ++i){
+            cdordenat.afegirDocument(DocOrdenats.elementAt(i));
+        }
         return cdordenat;
     }
 }
