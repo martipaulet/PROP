@@ -81,10 +81,11 @@ public class ExpressionTree {
     //Post: retorna un conjunt de documents format pels documents que tenen almenys una frase que compleix la query representada en l'expressionTree.
     public ConjuntDocuments calculate(ConjuntDocuments total) throws Exception{
         Set<Frase> frases = calculateIm(root, total);
-        Vector<Document> vd = new Vector<>();
+        HashMap<Pair,Document> vd = new HashMap<>();
         for (Frase f : frases) {
             Document d = total.getDocument(f.getAutorDoc(),f.getTitolDoc());
-            vd.add(d);
+            Pair p = new Pair(d.getAutor(),d.getTitol());
+            vd.put(p,d);
         }
         ConjuntDocuments cd = new ConjuntDocuments(vd);
         return cd;
@@ -293,7 +294,7 @@ public class ExpressionTree {
         Set<Frase> result = new HashSet<>();
         //fer complementari de s1
         if (s2 == null && Objects.equals(op, "!")) {
-            result = total.VecToSet();
+            result = total.MapToSet();
             if (s1 != null) result.removeAll(s1);
         }
         //fer interseccio de s1 i s2

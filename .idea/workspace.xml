@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1971b916-b381-4149-82d2-a8bae473e79c" name="Changes" comment="joc de proves actualitzat">
-      <change afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlPresentacio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FONTS/Domini/Pair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Controladors/CtrlDomini.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/ConjuntDocuments.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/ConjuntDocuments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/Domini/ExpressionTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/Domini/ExpressionTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FONTS/JUnit/ExpressionTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/JUnit/ExpressionTreeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

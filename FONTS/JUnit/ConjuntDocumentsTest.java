@@ -3,6 +3,7 @@ import java.util.*;
 import Domini.ConjuntDocuments;
 import Domini.Document;
 import Domini.Frase;
+import Domini.Pair;
 import org.junit.Test;
 
 import javax.print.Doc;
@@ -16,7 +17,7 @@ public class ConjuntDocumentsTest {
     public void ConjuntDocuments1Test() {
         ConjuntDocuments cd = new ConjuntDocuments();
         Vector<Document> expected = new Vector<>();
-        Vector<Document> actual = cd.getVector();
+        HashMap<Pair,Document> actual = cd.getMap();
         assertEquals(expected, actual);
     }
 
@@ -28,14 +29,14 @@ public class ConjuntDocumentsTest {
         Document d2 = new Document("a", "La llegenda de Sant Jordi", "aaaaa");
         Document d3 = new Document("a", "Adeu", "aaaaa");
         Document d4 = new Document ("a", "Final", "aaaa");
-        Vector<Document> expected = new Vector<>();
-        expected.add(d0);
-        expected.add(d1);
-        expected.add(d2);
-        expected.add(d3);
-        expected.add(d4);
+        HashMap<Pair,Document> expected = new HashMap<>();
+        expected.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+        expected.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+        expected.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+        expected.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+        expected.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
         ConjuntDocuments cdactual = new ConjuntDocuments(expected);
-        Vector<Document> actual = cdactual.getVector();
+        HashMap<Pair,Document> actual = cdactual.getMap();
 
         assertEquals(expected, actual);
     }
@@ -48,14 +49,14 @@ public class ConjuntDocumentsTest {
         Document d2 = new Document("a", "La llegenda de Sant Jordi", "Frase4. Frase5");
         Document d3 = new Document("a", "Adeu", "Frase6. Frase7. Frase8");
         Document d4 = new Document ("a", "Final", "Frase9. Frase10");
-        Vector<Document> v = new Vector<>();
-        v.add(d0);
-        v.add(d1);
-        v.add(d2);
-        v.add(d3);
-        v.add(d4);
+        HashMap<Pair,Document> v = new HashMap<>();
+        v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+        v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+        v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+        v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+        v.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
         ConjuntDocuments cdactual = new ConjuntDocuments(v);
-        Set<Frase> setact = cdactual.VecToSet();
+        Set<Frase> setact = cdactual.MapToSet();
         //HI HA 10 FRASES
         Integer act = setact.size();
         Integer exp = 10;
@@ -72,24 +73,25 @@ public class ConjuntDocumentsTest {
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "aaaaa");
             Document d3 = new Document("a", "Adeu", "aaaaa");
             Document d4 = new Document ("a", "Final", "aaaa");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
-            v.add(d4);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+            v.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
             cdactual.baixaDocument(d0);
 
-            Vector<Document> vd = new Vector<>();
-            vd.add(d1);
-            vd.add(d2);
-            vd.add(d3);
-            vd.add(d4);
+            HashMap<Pair,Document> vd = new HashMap<>();
+            vd.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            vd.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            vd.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            vd.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+            vd.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
             ConjuntDocuments cdexpected = new ConjuntDocuments(vd);
 
-            Vector<Document> vexp = cdexpected.getVector();
-            Vector<Document> vact = cdactual.getVector();
+            HashMap<Pair,Document> vexp = cdexpected.getMap();
+            HashMap<Pair,Document> vact= cdactual.getMap();
 
             assertEquals(vexp, vact);
             //Excepcio
@@ -110,26 +112,25 @@ public class ConjuntDocumentsTest {
             Document d3 = new Document("a", "Adeu", "aaaaa");
             Document d4 = new Document ("a", "Final", "aaaa");
             Document d5 = new Document("a", "Afegit", "Soc l'afegit");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
-            v.add(d4);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+            v.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
             cdactual.afegirDocument(d5);
 
-            Vector<Document> vd = new Vector<>();
-            vd.add(d0);
-            vd.add(d1);
-            vd.add(d2);
-            vd.add(d3);
-            vd.add(d4);
-            vd.add(d5);
+            HashMap<Pair,Document> vd = new HashMap<>();
+            vd.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            vd.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            vd.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            vd.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+            vd.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
             ConjuntDocuments cdexpected = new ConjuntDocuments(vd);
 
-            Vector<Document> vexp = cdexpected.getVector();
-            Vector<Document> vact = cdactual.getVector();
+            HashMap<Pair,Document> vexp = cdexpected.getMap();
+            HashMap<Pair,Document> vact= cdactual.getMap();
 
             assertEquals(vexp, vact);
             //Excepcio
@@ -149,12 +150,12 @@ public class ConjuntDocumentsTest {
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "aaaaa");
             Document d3 = new Document("a", "Adeu", "aaaaa");
             Document d4 = new Document ("a", "Final", "aaaa");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
-            v.add(d4);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+            v.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
 
             Document actual = cdactual.getDocument("a", "La llegenda de Sant Jordi");
@@ -177,12 +178,12 @@ public class ConjuntDocumentsTest {
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "aaaaa");
             Document d3 = new Document("a", "Adeu", "aaaaa");
             Document d4 = new Document ("a", "Final", "aaaa");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
-            v.add(d4);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
+            v.put(new Pair(d4.getAutor(), d4.getTitol()), d4);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
 
             //Excepcio
@@ -204,11 +205,11 @@ public class ConjuntDocumentsTest {
             Document d1 = new Document("a", "Hola", "hola. hola hola 2 veces");
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
             Document d3 = new Document("a", "Joel", "hola, la tinc, el resultat ha de ser 3");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
             HashMap<String, Integer> actual = cdactual.CalculCopsParaules(d0);
             Integer act = actual.get("hola");
@@ -235,11 +236,11 @@ public class ConjuntDocumentsTest {
             Document d1 = new Document("a", "Hola", "hola. hola hola 2 veces");
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
             Document d3 = new Document("a", "Joel", "hola, la tinc, 1 vez");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
             HashMap<Document, Double> actual = cdactual.CalculTfIdf(d0);
 
@@ -267,11 +268,11 @@ public class ConjuntDocumentsTest {
             Document d1 = new Document("a", "Hola", "hola. hola hola 2 veces");
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
             Document d3 = new Document("a", "Joel", "hola, la tinc, 1 vez");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
             HashMap<Document, Double> actual = cdactual.CalculTf(d0);
 
@@ -297,11 +298,11 @@ public class ConjuntDocumentsTest {
             Document d1 = new Document("a", "Hola", "No la contiene. Si contiene hola");
             Document d2 = new Document("a", "La llegenda de Sant Jordi", "no tinc la paraula");
             Document d3 = new Document("a", "Joel", "hola. la tinc. el resultat ha de ser hola");
-            Vector<Document> v = new Vector<>();
-            v.add(d0);
-            v.add(d1);
-            v.add(d2);
-            v.add(d3);
+            HashMap<Pair,Document> v = new HashMap<>();
+            v.put(new Pair(d0.getAutor(), d0.getTitol()), d0);
+            v.put(new Pair(d1.getAutor(), d1.getTitol()), d1);
+            v.put(new Pair(d2.getAutor(), d2.getTitol()), d2);
+            v.put(new Pair(d3.getAutor(), d3.getTitol()), d3);
             ConjuntDocuments cdactual = new ConjuntDocuments(v);
             //HAY 4 frases que contienen hola
             Set<Frase> sact = cdactual.obteFrasesContenen("hola");

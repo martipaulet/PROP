@@ -167,9 +167,9 @@ public class CtrlDomini {
     //      L'algorisme per detectar semblançes sera Tf_idf si mode == 0 o Tf si mode == 1.
     public ConjuntDocuments DocumentsSemblants(String autor, String titol, Integer K, Integer mode) throws Exception{
         if (Objects.equals(autor, "") || Objects.equals(titol, ""))  throw new Exception("Ni autor ni titol no poden ser null");
-        Vector<Document> vd = documents.getVector();
-        if (K >= vd.size()) {
-            throw new Exception("El natural K és major als documents del sistema. K ha de ser menor a " + vd.size() + ".");
+        HashMap<Pair,Document> m = documents.getMap();
+        if (K >= m.size()) {
+            throw new Exception("El natural K és major als documents del sistema. K ha de ser menor a " + m.size() + ".");
         }
         if (mode != 0 && mode != 1) {
             throw new Exception("Mode ha de ser 0 o 1");
@@ -184,7 +184,6 @@ public class CtrlDomini {
             throw new Exception("El document no existeix");
         }
     }
-
     //Post: es retorna el conjunt de documents format per documents que contenen almenys una frase que compleix la query booleana.
     public ConjuntDocuments ConsultaBooleana(String query_) throws Exception{
         String query = Normalizer.normalize(query_, Normalizer.Form.NFKD);
@@ -255,12 +254,13 @@ public class CtrlDomini {
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
         HashMap<Document, Double> aux = sortMapByValue(TfIdf);
-        Vector<Document> ret = new Vector<>(K);
+        HashMap<Pair,Document> ret = new HashMap<>(K);
 
         Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
         while (it.hasNext() && ret.size()<K) {
             Map.Entry<Document, Double> entry = it.next();
-            ret.add(entry.getKey());
+            Pair p = new Pair(entry.getKey().getAutor(),entry.getKey().getTitol());
+            ret.put(p,entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
         return cd;
@@ -273,12 +273,13 @@ public class CtrlDomini {
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> Tf = documents.CalculTf(D);
         HashMap<Document, Double> aux = sortMapByValue(Tf);
-        Vector<Document> ret = new Vector<>(K);
+        HashMap<Pair,Document> ret = new HashMap<>(K);
 
         Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
         while (it.hasNext() && ret.size()<K) {
             Map.Entry<Document, Double> entry = it.next();
-            ret.add(entry.getKey());
+            Pair p = new Pair(entry.getKey().getAutor(),entry.getKey().getTitol());
+            ret.put(p,entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
         return cd;

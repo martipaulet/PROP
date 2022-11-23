@@ -1,4 +1,5 @@
 package Domini;
+import java.security.KeyPair;
 import java.util.*;
 
 public class ConjuntDocuments {
@@ -7,7 +8,9 @@ public class ConjuntDocuments {
     //---ATRIBUTS---
 
 
-    private Vector<Document> CjtD;  //Conjunt format per Documents
+
+    //private Vector<Document> CjtD;  //Conjunt format per Documents
+    private HashMap<Pair,Document> CjtD;
 
 
     //---CONSTRUCTORES---
@@ -15,12 +18,13 @@ public class ConjuntDocuments {
 
     //Post: es crea una instancia de ConjuntDocuments buida.
     public ConjuntDocuments() {
-        CjtD = new Vector<>();
+        CjtD = new HashMap<>() {
+        };
     }
 
     //Post: es crea una instancia de ConjuntDocuments amb els Documents indicats.
-    public ConjuntDocuments(Vector<Document> sd) {
-        CjtD = sd;
+    public ConjuntDocuments(HashMap<Pair,Document> m) {
+        CjtD = m;
     }
 
 
@@ -29,8 +33,9 @@ public class ConjuntDocuments {
 
     //Post: S'afegeix el document d al conjunt de documents si aquest no estava.
     public void afegirDocument(Document d) throws Exception{
-        if (!pertany(d)){
-            CjtD.add(d);
+        Pair p = new Pair(d.getAutor(),d.getTitol());
+        if (!CjtD.containsKey(p)) {
+            CjtD.put(p, d);
         }
         else {
             throw new Exception("El document ja pertanyia al conjunt\r\n");
@@ -39,8 +44,9 @@ public class ConjuntDocuments {
 
     //Post: S'elimina el document d del conjunt de documents si aquest estava.
     public void baixaDocument(Document d) throws Exception{
-        if (pertany(d)){
-            CjtD.remove(d);
+        Pair p = new Pair(d.getAutor(),d.getTitol());
+        if (CjtD.containsKey(p)){
+            CjtD.remove(p);
         }
         else {
             throw new Exception("El document no pertany al conjunt\r\n");
@@ -48,33 +54,18 @@ public class ConjuntDocuments {
     }
 
 
-    //---CONSULTORES---
-
-
-    //Post: retorna true si el document d pertany al conjunt de documents. False altrament.
-    private boolean pertany(Document d){
-        for (int i = 0; i < CjtD.size(); ++i) {
-            if (CjtD.elementAt(i) == d) return true;
-        }
-        return false;
-    }
-
-
     //---GETTER/SETTER---
 
 
     //Post: retorna en un vector de documents el conjunt de documents.
-    public Vector<Document> getVector() {
+    public HashMap<Pair, Document> getMap() {
         return CjtD;
     }
 
     //Post: retorna el document referenciat per autor i titol indicats. Si aquest no estava en el conjunt retorna null.
     public Document getDocument(String autor, String titol) {
-        for (int i = 0; i < CjtD.size(); ++i) {
-            Document d = CjtD.elementAt(i);
-            if (Objects.equals(d.getAutor(), autor) && Objects.equals(d.getTitol(), titol)) return d;
-        }
-        return null;
+        Pair p = new Pair(autor,titol);
+        return CjtD.get(p);
     }
 
 
@@ -82,10 +73,10 @@ public class ConjuntDocuments {
 
 
     //Post: retorna un set amb les frases dels documents del conjunt de documents.
-    public Set<Frase> VecToSet() {
+    public Set<Frase> MapToSet() {
         Set<Frase> s = new HashSet<>();
-        for (int i = 0; i < CjtD.size(); ++i) {
-            Document d = CjtD.elementAt(i);
+        for (Pair key: CjtD.keySet()) {
+            Document d = CjtD.get(key);
             Set<Frase> sdoc = d.getFrasesToSet();
             s.addAll(sdoc);
         }
@@ -98,8 +89,8 @@ public class ConjuntDocuments {
         HashMap<String, Integer> CopsParaules = new HashMap<>();
         for(String paraula : paraules_D.keySet()){
             CopsParaules.put(paraula,0);
-            for(int i=0; i < CjtD.size(); ++i){
-                Document d = CjtD.elementAt(i);
+            for(Pair key: CjtD.keySet()){
+                Document d = CjtD.get(key);
                 HashMap<String, Integer> paraules_d = d.getParaules();
                 if(paraules_d.containsKey(paraula)){
                     CopsParaules.replace(paraula,CopsParaules.get(paraula)+1);
@@ -113,13 +104,13 @@ public class ConjuntDocuments {
     public HashMap<Document, Double> CalculTfIdf(Document D) {
         HashMap<Document,Double> ret = new HashMap<>();
         HashMap<String, Integer> idf = CalculCopsParaules(D);
-        for (int i=0; i< CjtD.size(); ++i){
+        for (Pair key: CjtD.keySet()){
             double sum = 0.0;
-            Document d = CjtD.elementAt(i);
+            Document d = CjtD.get(key);
             ret.put(d, 0.0);
             HashMap<String, Integer> tf = d.getParaules();
             if (d != D){
-                for(String paraula : idf.keySet()){
+                for(String paraula : idf.keySet()) {
                     double mida = CjtD.size();
                     double rec = idf.get(paraula);
                     double a;
@@ -143,9 +134,9 @@ public class ConjuntDocuments {
     public HashMap<Document, Double> CalculTf(Document D) {
         HashMap<Document,Double> ret = new HashMap<>();
         HashMap<String, Integer> par = D.getParaules();
-        for (int i=0; i< CjtD.size(); ++i){
+        for (Pair key: CjtD.keySet()){
             double sum = 0.0;
-            Document d = CjtD.elementAt(i);
+            Document d = CjtD.get(key);
             ret.put(d, 0.0);
             HashMap<String, Integer> tf = d.getParaules();
             if (d != D){
@@ -165,8 +156,8 @@ public class ConjuntDocuments {
     //Post: retorna un set de frases dels documents del conjunt que contenen l'string s en la frase.
     public Set<Frase> obteFrasesContenen(String s) throws Exception{
         Set<Frase> sf = new HashSet<>();
-        for (int i = 0; i < CjtD.size(); ++i) {
-            Document d = CjtD.elementAt(i);
+        for (Pair key: CjtD.keySet()) {
+            Document d = CjtD.get(key);
             if (d.fraseConteString(s)) {
                 Vector<Frase> vf = d.getFrasesParaula(s);
                 for (int j = 0; j < vf.size(); ++j) {
@@ -185,9 +176,13 @@ public class ConjuntDocuments {
 
     //Post: imprimeix els atributs de tots els documents del conjunt de documents.
     public void imprimir() {
-        for(int i = 0; i < CjtD.size(); ++i){
-            if (i != 0) System.out.println("\n");
-            CjtD.elementAt(i).imprimir();
+        boolean primer = true;
+        for(Pair key: CjtD.keySet()){
+            if (!primer) {
+                System.out.println("\n");
+            }
+            CjtD.get(key).imprimir();
+            primer = false;
         }
     }
 
