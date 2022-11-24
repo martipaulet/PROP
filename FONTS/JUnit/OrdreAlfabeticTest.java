@@ -2,10 +2,10 @@
 
 package JUnit;
 import java.util.*;
-import Domini.OrdreAlfabetic;
-import Domini.Document;
-import Domini.ConjuntDocuments;
-import Domini.Pair;
+import Domini.Model.OrdreAlfabetic;
+import Domini.Model.Document;
+import Domini.Model.ConjuntDocuments;
+import Domini.Model.Pair;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

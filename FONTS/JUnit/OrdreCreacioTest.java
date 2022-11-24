@@ -1,10 +1,10 @@
 package JUnit;
 import java.util.*;
 
-import Domini.ConjuntDocuments;
-import Domini.OrdreCreacio;
-import Domini.Document;
-import Domini.Pair;
+import Domini.Model.ConjuntDocuments;
+import Domini.Model.OrdreCreacio;
+import Domini.Model.Document;
+import Domini.Model.Pair;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

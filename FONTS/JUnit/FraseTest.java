@@ -1,6 +1,6 @@
 package JUnit;
 import java.util.*;
-import Domini.Frase;
+import Domini.Model.Frase;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

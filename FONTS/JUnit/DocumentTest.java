@@ -1,7 +1,7 @@
 package JUnit;
-import Domini.Autor;
-import Domini.Document;
-import Domini.Frase;
+import Domini.Model.Autor;
+import Domini.Model.Document;
+import Domini.Model.Frase;
 import org.junit.Before;
 import org.junit.Test;
 

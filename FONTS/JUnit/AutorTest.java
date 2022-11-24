@@ -2,8 +2,8 @@
 
 package JUnit;
 
-import Domini.Autor;
-import Domini.Document;
+import Domini.Model.Autor;
+import Domini.Model.Document;
 import org.junit.Before;
 import org.junit.Test;
 

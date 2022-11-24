@@ -1,9 +1,9 @@
 package JUnit;
 import java.util.*;
-import Domini.ConjuntDocuments;
-import Domini.Document;
-import Domini.Frase;
-import Domini.Pair;
+import Domini.Model.ConjuntDocuments;
+import Domini.Model.Document;
+import Domini.Model.Frase;
+import Domini.Model.Pair;
 import org.junit.Test;
 
 import javax.print.Doc;

@@ -1,7 +1,7 @@
 package Drivers;
 
-import Controladors.CtrlDomini;
-import Domini.*;
+import Domini.Controladors.CtrlDomini;
+import Domini.Model.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;

@@ -1,7 +1,7 @@
 package JUnit;
 import java.util.*;
 
-import Domini.*;
+import Domini.Model.*;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
