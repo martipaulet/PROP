@@ -3,8 +3,13 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/FONTS/lib/hamcrest-core-1.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/FONTS/lib/junit-4.13.1.jar!/" />
+      <root url="file://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19" />
+    </SOURCES>
+    <jarDirectory url="file://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/Downloads/openjfx-19_windows-x64_bin-sdk/javafx-sdk-19" recursive="false" type="SOURCES" />
   </library>
 </component>
