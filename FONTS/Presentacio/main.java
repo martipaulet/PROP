@@ -16,9 +16,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("prova.fxml"));
-        Scene s = new Scene(root);
-        primaryStage.setScene(s);
-        primaryStage.show();
+        CtrlPresentacio cp = CtrlPresentacio.getInstance();
+        cp.setPrimary(primaryStage);
     }
 }
