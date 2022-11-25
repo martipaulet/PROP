@@ -88,7 +88,7 @@
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Gestió expressió booleanes" textAlignment="CENTER" textFill="WHITE">
+                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Gestió expressions booleanes" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>

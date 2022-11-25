@@ -26,7 +26,7 @@ public class CtrlPresentacio {
     }
 
     public void setPrimary(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("prova.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("menuPrincipal.fxml"));
         Scene s = new Scene(root);
         primaryStage.setScene(s);
         primaryStage.show();
