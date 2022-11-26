@@ -13,11 +13,26 @@ import javafx.stage.Stage;
 
 
 public class CtrlPresentacio {
+
     private CtrlDomini cd;
+    private HashMap<String,String> pathVistes;
     private static CtrlPresentacio cp;
 
+    private Stage stageActual;
+
     public CtrlPresentacio() {
-        cd = new CtrlDomini();
+        pathVistes = new HashMap<>();
+        iniVistes();
+        CtrlDomini cd = CtrlDomini.getInstance();
+    }
+
+    private void iniVistes(){
+        String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
+                "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
+                "RealitzaConsulta"};
+        for (String s : nomVistes){
+            pathVistes.put(s,"Presentacio/"+s+".fxml");
+        }
     }
 
     public static CtrlPresentacio getInstance() {
@@ -27,9 +42,9 @@ public class CtrlPresentacio {
 
     public void setPrimary(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("menuPrincipal.fxml"));
-        Scene s = new Scene(root);
-        primaryStage.setScene(s);
-        primaryStage.show();
+        stageActual = primaryStage;
+        stageActual.setScene(new Scene(root));
+        stageActual.show();
     }
 
     public void inicialitzarVistes() {
