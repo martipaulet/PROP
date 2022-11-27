@@ -42,7 +42,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistamenuPrincipal">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
@@ -63,32 +63,32 @@
                         </Text>
                      </children>
                   </Pane>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Alta Document" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="AltaDocument" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Alta Document" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Baixa Document" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="BaixaDocument" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Baixa Document" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Modifica Document" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="ModificaDocument" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Modifica Document" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Realitzar consulta" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="RealitzarConsulta" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Realitzar consulta" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Llistar documents" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="LlistarDocuments" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Llistar documents" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
                   </Button>
-                  <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Gestió expressions booleanes" textAlignment="CENTER" textFill="WHITE">
+                  <Button fx:id="GestioExpressionsBooleanes" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #00FB63;" text="Gestió expressions booleanes" textAlignment="CENTER" textFill="WHITE">
                      <padding>
                         <Insets left="50.0" />
                      </padding>
