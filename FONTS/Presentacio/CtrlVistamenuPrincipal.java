@@ -2,6 +2,7 @@ package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
@@ -33,32 +34,39 @@ public class CtrlVistamenuPrincipal {
     }
 
     @FXML
-    void pressAltaDocument(ActionEvent event) throws IOException {
+    void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
+        initialize();
         ctrlPres.canviaStage("AltaDocument");
     }
 
     @FXML
-    void pressBaixaDocument(ActionEvent event) throws IOException {
+    void pressBaixaDocument(javafx.event.ActionEvent event) throws IOException {
+        initialize();
         ctrlPres.canviaStage("BaixaDocument");
     }
 
     @FXML
-    void pressModificaDocument(ActionEvent event) throws IOException {
+    void pressModificaDocument(javafx.event.ActionEvent event) throws IOException {
+        initialize();
         ctrlPres.canviaStage("ModificaDocumentInicial");
     }
 
     @FXML
-    void pressRealitzarConsulta(ActionEvent event) throws IOException {
+    void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
+        initialize();
         ctrlPres.canviaStage("RealitzaConsulta");
     }
 
     @FXML
-    void pressLlistarDocuments(ActionEvent event) throws IOException {
+    void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
+        initialize();
         ctrlPres.canviaStage("LlistarDocuments");
     }
 
     @FXML
-    void pressGestioExpressionsBooleanes(ActionEvent event) throws IOException {
+    void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
+        initialize();
         ctrlPres.canviaStage("GestioExpressionsBooleanes");
     }
+
 }
