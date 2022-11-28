@@ -39,7 +39,7 @@ public class CtrlPresentacio {
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
                 "RealitzaConsulta"};
         for (String s : nomVistes){
-            pathVistes.put(s,"Presentacio/"+s+".fxml");
+            pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }
     }
 
