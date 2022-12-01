@@ -6,7 +6,7 @@ import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 
-public class CtrlVistaBaixadocument {
+public class CtrlVistaBaixaDocument {
 
     @FXML
     private TextArea TextAutor;
@@ -38,8 +38,33 @@ public class CtrlVistaBaixadocument {
     void pressContinue(javafx.event.ActionEvent event) throws IOException {
         String a = TextAutor.getText();
         String t = TextTitol.getText();
-        ctrlPres.baiaxaDocumentPres(a,t);
+        //ctrlPres.baiaxaDocumentPres(a,t);
         //Cridar ctrlPresentacio i aquest cridar a la de domini per baixa document amb els arguments de autor i titol
+    }
+
+    @FXML
+    void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("AltaDocument");
+    }
+
+    @FXML
+    void pressModificaDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("ModificaDocumentInicial");
+    }
+
+    @FXML
+    void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("RealitzaConsulta");
+    }
+
+    @FXML
+    void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("LlistarDocuments");
+    }
+
+    @FXML
+    void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("GestioExpressionsBooleanes");
     }
 
 }
