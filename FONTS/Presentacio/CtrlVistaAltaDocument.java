@@ -1,16 +1,14 @@
 package Presentacio;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-public class CtrlVistamenuPrincipal {
-
-    @FXML
-    private Button AltaDocument;
+public class CtrlVistaAltaDocument {
 
     @FXML
     private Button BaixaDocument;
@@ -27,11 +25,19 @@ public class CtrlVistamenuPrincipal {
     @FXML
     private Button GestioExpressionsBooleanes;
 
-    private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
     @FXML
-    void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("AltaDocument");
-    }
+    private TextArea AutorText;
+
+    @FXML
+    private TextArea TitolText;
+
+    @FXML
+    private TextArea ContingutText;
+
+    @FXML
+    private Button Continue;
+
+    private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
     @FXML
     void pressBaixaDocument(javafx.event.ActionEvent event) throws IOException {
@@ -57,4 +63,13 @@ public class CtrlVistamenuPrincipal {
     void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("GestioExpressionsBooleanes");
     }
+
+    @FXML
+    void pressContinue(javafx.event.ActionEvent event) throws Exception {
+        String nom_autor = AutorText.getText();
+        String titol = TitolText.getText();
+        String contingut = ContingutText.getText();
+        ctrlPres.altaDocumentPres(nom_autor, titol, contingut);
+    }
+
 }

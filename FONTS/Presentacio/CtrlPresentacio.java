@@ -85,7 +85,7 @@ public class CtrlPresentacio {
 
     }
 
-    public void altaDocument() {
-
+    public void altaDocumentPres(String nom_autor, String titol, String contingut) throws Exception {
+        cd.altaDocument(nom_autor, titol, contingut);
     }
 }
