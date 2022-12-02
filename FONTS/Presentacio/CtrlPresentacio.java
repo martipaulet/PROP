@@ -22,7 +22,7 @@ import javafx.scene.control.Alert;
 
 public class CtrlPresentacio {
 
-    private CtrlDomini cd;
+    private CtrlDomini cd = CtrlDomini.getInstance();
     private HashMap<String,String> pathVistes;
     private static CtrlPresentacio cp;
 
@@ -31,7 +31,6 @@ public class CtrlPresentacio {
     public CtrlPresentacio() {
         pathVistes = new HashMap<>();
         iniVistes();
-        CtrlDomini cd = CtrlDomini.getInstance();
     }
 
     private void iniVistes(){
