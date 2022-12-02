@@ -37,7 +37,7 @@ public class CtrlPresentacio {
     private void iniVistes(){
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
-                "RealitzaConsulta"};
+                "RealitzaConsulta", "DocumentCreat"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }

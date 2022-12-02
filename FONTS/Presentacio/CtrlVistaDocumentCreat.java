@@ -8,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-public class CtrlVistaAltaDocument {
+public class CtrlVistaDocumentCreat {
 
     @FXML
     private Button BaixaDocument;
@@ -24,18 +24,6 @@ public class CtrlVistaAltaDocument {
 
     @FXML
     private Button GestioExpressionsBooleanes;
-
-    @FXML
-    private TextArea AutorText;
-
-    @FXML
-    private TextArea TitolText;
-
-    @FXML
-    private TextArea ContingutText;
-
-    @FXML
-    private Button Continue;
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
@@ -63,15 +51,4 @@ public class CtrlVistaAltaDocument {
     void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("GestioExpressionsBooleanes");
     }
-
-    @FXML
-    void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String nom_autor = AutorText.getText();
-        String titol = TitolText.getText();
-        String contingut = ContingutText.getText();
-        ctrlPres.canviaStage("DocumentCreat");
-        ctrlPres.altaDocumentPres(nom_autor, titol, contingut);
-        //ctrlPres.canviaStage("DocumentCreat");
-    }
-
 }
