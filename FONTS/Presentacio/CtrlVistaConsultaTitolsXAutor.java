@@ -56,7 +56,7 @@ public class CtrlVistaConsultaTitolsXAutor {
     }
 
     @FXML
-    void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
+    void pressRealitzaConsulta(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("RealitzaConsulta");
     }
 
