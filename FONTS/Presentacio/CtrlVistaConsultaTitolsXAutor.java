@@ -1,9 +1,11 @@
 package Presentacio;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.util.List;
@@ -34,7 +36,8 @@ public class CtrlVistaConsultaTitolsXAutor {
     @FXML
     private Button Continue;
 
-    private Text Titols;
+    @FXML
+    private ListView<String> Titols = new ListView<>();
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
@@ -73,8 +76,9 @@ public class CtrlVistaConsultaTitolsXAutor {
     @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String nom_autor = AutorText.getText();
-        List<String> a = ctrlPres.titolsAutorPres(nom_autor);
-        Titols.setText(a.toString());
+        List<String> aux = ctrlPres.titolsAutorPres(nom_autor);
+        ObservableList<String> a = FXCollections.observableList(aux);
+        Titols.setItems(a);
     }
 
 }
