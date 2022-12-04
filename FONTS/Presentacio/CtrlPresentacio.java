@@ -33,7 +33,7 @@ public class CtrlPresentacio {
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
                 "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsXPrefix",
-                "ConsultaContingutDocument"};
+                "ConsultaContingut"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }

@@ -67,7 +67,7 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="ConsultaContingutDocument" layoutX="300.0" layoutY="237.0" mnemonicParsing="false" onAction="#pressConsultaContingutDocument" style="-fx-background-color: #3f2b63;" text="Consulta contingut d'un document" textFill="WHITE">
+      <Button fx:id="ConsultaContingut" layoutX="300.0" layoutY="237.0" mnemonicParsing="false" onAction="#pressConsultaContingut" style="-fx-background-color: #3f2b63;" text="Consulta contingut d'un document" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
