@@ -11,10 +11,6 @@ import java.net.MalformedURLException;
 import  java.util.*;
 import java.net.URL;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.control.Alert;
 
@@ -91,5 +87,9 @@ public class CtrlPresentacio {
 
     public void baiaxaDocumentPres(String nom_autor, String titol) throws Exception {
         cd.baixaDocument(nom_autor, titol);
+    }
+
+    public List<String> titolsAutorPres(String nom_autor) throws Exception {
+        return cd.titolsAutor(nom_autor);
     }
 }

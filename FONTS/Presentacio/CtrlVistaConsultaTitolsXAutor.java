@@ -2,8 +2,11 @@ package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CtrlVistaConsultaTitolsXAutor {
 
@@ -17,19 +20,21 @@ public class CtrlVistaConsultaTitolsXAutor {
     private Button ModificaDocument;
 
     @FXML
+    private Button RealitzaConsulta;
+
+    @FXML
     private Button LlistarDocuments;
 
     @FXML
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private Button ConsultaTitolsAutor;
+    private TextArea AutorText;
 
     @FXML
-    private Button ConsultaAutorsPrefix;
+    private Button Continue;
 
-    @FXML
-    private Button ConsultaContingutDocument;
+    private Text Titols;
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
@@ -51,6 +56,11 @@ public class CtrlVistaConsultaTitolsXAutor {
     }
 
     @FXML
+    void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("RealitzaConsulta");
+    }
+
+    @FXML
     void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("LlistarDocuments");
     }
@@ -61,17 +71,10 @@ public class CtrlVistaConsultaTitolsXAutor {
     }
 
     @FXML
-    void pressConsultaTitolsAutor(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("ConsultaTitolsXAutor");
+    void pressContinue(javafx.event.ActionEvent event) throws Exception {
+        String nom_autor = AutorText.getText();
+        List<String> a = ctrlPres.titolsAutorPres(nom_autor);
+        Titols.setText(a.toString());
     }
 
-    @FXML
-    void pressConsultaAutorsPrefix(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("ConsultaAutorsPrefix");
-    }
-
-    @FXML
-    void pressConsultaContingutDocument(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("ConsultaContingutDocument");
-    }
 }
