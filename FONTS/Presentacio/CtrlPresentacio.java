@@ -96,4 +96,8 @@ public class CtrlPresentacio {
     public ArrayList<String> prefixAutorPres(String prefix) throws Exception {
         return cd.prefixAutor(prefix);
     }
+
+    public String obteContingutPres(String nom_autor, String titol) throws Exception {
+        return cd.obteContingut(nom_autor,titol);
+    }
 }

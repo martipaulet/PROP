@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CtrlVistaConsultaContingut {
 
@@ -31,7 +32,10 @@ public class CtrlVistaConsultaContingut {
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private TextArea Text;
+    private TextArea AutorText;
+
+    @FXML
+    private TextArea TitolText;
 
     @FXML
     private Button Continue;
@@ -75,9 +79,11 @@ public class CtrlVistaConsultaContingut {
 
     @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String prefix = PrefixText.getText();
-        ArrayList<String> aux = ctrlPres.prefixAutorPres(prefix);
-        ObservableList<String> a = FXCollections.observableArrayList(aux);
-        Autors.setItems(a);
+        String nom_autor = AutorText.getText();
+        String titol = TitolText.getText();
+        String aux = ctrlPres.obteContingutPres(nom_autor,titol);
+        ObservableList<String> a = FXCollections.observableArrayList();
+        a.add(aux);
+        Contingut.setItems(a);
     }
 }
