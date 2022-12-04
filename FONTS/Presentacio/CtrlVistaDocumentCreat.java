@@ -11,6 +11,9 @@ import java.io.IOException;
 public class CtrlVistaDocumentCreat {
 
     @FXML
+    private Button AltaDocument;
+
+    @FXML
     private Button BaixaDocument;
 
     @FXML
@@ -26,6 +29,12 @@ public class CtrlVistaDocumentCreat {
     private Button GestioExpressionsBooleanes;
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
+
+
+    @FXML
+    void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("AltaDocument");
+    }
 
     @FXML
     void pressBaixaDocument(javafx.event.ActionEvent event) throws IOException {

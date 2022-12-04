@@ -36,7 +36,7 @@ public class CtrlPresentacio {
     private void iniVistes(){
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
-                "RealitzaConsulta", "DocumentCreat"};
+                "RealitzaConsulta", "DocumentCreat", "DocumentBorrat"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }
@@ -86,5 +86,9 @@ public class CtrlPresentacio {
 
     public void altaDocumentPres(String nom_autor, String titol, String contingut) throws Exception {
         cd.altaDocument(nom_autor, titol, contingut);
+    }
+
+    public void baiaxaDocumentPres(String nom_autor, String titol) throws Exception {
+        cd.baixaDocument(nom_autor, titol);
     }
 }
