@@ -1,12 +1,16 @@
 package Presentacio;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
-public class CtrlVistaRealitzarConsulta {
-
+public class CtrlVistaConsultaAutorsXPrefix {
 
     @FXML
     private Button AltaDocument;
@@ -18,19 +22,22 @@ public class CtrlVistaRealitzarConsulta {
     private Button ModificaDocument;
 
     @FXML
+    private Button RealitzaConsulta;
+
+    @FXML
     private Button LlistarDocuments;
 
     @FXML
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private Button ConsultaTitolsAutor;
+    private TextArea PrefixText;
 
     @FXML
-    private Button ConsultaAutorsPrefix;
+    private Button Continue;
 
     @FXML
-    private Button ConsultaContingutDocument;
+    private ListView<String> Autors = new ListView<>();
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
@@ -52,6 +59,11 @@ public class CtrlVistaRealitzarConsulta {
     }
 
     @FXML
+    void pressRealitzaConsulta(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("RealitzaConsulta");
+    }
+
+    @FXML
     void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("LlistarDocuments");
     }
@@ -62,17 +74,10 @@ public class CtrlVistaRealitzarConsulta {
     }
 
     @FXML
-    void pressConsultaTitolsAutor(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("ConsultaTitolsXAutor");
-    }
-
-    @FXML
-    void pressConsultaAutorsPrefix(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("ConsultaAutorsXPrefix");
-    }
-
-    @FXML
-    void pressConsultaContingutDocument(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("ConsultaContingutDocument");
+    void pressContinue(javafx.event.ActionEvent event) throws Exception {
+        String prefix = PrefixText.getText();
+        ArrayList<String> aux = ctrlPres.prefixAutorPres(prefix);
+        ObservableList<String> a = FXCollections.observableArrayList(aux);
+        Autors.setItems(a);
     }
 }

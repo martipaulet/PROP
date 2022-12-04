@@ -32,7 +32,7 @@ public class CtrlPresentacio {
     private void iniVistes(){
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
-                "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsPrefix",
+                "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsXPrefix",
                 "ConsultaContingutDocument"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
@@ -91,5 +91,9 @@ public class CtrlPresentacio {
 
     public List<String> titolsAutorPres(String nom_autor) throws Exception {
         return cd.titolsAutor(nom_autor);
+    }
+
+    public ArrayList<String> prefixAutorPres(String prefix) throws Exception {
+        return cd.prefixAutor(prefix);
     }
 }

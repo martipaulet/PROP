@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaConsultaAutorsXPrefix">
    <children>
       <VBox prefHeight="400.0" prefWidth="215.0">
          <children>
@@ -21,49 +22,50 @@
                   </Text>
                </children>
             </Pane>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Alta Document" textFill="WHITE">
+            <Button fx:id="AltaDocument" mnemonicParsing="false" onAction="#pressAltaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Alta Document" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Baixa Document" textFill="WHITE">
+            <Button fx:id="BaixaDocument" mnemonicParsing="false" onAction="#pressBaixaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Baixa Document" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Modifica Document" textFill="WHITE">
+            <Button fx:id="ModificaDocument" mnemonicParsing="false" onAction="#pressModificaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Modifica Document" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Realitzar consulta" textFill="WHITE">
+            <Button fx:id="RealitzaConsulta" mnemonicParsing="false" onAction="#pressRealitzaConsulta" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Realitzar consulta" textFill="WHITE">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Llistar documents" textFill="WHITE">
+            <Button fx:id="LlistarDocuments" mnemonicParsing="false" onAction="#pressLlistarDocuments" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Llistar documents" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Gestió expressions booleanes" textFill="WHITE">
+            <Button fx:id="GestioExpressionsBooleanes" mnemonicParsing="false" onAction="#pressGestioExpressionsBooleanes" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Gestió expressions booleanes" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Text fill="WHITE" layoutX="282.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prefix:">
+      <Text fill="WHITE" layoutX="300.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prefix:">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <TextArea layoutX="346.0" layoutY="180.0" prefHeight="33.0" prefWidth="200.0" />
-      <Button layoutX="489.0" layoutY="334.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Continue" />
-      <Text fill="WHITE" layoutX="317.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSULTA AUTORS PER PREFIX">
+      <TextArea fx:id="PrefixText" layoutX="354.0" layoutY="68.0" prefHeight="33.0" prefWidth="200.0" />
+      <Button fx:id="Continue" layoutX="489.0" layoutY="334.0" mnemonicParsing="false" onAction="#pressContinue" prefHeight="25.0" prefWidth="65.0" text="Continue" />
+      <Text fill="WHITE" layoutX="317.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSULTA AUTORS PER PREFIX">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
+      <ListView fx:id="Autors" layoutX="354.0" layoutY="118.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
