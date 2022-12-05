@@ -1,9 +1,11 @@
 package Presentacio;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+
 import java.io.IOException;
 
-public class CtrlVistaDocumentCreat {
+public class CtrlVistaLlistarDocuments {
 
     @FXML
     private Button AltaDocument;
@@ -18,12 +20,16 @@ public class CtrlVistaDocumentCreat {
     private Button RealitzarConsulta;
 
     @FXML
-    private Button LlistarDocuments;
-
-    @FXML
     private Button GestioExpressionsBooleanes;
 
+    @FXML
+    private Button LlistarSemblants;
+
+    @FXML
+    private Button LlistarDocsExpressio;
+
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
+
 
 
     @FXML
@@ -47,12 +53,17 @@ public class CtrlVistaDocumentCreat {
     }
 
     @FXML
-    void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("LlistarDocuments");
+    void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("GestioExpressionsBooleanes");
     }
 
     @FXML
-    void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("GestioExpressionsBooleanes");
+    void pressLlistarSemblants(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("LlistarSemblants");
+    }
+
+    @FXML
+    void pressLlistarDocsExpressio(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("LlistarDocsExpressio");
     }
 }

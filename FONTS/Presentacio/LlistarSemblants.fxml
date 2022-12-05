@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764fa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaLlistarSemblants">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="215.0">
+         <children>
+            <Pane prefHeight="63.0" prefWidth="215.0" style="-fx-background-color: #3f2b63;">
+               <children>
+                  <Text fill="WHITE" layoutX="17.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTOR DE DOCUMENTS" textAlignment="CENTER">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+            <Button fx:id="AltaDocument" mnemonicParsing="false" onAction="#pressAltaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Alta Document" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="BaixaDocument" mnemonicParsing="false" onAction="#pressBaixaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Baixa Document" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="ModificaDocument" mnemonicParsing="false" onAction="#pressModificaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Modifica Document" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button fx:id="RealitzarConsulta" mnemonicParsing="false" onAction="#pressRealitzarConsulta" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Realitzar consulta" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Llistar documents" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="GestioExpressionsBooleanes" mnemonicParsing="false" onAction="#pressGestioExpressionsBooleanes" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Gestió expressions booleanes" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
+         </children>
+      </VBox>
+      <Text fill="WHITE" layoutX="282.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autor:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="AutorText" layoutX="345.0" layoutY="82.0" prefHeight="33.0" prefWidth="200.0" />
+      <Button fx:id="Continue" layoutX="512.0" layoutY="357.0" mnemonicParsing="false" onAction="#pressContinue" prefHeight="25.0" prefWidth="65.0" text="Continue" />
+      <Text fill="WHITE" layoutX="300.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS SEMBLANTS">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="282.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Títol:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="TitolText" layoutX="345.0" layoutY="125.0" prefHeight="33.0" prefWidth="200.0" />
+      <Text fill="WHITE" layoutX="286.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="286.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="282.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de documents a retornar:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <TextArea fx:id="nombreDocs" layoutX="501.0" layoutY="169.0" prefHeight="40.0" prefWidth="28.0" />
+      <Text fill="WHITE" layoutX="282.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode per fer la cerca:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="tf_idf" layoutX="301.0" layoutY="240.0" mnemonicParsing="false" onAction="#pressTf_idf" text="Tf_idf" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="tf" layoutX="409.0" layoutY="240.0" mnemonicParsing="false" onAction="#pressTf" text="Tf" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="modificacio" layoutX="289.0" layoutY="338.0" mnemonicParsing="false" onAction="#pressmodificacio" text="Data de modificació més propera" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="creacio" layoutX="289.0" layoutY="314.0" mnemonicParsing="false" onAction="#presscreacio" text="Data de creació més propera" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="alfabetica" layoutX="289.0" layoutY="289.0" mnemonicParsing="false" onAction="#pressalfabetica" text="Alfabètica per títol" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <Text fill="WHITE" layoutX="281.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipus ordenació:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

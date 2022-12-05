@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764fa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaLlistarDocuments">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764fa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaLlistarDocsExpressio">
    <children>
       <VBox prefHeight="400.0" prefWidth="215.0">
          <children>
@@ -52,20 +55,48 @@
             </Button>
          </children>
       </VBox>
-      <Text fill="WHITE" layoutX="300.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escull el criteri per llistar els documents:" wrappingWidth="153.9700927734375">
+      <Text fill="WHITE" layoutX="262.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Query booleana:">
          <font>
-            <Font size="14.0" />
+            <Font size="13.0" />
          </font>
       </Text>
-      <Button fx:id="LlistarSemblants" layoutX="300.0" layoutY="134.0" mnemonicParsing="false" onAction="#pressLlistarSemblants" style="-fx-background-color: #3f2b63;" text="Llistar Semblants" textFill="WHITE">
+      <TextArea fx:id="QueryText" layoutX="369.0" layoutY="72.0" prefHeight="33.0" prefWidth="200.0" />
+      <Button fx:id="Continue" layoutX="512.0" layoutY="357.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="65.0" text="Continue" />
+      <Text fill="WHITE" layoutX="258.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS QUE COMPLEIXEN EXPRESSIÓ">
          <font>
             <Font size="13.0" />
          </font>
-      </Button>
-      <Button fx:id="LlistarDocsExpressio" layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#pressLlistarDocsExpressio" style="-fx-background-color: #3f2b63;" text="LListar documents que compleixen expressió" textFill="WHITE">
+      </Text>
+      <Text fill="WHITE" layoutX="286.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0">
          <font>
             <Font size="13.0" />
          </font>
-      </Button>
+      </Text>
+      <Text fill="WHITE" layoutX="286.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <CheckBox fx:id="modificacio" layoutX="279.0" layoutY="197.0" mnemonicParsing="false" onAction="#pressmodificacio" text="Data de modificació més propera" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="creacio" layoutX="279.0" layoutY="171.0" mnemonicParsing="false" onAction="#presscreacio" text="Data de creació més propera" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="alfabetica" layoutX="279.0" layoutY="149.0" mnemonicParsing="false" onAction="#pressalfabetica" text="Alfabètica per títol" textFill="WHITE">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </CheckBox>
+      <Text fill="WHITE" layoutX="262.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipus ordenació:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <ListView fx:id="Docs" layoutX="262.0" layoutY="234.0" prefHeight="148.0" prefWidth="233.0" />
    </children>
 </AnchorPane>

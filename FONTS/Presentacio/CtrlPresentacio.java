@@ -1,5 +1,6 @@
 package Presentacio;
 import Domini.Controladors.CtrlDomini;
+import Domini.Model.ConjuntDocuments;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -33,7 +34,7 @@ public class CtrlPresentacio {
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
                 "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsXPrefix",
-                "ConsultaContingut"};
+                "ConsultaContingut", "LlistarSemblants", "LlistarDocsExpressio", "LlistarSemblantsOutput"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }
@@ -100,4 +101,10 @@ public class CtrlPresentacio {
     public String obteContingutPres(String nom_autor, String titol) throws Exception {
         return cd.obteContingut(nom_autor,titol);
     }
+
+   /* public List<String> consultaBooleanaPres(String query, int ordre) throws Exception {
+        ConjuntDocuments cjd = cd.ConsultaBooleana(query);
+        ConjuntDocuments cjdfi = cd.ordenaDocuments(cjd, ordre);
+
+    }*/
 }
