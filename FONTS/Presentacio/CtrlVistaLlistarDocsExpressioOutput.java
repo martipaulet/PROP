@@ -45,7 +45,7 @@ public class CtrlVistaLlistarDocsExpressioOutput {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
-    private CtrlVistaLlistarSemblants CVLLS = CtrlVistaLlistarSemblants.getInstance();
+    private CtrlVistaLlistarDocsExpressio CVLLDE = CtrlVistaLlistarDocsExpressio.getInstance();
 
 
     @FXML
@@ -80,15 +80,15 @@ public class CtrlVistaLlistarDocsExpressioOutput {
 
     @FXML
     void pressMostrarDocuments(javafx.event.ActionEvent event) throws Exception {
-        String a = CVLLS.getAutor();
-        String t = CVLLS.getTitol();
-        Integer k = Integer.parseInt(CVLLS.getNombre());
-        Integer m = CVLLS.getMode();
-        Integer o = CVLLS.getOrdre();
-        ArrayList<String> doc = ctrlPres.DocumentsSemblantsPres(a,t,k,m,o);
-        ObservableList<String> aux = FXCollections.observableArrayList(doc);
-        Documents.setItems(aux);
-        Documents.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        String q = CVLLDE.getQuery();
+        Integer o = CVLLDE.getOrdre();
+        ArrayList<String> doc = ctrlPres.ConsultaBooleanaPres(q,o);
+        if (doc.size() == 0) ctrlPres.mostraError("No hi ha cap frase de cap document que compleixi la query");
+        else{
+            ObservableList<String> aux = FXCollections.observableArrayList(doc);
+            Documents.setItems(aux);
+            Documents.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
     }
 
     @FXML

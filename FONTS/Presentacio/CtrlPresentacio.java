@@ -36,7 +36,8 @@ public class CtrlPresentacio {
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
                 "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsXPrefix",
-                "ConsultaContingut", "LlistarSemblants", "LlistarDocsExpressio", "LlistarSemblantsOutput"};
+                "ConsultaContingut", "LlistarSemblants", "LlistarDocsExpressio", "LlistarSemblantsOutput",
+                "LlistarDocsExpressioOutput"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }
@@ -106,6 +107,12 @@ public class CtrlPresentacio {
 
     public ArrayList<String> DocumentsSemblantsPres(String autor, String titol, Integer K, Integer mode, Integer ordre) throws Exception {
         ConjuntDocuments cjd = cd.DocumentsSemblants(autor,titol,K,mode);
+        ConjuntDocuments c = cd.ordenaDocuments(cjd,ordre);
+        return canviCjtDocToArrayList(c);
+    }
+
+    public ArrayList<String> ConsultaBooleanaPres(String query, Integer ordre) throws Exception {
+        ConjuntDocuments cjd = cd.ConsultaBooleana(query);
         ConjuntDocuments c = cd.ordenaDocuments(cjd,ordre);
         return canviCjtDocToArrayList(c);
     }
