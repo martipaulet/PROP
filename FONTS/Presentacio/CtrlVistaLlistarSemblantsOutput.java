@@ -5,9 +5,12 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CtrlVistaLlistarSemblantsOutput {
 
@@ -88,10 +91,24 @@ public class CtrlVistaLlistarSemblantsOutput {
         ArrayList<String> doc = ctrlPres.DocumentsSemblantsPres(a,t,k,m,o);
         ObservableList<String> aux = FXCollections.observableArrayList(doc);
         Documents.setItems(aux);
+        Documents.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
     }
 
     @FXML
-    void pressMostrarContingut(javafx.event.ActionEvent event) throws IOException {
-
+    void pressMostrarContingut(javafx.event.ActionEvent event) throws Exception {
+        if (Documents.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar un document, pitjant l'autor i el titol que surten per pantalla");
+        }
+        else {
+            String s = Documents.getSelectionModel().getSelectedItem();
+            String[] autor_titol = s.split("\n");
+            //Element 0 = autor
+            //Element 1 = titol
+            ArrayList<String> al = new ArrayList<>(List.of(autor_titol));
+            String con = ctrlPres.obteContingutPres( al.get(0) , al.get(1) );
+            ObservableList<String> a = FXCollections.observableArrayList();
+            a.add(con);
+            Contingut.setItems(a);
+        }
     }
 }
