@@ -82,7 +82,7 @@ public class CtrlVistaLlistarSemblantsOutput {
     void pressMostrarDocuments(javafx.event.ActionEvent event) throws Exception {
         String a = CVLLS.getAutor();
         String t = CVLLS.getTitol();
-        Integer k = CVLLS.getNombre();
+        Integer k = Integer.parseInt(CVLLS.getNombre());
         Integer m = CVLLS.getMode();
         Integer o = CVLLS.getOrdre();
         ArrayList<String> doc = ctrlPres.DocumentsSemblantsPres(a,t,k,m,o);

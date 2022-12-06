@@ -1,12 +1,12 @@
 package Presentacio;
 
-import Domini.Controladors.CtrlDomini;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class CtrlVistaLlistarSemblants {
 
@@ -58,8 +58,19 @@ public class CtrlVistaLlistarSemblants {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
-    int mode = -1;
-    int ordre = -1;
+    private static String a;
+
+    private static String t;
+
+    private static String k;
+
+    private static Integer mode;
+
+    private static Integer ordre;
+
+
+    public CtrlVistaLlistarSemblants() {
+    }
 
     public static CtrlVistaLlistarSemblants getInstance() {
         if (instance == null) instance = new CtrlVistaLlistarSemblants();
@@ -141,7 +152,6 @@ public class CtrlVistaLlistarSemblants {
 
     @FXML
     void pressContinue(ActionEvent event) throws IOException {
-
         if (AutorText.getText() == "") {
             ctrlPres.mostraError("Falta Autor");
         }
@@ -165,20 +175,23 @@ public class CtrlVistaLlistarSemblants {
         }
 
         else {
+            a = AutorText.getText();
+            t = TitolText.getText();
+            k = nombreDocs.getText();
             ctrlPres.canviaStage("LlistarSemblantsOutput");
         }
     }
 
     public String getAutor(){
-        return AutorText.getText();
+        return a;
     }
 
     public String getTitol(){
-        return TitolText.getText();
+        return t;
     }
 
-    public Integer getNombre(){
-        return Integer.parseInt(nombreDocs.getText());
+    public String getNombre(){
+        return k;
     }
 
     public Integer getMode(){
