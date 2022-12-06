@@ -37,7 +37,8 @@ public class CtrlPresentacio {
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
                 "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsXPrefix",
                 "ConsultaContingut", "LlistarSemblants", "LlistarDocsExpressio", "LlistarSemblantsOutput",
-                "LlistarDocsExpressioOutput"};
+                "LlistarDocsExpressioOutput", "GestioExpressionsBooleanes", "AltaExpressio",
+                "BaixaExpressio", "ModificarExpressio", "ExpressioCreada", "ExpressioBorrada"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }
@@ -117,12 +118,13 @@ public class CtrlPresentacio {
         return canviCjtDocToArrayList(c);
     }
 
-   /* public List<String> consultaBooleanaPres(String query, int ordre) throws Exception {
-        ConjuntDocuments cjd = cd.ConsultaBooleana(query);
-        ConjuntDocuments cjdfi = cd.ordenaDocuments(cjd, ordre);
+    public void altaExpressioPres(String query) throws Exception {
+        cd.altaExpressioBooleana(query);
+    }
 
-    }*/
-
+    public void baixaExpressioPres(String query) throws Exception {
+        cd.baixaExpressioBooleana(query);
+    }
 
     private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c){
         ArrayList<String> ret = new ArrayList<>();
