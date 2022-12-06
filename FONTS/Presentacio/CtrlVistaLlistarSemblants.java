@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class CtrlVistaLlistarSemblants {
 

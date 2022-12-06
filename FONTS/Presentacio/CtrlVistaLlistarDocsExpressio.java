@@ -3,12 +3,13 @@ package Presentacio;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
 
 public class CtrlVistaLlistarDocsExpressio {
+
+    private static CtrlVistaLlistarDocsExpressio instance;
 
     @FXML
     private Button AltaDocument;
@@ -21,6 +22,9 @@ public class CtrlVistaLlistarDocsExpressio {
 
     @FXML
     private Button RealitzarConsulta;
+
+    @FXML
+    private Button LlistarDocuments;
 
     @FXML
     private Button GestioExpressionsBooleanes;
@@ -40,12 +44,20 @@ public class CtrlVistaLlistarDocsExpressio {
     @FXML
     private CheckBox modificacio;
 
-    @FXML
-    private ListView<String> Docs = new ListView<>();
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
-    int ordre = -1;
+    private static String q;
+
+    private static Integer ordre;
+
+    public CtrlVistaLlistarDocsExpressio() {
+    }
+
+    public static CtrlVistaLlistarDocsExpressio getInstance() {
+        if (instance == null) instance = new CtrlVistaLlistarDocsExpressio();
+        return instance;
+    }
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
@@ -65,6 +77,11 @@ public class CtrlVistaLlistarDocsExpressio {
     @FXML
     void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("RealitzaConsulta");
+    }
+
+    @FXML
+    void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("LlistarDocuments");
     }
 
     @FXML
@@ -101,7 +118,24 @@ public class CtrlVistaLlistarDocsExpressio {
 
     @FXML
     void pressContinue (javafx.event.ActionEvent event) throws Exception {
-        String query = QueryText.getText();
+        if (QueryText.getText() == "") {
+            ctrlPres.mostraError("Has d'omplir la casella de la query amb una expressio booleana");
+        }
+        else if (!alfabetica.isSelected() && !creacio.isSelected() && !modificacio.isSelected()) {
+            ordre = -1;
+            ctrlPres.mostraError("Has de triar un metode d'ordenacio");
+        }
+        else{
+            q = QueryText.getText();
+            ctrlPres.canviaStage("LlistarDocsExpressioOutput");
+        }
+    }
 
+    public String getQuery(){
+        return q;
+    }
+
+    public Integer getOrdre(){
+        return ordre;
     }
 }
