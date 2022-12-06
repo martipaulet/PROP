@@ -121,7 +121,7 @@ public class CtrlPresentacio {
         ArrayList<String> ret = new ArrayList<>();
         HashMap<Pair, Document> doc = c.getMap();
         for ( Pair key: doc.keySet()){
-            String s = key.getAutor()+", "+key.getTitol();
+            String s = key.getAutor()+"\n"+key.getTitol();
             ret.add(s);
         }
 

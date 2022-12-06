@@ -24,6 +24,9 @@ public class CtrlVistaLlistarSemblants {
     private Button RealitzarConsulta;
 
     @FXML
+    private Button LlistarDocuments;
+
+    @FXML
     private Button GestioExpressionsBooleanes;
 
     @FXML
@@ -81,6 +84,11 @@ public class CtrlVistaLlistarSemblants {
     @FXML
     void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("RealitzaConsulta");
+    }
+
+    @FXML
+    void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("LlistarDocuments");
     }
 
     @FXML
