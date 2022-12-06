@@ -82,12 +82,11 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="282.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de documents a retornar:">
+      <Text fill="WHITE" layoutX="232.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de documents a retornar (valor entre 0 i 10):">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <TextArea fx:id="nombreDocs" layoutX="501.0" layoutY="169.0" prefHeight="40.0" prefWidth="28.0" />
       <Text fill="WHITE" layoutX="282.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mode per fer la cerca:">
          <font>
             <Font size="13.0" />
@@ -123,5 +122,6 @@
             <Font size="13.0" />
          </font>
       </Text>
+      <TextArea fx:id="nombreDocs" layoutX="545.0" layoutY="170.0" prefHeight="39.0" prefWidth="35.0" />
    </children>
 </AnchorPane>

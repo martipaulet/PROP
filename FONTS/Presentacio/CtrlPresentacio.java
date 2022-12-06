@@ -1,6 +1,8 @@
 package Presentacio;
 import Domini.Controladors.CtrlDomini;
 import Domini.Model.ConjuntDocuments;
+import Domini.Model.Document;
+import Domini.Model.Pair;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -102,9 +104,27 @@ public class CtrlPresentacio {
         return cd.obteContingut(nom_autor,titol);
     }
 
+    public ArrayList<String> DocumentsSemblantsPres(String autor, String titol, Integer K, Integer mode, Integer ordre) throws Exception {
+        ConjuntDocuments cjd = cd.DocumentsSemblants(autor,titol,K,mode);
+        ConjuntDocuments c = cd.ordenaDocuments(cjd,ordre);
+        return canviCjtDocToArrayList(c);
+    }
+
    /* public List<String> consultaBooleanaPres(String query, int ordre) throws Exception {
         ConjuntDocuments cjd = cd.ConsultaBooleana(query);
         ConjuntDocuments cjdfi = cd.ordenaDocuments(cjd, ordre);
 
     }*/
+
+
+    private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c){
+        ArrayList<String> ret = new ArrayList<>();
+        HashMap<Pair, Document> doc = c.getMap();
+        for ( Pair key: doc.keySet()){
+            String s = key.getAutor()+", "+key.getTitol();
+            ret.add(s);
+        }
+
+        return ret;
+    }
 }

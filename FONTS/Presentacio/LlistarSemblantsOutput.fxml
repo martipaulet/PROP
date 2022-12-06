@@ -53,8 +53,8 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="Continue" layoutX="512.0" layoutY="357.0" mnemonicParsing="false" onAction="#pressContinue" prefHeight="25.0" prefWidth="65.0" text="Continue" />
-      <Text fill="WHITE" layoutX="300.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS SEMBLANTS">
+      <Button fx:id="MostrarDocuments" layoutX="280.0" layoutY="351.0" mnemonicParsing="false" onAction="#pressMostrarDocuments" prefHeight="21.0" prefWidth="130.0" text="MostrarDocuements" />
+      <Text fill="WHITE" layoutX="300.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS SEMBLANTS">
          <font>
             <Font size="13.0" />
          </font>
@@ -69,6 +69,18 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <ListView layoutX="280.0" layoutY="80.0" prefHeight="236.0" prefWidth="252.0" />
+      <ListView fx:id="Documents" layoutX="280.0" layoutY="80.0" prefHeight="133.0" prefWidth="269.0" />
+      <Button fx:id="MostrarContingut" layoutX="419.0" layoutY="351.0" mnemonicParsing="false" onAction="#pressMostrarContingut" prefHeight="21.0" prefWidth="130.0" text="MostrarContingut" />
+      <ListView fx:id="Contingut" layoutX="280.0" layoutY="242.0" prefHeight="99.0" prefWidth="269.0" />
+      <Text fill="WHITE" layoutX="280.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Documents:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="280.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contingut:">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

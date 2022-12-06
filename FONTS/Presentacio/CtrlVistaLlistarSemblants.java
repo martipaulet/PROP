@@ -1,5 +1,7 @@
 package Presentacio;
 
+import Domini.Controladors.CtrlDomini;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -8,6 +10,7 @@ import java.io.IOException;
 
 public class CtrlVistaLlistarSemblants {
 
+    private static CtrlVistaLlistarSemblants instance;
     @FXML
     private Button AltaDocument;
 
@@ -54,6 +57,11 @@ public class CtrlVistaLlistarSemblants {
 
     int mode = -1;
     int ordre = -1;
+
+    public static CtrlVistaLlistarSemblants getInstance() {
+        if (instance == null) instance = new CtrlVistaLlistarSemblants();
+        return instance;
+    }
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
@@ -124,9 +132,52 @@ public class CtrlVistaLlistarSemblants {
     }
 
     @FXML
-    void pressContinue(javafx.event.ActionEvent event) throws IOException {
-        if (!alfabetica.isSelected() && !creacio.isSelected() && !modificacio.isSelected()) ordre = -1;
-        ctrlPres.canviaStage("LlistarSemblantsOutput");
+    void pressContinue(ActionEvent event) throws IOException {
+
+        if (AutorText.getText() == "") {
+            ctrlPres.mostraError("Falta Autor");
+        }
+
+        else if (TitolText.getText() == "") {
+            ctrlPres.mostraError("Falta Titol");
+        }
+
+        else if (nombreDocs.getText() == "" || Integer.parseInt(nombreDocs.getText())<0 || Integer.parseInt(nombreDocs.getText())>10) {
+            ctrlPres.mostraError("Falta Nombre de documents a retornar i ha de ser un valor del 0 al 10");
+        }
+
+        else if (!tf_idf.isSelected() && !tf.isSelected() ) {
+            mode = -1;
+            ctrlPres.mostraError("Has de triar un metode de cerca");
+        }
+
+        else if (!alfabetica.isSelected() && !creacio.isSelected() && !modificacio.isSelected()) {
+            ordre = -1;
+            ctrlPres.mostraError("Has de triar un metode d'ordenacio");
+        }
+
+        else {
+            ctrlPres.canviaStage("LlistarSemblantsOutput");
+        }
+    }
+
+    public String getAutor(){
+        return AutorText.getText();
+    }
+
+    public String getTitol(){
+        return TitolText.getText();
+    }
+
+    public Integer getNombre(){
+        return Integer.parseInt(nombreDocs.getText());
+    }
+
+    public Integer getMode(){
+        return mode;
+    }
+    public Integer getOrdre(){
+        return ordre;
     }
 
 }
