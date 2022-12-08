@@ -77,6 +77,7 @@ public class CtrlVistaConsultaAutorsXPrefix {
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String prefix = PrefixText.getText();
         ArrayList<String> aux = ctrlPres.prefixAutorPres(prefix);
+        if (aux.size() == 0) ctrlPres.mostraError("No hi ha cap autor amb aquest prefix");
         ObservableList<String> a = FXCollections.observableArrayList(aux);
         Autors.setItems(a);
     }

@@ -77,6 +77,7 @@ public class CtrlVistaConsultaTitolsXAutor {
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String nom_autor = AutorText.getText();
         List<String> aux = ctrlPres.titolsAutorPres(nom_autor);
+        if (aux.size() == 0) ctrlPres.mostraError("L'autor no te cap document associat");
         ObservableList<String> a = FXCollections.observableList(aux);
         Titols.setItems(a);
     }
