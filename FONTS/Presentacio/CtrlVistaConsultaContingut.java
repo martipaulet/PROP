@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CtrlVistaConsultaContingut {
 
@@ -81,9 +82,15 @@ public class CtrlVistaConsultaContingut {
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String nom_autor = AutorText.getText();
         String titol = TitolText.getText();
-        String aux = ctrlPres.obteContingutPres(nom_autor,titol);
-        ObservableList<String> a = FXCollections.observableArrayList();
-        a.add(aux);
-        Contingut.setItems(a);
+        if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")) {
+            ctrlPres.mostraError("Ni autor ni titol no poden ser null");
+        }
+        else{
+            String aux = ctrlPres.obteContingutPres(nom_autor,titol);
+            ObservableList<String> a = FXCollections.observableArrayList();
+            a.add(aux);
+            Contingut.setItems(a);
+        }
+
     }
 }

@@ -45,7 +45,7 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="GestioExpressionsBooleanes" mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Gestió expressions booleanes" textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Gestió expressions booleanes" textFill="WHITE">
                <font>
                   <Font size="15.0" />
                </font>
