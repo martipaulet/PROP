@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CtrlVistaBaixaExpressio {
 
@@ -22,6 +23,9 @@ public class CtrlVistaBaixaExpressio {
 
     @FXML
     private Button LlistarDocuments;
+
+    @FXML
+    private Button GestioExpressionsBooleanes;
 
     @FXML
     private TextArea QueryText;
@@ -58,9 +62,19 @@ public class CtrlVistaBaixaExpressio {
     }
 
     @FXML
+    void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("GestioExpressionsBooleanes");
+    }
+
+    @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String query = QueryText.getText();
-        ctrlPres.baixaExpressioPres(query);
-        ctrlPres.canviaStage("ExpressioBorrada");
+        if (Objects.equals(query, "")) {
+            ctrlPres.mostraError("La query no pot estar buida");
+        }
+        else {
+            ctrlPres.baixaExpressioPres(query);
+            ctrlPres.canviaStage("ExpressioBorrada");
+        }
     }
 }

@@ -48,7 +48,6 @@ public class CtrlDomini {
     //      Si l'autor del document no existia es crea l'autor.
     //      Es crea la relacio entre aquest nou document i l'autor.
     public void altaDocument(String autor, String titol, String contingut) throws Exception{
-        if (Objects.equals(autor, "") || Objects.equals(titol, ""))  throw new Exception("Ni autor ni titol no poden ser null");//System.out.println("Ni autor ni titol no poden ser null");
 
         Autor a = new Autor();
         if (!existeixAutor(autor)) {
@@ -69,8 +68,8 @@ public class CtrlDomini {
     //Post: S'elimina el document d i la seva relacio amb l'autor.
     //      Si l'autor del document eliminat nomes tenia aquest document s'elimina l'autor.
     public void baixaDocument(String autor, String titol) throws Exception{
-        if (Objects.equals(autor, "") || Objects.equals(titol, "")) throw new Exception("Ni autor ni titol no poden ser null");
-        else if (documents.getDocument(autor,titol) != null) {
+
+        if (documents.getDocument(autor,titol) != null) {
             Document d = documents.getDocument(autor,titol);
             desassociaAutor(d);
             documents.baixaDocument(d);
@@ -99,19 +98,16 @@ public class CtrlDomini {
 
     //Post: Es crea una nova expressio booleana si aquesta no existia.
     public void altaExpressioBooleana(String query) throws Exception{
-        if (Objects.equals(query, ""))  throw new Exception("La query no pot ser null");
         ctrlExpressioBooleana.altaExpressioBooleana(query);
     }
 
     //Post: S'elimina l'expressió booleana si aquesta existia.
     public void baixaExpressioBooleana(String query) throws Exception {
-        if (Objects.equals(query, ""))  throw new Exception("La query no pot ser null");
         ctrlExpressioBooleana.baixaExpressioBooleana(query);
     }
 
     //Post:Es modifica l'expressio booleana indicada en queryantiga si aquesta existia per querymodificada.
     public void modificaExpressioBooleana(String queryantiga, String querymodificada) throws Exception{
-        if (Objects.equals(queryantiga, "") || Objects.equals(querymodificada, ""))  throw new Exception("La query no pot ser null");
         ctrlExpressioBooleana.modificaExpressioBooleana(queryantiga,querymodificada);
     }
 

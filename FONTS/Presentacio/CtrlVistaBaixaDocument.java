@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CtrlVistaBaixaDocument {
 
@@ -38,8 +39,13 @@ public class CtrlVistaBaixaDocument {
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String a = TextAutor.getText();
         String t = TextTitol.getText();
-        ctrlPres.baiaxaDocumentPres(a,t);
-        ctrlPres.canviaStage("DocumentBorrat");
+        if (Objects.equals(a, "") || Objects.equals(t, "")) {
+            ctrlPres.mostraError("Ni autor ni titol no poden estar buits");
+        }
+        else {
+            ctrlPres.baiaxaDocumentPres(a, t);
+            ctrlPres.canviaStage("DocumentBorrat");
+        }
     }
 
     @FXML

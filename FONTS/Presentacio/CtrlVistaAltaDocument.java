@@ -7,6 +7,7 @@ import javafx.scene.input.MouseEvent;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+import java.util.Objects;
 
 public class CtrlVistaAltaDocument {
 
@@ -69,8 +70,12 @@ public class CtrlVistaAltaDocument {
         String nom_autor = AutorText.getText();
         String titol = TitolText.getText();
         String contingut = ContingutText.getText();
-        ctrlPres.altaDocumentPres(nom_autor, titol, contingut);
-        ctrlPres.canviaStage("DocumentCreat");
+        if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")){
+            ctrlPres.mostraError("Ni autor ni titol no poden estar buits");
+        }
+        else {
+            ctrlPres.altaDocumentPres(nom_autor, titol, contingut);
+            ctrlPres.canviaStage("DocumentCreat");
+        }
     }
-
 }

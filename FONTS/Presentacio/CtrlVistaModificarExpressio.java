@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class CtrlVistaModificarExpressio {
 
@@ -22,6 +23,9 @@ public class CtrlVistaModificarExpressio {
 
     @FXML
     private Button LlistarDocuments;
+
+    @FXML
+    private Button GestioExpressionsBooleanes;
 
     @FXML
     private TextArea QueryAModificarText;
@@ -61,10 +65,21 @@ public class CtrlVistaModificarExpressio {
     }
 
     @FXML
+    void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("GestioExpressionsBooleanes");
+    }
+
+    @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String queryAModificar = QueryAModificarText.getText();
         String queryModificada = QueryModificadaText.getText();
-        ctrlPres.modificaExpressioPres(queryAModificar, queryModificada);
-        ctrlPres.canviaStage("ExpressioModificada");
+        if (Objects.equals(queryAModificar, "") || Objects.equals(queryModificada, ""))  {
+            ctrlPres.mostraError("Cap de les dues querys pot estar buida");
+        }
+        else{
+            ctrlPres.modificaExpressioPres(queryAModificar, queryModificada);
+            ctrlPres.canviaStage("ExpressioModificada");
+        }
+
     }
 }
