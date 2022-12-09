@@ -52,7 +52,7 @@
           </font>
         </Label>
             <Accordion layoutX="54.0" layoutY="102.0" />
-            <VBox layoutY="1.0" prefHeight="400.0" prefWidth="215.0" style="-fx-background-color: #00FB63;">
+            <VBox layoutY="1.0" prefHeight="400.0" prefWidth="215.0" style="-fx-background-color: #8764FA;">
                <children>
                   <Pane prefHeight="63.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;">
                      <children>

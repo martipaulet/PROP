@@ -228,7 +228,7 @@ public class CtrlDomini {
     }
 
     //Post: retorna true si el document existeix. False altrament.
-    private boolean existeixDocument(String autor, String titol) {
+    public boolean existeixDocument(String autor, String titol) {
         if (autors.containsKey(autor)) {
             Autor a = autors.get(autor);
             return a.conteTitol(titol);

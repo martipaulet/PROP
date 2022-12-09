@@ -35,10 +35,11 @@ public class CtrlPresentacio {
     private void iniVistes(){
         String[] nomVistes = {"menuPrincipal","AltaDocument","BaixaDocument","ConsultaAutorsXPrefix",
                 "ConsultaContingut","ConsultaTítolsXAutor","LlistarDocuments","ModificaDocumentInicial",
-                "RealitzaConsulta", "DocumentCreat", "DocumentBorrat","ConsultaTitolsXAutor","ConsultaAutorsXPrefix",
-                "ConsultaContingut", "LlistarSemblants", "LlistarDocsExpressio", "LlistarSemblantsOutput",
-                "LlistarDocsExpressioOutput", "GestioExpressionsBooleanes", "AltaExpressio",
-                "BaixaExpressio", "ModificarExpressio", "ExpressioCreada", "ExpressioBorrada", "ExpressioModificada"};
+                "ModificaDocument", "DocumentModificat", "RealitzaConsulta", "DocumentCreat", "DocumentBorrat",
+                "ConsultaTitolsXAutor","ConsultaAutorsXPrefix", "ConsultaContingut", "LlistarSemblants",
+                "LlistarDocsExpressio", "LlistarSemblantsOutput", "LlistarDocsExpressioOutput",
+                "GestioExpressionsBooleanes", "AltaExpressio", "BaixaExpressio", "ModificarExpressio",
+                "ExpressioCreada", "ExpressioBorrada", "ExpressioModificada"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }
@@ -63,10 +64,6 @@ public class CtrlPresentacio {
             Parent root = FXMLLoader.load(url);
             stageActual.setScene(new Scene(root));
             stageActual.show();
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-            mostraError("No s'ha pogut canviar de pantalla, mira l'error en terminal");
         } catch (IOException e) {
             e.printStackTrace();
             mostraError("No s'ha pogut canviar de pantalla, mira l'error en terminal");
@@ -84,6 +81,10 @@ public class CtrlPresentacio {
 
     public void inicialitzarVistes() {
 
+    }
+
+    public boolean existeixDocument(String nomAutor, String titol) {
+        return cd.existeixDocument(nomAutor, titol);
     }
 
     public void altaDocumentPres(String nom_autor, String titol, String contingut) throws Exception {
@@ -139,5 +140,9 @@ public class CtrlPresentacio {
         }
 
         return ret;
+    }
+
+    public void modificaContingut(String nomAutor, String titol, String contingut) throws Exception {
+        cd.modificarDocument(contingut, nomAutor, titol);
     }
 }
