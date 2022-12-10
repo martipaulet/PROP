@@ -74,8 +74,11 @@ public class CtrlVistaAltaDocument {
             ctrlPres.mostraError("Ni autor ni titol no poden estar buits");
         }
         else {
-            ctrlPres.altaDocumentPres(nom_autor, titol, contingut);
-            ctrlPres.canviaStage("DocumentCreat");
+            if (ctrlPres.existeixDocument(nom_autor, titol)) ctrlPres.mostraError("El document ja existeix");
+            else {
+                ctrlPres.altaDocumentPres(nom_autor, titol, contingut);
+                ctrlPres.canviaStage("DocumentCreat");
+            }
         }
     }
 }

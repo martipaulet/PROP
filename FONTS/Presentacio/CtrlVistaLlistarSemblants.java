@@ -177,7 +177,11 @@ public class CtrlVistaLlistarSemblants {
             a = AutorText.getText();
             t = TitolText.getText();
             k = nombreDocs.getText();
-            ctrlPres.canviaStage("LlistarSemblantsOutput");
+            Integer num = Integer.parseInt(k);
+            if (!ctrlPres.existeixDocument(a, t)) ctrlPres.mostraError("El document no existeix");
+            else if (num < 0 || num > 10) ctrlPres.mostraError("El nombre de documents a retornar ha de ser un valor entre 0 i 10");
+            else if (ctrlPres.numDocsTotalPres() <= num) ctrlPres.mostraError("El nombre de documents a retornar és major als documents del sistema. K ha de ser menor a " + ctrlPres.numDocsTotalPres() + ".");
+            else ctrlPres.canviaStage("LlistarSemblantsOutput");
         }
     }
 

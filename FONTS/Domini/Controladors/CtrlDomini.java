@@ -182,6 +182,11 @@ public class CtrlDomini {
         return cd;
     }
 
+    public Integer numDocsTotal() {
+        HashMap<Pair,Document> m = documents.getMap();
+        return m.size();
+    }
+
 
     //---METODES ORDENACIO---
 

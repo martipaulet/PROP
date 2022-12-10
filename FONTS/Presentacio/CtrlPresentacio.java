@@ -79,10 +79,6 @@ public class CtrlPresentacio {
         alert.showAndWait();
     }
 
-    public void inicialitzarVistes() {
-
-    }
-
     public boolean existeixDocument(String nomAutor, String titol) {
         return cd.existeixDocument(nomAutor, titol);
     }
@@ -131,6 +127,14 @@ public class CtrlPresentacio {
         cd.modificaExpressioBooleana(queryAModificar, queryModificada);
     }
 
+    public void modificaContingut(String nomAutor, String titol, String contingut) throws Exception {
+        cd.modificarDocument(contingut, nomAutor, titol);
+    }
+
+    public Integer numDocsTotalPres() {
+        return cd.numDocsTotal();
+    }
+
     private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c){
         ArrayList<String> ret = new ArrayList<>();
         HashMap<Pair, Document> doc = c.getMap();
@@ -140,9 +144,5 @@ public class CtrlPresentacio {
         }
 
         return ret;
-    }
-
-    public void modificaContingut(String nomAutor, String titol, String contingut) throws Exception {
-        cd.modificarDocument(contingut, nomAutor, titol);
     }
 }

@@ -43,8 +43,11 @@ public class CtrlVistaBaixaDocument {
             ctrlPres.mostraError("Ni autor ni titol no poden estar buits");
         }
         else {
-            ctrlPres.baiaxaDocumentPres(a, t);
-            ctrlPres.canviaStage("DocumentBorrat");
+            if (!ctrlPres.existeixDocument(a, t)) ctrlPres.mostraError("El document no existeix");
+            else {
+                ctrlPres.baiaxaDocumentPres(a, t);
+                ctrlPres.canviaStage("DocumentBorrat");
+            }
         }
     }
 
