@@ -73,6 +73,7 @@ public class CtrlVistaBaixaExpressio {
             ctrlPres.mostraError("La query no pot estar buida");
         }
         else {
+            if (!ctrlPres.existeixQueryPres(query)) ctrlPres.mostraError("La query indicada no existeix al sistema");
             ctrlPres.baixaExpressioPres(query);
             ctrlPres.canviaStage("ExpressioBorrada");
         }

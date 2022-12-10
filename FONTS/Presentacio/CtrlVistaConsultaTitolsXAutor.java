@@ -78,6 +78,7 @@ public class CtrlVistaConsultaTitolsXAutor {
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String nom_autor = AutorText.getText();
         if (Objects.equals(nom_autor, "")) ctrlPres.mostraError("Autor no pot ser null");
+        else if (!ctrlPres.estaAutorPres(nom_autor)) ctrlPres.mostraError("No existeix l'autor");
         else {
             List<String> aux = ctrlPres.titolsAutorPres(nom_autor);
             if (aux.size() == 0) ctrlPres.mostraError("L'autor no te cap document associat");

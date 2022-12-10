@@ -84,4 +84,9 @@ public class CtrlExpressioBooleana {
         return cd;
     }
 
+    //Post: Retorna True si existeix la query indicada al sistema
+    public Boolean existeixQuery(String query) {
+        return expressions.containsKey(query);
+    }
+
 }

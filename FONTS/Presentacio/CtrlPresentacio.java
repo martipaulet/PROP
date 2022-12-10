@@ -135,6 +135,10 @@ public class CtrlPresentacio {
         return cd.numDocsTotal();
     }
 
+    public Boolean estaAutorPres(String autor) { return cd.estaAutor(autor); }
+
+    public Boolean existeixQueryPres(String query) { return cd.existeixQuery(query); }
+
     private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c){
         ArrayList<String> ret = new ArrayList<>();
         HashMap<Pair, Document> doc = c.getMap();

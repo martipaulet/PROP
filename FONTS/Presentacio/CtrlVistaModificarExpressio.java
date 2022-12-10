@@ -76,9 +76,13 @@ public class CtrlVistaModificarExpressio {
         if (Objects.equals(queryAModificar, "") || Objects.equals(queryModificada, ""))  {
             ctrlPres.mostraError("Cap de les dues querys pot estar buida");
         }
-        else{
-            ctrlPres.modificaExpressioPres(queryAModificar, queryModificada);
-            ctrlPres.canviaStage("ExpressioModificada");
+        else {
+            if (!ctrlPres.existeixQueryPres(queryAModificar)) ctrlPres.mostraError("La query indicada per modificar no existeix al sistema");
+            else if (ctrlPres.existeixQueryPres(queryModificada)) ctrlPres.mostraError("La query modificada ja existeix al sistema");
+            else {
+                ctrlPres.modificaExpressioPres(queryAModificar, queryModificada);
+                ctrlPres.canviaStage("ExpressioModificada");
+            }
         }
 
     }

@@ -73,8 +73,11 @@ public class CtrlVistaAltaExpressio {
             ctrlPres.mostraError("La query no pot estar buida");
         }
         else {
-            ctrlPres.altaExpressioPres(query);
-            ctrlPres.canviaStage("ExpressioCreada");
+            if (ctrlPres.existeixQueryPres(query)) ctrlPres.mostraError("La query indicada ja existeix al sistema");
+            else {
+                ctrlPres.altaExpressioPres(query);
+                ctrlPres.canviaStage("ExpressioCreada");
+            }
         }
    }
 }

@@ -86,10 +86,13 @@ public class CtrlVistaConsultaContingut {
             ctrlPres.mostraError("Ni autor ni titol no poden ser null");
         }
         else{
-            String aux = ctrlPres.obteContingutPres(nom_autor,titol);
-            ObservableList<String> a = FXCollections.observableArrayList();
-            a.add(aux);
-            Contingut.setItems(a);
+            if (!ctrlPres.existeixDocument(nom_autor, titol)) ctrlPres.mostraError("El document no existeix");
+            else {
+                String aux = ctrlPres.obteContingutPres(nom_autor,titol);
+                ObservableList<String> a = FXCollections.observableArrayList();
+                a.add(aux);
+                Contingut.setItems(a);
+            }
         }
 
     }

@@ -138,9 +138,6 @@ public class CtrlDomini {
                 ls.add(a.getNom());
             }
         }
-        if (!algun) {
-            throw new Exception("Cap autor amb el prefix " + prefix);
-        }
         Collections.sort(ls);
         return ls;
     }
@@ -182,11 +179,22 @@ public class CtrlDomini {
         return cd;
     }
 
+    //Post: Es retorna el nombre total de documents al sistema (si es major a 10 es retorna 10)
     public Integer numDocsTotal() {
         HashMap<Pair,Document> m = documents.getMap();
-        return m.size();
+        Integer num = m.size();
+        if (num > 10) num = 10;
+        return num;
     }
 
+    //Post: Es retorna true si l'autor existeix al sistema
+    public Boolean estaAutor(String nom_autor) {
+        return existeixAutor(nom_autor);
+    }
+
+    public Boolean existeixQuery(String query) {
+        return ctrlExpressioBooleana.existeixQuery(query);
+    }
 
     //---METODES ORDENACIO---
 
