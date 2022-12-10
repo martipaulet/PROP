@@ -45,12 +45,16 @@ public class CtrlVistaModificarDocument {
     private Button Continue;
 
     @FXML
-    private static TextArea ContingutText;
+    private Button ModificarRespecteContingut;
 
-    private static String titol_;
+    @FXML
+    private TextArea ContingutText;
 
-    private static String nomAutor_;
+
     private static final CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
+
+    private CtrlVistaModificarDocumentInicial CVMDI = CtrlVistaModificarDocumentInicial.getInstance();
+
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
@@ -83,17 +87,15 @@ public class CtrlVistaModificarDocument {
     }
 
     @FXML
-    static void setContingut(String titol, String nomAutor) throws Exception {
-        titol_ = titol;
-        nomAutor_ = nomAutor;
-        String contingut = (ctrlPres.obteContingutPres(nomAutor, titol));
+     void pressModificarRespecteContingut(javafx.event.ActionEvent event) throws Exception {
+        String contingut = ctrlPres.obteContingutPres(CVMDI.getAutor(), CVMDI.getTitol());
         ContingutText.setText(contingut);
     }
 
     @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String contingut = ContingutText.getText();
-        ctrlPres.modificaContingut(nomAutor_, titol_, contingut);
+        ctrlPres.modificaContingut(CVMDI.getAutor(), CVMDI.getTitol(), contingut);
         ctrlPres.canviaStage("DocumentModificat");
     }
 

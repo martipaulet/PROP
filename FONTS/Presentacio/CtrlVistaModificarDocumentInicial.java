@@ -17,6 +17,8 @@ import java.util.Objects;
 public class CtrlVistaModificarDocumentInicial {
 
 
+    private static CtrlVistaModificarDocumentInicial instance;
+
     @FXML
     private Button AltaDocument;
 
@@ -52,6 +54,19 @@ public class CtrlVistaModificarDocumentInicial {
 
     private final CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    private static String nomAutor;
+
+    private static String titol;
+
+
+    public CtrlVistaModificarDocumentInicial() {
+    }
+
+    public static CtrlVistaModificarDocumentInicial getInstance() {
+        if (instance == null) instance = new CtrlVistaModificarDocumentInicial();
+        return instance;
+    }
+
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("AltaDocument");
@@ -84,18 +99,20 @@ public class CtrlVistaModificarDocumentInicial {
 
     @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String nomAutor = AutorText.getText();
-        String titol = TitolText.getText();
+        nomAutor = AutorText.getText();
+        titol = TitolText.getText();
         if (Objects.equals(nomAutor, "") || Objects.equals(titol, "")) {
             ctrlPres.mostraError("Els camps autor i títol no poden ser nuls.");
         }
         else {
             if (ctrlPres.existeixDocument(nomAutor, titol)) {
-                String contingut = ctrlPres.obteContingutPres(nomAutor, titol);
-                CtrlVistaModificarDocument.setContingut(titol, nomAutor);
                 ctrlPres.canviaStage("ModificaDocument");
             }
             else ctrlPres.mostraError("No existeix aquest document.");
         }
     }
+
+    public String getAutor(){ return nomAutor;}
+
+    public String getTitol(){ return titol;}
 }
