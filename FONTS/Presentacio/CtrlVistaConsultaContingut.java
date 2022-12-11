@@ -49,10 +49,12 @@ public class CtrlVistaConsultaContingut {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("AltaDocument");
+        ctrlPres.canviaStage("CarregarGuardarDocument");
     }
 
+    @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("AltaDocument");
     }
