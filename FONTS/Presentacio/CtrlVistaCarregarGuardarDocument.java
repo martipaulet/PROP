@@ -74,10 +74,18 @@ public class CtrlVistaCarregarGuardarDocument {
 
     @FXML
     void pressImportarDocument(javafx.event.ActionEvent event) throws IOException {
+
+        //FALTA IMPLEMENTACIO IMPORTAR DOCUMENT
+
+        ctrlPres.canviaStage("DocumentImportat");
     }
 
     @FXML
     void pressExportarDocument(javafx.event.ActionEvent event) throws IOException {
+
+        //FALTA IMPLEMENTACIO EXPORTAR DOCUMENT
+
+        ctrlPres.canviaStage("DocumentExportat");
     }
 
 
