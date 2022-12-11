@@ -39,7 +39,8 @@ public class CtrlPresentacio {
                 "ConsultaTitolsXAutor","ConsultaAutorsXPrefix", "ConsultaContingut", "LlistarSemblants",
                 "LlistarDocsExpressio", "LlistarSemblantsOutput", "LlistarDocsExpressioOutput",
                 "GestioExpressionsBooleanes", "AltaExpressio", "BaixaExpressio", "ModificarExpressio",
-                "ExpressioCreada", "ExpressioBorrada", "ExpressioModificada","CarregarGuardarDocument"};
+                "ExpressioCreada", "ExpressioBorrada", "ExpressioModificada","CarregarGuardarDocument","DocumentImportat",
+                "DocumentExportat"};
         for (String s : nomVistes){
             pathVistes.put(s,"FONTS/Presentacio/"+s+".fxml");
         }

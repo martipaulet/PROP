@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaExpressioBorrada">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764FA;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaDocumentBorrat">
    <children>
       <VBox prefHeight="400.0" prefWidth="215.0">
          <children>
@@ -25,14 +25,14 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="AltaDocument" mnemonicParsing="false" onAction="#pressAltaDocument" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;" text="Alta Document" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="AltaDocumet" mnemonicParsing="false" onAction="#pressAltaDocument" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;" text="Alta Document" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
             <Button fx:id="BaixaDocument" mnemonicParsing="false" onAction="#pressBaixaDocument" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;" text="Baixa Document" textFill="WHITE">
                <font>
-                  <Font size="13.0" />
+                  <Font size="20.0" />
                </font>
             </Button>
             <Button fx:id="ModificaDocument" mnemonicParsing="false" onAction="#pressModificaDocument" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;" text="Modifica Document" textFill="WHITE">
@@ -52,12 +52,12 @@
             </Button>
             <Button fx:id="GestioExpressionsBooleanes" mnemonicParsing="false" onAction="#pressGestioExpressionsBooleanes" prefHeight="56.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;" text="Gestió expressions booleanes" textFill="WHITE">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Button>
          </children>
       </VBox>
-      <Text fill="WHITE" layoutX="231.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EXPRESSIÓ BORRADA CORRECTAMENT!">
+      <Text fill="WHITE" layoutX="240.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOCUMENT BORRAT CORRECTAMENT!">
          <font>
             <Font size="20.0" />
          </font>

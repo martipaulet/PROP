@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764fa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaRealitzarConsulta">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #8764fa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Presentacio.CtrlVistaCarregarGuardarDocument">
    <children>
       <VBox prefHeight="400.0" prefWidth="215.0">
          <children>
@@ -22,7 +22,7 @@
             </Pane>
             <Button fx:id="CarregarGuardarDocument" mnemonicParsing="false" onAction="#pressCarregarGuardarDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Carregar i Guardar Document" textFill="WHITE">
                <font>
-                  <Font size="13.0" />
+                  <Font size="15.0" />
                </font>
             </Button>
             <Button fx:id="AltaDocument" mnemonicParsing="false" onAction="#pressAltaDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Alta Document" textFill="WHITE">
@@ -40,9 +40,9 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Realitzar consulta" textFill="WHITE">
+            <Button fx:id="RealitzaConsulta" mnemonicParsing="false" onAction="#pressRealitzarConsulta" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Realitzar consulta" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font size="13.0" />
                </font>
             </Button>
             <Button fx:id="LlistarDocuments" mnemonicParsing="false" onAction="#pressLlistarDocuments" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3f2b63;" text="Llistar documents" textFill="WHITE">
@@ -57,22 +57,17 @@
             </Button>
          </children>
       </VBox>
-      <Text fill="WHITE" layoutX="300.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escull la consulta a realitzar:" wrappingWidth="153.9700927734375">
+      <Text fill="WHITE" layoutX="298.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escull:" wrappingWidth="153.9700927734375">
          <font>
             <Font size="14.0" />
          </font>
       </Text>
-      <Button fx:id="ConsultaTitolsAutor" layoutX="300.0" layoutY="121.0" mnemonicParsing="false" onAction="#pressConsultaTitolsAutor" style="-fx-background-color: #3f2b63;" text="Consulta títols per autor" textFill="WHITE">
+      <Button fx:id="ImportarDocument" layoutX="298.0" layoutY="151.0" mnemonicParsing="false" onAction="#pressImportarDocument" style="-fx-background-color: #3f2b63;" text="Importar Document" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="ConsultaAutorsPrefix" layoutX="300.0" layoutY="174.0" mnemonicParsing="false" onAction="#pressConsultaAutorsPrefix" style="-fx-background-color: #3f2b63;" text="Consulta autors per prefix" textFill="WHITE">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="ConsultaContingut" layoutX="300.0" layoutY="237.0" mnemonicParsing="false" onAction="#pressConsultaContingut" style="-fx-background-color: #3f2b63;" text="Consulta contingut d'un document" textFill="WHITE">
+      <Button fx:id="ExportarDocument" layoutX="299.0" layoutY="220.0" mnemonicParsing="false" onAction="#pressExportarDocument" style="-fx-background-color: #3f2b63;" text="Exportar Document" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>

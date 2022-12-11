@@ -5,14 +5,13 @@ import javafx.scene.control.Button;
 
 import java.io.IOException;
 
-public class CtrlVistaCarregarGuardarDocument {
+public class CtrlVistaDocumentImportat {
 
     @FXML
     private Button CarregarGuardarDocument;
 
     @FXML
     private Button AltaDocument;
-
     @FXML
     private Button BaixaDocument;
 
@@ -20,7 +19,7 @@ public class CtrlVistaCarregarGuardarDocument {
     private Button ModificaDocument;
 
     @FXML
-    private Button RealitzaConsulta;
+    private Button RealitzarConsulta;
 
     @FXML
     private Button LlistarDocuments;
@@ -28,19 +27,13 @@ public class CtrlVistaCarregarGuardarDocument {
     @FXML
     private Button GestioExpressionsBooleanes;
 
-    @FXML
-    private Button ImportarDocument;
-
-    @FXML
-    private Button ExportarDocument;
-
-
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");
     }
+
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
@@ -71,15 +64,5 @@ public class CtrlVistaCarregarGuardarDocument {
     void pressGestioExpressionsBooleanes(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("GestioExpressionsBooleanes");
     }
-
-    @FXML
-    void pressImportarDocument(javafx.event.ActionEvent event) throws IOException {
-    }
-
-    @FXML
-    void pressExportarDocument(javafx.event.ActionEvent event) throws IOException {
-    }
-
-
 
 }
