@@ -10,6 +10,10 @@ import java.io.IOException;
 public class CtrlVistaLlistarSemblants {
 
     private static CtrlVistaLlistarSemblants instance;
+
+    @FXML
+    private Button CarregarGuardarDocument;
+
     @FXML
     private Button AltaDocument;
 
@@ -74,6 +78,11 @@ public class CtrlVistaLlistarSemblants {
     public static CtrlVistaLlistarSemblants getInstance() {
         if (instance == null) instance = new CtrlVistaLlistarSemblants();
         return instance;
+    }
+
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
     }
 
     @FXML

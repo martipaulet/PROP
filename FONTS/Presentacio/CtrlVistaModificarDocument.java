@@ -16,6 +16,8 @@ import java.util.Objects;
 
 public class CtrlVistaModificarDocument {
 
+    @FXML
+    private Button CarregarGuardarDocument;
 
     @FXML
     private Button AltaDocument;
@@ -49,6 +51,10 @@ public class CtrlVistaModificarDocument {
 
     private CtrlVistaModificarDocumentInicial CVMDI = CtrlVistaModificarDocumentInicial.getInstance();
 
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
+    }
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {

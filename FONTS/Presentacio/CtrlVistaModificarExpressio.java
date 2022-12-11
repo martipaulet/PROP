@@ -10,6 +10,9 @@ import java.util.Objects;
 public class CtrlVistaModificarExpressio {
 
     @FXML
+    private Button CarregarGuardarDocument;
+
+    @FXML
     private Button AltaDocument;
 
     @FXML
@@ -38,6 +41,10 @@ public class CtrlVistaModificarExpressio {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
+    }
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {

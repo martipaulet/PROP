@@ -12,6 +12,9 @@ public class CtrlVistaLlistarDocsExpressio {
     private static CtrlVistaLlistarDocsExpressio instance;
 
     @FXML
+    private Button CarregarGuardarDocument;
+
+    @FXML
     private Button AltaDocument;
 
     @FXML
@@ -57,6 +60,11 @@ public class CtrlVistaLlistarDocsExpressio {
     public static CtrlVistaLlistarDocsExpressio getInstance() {
         if (instance == null) instance = new CtrlVistaLlistarDocsExpressio();
         return instance;
+    }
+
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
     }
 
     @FXML

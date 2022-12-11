@@ -2,12 +2,10 @@ package Presentacio;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 
 import java.io.IOException;
-import java.util.Objects;
 
-public class CtrlVistaAltaExpressio {
+public class CtrlVistaCarregarGuardarDocument {
 
     @FXML
     private Button CarregarGuardarDocument;
@@ -22,19 +20,17 @@ public class CtrlVistaAltaExpressio {
     private Button ModificaDocument;
 
     @FXML
-    private Button RealitzarConsulta;
-
-    @FXML
     private Button LlistarDocuments;
 
     @FXML
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private TextArea QueryText;
+    private Button ImportarDocument;
 
     @FXML
-    private Button Continue;
+    private Button ExportarDocument;
+
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
@@ -59,11 +55,6 @@ public class CtrlVistaAltaExpressio {
     }
 
     @FXML
-    void pressRealitzarConsulta(javafx.event.ActionEvent event) throws IOException {
-        ctrlPres.canviaStage("RealitzaConsulta");
-    }
-
-    @FXML
     void pressLlistarDocuments(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("LlistarDocuments");
     }
@@ -74,17 +65,13 @@ public class CtrlVistaAltaExpressio {
     }
 
     @FXML
-    void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String query = QueryText.getText();
-        if (Objects.equals(query, "")) {
-            ctrlPres.mostraError("La query no pot estar buida");
-        }
-        else {
-            if (ctrlPres.existeixQueryPres(query)) ctrlPres.mostraError("La query indicada ja existeix al sistema");
-            else {
-                ctrlPres.altaExpressioPres(query);
-                ctrlPres.canviaStage("ExpressioCreada");
-            }
-        }
-   }
+    void pressImportarDocument(javafx.event.ActionEvent event) throws IOException {
+    }
+
+    @FXML
+    void pressExportarDocument(javafx.event.ActionEvent event) throws IOException {
+    }
+
+
+
 }

@@ -14,7 +14,8 @@ import java.util.List;
 
 public class CtrlVistaLlistarSemblantsOutput {
 
-
+    @FXML
+    private Button CarregarGuardarDocument;
 
     @FXML
     private Button AltaDocument;
@@ -50,6 +51,10 @@ public class CtrlVistaLlistarSemblantsOutput {
 
     private CtrlVistaLlistarSemblants CVLLS = CtrlVistaLlistarSemblants.getInstance();
 
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
+    }
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {

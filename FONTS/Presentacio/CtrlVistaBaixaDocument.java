@@ -10,6 +10,9 @@ import java.util.Objects;
 public class CtrlVistaBaixaDocument {
 
     @FXML
+    private Button CarregarGuardarDocument;
+
+    @FXML
     private TextArea TextAutor;
 
     @FXML
@@ -52,6 +55,11 @@ public class CtrlVistaBaixaDocument {
                 ctrlPres.canviaStage("DocumentBorrat");
             }
         }
+    }
+
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
     }
 
     @FXML

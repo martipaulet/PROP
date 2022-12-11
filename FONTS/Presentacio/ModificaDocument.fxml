@@ -21,6 +21,11 @@
                   </Text>
                </children>
             </Pane>
+            <Button fx:id="CarregarGuardarDocument" mnemonicParsing="false" onAction="#pressCarregarGuardarDocument" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Carregar i Guardar Document" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Button>
             <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="216.0" style="-fx-background-color: #3F2B63;" text="Alta Document" textFill="WHITE">
                <font>
                   <Font size="13.0" />

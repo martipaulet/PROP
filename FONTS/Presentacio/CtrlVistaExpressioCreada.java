@@ -8,6 +8,9 @@ import java.io.IOException;
 public class CtrlVistaExpressioCreada {
 
     @FXML
+    private Button CarregarGuardarDocument;
+
+    @FXML
     private Button AltaDocument;
 
     @FXML
@@ -27,6 +30,10 @@ public class CtrlVistaExpressioCreada {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
+    }
 
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {

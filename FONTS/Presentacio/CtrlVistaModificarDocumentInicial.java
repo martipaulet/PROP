@@ -20,6 +20,9 @@ public class CtrlVistaModificarDocumentInicial {
     private static CtrlVistaModificarDocumentInicial instance;
 
     @FXML
+    private Button CarregarGuardarDocument;
+
+    @FXML
     private Button AltaDocument;
 
     @FXML
@@ -59,6 +62,11 @@ public class CtrlVistaModificarDocumentInicial {
     public static CtrlVistaModificarDocumentInicial getInstance() {
         if (instance == null) instance = new CtrlVistaModificarDocumentInicial();
         return instance;
+    }
+
+    @FXML
+    void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("CarregarGuardarDocument");
     }
 
     @FXML
