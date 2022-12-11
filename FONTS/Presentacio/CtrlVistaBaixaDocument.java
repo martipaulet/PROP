@@ -22,6 +22,9 @@ public class CtrlVistaBaixaDocument {
     private Button AltaDocument;
 
     @FXML
+    private Button BaixaDocument;
+
+    @FXML
     private Button ModificaDocument;
 
     @FXML
@@ -54,6 +57,11 @@ public class CtrlVistaBaixaDocument {
     @FXML
     void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("AltaDocument");
+    }
+
+    @FXML
+    void pressBaixaDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("BaixaDocument");
     }
 
     @FXML

@@ -36,12 +36,6 @@ public class CtrlVistaModificarDocument {
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private Button MostrarDocuments;
-
-    @FXML
-    private Button MostrarContingut;
-
-    @FXML
     private Button Continue;
 
     @FXML

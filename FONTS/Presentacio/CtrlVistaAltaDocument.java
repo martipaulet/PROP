@@ -12,6 +12,9 @@ import java.util.Objects;
 public class CtrlVistaAltaDocument {
 
     @FXML
+    private Button AltaDocument;
+
+    @FXML
     private Button BaixaDocument;
 
     @FXML
@@ -40,6 +43,10 @@ public class CtrlVistaAltaDocument {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    @FXML
+    void pressAltaDocument(javafx.event.ActionEvent event) throws IOException {
+        ctrlPres.canviaStage("AltaDocument");
+    }
     @FXML
     void pressBaixaDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("BaixaDocument");
