@@ -1,12 +1,16 @@
 package Dades;
 
-import Domini.DataInterfaces.CtrlDocuments;
-import Domini.DataInterfaces.CtrlExpressions;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class CtrlExpressionsFile implements CtrlExpressions {
+public class CtrlExpressionsFile {
+
+    private static CtrlExpressionsFile instance;
+
+    public CtrlExpressionsFile getInstance() {
+        if (instance == null) instance = new CtrlExpressionsFile();
+        return instance;
+    }
 
     public void guardaExpressions(List<String> l) {
 

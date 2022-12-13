@@ -1,6 +1,7 @@
 package Domini.Controladors;
+import Dades.CtrlDocumentsFile;
+import Dades.CtrlExpressionsFile;
 import Domini.Model.*;
-import Domini.DataInterfaces.*;
 
 import java.text.ParseException;
 import java.util.*;
@@ -18,11 +19,12 @@ public class CtrlDomini {
 
     private Map<String, Autor> autors; //Conjunt autors.
     private ConjuntDocuments documents; //Conjunt de documents.
+    private static CtrlDomini instance;
     private CtrlExpressioBooleana ctrlExpressioBooleana; //Sub-controlador de les expressions booleanes.
 
     //interficies dels controladors de dades
-    private CtrlDocuments ctrlDocuments;
-    private CtrlExpressions ctrlExpressions;
+    private CtrlDocumentsFile ctrlDocuments;
+    private CtrlExpressionsFile ctrlExpressions;
 
 
     //---CONSTRUCTORA---
@@ -35,16 +37,24 @@ public class CtrlDomini {
 
     //Post: S'inicialitzen les variables del CtrlDomini.
     private void inicialitzarCtrlDomini() {
-        Factoria fact = Factoria.getInstance();
-        ctrlExpressions = fact.getCtrlExpressions();
-        ctrlDocuments = fact.getCtrlDocuments();
+
+        ctrlExpressions = ctrlExpressions.getInstance();
+        ctrlDocuments = ctrlDocuments.getInstance();
         autors = new HashMap<> ();
         documents = new ConjuntDocuments();
-        ctrlExpressioBooleana = fact.getCtrlExpressioBooleana();
+        ctrlExpressioBooleana = CtrlExpressioBooleana.getInstance();
         carregaDades(); //carregar documents (autors inclosos) + carregar expressions booleanes guardades.
     }
 
+    //Post: Retorna la instancia de CtrlDomini. Si no existeix cap instancia de CtrlDomini, es crea.
+    public static CtrlDomini getInstance() {
+        if (instance == null) instance = new CtrlDomini();
+        return instance;
+    }
+
+
     public void carregaDades() {
+        //carregar documents
         Vector <Vector<String>> v = ctrlDocuments.carregaDocuments();
         for (int i = 0; i < v.size();++i) {
             String s1 = v.get(i).get(3);

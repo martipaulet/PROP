@@ -1,7 +1,5 @@
 package Dades;
 
-import Domini.DataInterfaces.CtrlDocuments;
-
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -16,7 +14,14 @@ import java.util.Vector;
 
 
 //classe encarregada de guardar i llegir dades sobre documents del fitxer document.json
-public class CtrlDocumentsFile implements CtrlDocuments {
+public class CtrlDocumentsFile {
+
+    private static CtrlDocumentsFile instance;
+
+    public CtrlDocumentsFile getInstance() {
+        if (instance == null) instance = new CtrlDocumentsFile();
+        return instance;
+    }
 
     //Post: Es guarden les dades de la matriu docs, al fitxer documents.json situat al directori DATA
     public void guardaDocuments(Vector<Vector<String>> docs) {  //cada fila es un document amb les columnes -> autor, titol, contingut, datacreacio, dataUltimaModificacio

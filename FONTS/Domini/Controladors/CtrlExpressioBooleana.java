@@ -11,7 +11,7 @@ public class CtrlExpressioBooleana {
 
 
     private HashMap<String, ExpressionTree> expressions; //Conjunt d'expresions booleanes.
-
+    private static CtrlExpressioBooleana instance;
 
 
     //---CONSTRUCTORA---
@@ -27,6 +27,11 @@ public class CtrlExpressioBooleana {
         expressions = new HashMap<>();
     }
 
+    //Post: Retorna la instancia de CtrlExpressioBooleana. Si no existeix cap instancia de CtrlExpressioBooleana, es crea.
+    public static CtrlExpressioBooleana getInstance() {
+        if (instance == null) instance = new CtrlExpressioBooleana();
+        return instance;
+    }
 
     //---GESTIO EXPRESIONS BOOLEANES---
 

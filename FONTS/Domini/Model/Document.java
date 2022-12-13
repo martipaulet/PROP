@@ -168,7 +168,7 @@ public class Document {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
         String strDate = formatter.format(d);
         dataCreacio_ = strDate;
-        dataUltimaModificacio_ = dataCreacio_;
+        dataUltimaModificacio_ = strDate;
     }
 
 
