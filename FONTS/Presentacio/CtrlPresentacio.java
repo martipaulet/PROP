@@ -9,8 +9,10 @@ import javafx.scene.Scene;
 
 import java.io.File;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
-import java.net.MalformedURLException;
+import java.io.BufferedReader;
 import  java.util.*;
 import java.net.URL;
 
@@ -139,6 +141,27 @@ public class CtrlPresentacio {
     public Boolean estaAutorPres(String autor) { return cd.estaAutor(autor); }
 
     public Boolean existeixQueryPres(String query) { return cd.existeixQuery(query); }
+
+    //---IMPORTAR I EXPORTAR---
+    public void ImportarDocTXT(String path) throws Exception {
+        ArrayList<String> fitxer = new ArrayList<>();
+        try( BufferedReader br = new BufferedReader(new FileReader(path)) ) {
+            String LiniaAct;
+            while ((LiniaAct = br.readLine()) != null) {
+                fitxer.add(LiniaAct);
+            }
+        } catch (IOException e) {
+            mostraError("No s'ha pogut llegir el fitxer");
+        }
+        cd.altaDocument(fitxer.get(0), fitxer.get(1), fitxer.get(2));
+    }
+
+    public void ExportarDocTXT(String path) throws Exception {
+
+    }
+
+
+    //---METODES PRIVATS---
 
     private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c){
         ArrayList<String> ret = new ArrayList<>();
