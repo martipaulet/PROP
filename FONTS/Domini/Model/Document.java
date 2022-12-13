@@ -1,5 +1,7 @@
 package Domini.Model;
 import java.text.Normalizer;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Document {
@@ -12,8 +14,8 @@ public class Document {
     private String titol_; //nom del titol del document.
     private String contingut_; //contingut del document.
     private ArrayList<Frase> frases_ = new ArrayList<>(); //conjunt de frases del document.
-    private Date dataCreacio_; //data de creacio del document.
-    private Date dataUltimaModificacio_; //data d'ultima modificacio del document
+    private String dataCreacio_; //data de creacio del document.
+    private String dataUltimaModificacio_; //data d'ultima modificacio del document
     private HashMap<String, Integer> paraules_ = new HashMap<>(); //mapa amb les paraules -> nom de cops que apareix la paraula en el document.
 
 
@@ -28,15 +30,14 @@ public class Document {
         titol_ = titol;
         contingut_ = contingut;
         setFrases();
-        dataCreacio_ = new Date();
-        dataUltimaModificacio_ = dataCreacio_;
+        setData();
         setParaules();
     }
 
     //Post: es crea una instancia de Document amb autor_ = autor, titol_ = titol i contingut_ = contingut.
     //      se li assigna al document la datCreacio = dataC i dataUltimaModificacio = dataM.
     //      es separa el contingut del document per frases i es compta quants cops apareix cada paraula en el document.
-    public Document (String autor, String titol, String contingut, Date dataC, Date dataM) {
+    public Document (String autor, String titol, String contingut, String dataC, String dataM) {
         autor_ = autor;
         titol_ = titol;
         contingut_ = contingut;
@@ -67,12 +68,24 @@ public class Document {
 
     //Post: retorna la dataCreacio_ del document.
     public Date getDataCreacio() {
-        return dataCreacio_;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        Date d = null;
+        try {
+            d = formatter.parse(dataCreacio_);
+        } catch (ParseException e) {
+        }
+        return d;
     }
 
     //Post: retorna la dataUltimaModificacio_ del document.
     public Date getDataUltimaModificacio() {
-        return dataUltimaModificacio_;
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        Date d = null;
+        try {
+            d = formatter.parse(dataUltimaModificacio_);
+        } catch (ParseException e) {
+        }
+        return d;
     }
 
     //Post: retorna el conjunt de frases del document en una llista.
@@ -89,7 +102,7 @@ public class Document {
     //      actualitza tambe el contingut del document per frases i es compta quants cops apareix cada paraula en el document.
     public void actualitzaDocument(String nouContingut) {
         contingut_ = nouContingut;
-        dataUltimaModificacio_ = new Date();
+        actualitzaData();
         setFrases();
         setParaules();
     }
@@ -142,6 +155,21 @@ public class Document {
 
 
     //---METODES PRIVATS---
+
+    private void actualitzaData() {
+        Date d = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        String strDate = formatter.format(d);
+        dataUltimaModificacio_ = strDate;
+    }
+
+    private void setData() {
+        Date d = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss");
+        String strDate = formatter.format(d);
+        dataCreacio_ = strDate;
+        dataUltimaModificacio_ = dataCreacio_;
+    }
 
 
     //Post: Compta quants cops apareix cada paraula en el document.

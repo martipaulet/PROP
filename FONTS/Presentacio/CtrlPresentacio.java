@@ -1,5 +1,6 @@
 package Presentacio;
 import Domini.Controladors.CtrlDomini;
+import Domini.DataInterfaces.Factoria;
 import Domini.Model.ConjuntDocuments;
 import Domini.Model.Document;
 import Domini.Model.Pair;
@@ -23,7 +24,7 @@ import javafx.scene.control.Alert;
 
 public class CtrlPresentacio {
 
-    private CtrlDomini cd = CtrlDomini.getInstance();
+    private CtrlDomini cd;
     private HashMap<String,String> pathVistes;
     private static CtrlPresentacio cp;
 
@@ -32,6 +33,8 @@ public class CtrlPresentacio {
     public CtrlPresentacio() {
         pathVistes = new HashMap<>();
         iniVistes();
+        Factoria fact = Factoria.getInstance();
+        cd = fact.getCtrlDomini();
     }
 
     private void iniVistes(){
