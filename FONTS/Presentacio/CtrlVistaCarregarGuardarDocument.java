@@ -113,11 +113,11 @@ public class CtrlVistaCarregarGuardarDocument {
         if (seleccionat != null) {
             String nomFitxer = seleccionat.getName();
             String extension = nomFitxer.substring(nomFitxer.lastIndexOf(".")+1);
-            if(extension == "txt") {
+            if(extension.equals("txt")) {
                 ctrlPres.ImportarDocTXT(seleccionat.getAbsolutePath());
                 ctrlPres.canviaStage("DocumentImportat");
             }
-            else if (extension == "xml"){
+            else if (extension.equals("xml")){
                 //FALTA IMPORTAR DOC XML
                 ctrlPres.canviaStage("DocumentImportat");
             }
