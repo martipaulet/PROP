@@ -1,11 +1,10 @@
 package Domini.DataInterfaces;
 
-import Domini.Model.Document;
-import Domini.Model.Pair;
 import java.util.HashMap;
+import java.util.Vector;
 import java.util.Map;
 
 public interface CtrlDocuments {
-    public void saveDocuments(HashMap<Pair, Document> m);
-    public HashMap<Pair, Document> loadDocuments();
+    public void guardaDocuments(Vector<Vector<String>> docs); //cada fila es un document amb les columnes -> autor, titol, contingut, datacreacio, dataUltimaModificacio
+    public Vector<Vector<String>> carregaDocuments();
 }
