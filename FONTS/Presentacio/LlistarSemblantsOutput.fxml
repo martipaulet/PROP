@@ -58,7 +58,7 @@
             </Button>
          </children>
       </VBox>
-      <Button fx:id="MostrarDocuments" layoutX="280.0" layoutY="351.0" mnemonicParsing="false" onAction="#pressMostrarDocuments" prefHeight="21.0" prefWidth="130.0" text="MostrarDocuements" />
+      <Button fx:id="MostrarDocuments" layoutX="280.0" layoutY="351.0" mnemonicParsing="false" onAction="#pressMostrarDocuments" prefHeight="21.0" prefWidth="130.0" text="MostrarDocuments" />
       <Text fill="WHITE" layoutX="300.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS SEMBLANTS">
          <font>
             <Font size="13.0" />
