@@ -49,6 +49,11 @@ public class CtrlDomini {
         return instance;
     }
 
+    //Post: Retorna el conjunt de documents del sistema.
+    public ConjuntDocuments DocSistema(){
+        return documents;
+    }
+
     public void carregaDades() throws Exception {
         //carregar documents
         Vector <Vector<String>> v = ctrlDocuments.carregaDocuments();   //cada fila es un document amb un vector contenidor de autor|titol|contingut|dataCreacio|dataUMod
@@ -245,11 +250,6 @@ public class CtrlDomini {
             return cdfi;
         }
     }
-
-
-    public ConjuntDocuments DocSistema(){
-        return documents;
-}
 
 
     //---METODES PRIVATS---
