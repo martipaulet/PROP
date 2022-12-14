@@ -88,4 +88,10 @@ public class CtrlExpressioBooleana {
         return expressions.containsKey(query);
     }
 
+
+    public List<String> getExpressions() {
+        List<String> exp = new ArrayList<String>(expressions.keySet());
+        return exp;
+    }
+
 }

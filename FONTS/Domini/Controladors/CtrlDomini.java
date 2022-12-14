@@ -35,7 +35,7 @@ public class CtrlDomini {
 
     //Post: S'inicialitzen les variables del CtrlDomini.
     private void inicialitzarCtrlDomini() throws Exception {
-        //ctrlExpressions = CtrlExpressions.getInstance();
+        ctrlExpressions = CtrlExpressionsFile.getInstance();
         ctrlDocuments = CtrlDocumentsFile.getInstance();
         autors = new HashMap<> ();
         documents = new ConjuntDocuments();
@@ -61,16 +61,19 @@ public class CtrlDomini {
             //System.out.println(strings.get(0)+" "+strings.get(1)+" "+strings.get(2)+" "+strings.get(3)+" "+strings.get(4)+" ");
             carregaDocument(strings.get(0), strings.get(1), strings.get(2), strings.get(3), strings.get(4));
         }
+        ArrayList<String> l = ctrlExpressions.carregaExpressions();
+        for (String exp : l) {
+            carregaExpressio(exp);
+        }
     }
 
     public void guardaDades() {
         //guardar documents
         Vector <Vector<String>> v = documents.toVec();
-        /*for (int i = 0; i < v.size(); ++i) {
-            System.out.println(v.get(i).get(0)+" " +v.get(i).get(1)+ " " +v.get(i).get(2)+" "+ v.get(i).get(3)+" "+v.get(i).get(4));
-        }*/
         ctrlDocuments.guardaDocuments(v);
         //guardar expressions booleanes
+        List<String> l = ctrlExpressioBooleana.getExpressions();
+        ctrlExpressions.guardaExpressions(l);
     }
 
 
@@ -272,6 +275,11 @@ public class CtrlDomini {
         Document d = new Document(autor, titol, contingut,dC,dUM);
         a.afegirDocument(d);
         documents.afegirDocument(d);
+    }
+
+    //Post: demana al ctrl d'expressions booleanes que doni d'alta l'expressio pasada com a paràmetre
+    private void carregaExpressio(String expressio) throws Exception {
+        ctrlExpressioBooleana.altaExpressioBooleana(expressio);
     }
 
     //Post: s'elimina l'associacio entre el document d i el seu autor.
