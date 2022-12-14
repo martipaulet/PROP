@@ -22,6 +22,7 @@ public class main extends Application {
         CtrlPresentacio cp = CtrlPresentacio.getInstance();
         cp.setPrimary(primaryStage);
         cp.canviaStage("menuPrincipal");
+        //cp.carregar();
     }
     @Override
     public void stop() throws Exception {
@@ -35,7 +36,6 @@ public class main extends Application {
                 CtrlPresentacio cp = CtrlPresentacio.getInstance();
                 cp.guardar();
             }
-
         }
     }
 

@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import java.io.IOException;
+import java.util.Objects;
 
 public class CtrlVistaLlistarSemblants {
 
@@ -160,15 +161,15 @@ public class CtrlVistaLlistarSemblants {
 
     @FXML
     void pressContinue(ActionEvent event) throws IOException {
-        if (AutorText.getText() == "") {
+        if (Objects.equals(AutorText.getText(), "")) {
             ctrlPres.mostraError("Falta Autor");
         }
 
-        else if (TitolText.getText() == "") {
+        else if (Objects.equals(TitolText.getText(), "")) {
             ctrlPres.mostraError("Falta Titol");
         }
 
-        else if (nombreDocs.getText() == "" || Integer.parseInt(nombreDocs.getText())<0 || Integer.parseInt(nombreDocs.getText())>10) {
+        else if (Objects.equals(nombreDocs.getText(), "") || Integer.parseInt(nombreDocs.getText())<0 || Integer.parseInt(nombreDocs.getText())>10) {
             ctrlPres.mostraError("Falta Nombre de documents a retornar i ha de ser un valor del 0 al 10");
         }
 
