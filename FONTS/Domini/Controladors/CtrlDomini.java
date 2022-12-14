@@ -58,7 +58,7 @@ public class CtrlDomini {
         //carregar documents
         Vector <Vector<String>> v = ctrlDocuments.carregaDocuments();   //cada fila es un document amb un vector contenidor de autor|titol|contingut|dataCreacio|dataUMod
         for (Vector<String> strings : v) {
-            System.out.println(strings.get(0)+" "+strings.get(1)+" "+strings.get(2)+" "+strings.get(3)+" "+strings.get(4)+" ");
+            //System.out.println(strings.get(0)+" "+strings.get(1)+" "+strings.get(2)+" "+strings.get(3)+" "+strings.get(4)+" ");
             carregaDocument(strings.get(0), strings.get(1), strings.get(2), strings.get(3), strings.get(4));
         }
     }
