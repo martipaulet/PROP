@@ -251,7 +251,7 @@ public class CtrlDomini {
 
     public ConjuntDocuments DocSistema(){
         return documents;
-    }
+}
 
 
     //---METODES PRIVATS---
