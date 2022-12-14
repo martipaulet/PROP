@@ -55,7 +55,7 @@ public class CtrlDocumentsFile {
     //Post: retorna les dades dels documents guardats en el fitxer documents.json del directori DATA
     public Vector<Vector<String>> carregaDocuments() {
         JSONParser jsonParser = new JSONParser();
-        Vector<Vector<String>> Cjtdocs = new Vector<Vector<String>>();
+        Vector<Vector<String>> Cjtdocs = new Vector<>();
 
         try (FileReader file = new FileReader("DATA/documentsFile.json")) {
             Object obj = jsonParser.parse(file);

@@ -200,4 +200,8 @@ public class CtrlPresentacio {
     public void guardar() {
         cd.guardaDades();
     }
+
+    /*public void carregar() throws Exception {
+        cd.carregaDades();
+    }*/
 }
