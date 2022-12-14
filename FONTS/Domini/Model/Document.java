@@ -10,8 +10,8 @@ public class Document {
     //---ATRIBUTS---
 
 
-    private String autor_; //nom de l'autor del document.
-    private String titol_; //nom del titol del document.
+    private final String autor_; //nom de l'autor del document.
+    private final String titol_; //nom del titol del document.
     private String contingut_; //contingut del document.
     private ArrayList<Frase> frases_ = new ArrayList<>(); //conjunt de frases del document.
     private String dataCreacio_; //data de creacio del document.
@@ -66,7 +66,7 @@ public class Document {
         return contingut_;
     }
 
-    //Post: retorna la dataCreacio_ del document.
+    //Post: retorna la dataCreacio_ en tipus Date del document.
     public Date getDataCreacio() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
         Date d = null;
@@ -77,7 +77,7 @@ public class Document {
         return d;
     }
 
-    //Post: retorna la dataUltimaModificacio_ del document.
+    //Post: retorna la dataUltimaModificacio_ en tipus Date del document.
     public Date getDataUltimaModificacio() {
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
         Date d = null;
@@ -86,6 +86,14 @@ public class Document {
         } catch (ParseException e) {
         }
         return d;
+    }
+    //Post: retorna la dataCreacio_ del document.
+    public String getDataCreacioString() {
+        return dataCreacio_;
+    }
+
+    public String getDataUltimaModificacioString() {
+        return dataUltimaModificacio_;
     }
 
     //Post: retorna el conjunt de frases del document en una llista.

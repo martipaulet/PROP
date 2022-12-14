@@ -18,8 +18,7 @@ public class ConjuntDocuments {
 
     //Post: es crea una instancia de ConjuntDocuments buida.
     public ConjuntDocuments() {
-        CjtD = new HashMap<>() {
-        };
+        CjtD = new HashMap<>();
     }
 
     //Post: es crea una instancia de ConjuntDocuments amb els Documents indicats.
@@ -80,6 +79,21 @@ public class ConjuntDocuments {
             s.addAll(sdoc);
         }
         return s;
+    }
+
+    public Vector <Vector<String>> toVec() {
+        Vector <Vector<String>> v = new Vector<Vector<String>>();
+        for (Pair key: CjtD.keySet()) {
+            Document d = CjtD.get(key);
+            Vector <String> v2 = new Vector<String>();
+            v2.add(d.getAutor());
+            v2.add(d.getTitol());
+            v2.add(d.getContingut());
+            v2.add(d.getDataCreacioString());
+            v2.add(d.getDataUltimaModificacioString());
+            v.add(v2);
+        }
+        return v;
     }
 
     //Post: retorna un maps compost per paraula -> nom de vegades que apareix la paraula en el conjunt de documents.

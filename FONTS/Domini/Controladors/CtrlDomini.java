@@ -31,13 +31,12 @@ public class CtrlDomini {
 
 
     //Post: es crea una instancia de CtrlDomini.
-    public CtrlDomini() {
+    public CtrlDomini() throws Exception {
         inicialitzarCtrlDomini();
     }
 
     //Post: S'inicialitzen les variables del CtrlDomini.
-    private void inicialitzarCtrlDomini() {
-
+    private void inicialitzarCtrlDomini() throws Exception {
         ctrlExpressions = ctrlExpressions.getInstance();
         ctrlDocuments = ctrlDocuments.getInstance();
         autors = new HashMap<> ();
@@ -47,23 +46,24 @@ public class CtrlDomini {
     }
 
     //Post: Retorna la instancia de CtrlDomini. Si no existeix cap instancia de CtrlDomini, es crea.
-    public static CtrlDomini getInstance() {
+    public static CtrlDomini getInstance() throws Exception {
         if (instance == null) instance = new CtrlDomini();
         return instance;
     }
 
-
-    public void carregaDades() {
+    public void carregaDades() throws Exception {
         //carregar documents
-        Vector <Vector<String>> v = ctrlDocuments.carregaDocuments();
-        for (int i = 0; i < v.size();++i) {
-            String s1 = v.get(i).get(3);
-            try {
-                Date d1 = new SimpleDateFormat("E, MMM dd yyyy HH:mm:ss").parse(s1);
-            } catch (ParseException e) {
-                throw new RuntimeException(e);
-            }
+        Vector <Vector<String>> v = ctrlDocuments.carregaDocuments();   //cada fila es un document amb un vector contenidor de autor|titol|contingut|dataCreacio|dataUMod
+        for (Vector<String> strings : v) {
+            carregaDocument(strings.get(0), strings.get(1), strings.get(2), strings.get(3), strings.get(4));
         }
+    }
+
+    public void guardaDades() {
+        //guardar documents
+        Vector <Vector<String>> v = documents.toVec();
+        ctrlDocuments.guardaDocuments(v);
+        //guardar expressions booleanes
     }
 
 
@@ -251,6 +251,20 @@ public class CtrlDomini {
 
     //---METODES PRIVATS---
 
+
+    //Post: es carrega un nou document en el sistema.
+    //      Si l'autor del document no existia es carrega l'autor.
+    //      Es crea la relacio entre aquest nou document i l'autor.
+    private void carregaDocument (String autor, String titol, String contingut, String dC, String dUM) throws Exception{
+        Autor a = new Autor();
+        if (!existeixAutor(autor)) {
+            a.setNom(autor);
+            autors.put(autor, a);
+        }
+        Document d = new Document(autor, titol, contingut,dC,dUM);
+        a.afegirDocument(d);
+        documents.afegirDocument(d);
+    }
 
     //Post: s'elimina l'associacio entre el document d i el seu autor.
     //      si l'autor nomes tenia aquell document s'elimina l'autor.
