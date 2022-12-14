@@ -196,4 +196,8 @@ public class CtrlPresentacio {
 
         return ret;
     }
+
+    public void guardar() {
+        cd.guardaDades();
+    }
 }

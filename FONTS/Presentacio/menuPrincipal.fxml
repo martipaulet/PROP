@@ -43,7 +43,7 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" style="-fx-background-color: #8764FA;" VBox.vgrow="ALWAYS">
       <children>
-            <VBox layoutY="1.0" prefHeight="400.0" prefWidth="215.0" style="-fx-background-color: #8764FA;">
+            <VBox layoutY="-1.0" prefHeight="402.0" prefWidth="215.0" style="-fx-background-color: #8764FA;">
                <children>
                   <Pane prefHeight="63.0" prefWidth="215.0" style="-fx-background-color: #3F2B63;">
                      <children>
