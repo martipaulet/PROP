@@ -51,6 +51,9 @@ public class CtrlVistaLlistarSemblantsOutput {
 
     private CtrlVistaLlistarSemblants CVLLS = CtrlVistaLlistarSemblants.getInstance();
 
+    public CtrlVistaLlistarSemblantsOutput() throws Exception {
+    }
+
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");

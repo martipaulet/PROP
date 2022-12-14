@@ -36,6 +36,9 @@ public class CtrlVistaRealitzarConsulta {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    public CtrlVistaRealitzarConsulta() throws Exception {
+    }
+
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");

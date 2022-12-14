@@ -30,6 +30,9 @@ public class CtrlVistaExpressioModificada {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    public CtrlVistaExpressioModificada() throws Exception {
+    }
+
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");

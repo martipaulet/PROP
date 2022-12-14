@@ -47,9 +47,12 @@ public class CtrlVistaModificarDocument {
     private TextArea ContingutText;
 
 
-    private static final CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
+    private final CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
     private CtrlVistaModificarDocumentInicial CVMDI = CtrlVistaModificarDocumentInicial.getInstance();
+
+    public CtrlVistaModificarDocument() throws Exception {
+    }
 
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {

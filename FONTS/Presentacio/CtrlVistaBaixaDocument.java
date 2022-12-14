@@ -41,6 +41,9 @@ public class CtrlVistaBaixaDocument {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    public CtrlVistaBaixaDocument() throws Exception {
+    }
+
     @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
         String a = TextAutor.getText();

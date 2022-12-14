@@ -72,10 +72,10 @@ public class CtrlVistaLlistarSemblants {
     private static Integer ordre;
 
 
-    public CtrlVistaLlistarSemblants() {
+    public CtrlVistaLlistarSemblants() throws Exception {
     }
 
-    public static CtrlVistaLlistarSemblants getInstance() {
+    public static CtrlVistaLlistarSemblants getInstance() throws Exception {
         if (instance == null) instance = new CtrlVistaLlistarSemblants();
         return instance;
     }

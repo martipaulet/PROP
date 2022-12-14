@@ -7,7 +7,7 @@ public class CtrlExpressionsFile {
 
     private static CtrlExpressionsFile instance;
 
-    public CtrlExpressionsFile getInstance() {
+    public static CtrlExpressionsFile getInstance() {
         if (instance == null) instance = new CtrlExpressionsFile();
         return instance;
     }

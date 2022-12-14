@@ -28,7 +28,7 @@ public class CtrlPresentacio {
 
     private Stage stageActual;
 
-    public CtrlPresentacio() {
+    public CtrlPresentacio() throws Exception {
         pathVistes = new HashMap<>();
         iniVistes();
     }
@@ -47,7 +47,7 @@ public class CtrlPresentacio {
         }
     }
 
-    public static CtrlPresentacio getInstance() {
+    public static CtrlPresentacio getInstance() throws Exception {
         if (cp == null) cp = new CtrlPresentacio();
         return cp;
     }
@@ -157,6 +157,10 @@ public class CtrlPresentacio {
 
     public void ExportarDocTXT(String path) throws Exception {
 
+    }
+
+    public ArrayList<String> DocSistema(){
+        return canviCjtDocToArrayList(cd.DocSistema());
     }
 
 

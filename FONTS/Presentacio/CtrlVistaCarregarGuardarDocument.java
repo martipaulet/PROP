@@ -1,14 +1,20 @@
 package Presentacio;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class CtrlVistaCarregarGuardarDocument {
 
@@ -45,10 +51,19 @@ public class CtrlVistaCarregarGuardarDocument {
     @FXML
     private CheckBox XML;
 
+    @FXML
+    private ChoiceBox<String> Documents;
+
     private Integer mode;
 
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
+
+    public CtrlVistaCarregarGuardarDocument() throws Exception {
+        ArrayList<String> d = ctrlPres.DocSistema();
+        Documents.setItems(FXCollections.observableArrayList(d));
+    }
+
 
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {

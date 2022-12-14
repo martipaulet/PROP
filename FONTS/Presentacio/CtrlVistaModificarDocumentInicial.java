@@ -56,10 +56,10 @@ public class CtrlVistaModificarDocumentInicial {
     private static String titol;
 
 
-    public CtrlVistaModificarDocumentInicial() {
+    public CtrlVistaModificarDocumentInicial() throws Exception {
     }
 
-    public static CtrlVistaModificarDocumentInicial getInstance() {
+    public static CtrlVistaModificarDocumentInicial getInstance() throws Exception {
         if (instance == null) instance = new CtrlVistaModificarDocumentInicial();
         return instance;
     }

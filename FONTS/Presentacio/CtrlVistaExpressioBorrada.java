@@ -30,6 +30,9 @@ public class CtrlVistaExpressioBorrada {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    public CtrlVistaExpressioBorrada() throws Exception {
+    }
+
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");

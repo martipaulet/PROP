@@ -37,7 +37,7 @@ public class CtrlDomini {
 
     //Post: S'inicialitzen les variables del CtrlDomini.
     private void inicialitzarCtrlDomini() throws Exception {
-        ctrlExpressions = ctrlExpressions.getInstance();
+        //ctrlExpressions = ctrlExpressions.getInstance();
         ctrlDocuments = ctrlDocuments.getInstance();
         autors = new HashMap<> ();
         documents = new ConjuntDocuments();
@@ -246,6 +246,11 @@ public class CtrlDomini {
             ConjuntDocuments cdfi = o.OrdenarDocuments(cd);
             return cdfi;
         }
+    }
+
+
+    public ConjuntDocuments DocSistema(){
+        return documents;
     }
 
 

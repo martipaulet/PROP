@@ -46,6 +46,9 @@ public class CtrlVistaAltaDocument {
 
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
+    public CtrlVistaAltaDocument() throws Exception {
+    }
+
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");

@@ -54,10 +54,10 @@ public class CtrlVistaLlistarDocsExpressio {
 
     private static Integer ordre;
 
-    public CtrlVistaLlistarDocsExpressio() {
+    public CtrlVistaLlistarDocsExpressio() throws Exception {
     }
 
-    public static CtrlVistaLlistarDocsExpressio getInstance() {
+    public static CtrlVistaLlistarDocsExpressio getInstance() throws Exception {
         if (instance == null) instance = new CtrlVistaLlistarDocsExpressio();
         return instance;
     }

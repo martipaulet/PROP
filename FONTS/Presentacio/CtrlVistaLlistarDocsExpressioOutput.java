@@ -50,6 +50,9 @@ public class CtrlVistaLlistarDocsExpressioOutput {
 
     private CtrlVistaLlistarDocsExpressio CVLLDE = CtrlVistaLlistarDocsExpressio.getInstance();
 
+    public CtrlVistaLlistarDocsExpressioOutput() throws Exception {
+    }
+
     @FXML
     void pressCarregarGuardarDocument(javafx.event.ActionEvent event) throws IOException {
         ctrlPres.canviaStage("CarregarGuardarDocument");

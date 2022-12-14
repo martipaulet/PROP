@@ -18,7 +18,7 @@ public class CtrlDocumentsFile {
 
     private static CtrlDocumentsFile instance;
 
-    public CtrlDocumentsFile getInstance() {
+    public static CtrlDocumentsFile getInstance() {
         if (instance == null) instance = new CtrlDocumentsFile();
         return instance;
     }
