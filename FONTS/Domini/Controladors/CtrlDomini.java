@@ -58,6 +58,7 @@ public class CtrlDomini {
         //carregar documents
         Vector <Vector<String>> v = ctrlDocuments.carregaDocuments();   //cada fila es un document amb un vector contenidor de autor|titol|contingut|dataCreacio|dataUMod
         for (Vector<String> strings : v) {
+            System.out.println(strings.get(0)+" "+strings.get(1)+" "+strings.get(2)+" "+strings.get(3)+" "+strings.get(4)+" ");
             carregaDocument(strings.get(0), strings.get(1), strings.get(2), strings.get(3), strings.get(4));
         }
     }
@@ -66,7 +67,7 @@ public class CtrlDomini {
         //guardar documents
         Vector <Vector<String>> v = documents.toVec();
         for (int i = 0; i < v.size(); ++i) {
-            System.out.println(v.get(i).get(0)+" " +v.get(i).get(1)+ " " +v.get(i).get(2)+" "+ v.get(i).get(3)+" "+v.get(i).get(4));
+            //System.out.println(v.get(i).get(0)+" " +v.get(i).get(1)+ " " +v.get(i).get(2)+" "+ v.get(i).get(3)+" "+v.get(i).get(4));
         }
         ctrlDocuments.guardaDocuments(v);
         //guardar expressions booleanes
@@ -261,12 +262,13 @@ public class CtrlDomini {
     //Post: es carrega un nou document en el sistema.
     //      Si l'autor del document no existia es carrega l'autor.
     //      Es crea la relacio entre aquest nou document i l'autor.
-    private void carregaDocument (String autor, String titol, String contingut, String dC, String dUM) throws Exception{
+    private void carregaDocument (String autor, String titol, String contingut, String dC, String dUM) throws Exception {
         Autor a = new Autor();
         if (!existeixAutor(autor)) {
             a.setNom(autor);
             autors.put(autor, a);
         }
+        a = autors.get(autor);
         Document d = new Document(autor, titol, contingut,dC,dUM);
         a.afegirDocument(d);
         documents.afegirDocument(d);

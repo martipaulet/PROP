@@ -84,10 +84,15 @@ public class CtrlDocumentsFile {
         String dataCreacio = (String) docI.get("dataCreacio");
         String dataUltimaModificacio = (String) docI.get("dataUltimaModificacio");
         v.add(autor);
+        //System.out.println(autor);
         v.add(titol);
+        //System.out.println(titol);
         v.add(contingut);
+        //System.out.println(contingut);
         v.add(dataCreacio);
+        //System.out.println(dataCreacio);
         v.add(dataUltimaModificacio);
+        //System.out.println(dataUltimaModificacio);
         return v;
     }
 
