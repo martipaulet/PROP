@@ -139,7 +139,7 @@ public class CtrlDomini {
 
     //Post: es retorna una llista amb el conjunt de titols de l'autor indicat.
     public List<String> titolsAutor(String autor) throws Exception{
-        List<String> ls = new ArrayList<String>();
+        List<String> ls;
         if (existeixAutor(autor)) {
             Autor a = autors.get(autor);
             ls = a.consultaTitols();
@@ -151,7 +151,7 @@ public class CtrlDomini {
     }
 
     //Post: es retorna una llista amb el conjunt d'autors que començen pel prefix indicat.
-    public ArrayList<String> prefixAutor(String prefix) throws Exception{
+    public ArrayList<String> prefixAutor(String prefix) {
         ArrayList<String> ls = new ArrayList<>();
         boolean algun = false;
         for (String nomAutor : autors.keySet()) {
