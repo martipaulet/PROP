@@ -136,12 +136,12 @@ public class CtrlVistaCarregarGuardarDocument {
             String nomFitxer = seleccionat.getName();
             String extension = nomFitxer.substring(nomFitxer.lastIndexOf(".")+1);
             if(extension.equals("txt")) {
-                ctrlPres.ImportarDocTXT(seleccionat.getAbsolutePath());
-                ctrlPres.canviaStage("DocumentImportat");
+                boolean b = ctrlPres.ImportarDocTXT(seleccionat.getAbsolutePath());
+                if (b) ctrlPres.canviaStage("DocumentImportat");
             }
             else if (extension.equals("xml")){
-                //FALTA IMPORTAR DOC XML
-                ctrlPres.canviaStage("DocumentImportat");
+                boolean b = ctrlPres.ImportarDocXML(seleccionat.getAbsolutePath());
+                if (b) ctrlPres.canviaStage("DocumentImportat");
             }
             else{
                 ctrlPres.mostraError("El fitxer no es XML ni TXT");
@@ -177,7 +177,7 @@ public class CtrlVistaCarregarGuardarDocument {
                     ctrlPres.canviaStage("DocumentExportat");
                 }
                 else if (mode == 1){
-                    //FALTA EXPORTAR DOC XML
+                    ctrlPres.ExportarDocXML(seleccionat.getAbsolutePath(), Documents.getSelectionModel().getSelectedItem() );
                     ctrlPres.canviaStage("DocumentExportat");
                 }
                 else{
