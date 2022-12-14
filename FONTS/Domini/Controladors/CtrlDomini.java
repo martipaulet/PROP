@@ -65,6 +65,9 @@ public class CtrlDomini {
     public void guardaDades() {
         //guardar documents
         Vector <Vector<String>> v = documents.toVec();
+        for (int i = 0; i < v.size(); ++i) {
+            System.out.println(v.get(i).get(0)+" " +v.get(i).get(1)+ " " +v.get(i).get(2)+" "+ v.get(i).get(3)+" "+v.get(i).get(4));
+        }
         ctrlDocuments.guardaDocuments(v);
         //guardar expressions booleanes
     }

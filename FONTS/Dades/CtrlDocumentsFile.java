@@ -1,15 +1,12 @@
 package Dades;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 
-import java.io.IOException;
 import java.util.Vector;
 
 
@@ -26,6 +23,14 @@ public class CtrlDocumentsFile {
     //Post: Es guarden les dades de la matriu docs, al fitxer documents.json situat al directori DATA
     public void guardaDocuments(Vector<Vector<String>> docs) {  //cada fila es un document amb les columnes -> autor, titol, contingut, datacreacio, dataUltimaModificacio
         JSONArray listadocs = new JSONArray();
+
+        try { //buidem contingut anterior
+            BufferedWriter bw = new BufferedWriter(new FileWriter("DATA/documentsFile.json"));
+            bw.write("");
+            bw.close();
+        } catch (IOException e) {}
+
+
         for (Vector<String> doc : docs) {
             //Objecte document iessim
             JSONObject document = new JSONObject();
@@ -40,7 +45,7 @@ public class CtrlDocumentsFile {
             //afegim l'array de documents
             listadocs.add(datosdocument);
         }
-        try(FileWriter file = new FileWriter("../../DATA/documentsFile.json")) {
+        try(FileWriter file = new FileWriter("DATA/documentsFile.json")) {
             file.write(listadocs.toJSONString());
             file.flush();
         }catch (IOException e) {
@@ -52,7 +57,7 @@ public class CtrlDocumentsFile {
         JSONParser jsonParser = new JSONParser();
         Vector<Vector<String>> Cjtdocs = new Vector<Vector<String>>();
 
-        try (FileReader file = new FileReader("../../DATA/documentsFile.json")) {
+        try (FileReader file = new FileReader("DATA/documentsFile.json")) {
             Object obj = jsonParser.parse(file);
             JSONArray documents = (JSONArray) obj;
 
@@ -71,18 +76,18 @@ public class CtrlDocumentsFile {
 
 
     private static Vector<String> retornaObj (JSONObject jsonObject) {
-        Vector<String> v = new Vector<>(5);
+        Vector<String> v = new Vector<>();
         JSONObject docI = (JSONObject) jsonObject.get("document");
         String autor = (String) docI.get("autor");
         String titol = (String) docI.get("titol");
         String contingut = (String) docI.get("contingut");
         String dataCreacio = (String) docI.get("dataCreacio");
         String dataUltimaModificacio = (String) docI.get("dataUltimaModificacio");
-        v.set(0, autor);
-        v.set(1, titol);
-        v.set(2, contingut);
-        v.set(3, dataCreacio);
-        v.set(4, dataUltimaModificacio);
+        v.add(autor);
+        v.add(titol);
+        v.add(contingut);
+        v.add(dataCreacio);
+        v.add(dataUltimaModificacio);
         return v;
     }
 
