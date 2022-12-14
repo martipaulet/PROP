@@ -8,6 +8,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -141,7 +143,10 @@ public class CtrlPresentacio {
 
     public Boolean existeixQueryPres(String query) { return cd.existeixQuery(query); }
 
+
     //---IMPORTAR I EXPORTAR---
+
+
     public void ImportarDocTXT(String path) throws Exception {
         ArrayList<String> fitxer = new ArrayList<>();
         try( BufferedReader br = new BufferedReader(new FileReader(path)) ) {
@@ -155,8 +160,23 @@ public class CtrlPresentacio {
         cd.altaDocument(fitxer.get(0), fitxer.get(1), fitxer.get(2));
     }
 
-    public void ExportarDocTXT(String path) throws Exception {
+    public void ExportarDocTXT(String path,String s) throws Exception {
+        String[] autor_titol = s.split("\n");
+        //Element 0 = autor
+        //Element 1 = titol
+        ArrayList<String> al = new ArrayList<>(List.of(autor_titol));
 
+        String Contingut = cd.obteContingut(al.get(0),al.get(1));
+        String tot = al.get(0)+"\n"+al.get(1)+"\n"+Contingut;
+
+        File file = new File(path+"/"+al.get(1)+".txt");
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(tot);
+        bw.close();
     }
 
     public ArrayList<String> DocSistema(){

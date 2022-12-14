@@ -2,18 +2,15 @@ package Presentacio;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import java.io.File;
 
 import javax.swing.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class CtrlVistaCarregarGuardarDocument {
@@ -52,7 +49,10 @@ public class CtrlVistaCarregarGuardarDocument {
     private CheckBox XML;
 
     @FXML
-    private ChoiceBox<String> Documents;
+    private Button MostrarDoc;
+
+    @FXML
+    private ListView<String> Documents;
 
     private Integer mode;
 
@@ -60,8 +60,6 @@ public class CtrlVistaCarregarGuardarDocument {
     private CtrlPresentacio ctrlPres = CtrlPresentacio.getInstance();
 
     public CtrlVistaCarregarGuardarDocument() throws Exception {
-        ArrayList<String> d = ctrlPres.DocSistema();
-        Documents.setItems(FXCollections.observableArrayList(d));
     }
 
 
@@ -117,6 +115,15 @@ public class CtrlVistaCarregarGuardarDocument {
     }
 
     @FXML
+    void pressMostrarDoc(){
+        Documents.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        ArrayList<String> doc = ctrlPres.DocSistema();
+        if (doc.size() == 0) ctrlPres.mostraError("No hi ha cap document al gestor");
+        ObservableList<String> aux = FXCollections.observableArrayList(doc);
+        Documents.setItems(aux);
+    }
+
+    @FXML
     void pressImportarDocument(javafx.event.ActionEvent event) throws Exception {
 
         FileChooser fc = new FileChooser();
@@ -149,10 +156,13 @@ public class CtrlVistaCarregarGuardarDocument {
     }
 
     @FXML
-    void pressExportarDocument(javafx.event.ActionEvent event) throws Exception {
+    void pressExportarDocument(ActionEvent event) throws Exception {
         if (!TXT.isSelected() && !XML.isSelected() ) {
             mode = -1;
             ctrlPres.mostraError("Has de triar el tipus de fitxer amb el que vols exportar");
+        }
+        else if ( Documents.getSelectionModel().isEmpty() ){
+            ctrlPres.mostraError("Has de pitjar el boto de Mostrar Documents i has de seleccionar un document abans de pitjar el boto d'exportar");
         }
         else{
             JFileChooser fc = new JFileChooser();
@@ -163,7 +173,7 @@ public class CtrlVistaCarregarGuardarDocument {
             if (ret == JFileChooser.APPROVE_OPTION) {
                 File seleccionat = fc.getSelectedFile();
                 if(mode == 0) {
-                    ctrlPres.ExportarDocTXT(seleccionat.getAbsolutePath());
+                    ctrlPres.ExportarDocTXT(seleccionat.getAbsolutePath(), Documents.getSelectionModel().getSelectedItem() );
                     ctrlPres.canviaStage("DocumentExportat");
                 }
                 else if (mode == 1){
