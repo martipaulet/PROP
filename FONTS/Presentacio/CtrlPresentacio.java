@@ -26,7 +26,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Objects;
 
 
 public class CtrlPresentacio {
@@ -171,8 +171,20 @@ public class CtrlPresentacio {
             return false;
         }
         else{
-           cd.altaDocument(fitxer.get(0), fitxer.get(1), fitxer.get(2));
-           return true;
+            String nom_autor = fitxer.get(0);
+            String titol = fitxer.get(1);
+            if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")){
+                mostraError("Ni autor ni titol no poden estar buits");
+                return false;
+            }
+            else if (existeixDocument(nom_autor, titol)){
+                mostraError("El document ja existeix");
+                return false;
+            }
+            else{
+                cd.altaDocument(fitxer.get(0), fitxer.get(1), fitxer.get(2));
+                return true;
+            }
         }
     }
 
@@ -210,8 +222,20 @@ public class CtrlPresentacio {
                     mostraError("El XML ha de tenir la seguent escructura:\n<Document>\n   <Autor>nom_autor</Autor>\n    <Titol>titol</Titol>\n    <Contingut>aqui va el contingut</Contingut>\n</Document>");                    return false;
                 }
                 else{
-                    cd.altaDocument(tot.get(0), tot.get(1), tot.get(2));
-                    return true;
+                    String nom_autor = tot.get(0);
+                    String titol = tot.get(1);
+                    if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")){
+                        mostraError("Ni autor ni titol no poden estar buits");
+                        return false;
+                    }
+                    else if (existeixDocument(nom_autor, titol)){
+                        mostraError("El document ja existeix");
+                        return false;
+                    }
+                    else{
+                        cd.altaDocument(tot.get(0), tot.get(1), tot.get(2));
+                        return true;
+                    }
                 }
             }
             else{
