@@ -3,10 +3,8 @@ import Dades.CtrlDocumentsFile;
 import Dades.CtrlExpressionsFile;
 import Domini.Model.*;
 
-import java.text.ParseException;
 import java.util.*;
 import java.text.Normalizer;
-import java.text.SimpleDateFormat;
 
 import static java.util.stream.Collectors.toMap;
 
@@ -37,8 +35,8 @@ public class CtrlDomini {
 
     //Post: S'inicialitzen les variables del CtrlDomini.
     private void inicialitzarCtrlDomini() throws Exception {
-        //ctrlExpressions = ctrlExpressions.getInstance();
-        ctrlDocuments = ctrlDocuments.getInstance();
+        //ctrlExpressions = CtrlExpressions.getInstance();
+        ctrlDocuments = CtrlDocumentsFile.getInstance();
         autors = new HashMap<> ();
         documents = new ConjuntDocuments();
         ctrlExpressioBooleana = CtrlExpressioBooleana.getInstance();

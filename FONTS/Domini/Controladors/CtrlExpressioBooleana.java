@@ -1,7 +1,7 @@
 package Domini.Controladors;
 import Domini.Model.*;
 
-import javax.print.Doc;
+
 import java.util.*;
 
 public class CtrlExpressioBooleana {
