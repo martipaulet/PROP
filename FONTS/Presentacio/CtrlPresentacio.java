@@ -203,8 +203,13 @@ public class CtrlPresentacio {
 
 
     public boolean ImportarDocXML(String path) throws Exception {
+        String nom_autor = null;
+        String titol = null;
+        String contingut = null;
+        boolean a = false;
+        boolean t = false;
+        boolean c = false;
         try {
-            ArrayList<String> tot = new ArrayList<>();
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
 
@@ -222,8 +227,17 @@ public class CtrlPresentacio {
                 for (int i = 0; i < fills.getLength(); ++i){
                     Node fill = fills.item(i);
                     if(fill.getNodeType() == Node.ELEMENT_NODE){
-                        if ( (i == 1 && fill.getNodeName().equals("Autor")) || (i == 3 && fill.getNodeName().equals("Titol")) || (i == 5 && fill.getNodeName().equals("Contingut"))){
-                            tot.add(fill.getTextContent());
+                        if (fill.getNodeName().equals("Autor")){
+                            a = true;
+                            nom_autor = fill.getTextContent();
+                        }
+                        else if (fill.getNodeName().equals("Titol")){
+                            t = true;
+                            titol = fill.getTextContent();
+                        }
+                        else if (fill.getNodeName().equals("Contingut")){
+                            c = true;
+                            contingut = fill.getTextContent();
                         }
                         else{
                             mostraError("El XML ha de tenir la seguent escructura:\n<Document>\n   <Autor>nom_autor</Autor>\n    <Titol>titol</Titol>\n    <Contingut>aqui va el contingut</Contingut>\n</Document>");
@@ -232,12 +246,11 @@ public class CtrlPresentacio {
 
                     }
                 }
-                if(tot.size() != 3) {
-                    mostraError("El XML ha de tenir la seguent escructura:\n<Document>\n   <Autor>nom_autor</Autor>\n    <Titol>titol</Titol>\n    <Contingut>aqui va el contingut</Contingut>\n</Document>");                    return false;
+                if( !(a && t && c)) {
+                    mostraError("El XML ha de tenir la seguent escructura:\n<Document>\n   <Autor>nom_autor</Autor>\n    <Titol>titol</Titol>\n    <Contingut>aqui va el contingut</Contingut>\n</Document>");
+                    return false;
                 }
                 else{
-                    String nom_autor = tot.get(0);
-                    String titol = tot.get(1);
                     if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")){
                         mostraError("Ni autor ni titol no poden estar buits");
                         return false;
@@ -247,7 +260,7 @@ public class CtrlPresentacio {
                         return false;
                     }
                     else{
-                        cd.altaDocument(tot.get(0), tot.get(1), tot.get(2));
+                        cd.altaDocument(nom_autor, titol, contingut);
                         return true;
                     }
                 }
