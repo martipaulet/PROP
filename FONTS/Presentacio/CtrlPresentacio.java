@@ -201,6 +201,7 @@ public class CtrlPresentacio {
         }
     }
 
+
     public boolean ImportarDocXML(String path) throws Exception {
         try {
             ArrayList<String> tot = new ArrayList<>();
