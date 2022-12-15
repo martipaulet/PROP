@@ -150,6 +150,15 @@ public class CtrlPresentacio {
 
     public Boolean existeixQueryPres(String query) { return cd.existeixQuery(query); }
 
+    public void guardar() {
+        cd.guardaDades();
+    }
+
+    public ArrayList<String> DocSistema(){
+        return canviCjtDocToArrayList(cd.DocSistema());
+    }
+
+
 
     //---IMPORTAR I EXPORTAR---
 
@@ -166,11 +175,11 @@ public class CtrlPresentacio {
             mostraError("El TXT ha de tenir la seguent escructura:\nAutor\nTitol\nContingut");
             return false;
         }
-        if(fitxer.size() != 3) {
+        if(fitxer.size() < 3) {
             mostraError("El TXT ha de tenir la seguent escructura:\nAutor\nTitol\nContingut");
             return false;
         }
-        else{
+        else {
             String nom_autor = fitxer.get(0);
             String titol = fitxer.get(1);
             if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")){
@@ -182,7 +191,11 @@ public class CtrlPresentacio {
                 return false;
             }
             else{
-                cd.altaDocument(fitxer.get(0), fitxer.get(1), fitxer.get(2));
+                String c = fitxer.get(2)+"\n";
+                for (int i = 3; i<fitxer.size(); ++i){
+                    c = c + fitxer.get(i)+"\n";
+                }
+                cd.altaDocument(nom_autor, titol, c);
                 return true;
             }
         }
@@ -318,9 +331,6 @@ public class CtrlPresentacio {
 
 
 
-    public ArrayList<String> DocSistema(){
-        return canviCjtDocToArrayList(cd.DocSistema());
-    }
 
 
     //---METODES PRIVATS---
@@ -336,11 +346,5 @@ public class CtrlPresentacio {
         return ret;
     }
 
-    public void guardar() {
-        cd.guardaDades();
-    }
 
-    /*public void carregar() throws Exception {
-        cd.carregaDades();
-    }*/
 }

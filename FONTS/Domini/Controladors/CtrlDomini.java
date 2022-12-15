@@ -228,6 +228,15 @@ public class CtrlDomini {
         return ctrlExpressioBooleana.existeixQuery(query);
     }
 
+    //Post: retorna true si el document existeix. False altrament.
+    public boolean existeixDocument(String autor, String titol) {
+        if (autors.containsKey(autor)) {
+            Autor a = autors.get(autor);
+            return a.conteTitol(titol);
+        }
+        else return false;
+    }
+
     //---METODES ORDENACIO---
 
 
@@ -287,14 +296,6 @@ public class CtrlDomini {
         return autors.containsKey(autor);
     }
 
-    //Post: retorna true si el document existeix. False altrament.
-    public boolean existeixDocument(String autor, String titol) {
-        if (autors.containsKey(autor)) {
-            Autor a = autors.get(autor);
-            return a.conteTitol(titol);
-        }
-        else return false;
-    }
 
     //Pre: K < nombre de documents del sistema.
     //Post: Es retorna el conjunt de K documents mes semblants al document referenciat per titol autor si existeix.
