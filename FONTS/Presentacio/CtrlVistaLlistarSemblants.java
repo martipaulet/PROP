@@ -214,8 +214,8 @@ public class CtrlVistaLlistarSemblants {
             ctrlPres.mostraError("L'Autor i el Titol seleccionat no corresponen");
         }
 
-        else if (Objects.equals(nombreDocs.getText(), "") || Integer.parseInt(nombreDocs.getText())<0 || Integer.parseInt(nombreDocs.getText())>10) {
-            ctrlPres.mostraError("Falta Nombre de documents a retornar i ha de ser un valor del 0 al 10");
+        else if (Objects.equals(nombreDocs.getText(), "") || Integer.parseInt(nombreDocs.getText())<0) {
+            ctrlPres.mostraError("Falta Nombre de documents a retornar i ha de ser un valor major que 0");
         }
 
         else if (!tf_idf.isSelected() && !tf.isSelected() ) {
@@ -233,7 +233,7 @@ public class CtrlVistaLlistarSemblants {
             t = Titols.getSelectionModel().getSelectedItem();
             k = nombreDocs.getText();
             Integer num = Integer.parseInt(k);
-            if (num < 0 || num > 10) ctrlPres.mostraError("El nombre de documents a retornar ha de ser un valor entre 0 i 10");
+            if (num < 0) ctrlPres.mostraError("El nombre de documents a retornar ha de ser un valor major a 0");
             else if (ctrlPres.numDocsTotalPres() <= num) ctrlPres.mostraError("El nombre de documents a retornar és major als documents del sistema. K ha de ser menor a " + ctrlPres.numDocsTotalPres() + ".");
             else ctrlPres.canviaStage("LlistarSemblantsOutput");
         }

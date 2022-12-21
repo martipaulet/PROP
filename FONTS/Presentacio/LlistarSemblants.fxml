@@ -76,7 +76,7 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="232.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de documents a retornar (valor entre 0 i 10):">
+      <Text fill="WHITE" layoutX="283.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de documents a retornar:">
          <font>
             <Font size="13.0" />
          </font>
@@ -116,7 +116,7 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <TextArea fx:id="nombreDocs" layoutX="545.0" layoutY="170.0" prefHeight="39.0" prefWidth="35.0" />
+      <TextArea fx:id="nombreDocs" layoutX="491.0" layoutY="170.0" prefHeight="39.0" prefWidth="35.0" />
       <Text fill="WHITE" layoutX="233.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Autors:">
          <font>
             <Font size="13.0" />
