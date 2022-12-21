@@ -59,7 +59,7 @@ public class CtrlVistaBaixaDocument {
     void pressMostrarAutors(javafx.event.ActionEvent event) throws Exception {
         ArrayList<String> a = ctrlPres.getAutorsPres();
         if (a.size() == 0) {
-            ctrlPres.mostraError("No hi ha cap autor guardat al sistema");
+            ctrlPres.mostraError("No hi ha cap Autor guardat al sistema");
         }
         else {
             ObservableList<String> aux = FXCollections.observableArrayList(a);
@@ -71,13 +71,13 @@ public class CtrlVistaBaixaDocument {
     @FXML
     void pressMostrarTitolsAutor(javafx.event.ActionEvent event) throws Exception {
         if (Autors.getSelectionModel().isEmpty()) {
-            ctrlPres.mostraError("Has de seleccionar un autor de la llista. Però abans has de pitjar Mostrar Autors");
+            ctrlPres.mostraError("Has de seleccionar un Autor de la llista");
         }
         else {
             String autor = Autors.getSelectionModel().getSelectedItem();
             List<String> t = ctrlPres.titolsAutorPres(autor);
             if (t.size() == 0) {
-                ctrlPres.mostraError("No hi ha cap titol d'aquest autor guardat al sistema");
+                ctrlPres.mostraError("No hi ha cap Titol d'aquest Autor guardat al sistema");
             }
             else {
                 ObservableList<String> aux = FXCollections.observableList(t);
@@ -90,13 +90,13 @@ public class CtrlVistaBaixaDocument {
     @FXML
     void pressBaixaDoc(javafx.event.ActionEvent event) throws Exception {
         if(Autors.getSelectionModel().isEmpty()){
-            ctrlPres.mostraError("No tens cap autor seleccionat, has de tornar a repetir el proces explicat al manual d'usuari");
+            ctrlPres.mostraError("Selecciona Autor i titol");
         }
         else if (Titols.getSelectionModel().isEmpty()) {
-            ctrlPres.mostraError("Has de seleccionar un Titol. Però abans has seleccionar un Autor i després pitjar el boto de Mostrar Titols Autor");
+            ctrlPres.mostraError("Has de seleccionar un Titol de l'Autor seleccionat");
         }
         else if (!ctrlPres.existeixDocument(Autors.getSelectionModel().getSelectedItem(), Titols.getSelectionModel().getSelectedItem())){
-            ctrlPres.mostraError("L'autor i el Titol seleccionat no corresponen, has de tornar a repetir el proces explicat al manual d'usuari");
+            ctrlPres.mostraError("L'Autor i el Titol seleccionat no corresponen");
         }
         else {
             ctrlPres.baiaxaDocumentPres(Autors.getSelectionModel().getSelectedItem(), Titols.getSelectionModel().getSelectedItem());

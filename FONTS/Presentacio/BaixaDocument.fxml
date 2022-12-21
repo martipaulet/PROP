@@ -71,7 +71,7 @@
       <Button fx:id="BaixaDoc" layoutX="482.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressBaixaDoc" prefHeight="25.0" prefWidth="104.0" text="Baixa Document" />
       <ListView fx:id="Autors" layoutX="230.0" layoutY="76.0" prefHeight="236.0" prefWidth="163.0" />
       <ListView fx:id="Titols" layoutX="410.0" layoutY="76.0" prefHeight="236.0" prefWidth="163.0" />
-      <Button fx:id="MostrarTitolsAutor" layoutX="326.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressMostrarTitolsAutor" prefHeight="25.0" prefWidth="148.0" text="Mostrar Titiols de l'Autor" />
+      <Button fx:id="MostrarTitolsAutor" layoutX="326.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressMostrarTitolsAutor" prefHeight="25.0" prefWidth="148.0" text="Mostrar Titols de l'Autor" />
       <Button fx:id="MostrarAutors" layoutX="222.0" layoutY="325.0" mnemonicParsing="false" onAction="#pressMostrarAutors" prefHeight="25.0" prefWidth="97.0" text="Mostrar Autors" />
    </children>
 </AnchorPane>
