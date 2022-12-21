@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
@@ -36,13 +37,19 @@ public class CtrlVistaConsultaContingut {
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private TextArea AutorText;
+    private Button MostrarAutors;
 
     @FXML
-    private TextArea TitolText;
+    private Button MostrarTitolsAutor;
 
     @FXML
-    private Button Continue;
+    private Button ContingutDoc;
+
+    @FXML
+    private ListView<String> Autors = new ListView<>();
+
+    @FXML
+    private ListView<String> Titols = new ListView<>();
 
     @FXML
     private ListView<String> Contingut = new ListView<>();
@@ -88,21 +95,55 @@ public class CtrlVistaConsultaContingut {
     }
 
     @FXML
-    void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String nom_autor = AutorText.getText();
-        String titol = TitolText.getText();
-        if (Objects.equals(nom_autor, "") || Objects.equals(titol, "")) {
-            ctrlPres.mostraError("Ni autor ni titol no poden ser null");
+    void pressMostrarAutors(javafx.event.ActionEvent event) throws Exception {
+        ArrayList<String> a = ctrlPres.getAutorsPres();
+        if (a.size() == 0) {
+            ctrlPres.mostraError("No hi ha cap Autor guardat al sistema");
         }
-        else{
-            if (!ctrlPres.existeixDocument(nom_autor, titol)) ctrlPres.mostraError("El document no existeix");
+        else {
+            ObservableList<String> aux = FXCollections.observableArrayList(a);
+            Autors.setItems(aux);
+            Autors.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
+    }
+
+    @FXML
+    void pressMostrarTitolsAutor(javafx.event.ActionEvent event) throws Exception {
+        if (Autors.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar un Autor de la llista");
+        }
+        else {
+            String autor = Autors.getSelectionModel().getSelectedItem();
+            List<String> t = ctrlPres.titolsAutorPres(autor);
+            if (t.size() == 0) {
+                ctrlPres.mostraError("No hi ha cap Titol d'aquest Autor guardat al sistema");
+            }
             else {
-                String aux = ctrlPres.obteContingutPres(nom_autor,titol);
-                ObservableList<String> a = FXCollections.observableArrayList();
-                a.add(aux);
-                Contingut.setItems(a);
+                ObservableList<String> aux = FXCollections.observableList(t);
+                Titols.setItems(aux);
+                Titols.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
             }
         }
-
     }
+
+    @FXML
+    void pressContingutDoc(javafx.event.ActionEvent event) throws Exception {
+        if(Autors.getSelectionModel().isEmpty()){
+            ctrlPres.mostraError("Selecciona Autor i titol");
+        }
+        else if (Titols.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar un Titol de l'Autor seleccionat");
+        }
+        else if (!ctrlPres.existeixDocument(Autors.getSelectionModel().getSelectedItem(), Titols.getSelectionModel().getSelectedItem())){
+            ctrlPres.mostraError("L'Autor i el Titol seleccionat no corresponen");
+        }
+        else {
+            String co = ctrlPres.obteContingutPres(Autors.getSelectionModel().getSelectedItem(), Titols.getSelectionModel().getSelectedItem());
+            ObservableList<String> c = FXCollections.observableArrayList();
+            c.add(co);
+            Contingut.setItems(c);
+        }
+    }
+
+
 }

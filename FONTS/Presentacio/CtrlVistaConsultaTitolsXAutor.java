@@ -5,9 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,10 +37,13 @@ public class CtrlVistaConsultaTitolsXAutor {
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private TextArea AutorText;
+    private Button MostrarAutors;
 
     @FXML
-    private Button Continue;
+    private Button MostrarTitolsAutor;
+
+    @FXML
+    private ListView<String> Autors = new ListView<>();
 
     @FXML
     private ListView<String> Titols = new ListView<>();
@@ -84,16 +89,32 @@ public class CtrlVistaConsultaTitolsXAutor {
     }
 
     @FXML
-    void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String nom_autor = AutorText.getText();
-        if (Objects.equals(nom_autor, "")) ctrlPres.mostraError("Autor no pot ser null");
-        else if (!ctrlPres.estaAutorPres(nom_autor)) ctrlPres.mostraError("No existeix l'autor");
+    void pressMostrarAutors(javafx.event.ActionEvent event) throws Exception {
+        ArrayList<String> a = ctrlPres.getAutorsPres();
+        if (a.size() == 0) {
+            ctrlPres.mostraError("No hi ha cap Autor guardat al sistema");
+        }
         else {
-            List<String> aux = ctrlPres.titolsAutorPres(nom_autor);
-            if (aux.size() == 0) ctrlPres.mostraError("L'autor no te cap document associat");
-            else{
-               ObservableList<String> a = FXCollections.observableList(aux);
-               Titols.setItems(a);
+            ObservableList<String> aux = FXCollections.observableArrayList(a);
+            Autors.setItems(aux);
+            Autors.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
+    }
+
+    @FXML
+    void pressMostrarTitolsAutor(javafx.event.ActionEvent event) throws Exception {
+        if (Autors.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar un Autor de la llista");
+        }
+        else {
+            String autor = Autors.getSelectionModel().getSelectedItem();
+            List<String> t = ctrlPres.titolsAutorPres(autor);
+            if (t.size() == 0) {
+                ctrlPres.mostraError("No hi ha cap Titol d'aquest Autor guardat al sistema");
+            }
+            else {
+                ObservableList<String> aux = FXCollections.observableList(t);
+                Titols.setItems(aux);
             }
         }
     }
