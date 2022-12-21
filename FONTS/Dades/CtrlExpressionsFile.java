@@ -49,7 +49,6 @@ public class CtrlExpressionsFile {
             for (Object expressionI : expressions) {
                 JSONObject aux = (JSONObject) expressionI;
                 String expI = (String) aux.get("expression");
-                System.out.println(expI);
                 l.add(expI);
             }
 

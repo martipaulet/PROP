@@ -114,7 +114,6 @@ public class CtrlPresentacio {
     public ArrayList<String> DocumentsSemblantsPres(String autor, String titol, Integer K, Integer mode, Integer ordre) throws Exception {
         ConjuntDocuments cjd = cd.DocumentsSemblants(autor,titol,K,mode);
         ConjuntDocuments c = cd.ordenaDocuments(cjd,ordre);
-        c.imprimir();
         return canviCjtDocToArrayList(c);
     }
 
