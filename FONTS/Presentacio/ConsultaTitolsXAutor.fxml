@@ -74,5 +74,10 @@
       <ListView fx:id="Titols" layoutX="418.0" layoutY="82.0" prefHeight="236.0" prefWidth="163.0" />
       <Button fx:id="MostrarTitolsAutor" layoutX="426.0" layoutY="331.0" mnemonicParsing="false" onAction="#pressMostrarTitolsAutor" prefHeight="25.0" prefWidth="148.0" text="Mostrar Titols de l'Autor" />
       <Button fx:id="MostrarAutors" layoutX="271.0" layoutY="331.0" mnemonicParsing="false" onAction="#pressMostrarAutors" prefHeight="25.0" prefWidth="97.0" text="Mostrar Autors" />
+      <Text fill="WHITE" layoutX="307.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONSULTA TITOLS D'UN AUTOR">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
