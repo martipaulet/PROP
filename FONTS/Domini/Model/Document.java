@@ -68,7 +68,7 @@ public class Document {
 
     //Post: retorna la dataCreacio_ en tipus Date del document.
     public Date getDataCreacio() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date d = null;
         try {
             d = formatter.parse(dataCreacio_);
@@ -79,7 +79,7 @@ public class Document {
 
     //Post: retorna la dataUltimaModificacio_ en tipus Date del document.
     public Date getDataUltimaModificacio() {
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         Date d = null;
         try {
             d = formatter.parse(dataUltimaModificacio_);
