@@ -1,8 +1,6 @@
 JOCS DE PROVA
 
-1) Sistema amb base de dades buida
-
-1. Carregar i guardar document
+1. Carregar i Guardar Document --> Importar document
 
 - MOSTRAR DOCUMENTS
 
@@ -29,10 +27,10 @@ JOCS DE PROVA
 - MOSTRAR DOCUMENTS
 
   Acció: Prémer botó Mostrar Documents
-  Out: Martí
-       XMLCorrecte
-       Joel
+  Out: Joel
        TxtCorrecte
+       Martí
+       XMLCorrecte
 
 
 2. Alta Document
@@ -76,7 +74,7 @@ JOCS DE PROVA
 
     In: Autor: Joan
         Titol: M'agrada
-        Contingut: M'agrada el gestor de documents per tal d'importar els meus docuents txt.
+        Contingut: M'agrada el gestor de documents per tal d'importar els meus documents txt.
     Out: DOCUMENT CREAT CORRECTAMENT!
 
     In: Autor: Joan
@@ -159,14 +157,15 @@ JOCS DE PROVA
    Out: ERROR: Has de seleccionar un Autor de la llista
 
    Acció: Prémer Mostrar Autors + Seleccionar Joan + Mostrar Titols de l'Autor
-   Out: Futbol
+   Out: Compleixo les 3
+        Futbol
         M'agrada
         Mundial
         No m'agrada
 
    Acció: Prémer Mostrar Autors + Seleccionar Joel + Mostrar Titols de l'Autor
-   Out: Compleixo les 3
-        TxtCorrecte
+   Out: TxtCorrecte
+
 
 7. Realitzar consulta --> Consulta autors prefix
 
@@ -239,7 +238,7 @@ JOCS DE PROVA
    Out: ERROR: Has de seleccionar un Autor de la llista
 
    Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol + Prémer botó Continue
-   Out: ERROR: Falta Nombre de documents a retornar i ha de ser un valor de 0 al 10
+   Out: ERROR: Falta Nombre de documents a retornar i ha de ser un valor major que 0
 
    Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
    In: 9 (documents a retornar)
@@ -249,7 +248,7 @@ JOCS DE PROVA
    Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
    In: 9 (documents a retornar)
    Acció: Seleccionar Tf + Prémer botó Continue
-   Out: ERROR: Has de triar un métode d'ordenació
+   Out: ERROR: Has de triar un métode d'ordenacio
 
    Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
    In: 9 (documents a retornar)
@@ -259,19 +258,32 @@ JOCS DE PROVA
    Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
    In: 3 (documents a retornar)
    Acció: Seleccionar Tf + Seleccionar Alfabètica per títol + Prémer botó Continue + Prémer Mostrar Documents
-   Out: Joao
-        Query1
-        Joel
+   Out: ERROR: No hi han 3 documents semblants, sino que n'hi han 2
+        Joan
         Compleixo les 3
         Joan
         Mundial
    Acció: Seleccionar Compleixo les 3 i prémer MostrarContingut
    Out: hola i xml, gran gestor de documents, m'agrada el futbol i bon mundial del Dibu i Messi.
 
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Compleixo les 3
+   In: 4 (documents a retornar)
+   Acció: Seleccionar Tf-idf + Seleccionar Data de creació més propera + Prémer botó Continue + Prémer Mostrar Documents
+   Out: Joan
+        Futbol
+        Joan
+        Mundial
+        Joan
+        No m'agrada
+        Joan
+        M'agrada
+
    Acció: Prémer botó Mostrar Autors + Seleccionar Oriol + Prémer botó Mostrar Titols de l'Autor + Seleccionar Hola
-   In: 1 (documents a retornar)
+   In: 2 (documents a retornar)
    Acció: Seleccionar Tf-idf + Seleccionar Data de modificació més propera + Prémer botó Continue + Prémer Mostrar Documents
-   Out: Joao
+   Out: Albert
+        Adeu
+        Joao
         Query1
    Acció: Seleccionar Query1 i prémer MostrarContingut
    Out: Tinc hola i xml, i a més, txt.
@@ -287,24 +299,31 @@ JOCS DE PROVA
     Acció: Prémer botó Mostrar Querys + Seleccionar "documents & (!txt | !xml)" + Seleccionar Alfabètica per títol + Prémer botó Continue
     Acció: Prémer Mostrar Documents
     Out: Joan
+         Compleixo les 3
+         Joan
          M'agrada
          Joan
          No m'agrada
-         Joel
-         Compleixo les 3
     Acció: Seleccionar M'agrada i prémer MostrarContingut
     Out: M'agrada el gestor de documents per tal d'importar els meus documents txt.
 
     Acció: Prémer botó Mostrar Querys + Seleccionar "futbol & mundial & !Mbappe & (Messi & Dibu | Neymar)" + Seleccionar Data de creació més propera + Prémer botó Continue
     Acció: Prémer Mostrar Documents
     Out: Joan
-         M'agrada
-         Joan
-         No m'agrada
-         Joel
          Compleixo les 3
-    Acció: Seleccionar M'agrada i prémer MostrarContingut
-    Out: M'agrada el gestor de documents per tal d'importar els meus documents txt.
+         Joan
+         Futbol
+    Acció: Seleccionar Compleixo les 3 i prémer MostrarContingut
+    Out: hola i xml, gran gestor de documents, m'agrada el futbol i bon mundial del Dibu i Messi.
+
+    Acció: Prémer botó Mostrar Querys + Seleccionar "hola & !adeu & (xml | txt)" + Seleccionar Data de modificació més propera + Prémer botó Continue
+    Acció: Prémer Mostrar Documents
+    Out: Joan
+         Compleixo les 3
+         Joao
+         Query1
+    Acció: Seleccionar Query1 i prémer MostrarContingut
+    Out: Tinc hola i xml, i a més, txt.
 
 13. Gestió expressions booleanes --> Modifica expressió
 
@@ -323,6 +342,37 @@ JOCS DE PROVA
 
     Tornem a llistar els documents que compleixen l'expressió modificada per veure els canvis al output
 
+    Acció: Prémer botó Mostrar Querys + Seleccionar "documents & (!txt | !xml) & mundial" + Seleccionar Alfabètica per títol + Prémer botó Continue
+    Acció: Prémer Mostrar Documents
+    Out: Joan
+         Compleixo les 3
+
+15. Carregar i Guardar Document --> Exportar document
+
+    Acció: Prémer botó Exportar Document
+    Out: ERROR: Has de triar el tipus de fitxer amb el que vols exportar
+
+    Acció: Seleccionar TXT + Prémer botó Exportar Document
+    Out: ERROR: Has de pitjar el botó de Mostrar Document i has de seleccionar un document abans de pitjar el botó d'exportar
+
+    Acció: Seleccionar TXT + Prémer botó Mostrar Documents + Seleccionar TxtCorrecte + Prémer botó Exportar Document + Seleccionar carpeta on exportar
+    Out: DOCUMENT EXPORTAT CORRECTAMENT!
+
+    Acció: Seleccionar XML + Prémer botó Mostrar Documents + Seleccionar TxtCorrecte + Prémer botó Exportar Document + Seleccionar carpeta on exportar
+    Out: DOCUMENT EXPORTAT CORRECTAMENT!
+
+16. Guardar
+
+    Acció: Tancar el gestor pitjant la creu de la cantonada superior dreta + Prémer el botó d'acceptar guardar els canvis
+    Out: Els documents i expressions s'han guardat al sistema
+
+17. Obrir aplicació i veure que els documents i expressions continuen al sistema
+
+    Acció: Obrir el gestor i anar a Carregar i Guardar Document + Prémer el botó Mostrar Documents
+    Out: Es mostren tots els documents que hi havia (i hi han) al sistema
+
+    Acció: Anar a Llistar Documents i anar a Llistar documents que compleixen expressió booleana + Prémer el botó Mostrar Querys
+    Out: Es mostren totes les expressions que hi havia (i hi han) al sistema
 
 
 
