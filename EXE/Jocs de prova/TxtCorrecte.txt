@@ -1,0 +1,4 @@
+Joel
+TxtCorrecte
+Hola.
+Aquest TXT és correcte així que es pot importar.

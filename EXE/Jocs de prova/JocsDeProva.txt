@@ -1,0 +1,120 @@
+JOCS DE PROVA
+
+1) Sistema amb base de dades buida
+
+1. Carregar i guardar document
+
+- MOSTRAR DOCUMENTS
+
+  In: Prémer botó Mostrar Documents
+  Out: ERROR: No hi ha cap document al gestor
+
+- IMPORTAR DOCUMENT
+
+  In: Importar document TxtCorrecte.txt
+  Out: DOCUMENT IMPORTAT CORRECTAMENT!
+
+  In: Importar document TxtIncorrecte.txt
+  Out: ERROR: El TXT ha de tenir la següent estructura:
+       Autor
+       Titol
+       Contingut
+
+  In: Importar document XMLCorrecte.xml
+  Out: DOCUMENT IMPORTAT CORRECTAMENT!
+
+  In: Importar document XMLIncorrecte.xml
+  Out: ERROR: Ni autor ni titol no poden estar buits
+
+- MOSTRAR DOCUMENTS
+
+  In: Prémer botó Mostrar Documents
+  Out: Martí
+       XMLCorrecte
+       Joel
+       TxtCorrecte
+
+
+2. Alta Document
+
+   Donarem d'alta una sèrie de documents per tal de fer consultes i llistar més endavant.
+
+   In: Autor:
+       Titol: Hola
+       Contingut: Tinc hola però tinc adeu.
+   Out: ERROR: Ni autor ni titol no poden estar buits
+
+    In: Autor:
+        Titol:
+        Contingut: Tinc hola però tinc adeu.
+    Out: ERROR: Ni autor ni titol no poden estar buits
+
+    In: Autor: Oriol
+        Titol:
+        Contingut: Tinc hola però tinc adeu.
+    Out: ERROR: Ni autor ni titol no poden estar buits
+
+    In: Autor: Joel
+        Titol: TxtCorrecte
+        Contingut: Indiferent
+    Out: ERROR: El document ja existeix
+
+    In: Autor: Oriol
+        Titol: Hola
+        Contingut: Tinc hola però tinc adeu.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Albert
+        Titol: Adeu
+        Contingut: Tinc adeu i tinc xml.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Joao
+        Titol: Query1
+        Contingut: Tinc hola i xml, i a més, txt.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Joan
+        Titol: M'agrada
+        Contingut: M'agrada el gestor de documents per tal d'importar els meus docuents txt.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Joan
+        Titol: No m'agrada
+        Contingut: No m'agrada el gestor de documents.
+                   Per tal d'exportar. Els meus documents xml.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Joan
+        Titol: Mundial
+        Contingut: Quina final del mundial de futbol, quin partit del Dibu i Messi, encara que Mbappe fa un hat-trick impressionant.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Joan
+        Titol: Futbol
+        Contingut: Soc sens dubte el més semblant al document del mundial de futbol, el millor porter va ser el Dibu Martínez i Messi el millor jugador.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+    In: Autor: Joan
+        Titol: Compleixo les 3
+        Contingut: hola i xml, gran gestor de documents, m'agrada el futbol i bon mundial del Dibu i Messi.
+    Out: DOCUMENT CREAT CORRECTAMENT!
+
+3. Gestió expressions booleanes --> Alta expressió
+
+   Donarem d'alta una sèrie d'expressions per tal de guardar-les al gestor i mirar els documents que tenen una frase que la compleix.
+
+   In: hola & !adeu & (xml | txt)
+   Out: EXPRESSIÓ CREADA CORRECTAMENT!
+
+   In: documents & (!txt | !xml)
+   Out: EXPRESSIÓ CREADA CORRECTAMENT!
+
+   In: futbol & mundial & !Mbappe & (Messi | Dibu)
+   Out: EXPRESSIÓ CREADA CORRECTAMENT!
+
+   In: hola & !adeu & (xml | txt)
+   Out: ERROR: La query indicada ja existeix al sistema
+
+   In:
+   Out: ERROR: La query no pot estar buida

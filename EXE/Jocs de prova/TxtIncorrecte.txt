@@ -1,0 +1,2 @@
+Oriol
+TxtIncorrecte. Aquest TXT no segueix el format i per tant no s'importarà al gestor.
