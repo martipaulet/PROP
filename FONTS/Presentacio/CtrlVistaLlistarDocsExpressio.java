@@ -1,11 +1,12 @@
 package Presentacio;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CtrlVistaLlistarDocsExpressio {
 
@@ -36,7 +37,10 @@ public class CtrlVistaLlistarDocsExpressio {
     private Button Continue;
 
     @FXML
-    private TextArea QueryText;
+    private Button MostrarQuerys;
+
+    @FXML
+    private ListView<String> Querys = new ListView<>();
 
     @FXML
     private CheckBox alfabetica;
@@ -125,16 +129,29 @@ public class CtrlVistaLlistarDocsExpressio {
     }
 
     @FXML
+    void pressMostrarQuerys(javafx.event.ActionEvent event) throws Exception {
+        List<String> q = ctrlPres.getQuerysPres();
+        if (q.size() == 0) {
+            ctrlPres.mostraError("No hi ha cap Query guardada al sistema");
+        }
+        else {
+            ObservableList<String> aux = FXCollections.observableArrayList(q);
+            Querys.setItems(aux);
+            Querys.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
+    }
+
+    @FXML
     void pressContinue (javafx.event.ActionEvent event) throws Exception {
-        if (QueryText.getText() == "") {
-            ctrlPres.mostraError("Has d'omplir la casella de la query amb una expressio booleana");
+        if (Querys.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar una Query de la llista");
         }
         else if (!alfabetica.isSelected() && !creacio.isSelected() && !modificacio.isSelected()) {
             ordre = -1;
             ctrlPres.mostraError("Has de triar un metode d'ordenacio");
         }
         else{
-            q = QueryText.getText();
+            q = Querys.getSelectionModel().getSelectedItem();
             ctrlPres.canviaStage("LlistarDocsExpressioOutput");
         }
     }

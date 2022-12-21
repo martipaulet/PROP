@@ -162,6 +162,10 @@ public class CtrlPresentacio {
         return cd.getAutors();
     }
 
+    public List<String> getQuerysPres(){
+        return cd.getQuerys();
+    }
+
 
 
     //---IMPORTAR I EXPORTAR---

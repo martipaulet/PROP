@@ -179,7 +179,6 @@ public class ConjuntDocuments {
                 }
             }
         }
-        if (sf.size() == 0) throw new Exception("La paraula "+s+" no esta en cap frase del conjunt de documents\r\n");
         return sf;
     }
 

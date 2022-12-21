@@ -2,7 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -59,14 +59,13 @@
             </Button>
          </children>
       </VBox>
-      <Text fill="WHITE" layoutX="262.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Query booleana:">
+      <Text fill="WHITE" layoutX="232.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Query booleana:">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
-      <TextArea fx:id="QueryText" layoutX="369.0" layoutY="72.0" prefHeight="33.0" prefWidth="200.0" />
       <Button fx:id="Continue" layoutX="512.0" layoutY="357.0" mnemonicParsing="false" onAction="#pressContinue" prefHeight="25.0" prefWidth="65.0" text="Continue" />
-      <Text fill="WHITE" layoutX="258.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS QUE COMPLEIXEN EXPRESSIÓ">
+      <Text fill="WHITE" layoutX="258.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LLISTAR DOCUMENTS QUE COMPLEIXEN EXPRESSIÓ">
          <font>
             <Font size="13.0" />
          </font>
@@ -81,25 +80,27 @@
             <Font size="13.0" />
          </font>
       </Text>
-      <CheckBox fx:id="modificacio" layoutX="279.0" layoutY="197.0" mnemonicParsing="false" onAction="#pressmodificacio" text="Data de modificació més propera" textFill="WHITE">
+      <CheckBox fx:id="modificacio" layoutX="249.0" layoutY="283.0" mnemonicParsing="false" onAction="#pressmodificacio" text="Data de modificació més propera" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="creacio" layoutX="279.0" layoutY="171.0" mnemonicParsing="false" onAction="#presscreacio" text="Data de creació més propera" textFill="WHITE">
+      <CheckBox fx:id="creacio" layoutX="249.0" layoutY="257.0" mnemonicParsing="false" onAction="#presscreacio" text="Data de creació més propera" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
       </CheckBox>
-      <CheckBox fx:id="alfabetica" layoutX="279.0" layoutY="149.0" mnemonicParsing="false" onAction="#pressalfabetica" text="Alfabètica per títol" textFill="WHITE">
+      <CheckBox fx:id="alfabetica" layoutX="249.0" layoutY="235.0" mnemonicParsing="false" onAction="#pressalfabetica" text="Alfabètica per títol" textFill="WHITE">
          <font>
             <Font size="13.0" />
          </font>
       </CheckBox>
-      <Text fill="WHITE" layoutX="262.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipus ordenació:">
+      <Text fill="WHITE" layoutX="232.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipus ordenació:">
          <font>
             <Font size="13.0" />
          </font>
       </Text>
+      <ListView fx:id="Querys" layoutX="232.0" layoutY="82.0" prefHeight="96.0" prefWidth="355.0" />
+      <Button fx:id="MostrarQuerys" layoutX="477.0" layoutY="185.0" mnemonicParsing="false" onAction="#pressMostrarQuerys" prefHeight="25.0" prefWidth="110.0" text="Mostrar Querys" />
    </children>
 </AnchorPane>

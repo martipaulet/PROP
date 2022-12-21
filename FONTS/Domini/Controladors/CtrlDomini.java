@@ -245,6 +245,11 @@ public class CtrlDomini {
         return a;
     }
 
+    public List<String> getQuerys(){
+        List<String> a = ctrlExpressioBooleana.getExpressions();
+        return a;
+    }
+
     //---METODES ORDENACIO---
 
 
