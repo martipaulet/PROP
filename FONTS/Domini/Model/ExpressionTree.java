@@ -81,7 +81,7 @@ public class ExpressionTree {
     //Post: retorna un conjunt de documents format pels documents que tenen almenys una frase que compleix la query representada en l'expressionTree.
     public ConjuntDocuments calculate(ConjuntDocuments total) throws Exception{
         Set<Frase> frases = calculateIm(root, total);
-        HashMap<Pair,Document> vd = new HashMap<>();
+        LinkedHashMap<Pair,Document> vd = new LinkedHashMap<>();
         for (Frase f : frases) {
             Document d = total.getDocument(f.getAutorDoc(),f.getTitolDoc());
             Pair p = new Pair(d.getAutor(),d.getTitol());

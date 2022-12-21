@@ -10,7 +10,7 @@ public class ConjuntDocuments {
 
 
     //private Vector<Document> CjtD;  //Conjunt format per Documents
-    private HashMap<Pair,Document> CjtD;
+    private LinkedHashMap<Pair,Document> CjtD;
 
 
     //---CONSTRUCTORES---
@@ -18,11 +18,11 @@ public class ConjuntDocuments {
 
     //Post: es crea una instancia de ConjuntDocuments buida.
     public ConjuntDocuments() {
-        CjtD = new HashMap<>();
+        CjtD = new LinkedHashMap<>();
     }
 
     //Post: es crea una instancia de ConjuntDocuments amb els Documents indicats.
-    public ConjuntDocuments(HashMap<Pair,Document> m) {
+    public ConjuntDocuments(LinkedHashMap<Pair,Document> m) {
         CjtD = m;
     }
 
@@ -56,7 +56,7 @@ public class ConjuntDocuments {
 
 
     //Post: retorna en un vector de documents el conjunt de documents.
-    public HashMap<Pair, Document> getMap() {
+    public LinkedHashMap<Pair, Document> getMap() {
         return CjtD;
     }
 

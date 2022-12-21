@@ -6,29 +6,29 @@ JOCS DE PROVA
 
 - MOSTRAR DOCUMENTS
 
-  In: Prémer botó Mostrar Documents
+  Acció: Prémer botó Mostrar Documents
   Out: ERROR: No hi ha cap document al gestor
 
 - IMPORTAR DOCUMENT
 
-  In: Importar document TxtCorrecte.txt
+  Acció: Importar document TxtCorrecte.txt
   Out: DOCUMENT IMPORTAT CORRECTAMENT!
 
-  In: Importar document TxtIncorrecte.txt
+  Acció: Importar document TxtIncorrecte.txt
   Out: ERROR: El TXT ha de tenir la següent estructura:
        Autor
        Titol
        Contingut
 
-  In: Importar document XMLCorrecte.xml
+  Acció: Importar document XMLCorrecte.xml
   Out: DOCUMENT IMPORTAT CORRECTAMENT!
 
-  In: Importar document XMLIncorrecte.xml
+  Acció: Importar document XMLIncorrecte.xml
   Out: ERROR: Ni autor ni titol no poden estar buits
 
 - MOSTRAR DOCUMENTS
 
-  In: Prémer botó Mostrar Documents
+  Acció: Prémer botó Mostrar Documents
   Out: Martí
        XMLCorrecte
        Joel
@@ -100,7 +100,27 @@ JOCS DE PROVA
         Contingut: hola i xml, gran gestor de documents, m'agrada el futbol i bon mundial del Dibu i Messi.
     Out: DOCUMENT CREAT CORRECTAMENT!
 
-3. Gestió expressions booleanes --> Alta expressió
+3. Baixa Document
+
+   Acció: Prémer botó Baixa Document
+   Out: ERROR: Selecciona Autor i titol
+
+   Acció: Prémer botó Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer botó Mostrar Autors + Mostrar Documents
+   Out: ERROR: Selecciona Autor i titol
+
+   Acció: Prémer botó Mostrar Autors + Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer botó Mostrar Autors + seleccionar Martí + Prémer botó Mostrar Titols Autor + Baixa Document
+   Out: ERROR: Has de seleccionar un Titol de l'Autor seleccionat
+
+   Acció: Prémer botó Mostrar Autors + seleccionar Martí + Prémer botó Mostrar Titols Autor + Seleccionar XMLCorrecte + Baixa Document
+   Out: DOCUMENT BORRAT CORRECTAMENT!
+
+4. Gestió expressions booleanes --> Alta expressió
 
    Donarem d'alta una sèrie d'expressions per tal de guardar-les al gestor i mirar els documents que tenen una frase que la compleix.
 
@@ -110,7 +130,10 @@ JOCS DE PROVA
    In: documents & (!txt | !xml)
    Out: EXPRESSIÓ CREADA CORRECTAMENT!
 
-   In: futbol & mundial & !Mbappe & (Messi | Dibu)
+   In: futbol & mundial & !Mbappe & (Messi & Dibu | Neymar)
+   Out: EXPRESSIÓ CREADA CORRECTAMENT!
+
+   In: importar & !exportar
    Out: EXPRESSIÓ CREADA CORRECTAMENT!
 
    In: hola & !adeu & (xml | txt)
@@ -118,3 +141,190 @@ JOCS DE PROVA
 
    In:
    Out: ERROR: La query no pot estar buida
+
+5. Gestió d'expressions booleanes --> Baixa expressió
+
+   In: Prémer botó Mostrar Querys + Prémer botó Continue
+   Out: ERROR: Has de seleccionar una Query de la llista
+
+   In: Prémer botó Mostrar Querys + Seleccionar (importar & !exportar) + Prémer botó Continue
+   Out: EXPRESSIÓ BORRADA CORRECTAMENT!
+
+6. Realitzar consulta --> Consulta titols per autor
+
+   Acció: Prémer Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer Mostrar Autors + Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer Mostrar Autors + Seleccionar Joan + Mostrar Titols de l'Autor
+   Out: Futbol
+        M'agrada
+        Mundial
+        No m'agrada
+
+   Acció: Prémer Mostrar Autors + Seleccionar Joel + Mostrar Titols de l'Autor
+   Out: Compleixo les 3
+        TxtCorrecte
+
+7. Realitzar consulta --> Consulta autors prefix
+
+   In:
+   Out: Albert
+        Joan
+        Joao
+        Joel
+        Oriol
+
+   In: Jo
+   Out: Joan
+        Joao
+        Joel
+
+   In: Oriola
+   Out: ERROR: No hi ha cap autor amb aquest prefix
+
+8. Realitzar consulta --> Consulta contingut d'un document
+
+   Acció: Prémer botó Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer botó Contingut Document
+   Out: ERROR: Selecciona Autor i titol
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joel + Prémer botó Contingut Document
+   Out: ERROR: Has de seleccionar un Titol de l'Autor seleccionat
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joel + Prémer botó Mostrar Titols de l'Autor + Seleccionar TxtCorrecte + Prémer botó Contingut Document
+   Out: Hola.
+        Aquest TXT és correcte així que es pot importar.
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Albert + Prémer botó Mostrar Titols de l'Autor + Seleccionar Adeu + Prémer botó Contingut Document
+   Out: Tinc adeu i tinc xml.
+
+9. Modifica Document
+
+   Acció: Prémer botó Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer botó Modifica Document
+   Out: ERROR: Selecciona Autor i Titol
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joel + Prémer botó Modifica Document
+   Out: ERROR: Has de seleccionar un Titol de l'Autor seleccionat
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joel + Prémer botó Mostrar Titols de l'Autor + Seleccionar TxtCorrecte + Prémer botó Modifica Document
+          Prémer Modificar Respecte Contingut
+   In: Hola, ara aquest txt és correcte així que es pot importar.
+   Out: DOCUMENT MODIFICAT CORRECTAMENT!
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Albert + Prémer botó Mostrar Titols de l'Autor + Seleccionar Adeu + Prémer botó Modifica Document
+   In: adeu a tots
+   Out: DOCUMENT MODIFICAT CORRECTAMENT!
+
+10. Realitzar consulta --> Consulta contingut d'un document
+
+    Tornem a consultar contingut per veure si s'ha modificat correctament els dos documents
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joel + Prémer botó Mostrar Titols de l'Autor + Seleccionar TxtCorrecte + Prémer botó Contingut Document
+   Out: Hola, ara aquest txt és correcte així que es pot importar.
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Albert + Prémer botó Mostrar Titols de l'Autor + Seleccionar Adeu + Prémer botó Contingut Document
+   Out: adeu a tots
+
+11. Llistar documents --> Llistar semblants
+
+   Acció: Prémer botó Mostrar Titols de l'Autor
+   Out: ERROR: Has de seleccionar un Autor de la llista
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol + Prémer botó Continue
+   Out: ERROR: Falta Nombre de documents a retornar i ha de ser un valor de 0 al 10
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
+   In: 9 (documents a retornar)
+   Acció: Prémer botó Continue
+   Out: ERROR: Has de triar un métode de cerca
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
+   In: 9 (documents a retornar)
+   Acció: Seleccionar Tf + Prémer botó Continue
+   Out: ERROR: Has de triar un métode d'ordenació
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
+   In: 9 (documents a retornar)
+   Acció: Seleccionar Tf + Seleccionar Alfabètica per títol + Prémer botó Continue
+   Out: ERROR: El nombre de documents a retornar és major als documents del sistema. K ha de ser menor a 9.
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Joan + Prémer botó Mostrar Titols de l'Autor + Seleccionar Futbol
+   In: 3 (documents a retornar)
+   Acció: Seleccionar Tf + Seleccionar Alfabètica per títol + Prémer botó Continue + Prémer Mostrar Documents
+   Out: Joao
+        Query1
+        Joel
+        Compleixo les 3
+        Joan
+        Mundial
+   Acció: Seleccionar Compleixo les 3 i prémer MostrarContingut
+   Out: hola i xml, gran gestor de documents, m'agrada el futbol i bon mundial del Dibu i Messi.
+
+   Acció: Prémer botó Mostrar Autors + Seleccionar Oriol + Prémer botó Mostrar Titols de l'Autor + Seleccionar Hola
+   In: 1 (documents a retornar)
+   Acció: Seleccionar Tf-idf + Seleccionar Data de modificació més propera + Prémer botó Continue + Prémer Mostrar Documents
+   Out: Joao
+        Query1
+   Acció: Seleccionar Query1 i prémer MostrarContingut
+   Out: Tinc hola i xml, i a més, txt.
+
+12. Llistar documents --> Llistar documents que compleixen expressió
+
+    Acció: Prémer botó Mostrar Querys + Prémer botó Continue
+    Out: ERROR: Has de seleccionar una Query de la llista
+
+    Acció: Prémer botó Mostrar Querys + Seleccionar "documents & (!txt | !xml)" + Prémer botó Continue
+    Out: ERROR: Has de triar un metode d'ordenacio
+
+    Acció: Prémer botó Mostrar Querys + Seleccionar "documents & (!txt | !xml)" + Seleccionar Alfabètica per títol + Prémer botó Continue
+    Acció: Prémer Mostrar Documents
+    Out: Joan
+         M'agrada
+         Joan
+         No m'agrada
+         Joel
+         Compleixo les 3
+    Acció: Seleccionar M'agrada i prémer MostrarContingut
+    Out: M'agrada el gestor de documents per tal d'importar els meus documents txt.
+
+    Acció: Prémer botó Mostrar Querys + Seleccionar "futbol & mundial & !Mbappe & (Messi & Dibu | Neymar)" + Seleccionar Data de creació més propera + Prémer botó Continue
+    Acció: Prémer Mostrar Documents
+    Out: Joan
+         M'agrada
+         Joan
+         No m'agrada
+         Joel
+         Compleixo les 3
+    Acció: Seleccionar M'agrada i prémer MostrarContingut
+    Out: M'agrada el gestor de documents per tal d'importar els meus documents txt.
+
+13. Gestió expressions booleanes --> Modifica expressió
+
+    Acció: Prémer botó Mostrar Querys + Premer botó Continue
+    Out: ERROR: Has de seleccionar una Query de la llista
+
+    Acció: Prémer botó Mostrar Querys + Seleccionar "documents & (!txt | !xml)" + Prémer botó continue
+    Out: ERROR: La query modificada no pot estar buida
+
+    Acció: Prémer botó Mostrar Querys + Seleccionar "documents & (!txt | !xml)"
+    In: documents & (!txt | !xml) & mundial
+    Acció: Prémer botó Continue
+    Out: EXPRESSIÓ MODIFICADA CORRECTAMENT!
+
+14. Llistar documents --> Llistar documents que compleixen expressió
+
+    Tornem a llistar els documents que compleixen l'expressió modificada per veure els canvis al output
+
+
+
+
+
+

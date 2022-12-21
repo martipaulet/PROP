@@ -23,10 +23,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 public class CtrlPresentacio {
@@ -117,6 +114,7 @@ public class CtrlPresentacio {
     public ArrayList<String> DocumentsSemblantsPres(String autor, String titol, Integer K, Integer mode, Integer ordre) throws Exception {
         ConjuntDocuments cjd = cd.DocumentsSemblants(autor,titol,K,mode);
         ConjuntDocuments c = cd.ordenaDocuments(cjd,ordre);
+        c.imprimir();
         return canviCjtDocToArrayList(c);
     }
 
@@ -357,14 +355,13 @@ public class CtrlPresentacio {
 
     //---METODES PRIVATS---
 
-    private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c){
+    private ArrayList<String> canviCjtDocToArrayList(ConjuntDocuments c) {
         ArrayList<String> ret = new ArrayList<>();
-        HashMap<Pair, Document> doc = c.getMap();
+        LinkedHashMap<Pair, Document> doc = c.getMap();
         for ( Pair key: doc.keySet()){
             String s = key.getAutor()+"\n"+key.getTitol();
             ret.add(s);
         }
-
         return ret;
     }
 

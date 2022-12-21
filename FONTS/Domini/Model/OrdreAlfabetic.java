@@ -44,7 +44,6 @@ import java.util.*;
          for (int i = 0; i<vdReal.size(); ++i){
              cdordenat.afegirDocument(vdReal.elementAt(i));
          }
-
          return cdordenat;
      }
 }

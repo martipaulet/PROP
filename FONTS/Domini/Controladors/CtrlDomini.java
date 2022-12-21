@@ -323,7 +323,7 @@ public class CtrlDomini {
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> TfIdf = documents.CalculTfIdf(D);
         HashMap<Document, Double> aux = sortMapByValue(TfIdf);
-        HashMap<Pair,Document> ret = new HashMap<>(K);
+        LinkedHashMap<Pair,Document> ret = new LinkedHashMap<>(K);
 
         Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
         while (it.hasNext() && ret.size()<K) {
@@ -342,7 +342,7 @@ public class CtrlDomini {
         Document D = documents.getDocument(autor, titol);
         HashMap<Document, Double> Tf = documents.CalculTf(D);
         HashMap<Document, Double> aux = sortMapByValue(Tf);
-        HashMap<Pair,Document> ret = new HashMap<>(K);
+        LinkedHashMap<Pair,Document> ret = new LinkedHashMap<>(K);
 
         Iterator<Map.Entry<Document, Double>> it = aux.entrySet().iterator();
         while (it.hasNext() && ret.size()<K) {
