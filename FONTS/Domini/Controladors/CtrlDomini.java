@@ -240,6 +240,11 @@ public class CtrlDomini {
         else return false;
     }
 
+    public ArrayList<String> getAutors(){
+        ArrayList<String> a = new ArrayList<String>(autors.keySet());
+        return a;
+    }
+
     //---METODES ORDENACIO---
 
 

@@ -158,6 +158,10 @@ public class CtrlPresentacio {
         return canviCjtDocToArrayList(cd.DocSistema());
     }
 
+    public ArrayList<String> getAutorsPres(){
+        return cd.getAutors();
+    }
+
 
 
     //---IMPORTAR I EXPORTAR---

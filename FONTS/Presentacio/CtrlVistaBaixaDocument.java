@@ -1,25 +1,36 @@
 package Presentacio;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
+
 
 import java.io.IOException;
-import java.util.Objects;
+import java.util.List;
+import java.util.ArrayList;
 
 public class CtrlVistaBaixaDocument {
 
     @FXML
+    private Button MostrarAutors;
+
+    @FXML
+    private Button MostrarTitolsAutor;
+
+    @FXML
+    private Button BaixaDoc;
+
+    @FXML
+    private ListView<String> Autors = new ListView<>();
+
+    @FXML
+    private ListView<String> Titols = new ListView<>();
+
+    @FXML
     private Button CarregarGuardarDocument;
-
-    @FXML
-    private TextArea TextAutor;
-
-    @FXML
-    private TextArea TextTitol;
-
-    @FXML
-    private Button Continue;
 
     @FXML
     private Button AltaDocument;
@@ -45,18 +56,51 @@ public class CtrlVistaBaixaDocument {
     }
 
     @FXML
-    void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String a = TextAutor.getText();
-        String t = TextTitol.getText();
-        if (Objects.equals(a, "") || Objects.equals(t, "")) {
-            ctrlPres.mostraError("Ni autor ni titol no poden estar buits");
+    void pressMostrarAutors(javafx.event.ActionEvent event) throws Exception {
+        ArrayList<String> a = ctrlPres.getAutorsPres();
+        if (a.size() == 0) {
+            ctrlPres.mostraError("No hi ha cap autor guardat al sistema");
         }
         else {
-            if (!ctrlPres.existeixDocument(a, t)) ctrlPres.mostraError("El document no existeix");
-            else {
-                ctrlPres.baiaxaDocumentPres(a, t);
-                ctrlPres.canviaStage("DocumentBorrat");
+            ObservableList<String> aux = FXCollections.observableArrayList(a);
+            Autors.setItems(aux);
+            Autors.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
+    }
+
+    @FXML
+    void pressMostrarTitolsAutor(javafx.event.ActionEvent event) throws Exception {
+        if (Autors.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar un autor de la llista. Però abans has de pitjar Mostrar Autors");
+        }
+        else {
+            String autor = Autors.getSelectionModel().getSelectedItem();
+            List<String> t = ctrlPres.titolsAutorPres(autor);
+            if (t.size() == 0) {
+                ctrlPres.mostraError("No hi ha cap titol d'aquest autor guardat al sistema");
             }
+            else {
+                ObservableList<String> aux = FXCollections.observableList(t);
+                Titols.setItems(aux);
+                Titols.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+            }
+        }
+    }
+
+    @FXML
+    void pressBaixaDoc(javafx.event.ActionEvent event) throws Exception {
+        if(Autors.getSelectionModel().isEmpty()){
+            ctrlPres.mostraError("No tens cap autor seleccionat, has de tornar a repetir el proces explicat al manual d'usuari");
+        }
+        else if (Titols.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar un Titol. Però abans has seleccionar un Autor i després pitjar el boto de Mostrar Titols Autor");
+        }
+        else if (!ctrlPres.existeixDocument(Autors.getSelectionModel().getSelectedItem(), Titols.getSelectionModel().getSelectedItem())){
+            ctrlPres.mostraError("L'autor i el Titol seleccionat no corresponen, has de tornar a repetir el proces explicat al manual d'usuari");
+        }
+        else {
+            ctrlPres.baiaxaDocumentPres(Autors.getSelectionModel().getSelectedItem(), Titols.getSelectionModel().getSelectedItem());
+            ctrlPres.canviaStage("DocumentBorrat");
         }
     }
 
