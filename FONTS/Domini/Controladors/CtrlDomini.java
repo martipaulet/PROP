@@ -329,7 +329,7 @@ public class CtrlDomini {
         while (it.hasNext() && ret.size()<K) {
             Map.Entry<Document, Double> entry = it.next();
             Pair p = new Pair(entry.getKey().getAutor(),entry.getKey().getTitol());
-            ret.put(p,entry.getKey());
+            if ( entry.getValue() > 0) ret.put(p,entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
         return cd;
@@ -348,7 +348,7 @@ public class CtrlDomini {
         while (it.hasNext() && ret.size()<K) {
             Map.Entry<Document, Double> entry = it.next();
             Pair p = new Pair(entry.getKey().getAutor(),entry.getKey().getTitol());
-            ret.put(p,entry.getKey());
+            if ( entry.getValue() > 0) ret.put(p,entry.getKey());
         }
         ConjuntDocuments cd = new ConjuntDocuments(ret);
         return cd;

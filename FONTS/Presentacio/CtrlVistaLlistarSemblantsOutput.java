@@ -98,6 +98,9 @@ public class CtrlVistaLlistarSemblantsOutput {
         Integer o = CVLLS.getOrdre();
         ArrayList<String> doc = ctrlPres.DocumentsSemblantsPres(a,t,k,m,o);
         if (doc.size() == 0) ctrlPres.mostraError("No hi ha cap document semblant");
+        else if (doc.size() < k) {
+            ctrlPres.mostraError("No hi han "+k+" documents semblants, si no que n'hi han "+doc.size());
+        }
         ObservableList<String> aux = FXCollections.observableArrayList(doc);
         Documents.setItems(aux);
         Documents.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
