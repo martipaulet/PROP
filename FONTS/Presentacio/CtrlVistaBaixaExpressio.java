@@ -1,10 +1,15 @@
 package Presentacio;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class CtrlVistaBaixaExpressio {
@@ -31,7 +36,10 @@ public class CtrlVistaBaixaExpressio {
     private Button GestioExpressionsBooleanes;
 
     @FXML
-    private TextArea QueryText;
+    private Button MostrarQuerys;
+
+    @FXML
+    private ListView<String> Querys = new ListView<>();
 
     @FXML
     private Button Continue;
@@ -77,14 +85,24 @@ public class CtrlVistaBaixaExpressio {
     }
 
     @FXML
+    void pressMostrarQuerys(javafx.event.ActionEvent event) throws Exception {
+        List<String> q = ctrlPres.getQuerysPres();
+        if (q.size() == 0) {
+            ctrlPres.mostraError("No hi ha cap Query guardada al sistema");
+        } else {
+            ObservableList<String> aux = FXCollections.observableArrayList(q);
+            Querys.setItems(aux);
+            Querys.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+        }
+    }
+
+    @FXML
     void pressContinue(javafx.event.ActionEvent event) throws Exception {
-        String query = QueryText.getText();
-        if (Objects.equals(query, "")) {
-            ctrlPres.mostraError("La query no pot estar buida");
+        if (Querys.getSelectionModel().isEmpty()) {
+            ctrlPres.mostraError("Has de seleccionar una Query de la llista");
         }
         else {
-            if (!ctrlPres.existeixQueryPres(query)) ctrlPres.mostraError("La query indicada no existeix al sistema");
-            ctrlPres.baixaExpressioPres(query);
+            ctrlPres.baixaExpressioPres(Querys.getSelectionModel().getSelectedItem());
             ctrlPres.canviaStage("ExpressioBorrada");
         }
     }
